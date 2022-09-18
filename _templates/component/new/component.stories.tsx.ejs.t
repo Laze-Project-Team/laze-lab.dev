@@ -8,7 +8,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { <%= h.changeCase.pascal(component_name) %> } from '.';
 
 export default {
-  title: '<%= h.changeCase.pascal(component_type) %>/<%= h.changeCase.pascal(component_name) %>',
+  title: '<%= component_type %>/<%= h.changeCase.pascal(component_name) %>',
   component: <%= h.changeCase.pascal(component_name) %>,
 } as ComponentMeta<typeof <%= h.changeCase.pascal(component_name) %>>;
 
