@@ -1,12 +1,7 @@
 {
-  "name": "nextjs-latest-starter",
-  "version": "0.4.1",
+  "name": "laze-website",
+  "version": "0.0.0",
   "private": true,
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com:tsuki-lab/nextjs-latest-starter.git"
-  },
-  "author": "hanetsuki <me@tsuki-lab.net> (https://github.com/tsuki-lab)",
   "license": "MIT",
   "scripts": {
     "dev": "run-p dev:*",
