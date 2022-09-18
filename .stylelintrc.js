@@ -6,11 +6,11 @@ module.exports = {
   ],
   overrides: [
     {
-      files: ['src/**/*.{ts,tsx}'],
+      files: ['**/*.{js,jsx,ts,tsx}'],
       customSyntax: '@stylelint/postcss-css-in-js',
     },
   ],
   rules: {
     'string-quotes': ['single'],
   },
-}
+};

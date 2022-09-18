@@ -1,6 +1,6 @@
-import 'ress'
-import { css, Global } from '@emotion/react'
-import type { AppProps } from 'next/app'
+import 'ress';
+import { css, Global } from '@emotion/react';
+import type { AppProps } from 'next/app';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -8,10 +8,10 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Global styles={globalStyle} />
       <Component {...pageProps} />
     </>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;
 
 const globalStyle = css`
   html {
@@ -38,4 +38,4 @@ const globalStyle = css`
       text-decoration: underline;
     }
   }
-`
+`;

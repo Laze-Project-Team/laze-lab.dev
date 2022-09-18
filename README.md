@@ -159,7 +159,7 @@ const globalStyle = css`
       text-decoration: underline;
     }
   }
-`
+`;
 ```
 
 ### Media Query

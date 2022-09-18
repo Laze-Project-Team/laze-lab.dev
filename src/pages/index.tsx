@@ -1,8 +1,8 @@
-import { css } from '@emotion/react'
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import { staticPath } from '@/lib/$path'
-import { sp } from '@/styles/media-query'
+import { css } from '@emotion/react';
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import { staticPath } from '@/lib/$path';
+import { sp } from '@/styles/media-query';
 
 const Home: NextPage = () => {
   return (
@@ -138,10 +138,10 @@ const Home: NextPage = () => {
         </a>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
 
 export const Card: React.FC<JSX.IntrinsicElements['a']> = ({
   children,
@@ -181,4 +181,4 @@ export const Card: React.FC<JSX.IntrinsicElements['a']> = ({
   >
     {children}
   </a>
-)
+);

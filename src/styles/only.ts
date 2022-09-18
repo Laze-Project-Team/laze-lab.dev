@@ -1,5 +1,5 @@
-import { css } from '@emotion/react'
-import { pc, sp, tb } from './media-query'
+import { css } from '@emotion/react';
+import { pc, sp, tb } from './media-query';
 
 export const onlySpStyle = css`
   ${tb} {
@@ -8,7 +8,7 @@ export const onlySpStyle = css`
   ${pc} {
     display: none !important;
   }
-`
+`;
 
 export const onlyTbStyle = css`
   ${sp} {
@@ -17,7 +17,7 @@ export const onlyTbStyle = css`
   ${pc} {
     display: none !important;
   }
-`
+`;
 
 export const onlyPcStyle = css`
   ${sp} {
@@ -26,16 +26,16 @@ export const onlyPcStyle = css`
   ${tb} {
     display: none !important;
   }
-`
+`;
 
 export const onlyNotSpStyle = css`
   ${sp} {
     display: none !important;
   }
-`
+`;
 
 export const onlyNotPcStyle = css`
   ${pc} {
     display: none !important;
   }
-`
+`;
