@@ -7,6 +7,7 @@
     "dev": "run-p dev:*",
     "dev:next": "next dev",
     "dev:path": "yarn pathpida -w",
+    "test": "jest -w",
     "build": "yarn pathpida && next build",
     "start": "next start",
     "pathpida": "pathpida -p .gitignore -o ./src/lib -s",
@@ -68,6 +69,7 @@
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-standard": "^26.0.0",
     "stylelint-prettier": "^2.0.0",
+    "ts-jest": "^29.0.1",
     "typescript": "^4.8.3"
   }
 }
