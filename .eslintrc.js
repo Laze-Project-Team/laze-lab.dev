@@ -2,12 +2,14 @@ module.exports = {
   env: {
     es2021: true,
   },
+  plugins: ['eslint-plugin-testing-library', 'jest-dom'],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'next/core-web-vitals',
     'google',
     'prettier',
+    'plugin:jest-dom/recommended',
   ],
   rules: {
     'require-jsdoc': ['off'],
