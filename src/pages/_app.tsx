@@ -1,15 +1,17 @@
 import 'ress';
+
 import { css, Global } from '@emotion/react';
 import type { AppProps } from 'next/app';
+import type { FC } from 'react';
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <Global styles={globalStyle} />
       <Component {...pageProps} />
     </>
   );
-}
+};
 
 export default MyApp;
 

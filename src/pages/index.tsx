@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
+
 import { staticPath } from '@/lib/$path';
 import { sp } from '@/styles/media-query';
 
