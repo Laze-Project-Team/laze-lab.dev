@@ -12,7 +12,6 @@ module.exports = {
   },
   plugins: [
     'eslint-plugin-testing-library',
-    'jest-dom',
     'react-hooks',
     'react',
     '@typescript-eslint',
@@ -26,7 +25,6 @@ module.exports = {
     'next/core-web-vitals',
     'google',
     'prettier',
-    'plugin:jest-dom/recommended',
     'plugin:storybook/recommended',
   ],
   rules: {
@@ -65,7 +63,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['src/pages/**/*.{js,ts,jsx,tsx}'], // pagesのdefault exportは仕方ないので除外
+      files: ['src/pages/**/*.{js,ts,jsx,tsx}', 'vite.config.ts'],
       rules: { 'import/no-default-export': 'off' },
     },
   ],
