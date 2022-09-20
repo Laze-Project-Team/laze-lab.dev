@@ -10,7 +10,7 @@ export type <%= h.changeCase.camel(component_name) %>Props = {
 
 export type presential<%= h.changeCase.pascal(component_name) %>Props = {
   
-};
+} & <%= h.changeCase.camel(component_name) %>Props;
 
 export const Presential<%= h.changeCase.pascal(component_name) %>: FC<presential<%= h.changeCase.pascal(component_name) %>Props> = ({}) => {
   return (
