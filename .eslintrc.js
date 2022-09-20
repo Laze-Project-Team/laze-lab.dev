@@ -63,7 +63,11 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['src/pages/**/*.{js,ts,jsx,tsx}', 'vite.config.ts'],
+      files: [
+        'src/pages/**/*.{js,ts,jsx,tsx}',
+        'vite.config.ts',
+        '*.stories.{jsx,tsx}',
+      ],
       rules: { 'import/no-default-export': 'off' },
     },
   ],
