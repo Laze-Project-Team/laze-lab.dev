@@ -4,6 +4,6 @@ to: src/components/<%= component_type %>/<%= h.changeCase.pascal(component_name)
 
 import { <%= h.changeCase.pascal(component_name) %> } from '.';
 
-describe("<%= h.changeCase.pascal(component_name) %>", () => {
+describe("<%= component_type %>/<%= h.changeCase.pascal(component_name) %>", () => {
   // write tests here
 });
