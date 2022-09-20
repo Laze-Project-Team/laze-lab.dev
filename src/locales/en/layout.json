@@ -1,0 +1,31 @@
+{
+  "header": {
+    "Editor": "Editor",
+    "Docs": "Documentation",
+    "Compete": "Compete",
+    "drawer": "Sitemap",
+    "SignUp": "Sign Up / Login",
+    "Profile": "My Profile",
+    "Logout": "Log-Out"
+  },
+
+  "changeLanguage": "Change Language",
+
+  "footer": {
+    "Guides": "Guide & Help",
+    "guides": {
+      "Terms": "Terms of use",
+      "Guideline": "Guideline",
+      "Privacy": "Privacy Policy",
+      "License": "License Information"
+    },
+
+    "Sitemap": "Sitemap",
+    "sitemap": {
+      "Home": "Home",
+      "Editor": "Editor",
+      "Docs": "Documentation",
+      "Compete": "Compete"
+    }
+  }
+}

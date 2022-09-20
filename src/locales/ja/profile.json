@@ -1,0 +1,40 @@
+{
+  "loading": "ユーザープロフィール",
+  "description": "",
+  "profile": {
+    "avatar": {
+      "title": "アバター画像",
+      "edit": {
+        "title": "アバター画像をアップロード",
+        "invalid": "アバター画像は、JPEG、PNG形式のファイルでなければなりません。",
+        "success": "アバター画像を正常に更新しました",
+        "error": "アバター画像のアップロードに失敗しました。"
+      }
+    },
+    "displayName": {
+      "label": "ユーザー名",
+      "undefined": "ユーザー名未設定",
+      "edit": "ユーザー名を編集",
+      "submit": "ユーザー名を更新",
+      "placeholder": "ユーザー名を入力",
+      "validation": {
+        "max": "ユーザー名は32文字以下である必要があります"
+      },
+      "error": "ユーザー名の変更に失敗しました"
+    },
+    "projects": {
+      "title": "私のプロジェクト",
+      "image": "プロジェクトのイメージ",
+      "delete": "削除",
+      "add": "新規",
+      "lastMod": "最終更新 : {{date}}",
+      "newProject": "新しいプロジェクト",
+      "nodata": "プロジェクトがありません",
+      "nodataAction": "プロジェクトを作成",
+      "error": {
+        "add": "新しいプロジェクトの作成に失敗しました",
+        "delete": "プロジェクトの削除に失敗しました"
+      }
+    }
+  }
+}

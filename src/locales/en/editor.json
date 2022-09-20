@@ -1,0 +1,109 @@
+{
+  "title": "Laze Editor",
+  "description": "",
+  "footer": {
+    "acknowledgement": "Made with Monaco Editor",
+    "home": "Home",
+    "docs": "Documentation"
+  },
+  "contextmenus": {
+    "newFile": "New File",
+    "newFolder": "New Folder",
+    "compile": "Compile",
+    "rename": "Rename",
+    "delete": "Delete"
+  },
+  "panellist": {
+    "master": "Master",
+    "close": "Close"
+  },
+  "buttons": {
+    "menu": "Menu",
+    "newFile": "New File",
+    "newFolder": "New Folder",
+    "compile": "Compile & Run",
+    "samples": "Sample List",
+    "convert": "Language Conversion(Change)",
+    "settings": "Settings"
+  },
+  "settings": {
+    "darkmode": "Enable dark mode",
+    "close": "Close"
+  },
+  "samples": {
+    "title": "Loading sample selection",
+    "error": "Somehing went wrong while loading sample list",
+    "load": "Load",
+    "cancel": "Cancel"
+  },
+  "convert": {
+    "change": "Change",
+    "convert": "Convert",
+    "cancel": "Cancel",
+    "success": {
+      "title": "Conversion completed",
+      "message": "Your language has been changed successfully ({{from}} → {{to}})"
+    },
+    "error": {
+      "title": "Conversion failed",
+      "message": "Something went wrong while changing your language ({{from}} → {{to}})"
+    }
+  },
+  "workbench": {
+    "output": "Output",
+    "canvas": "Canvas Area"
+  },
+  "messages": {
+    "FileIsNotOpened": {
+      "1": "File is not opened",
+      "2": "You can open file from the file explorer on the left"
+    },
+    "NameMustBeProvided": "A file or folder name must be provided.",
+    "FileAlreadyExists": "A file or folder with that name already exists. Please choose a different name.",
+    "NotValidName": "This name is not valid as a file or folder name. Please choose a different name.",
+    "FailedToSave": "Failed to save the file",
+    "FailedToCreateFile": "Failed to creae a file",
+    "FailedToCreateFolder": "Faild to create a folder",
+    "FailedToDelete": "Faild to delete the file",
+    "FailedToRename": "Fail to rename the file",
+    "FailedToSet": "Failed to set the directory",
+    "SubmitSuccess": {
+      "title": "Program Submitted Successfully",
+      "message": "{{user}}'s program was submitted successfully with the time {{time}}."
+    },
+    "linetraceTime": "Your time"
+  },
+
+  "errors": {
+    "FileIsNotOpened": {
+      "title": "Compile error",
+      "message": "File is not opened. Please open a file first."
+    },
+    "LoadingSampleFailed": {
+      "title": "Sample loading error",
+      "message": "Failed to load sample \"{{name}}\""
+    },
+    "LaunchProgramFailed": {
+      "title": "Failed to launch program",
+      "message": "Please check your network connection"
+    },
+    "CompileProgramFailed": {
+      "title": "Failed to compile program",
+      "message": "Please check your network connection"
+    },
+    "UnexpectedError": {
+      "title": "Unexpected error",
+      "message": "Unexpected error has occurred. Please try again."
+    },
+    "SubmitFailed": {
+      "title": "Failed to submit program",
+      "message": "Please try a different username"
+    }
+  },
+  "explorer": {
+    "close": "minimize",
+    "open": "maximize"
+  },
+  "publish_source_code_check": "make this program public",
+  "publish_source_code_check_description": "When you make your program public, others are free to view your program."
+}

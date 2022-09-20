@@ -1,0 +1,28 @@
+{
+  "header": {
+    "Editor": "エディタ",
+    "Docs": "ドキュメンテーション",
+    "Compete": "コンテスト",
+    "SignUp": "アカウント登録 / ログイン",
+    "Profile": "プロフィール",
+    "Logout": "ログアウト",
+    "drawer": "サイトマップ"
+  },
+  "changeLanguage": "言語を変更",
+  "footer": {
+    "Guides": "ガイドとヘルプ",
+    "guides": {
+      "Terms": "利用規約",
+      "Guideline": "ガイドライン",
+      "Privacy": "プライバシーポリシー",
+      "License": "ライセンス情報"
+    },
+    "Sitemap": "サイトマップ",
+    "sitemap": {
+      "Home": "ホーム",
+      "Editor": "エディタ",
+      "Docs": "ドキュメンテーション",
+      "Compete": "コンテスト"
+    }
+  }
+}
