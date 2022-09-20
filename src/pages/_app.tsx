@@ -2,17 +2,21 @@ import 'ress';
 
 import { Global } from '@emotion/react';
 import type { AppProps } from 'next/app';
-import type { FC } from 'react';
+import { appWithTranslation } from 'next-i18next';
+import { Provider as ReduxProvider } from 'react-redux';
 
+import { store } from '@/lib/redux/root';
 import { globalStyle } from '@/styles/global';
 
-const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
+const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
-      <Global styles={globalStyle} />
-      <Component {...pageProps} />
+      <ReduxProvider store={store}>
+        <Global styles={globalStyle} />
+        <Component {...pageProps} />
+      </ReduxProvider>
     </>
   );
 };
 
-export default MyApp;
+export default appWithTranslation(MyApp);

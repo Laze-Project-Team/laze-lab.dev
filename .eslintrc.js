@@ -31,14 +31,6 @@ module.exports = {
   ],
   rules: {
     'require-jsdoc': ['off'],
-    'import/order': [
-      'error',
-      {
-        alphabetize: {
-          order: 'asc',
-        },
-      },
-    ],
     '@next/next/no-img-element': ['off'],
     'react/no-unknown-property': [
       'error',
