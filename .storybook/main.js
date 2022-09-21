@@ -23,6 +23,27 @@ module.exports = {
       '/': path.resolve(__dirname, '../'),
     };
 
+    // use emotion fragment
+    config.module.rules.push({
+      test: /\.(js|jsx|ts|tsx)$/,
+      loader: require.resolve('babel-loader'),
+      options: {
+        cacheDirectory: true,
+        presets: [
+          [
+            'next/babel',
+            {
+              'preset-react': {
+                runtime: 'automatic',
+                importSource: '@emotion/react',
+              },
+            },
+          ],
+        ],
+        plugins: ['@emotion/babel-plugin'],
+      },
+    });
+
     return config;
   },
 };
