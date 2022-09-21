@@ -2,3 +2,4 @@ $path.ts
 next.config.js
 .eslintrc.js
 _templates/**/*
+next-i18next.config.js
