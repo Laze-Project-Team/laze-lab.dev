@@ -9,5 +9,5 @@
   "prettier.configPath": ".prettierrc.json",
   "files.insertFinalNewline": true,
   "stylelint.validate": ["css", "scss", "typescript", "typescriptreact"],
-  "vitest.commandLine": "yarn test --"
+  "vitest.commandLine": "yarn test"
 }
