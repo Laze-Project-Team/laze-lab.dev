@@ -27,6 +27,7 @@ export const PresentialIndexLayout: FC<presentialIndexLayoutProps> = ({
 
         <main>
           <Container maxWidth="md">
+            {/* Matching the children type of Container */}
             <>{children}</>
           </Container>
         </main>
