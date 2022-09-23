@@ -1,0 +1,7 @@
+// Vitest Snapshot v1
+
+exports[`should be rendered correctly 1`] = `
+<a
+  href="/"
+/>
+`;

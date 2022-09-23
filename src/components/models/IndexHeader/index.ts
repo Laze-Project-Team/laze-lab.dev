@@ -1,0 +1,1 @@
+export { IndexHeader } from './IndexHeader';
