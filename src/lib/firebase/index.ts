@@ -1,7 +1,10 @@
 import { getAnalytics, isSupported } from 'firebase/analytics';
 import type { FirebaseOptions } from 'firebase/app';
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import {
+  getAuth,
+  useDeviceLanguage as firebaseUseDeviceLanguage,
+} from 'firebase/auth';
 import { getPerformance } from 'firebase/performance';
 
 const firebaseConfig: FirebaseOptions = {
@@ -26,3 +29,4 @@ export const perf = getPerformance(app);
 
 // Authentication
 export const auth = getAuth();
+firebaseUseDeviceLanguage(auth);
