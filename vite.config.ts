@@ -16,5 +16,8 @@ export default defineConfig({
     globals: true,
     environment: 'happy-dom', // jsdomの代わりにhappy-domを設定した
     setupFiles: ['./jest.setup.js'], // Jestで使っていたテスト設定をセットアップ
+    coverage: {
+      provider: 'c8',
+    },
   },
 });
