@@ -6,9 +6,9 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import { useTranslation } from 'next-i18next';
 import type { FC } from 'react';
 
-import { DiscordIcon } from '@/components/ui/DiscordIcon';
+import { DiscordIcon } from '@/components/ui/icons/DiscordIcon';
+import { QiitaIcon } from '@/components/ui/icons/QiitaIcon';
 import { LazeLogo } from '@/components/ui/LazeLogo';
-import { QiitaIcon } from '@/components/ui/QiitaIcon';
 import { StyledLink } from '@/components/ui/StyledLink';
 
 import { FooterLinkList } from './FooterLinkList';
