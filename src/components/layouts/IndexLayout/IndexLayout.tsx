@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import Container from '@material-ui/core/Container';
+import Container from '@mui/material/Container';
 import type { FC, ReactNode } from 'react';
 
 import { IndexFooter } from '@/components/models/IndexFooter';

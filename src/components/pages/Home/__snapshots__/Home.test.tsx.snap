@@ -6,13 +6,13 @@ exports[`should be rendered correctly 1`] = `
     class="css-1r26qec-PresentialIndexLayout"
   >
     <header
-      class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorDefault MuiPaper-elevation4"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorDefault MuiAppBar-positionStatic css-xqhexu-MuiPaper-root-MuiAppBar-root"
     >
       <div
-        class="MuiContainer-root MuiContainer-maxWidthMd"
+        class="MuiContainer-root MuiContainer-maxWidthMd css-xdmu94-MuiContainer-root"
       >
         <div
-          class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+          class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-hyum1k-MuiToolbar-root"
         >
           <a
             class="css-t70qdf-HeaderLink"
@@ -52,7 +52,7 @@ exports[`should be rendered correctly 1`] = `
     </header>
     <main>
       <div
-        class="MuiContainer-root MuiContainer-maxWidthMd"
+        class="MuiContainer-root MuiContainer-maxWidthMd css-xdmu94-MuiContainer-root"
       >
         This is Home
       </div>
@@ -61,7 +61,7 @@ exports[`should be rendered correctly 1`] = `
       class="css-1eygvux-PresentialIndexFooter"
     >
       <div
-        class="MuiContainer-root MuiContainer-maxWidthMd"
+        class="MuiContainer-root MuiContainer-maxWidthMd css-xdmu94-MuiContainer-root"
       >
         <div
           class="css-oqt7gk-PresentialIndexFooter"
@@ -154,7 +154,7 @@ exports[`should be rendered correctly 1`] = `
                   class="css-18rq15l-footerIconStyle"
                   fill="none"
                   height="55"
-                  role="graphics-document"
+                  role="presentation"
                   viewBox="0 0 71 55"
                   width="71"
                   xmlns="http://www.w3.org/2000/svg"
@@ -188,7 +188,7 @@ exports[`should be rendered correctly 1`] = `
               >
                 <svg
                   class="css-18rq15l-footerIconStyle"
-                  role="graphics-document"
+                  role="presentation"
                   version="1.2"
                   viewBox="0 0 600 600"
                   xmlns="http://www.w3.org/2000/svg"

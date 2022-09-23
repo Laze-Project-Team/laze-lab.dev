@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { grey } from '@material-ui/core/colors';
+import { grey } from '@mui/material/colors';
 import type { FC, ReactNode } from 'react';
 
 import { StyledLink } from '@/components/ui/StyledLink';

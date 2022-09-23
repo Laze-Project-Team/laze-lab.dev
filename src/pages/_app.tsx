@@ -1,7 +1,7 @@
 import 'ress';
 
 import { Global } from '@emotion/react';
-import { ThemeProvider } from '@material-ui/core';
+import { ThemeProvider } from '@mui/material';
 import type { AppProps } from 'next/app';
 import type { SSRConfig } from 'next-i18next';
 import { appWithTranslation } from 'next-i18next';

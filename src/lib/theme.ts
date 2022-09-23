@@ -1,11 +1,3 @@
-import { createTheme } from '@material-ui/core';
+import { createTheme } from '@mui/material';
 
-export const theme = createTheme({
-  overrides: {
-    MuiAppBar: {
-      colorDefault: {
-        backgroundColor: 'var(--color-darkgray)',
-      },
-    },
-  },
-});
+export const theme = createTheme({});

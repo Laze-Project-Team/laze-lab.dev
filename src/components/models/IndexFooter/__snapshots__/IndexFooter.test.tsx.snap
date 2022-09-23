@@ -5,7 +5,7 @@ exports[`should be rendered correctly 1`] = `
   class="css-1eygvux-PresentialIndexFooter"
 >
   <div
-    class="MuiContainer-root MuiContainer-maxWidthMd"
+    class="MuiContainer-root MuiContainer-maxWidthMd css-xdmu94-MuiContainer-root"
   >
     <div
       class="css-oqt7gk-PresentialIndexFooter"

@@ -1,8 +1,8 @@
 import { css } from '@emotion/react';
-import { grey } from '@material-ui/core/colors';
-import Container from '@material-ui/core/Container';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import { grey } from '@mui/material/colors';
+import Container from '@mui/material/Container';
 import { useTranslation } from 'next-i18next';
 import type { FC } from 'react';
 

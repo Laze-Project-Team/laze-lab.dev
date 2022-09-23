@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
-import AppBar from '@material-ui/core/AppBar';
-import Container from '@material-ui/core/Container';
-import Toolbar from '@material-ui/core/Toolbar';
+import AppBar from '@mui/material/AppBar';
+import Container from '@mui/material/Container';
+import Toolbar from '@mui/material/Toolbar';
 import type { FC } from 'react';
 
 import { LazeLogo } from '@/components/ui/LazeLogo';
