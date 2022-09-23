@@ -1,14 +1,6 @@
-name: Testing build Next.js App
+name: Testing Vitest
 
-on:
-  push:
-    branches:
-      - main
-      - develop
-  pull_request:
-    branches:
-      - main
-      - develop
+on: push
 
 jobs:
   build:
@@ -25,5 +17,5 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Testing build Next.js App
-        run: yarn build
+      - name: Testing Vitest
+        run: yarn test
