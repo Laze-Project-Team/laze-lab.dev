@@ -3,7 +3,15 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
-  plugins: [react(), tsconfigPaths()],
+  plugins: [
+    react({
+      jsxImportSource: '@emotion/react',
+      babel: {
+        plugins: ['@emotion/babel-plugin'],
+      },
+    }),
+    tsconfigPaths(),
+  ],
   test: {
     globals: true,
     environment: 'happy-dom', // jsdomの代わりにhappy-domを設定した

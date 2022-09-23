@@ -3,3 +3,4 @@ next.config.js
 .eslintrc.js
 _templates/**/*
 next-i18next.config.js
+jest.config.js
