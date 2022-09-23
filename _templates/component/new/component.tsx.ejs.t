@@ -21,9 +21,5 @@ export const Presential<%= h.changeCase.pascal(component_name) %>: FC<presential
 };
 
 export const <%= h.changeCase.pascal(component_name) %>: FC<<%= h.changeCase.camel(component_name) %>Props> = ({}) => {
-  return (
-    <>
-      <Presential<%= h.changeCase.pascal(component_name) %> />
-    </>
-  );
+  return <Presential<%= h.changeCase.pascal(component_name) %> />;
 };
