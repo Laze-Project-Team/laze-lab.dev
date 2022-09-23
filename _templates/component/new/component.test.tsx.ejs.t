@@ -5,13 +5,16 @@ to: src/components/<%= component_type %>/<%= h.changeCase.pascal(component_name)
 import '@testing-library/jest-dom';
 
 import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { expect, it } from 'vitest';
 
 import { <%= h.changeCase.pascal(component_name) %> } from '.';
 
-describe("<%= component_type %>/<%= h.changeCase.pascal(component_name) %>", () => {
-  it('should be rendered correctly', () => {
-    const { container } = render(<<%= h.changeCase.pascal(component_name) %> />);
-    expect(container.firstChild).toMatchSnapshot();
-  });
+it('should be rendered correctly', () => {
+  const { container } = render(<<%= h.changeCase.pascal(component_name) %> />);
+  expect(container.firstChild).toMatchSnapshot();
+});
+
+it('should have "???" role', () => {
+  render(<IndexFooter />);
+  expect(screen.getByRole('???')).toBeInTheDocument();
 });
