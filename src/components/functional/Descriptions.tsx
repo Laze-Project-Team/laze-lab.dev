@@ -7,7 +7,11 @@ export type descriptionProps = {
   description: string;
 };
 
-export const Descriptions: FC<descriptionProps> = ({ title, description }) => {
+export const Descriptions: FC<descriptionProps> = ({
+  title: titleContent,
+  description,
+}) => {
+  const title = `${titleContent} | Laze`;
   const { locale, pathname } = useRouter();
 
   return (
