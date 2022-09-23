@@ -3,7 +3,7 @@ module.exports = [
     type: 'select',
     name: 'component_type',
     message: 'select component type',
-    choices: ['ui', 'layouts', 'pages', 'templates', 'models'],
+    choices: ['ui', 'ui/icons', 'layouts', 'pages', 'templates', 'models'],
   },
   {
     type: 'input',
