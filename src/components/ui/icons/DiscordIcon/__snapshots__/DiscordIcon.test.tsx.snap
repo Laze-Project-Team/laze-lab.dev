@@ -4,7 +4,7 @@ exports[`should be rendered correctly 1`] = `
 <svg
   fill="none"
   height="55"
-  role="graphics-document"
+  role="presentation"
   viewBox="0 0 71 55"
   width="71"
   xmlns="http://www.w3.org/2000/svg"

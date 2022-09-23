@@ -98,7 +98,7 @@ exports[`should be rendered correctly 1`] = `
               class="css-18rq15l-footerIconStyle"
               fill="none"
               height="55"
-              role="graphics-document"
+              role="presentation"
               viewBox="0 0 71 55"
               width="71"
               xmlns="http://www.w3.org/2000/svg"
@@ -132,7 +132,7 @@ exports[`should be rendered correctly 1`] = `
           >
             <svg
               class="css-18rq15l-footerIconStyle"
-              role="graphics-document"
+              role="presentation"
               version="1.2"
               viewBox="0 0 600 600"
               xmlns="http://www.w3.org/2000/svg"

@@ -10,7 +10,7 @@ it('should be rendered correctly', () => {
   expect(container.firstChild).toMatchSnapshot();
 });
 
-it('should have "graphics-document" role', () => {
+it('should have "presentation" role', () => {
   render(<QiitaIcon />);
-  expect(screen.getByRole('graphics-document')).toBeInTheDocument();
+  expect(screen.getByRole('presentation')).toBeInTheDocument();
 });

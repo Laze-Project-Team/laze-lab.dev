@@ -11,7 +11,7 @@ export const PresentialQiitaIcon: FC<presentialQiitaIconProps> = (props) => {
         version="1.2"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 600 600"
-        role="graphics-document"
+        role="presentation"
         {...props}
       >
         <g id="favicon">
