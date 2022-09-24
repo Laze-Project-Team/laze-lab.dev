@@ -21,5 +21,5 @@ export const Presential<%- h.changeCase.pascal(component_name) %>: FC<%- require
 };
 
 export const <%- h.changeCase.pascal(component_name) %>: FC<%- require_props ? `<${h.changeCase.camel(component_name)}Props>` : null %> = (<%- require_props ? `props` : null %>) => {
-  return <Presential<%- h.changeCase.pascal(component_name) %> <%- require_props ? {...props} : null %> />;
+  return <Presential<%- h.changeCase.pascal(component_name) %> <%- require_props ? `{...props}` : null %> />;
 };
