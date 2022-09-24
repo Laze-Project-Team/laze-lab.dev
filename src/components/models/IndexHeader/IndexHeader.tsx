@@ -11,7 +11,11 @@ import { HeaderLink } from './HeaderLink';
 export const PresentialIndexHeader: FC = () => {
   return (
     <>
-      <AppBar color="default" position="static">
+      <AppBar
+        color="default"
+        position="static"
+        sx={{ backgroundColor: 'var(--color-darkgray)' }}
+      >
         <Container maxWidth="md">
           <Toolbar>
             <HeaderLink href="/">
