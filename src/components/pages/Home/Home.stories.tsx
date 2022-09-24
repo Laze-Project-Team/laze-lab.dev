@@ -1,13 +1,15 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Home } from '.';
+import { PresentialHome } from './Home';
 
 export default {
   title: 'pages/Home',
-  component: Home,
-} as ComponentMeta<typeof Home>;
+  component: PresentialHome,
+} as ComponentMeta<typeof PresentialHome>;
 
-const Template: ComponentStory<typeof Home> = (args) => <Home {...args} />;
+const Template: ComponentStory<typeof PresentialHome> = (props) => (
+  <PresentialHome {...props} />
+);
 
 export const Primary = Template.bind({});
 Primary.parameters = {

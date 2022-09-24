@@ -1,14 +1,14 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { IndexFooter } from '.';
+import { PresentialIndexFooter } from './IndexFooter';
 
 export default {
   title: 'models/IndexFooter',
-  component: IndexFooter,
-} as ComponentMeta<typeof IndexFooter>;
+  component: PresentialIndexFooter,
+} as ComponentMeta<typeof PresentialIndexFooter>;
 
-const Template: ComponentStory<typeof IndexFooter> = (args) => (
-  <IndexFooter {...args} />
+const Template: ComponentStory<typeof PresentialIndexFooter> = (props) => (
+  <PresentialIndexFooter {...props} />
 );
 
 export const Primary = Template.bind({});

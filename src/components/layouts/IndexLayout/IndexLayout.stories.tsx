@@ -1,14 +1,14 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { IndexLayout } from '.';
+import { PresentialIndexLayout } from './IndexLayout';
 
 export default {
   title: 'layouts/IndexLayout',
-  component: IndexLayout,
-} as ComponentMeta<typeof IndexLayout>;
+  component: PresentialIndexLayout,
+} as ComponentMeta<typeof PresentialIndexLayout>;
 
-const Template: ComponentStory<typeof IndexLayout> = (args) => (
-  <IndexLayout {...args} />
+const Template: ComponentStory<typeof PresentialIndexLayout> = (props) => (
+  <PresentialIndexLayout {...props} />
 );
 
 export const Primary = Template.bind({});

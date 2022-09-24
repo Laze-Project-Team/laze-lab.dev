@@ -1,15 +1,15 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { LazeLogo } from '.';
+import { PresentialLazeLogo } from './LazeLogo';
 
 export default {
   title: 'ui/LazeLogo',
-  component: LazeLogo,
+  component: PresentialLazeLogo,
   argTypes: {},
-} as ComponentMeta<typeof LazeLogo>;
+} as ComponentMeta<typeof PresentialLazeLogo>;
 
-const Template: ComponentStory<typeof LazeLogo> = (args) => (
-  <LazeLogo {...args} />
+const Template: ComponentStory<typeof PresentialLazeLogo> = (props) => (
+  <PresentialLazeLogo {...props} />
 );
 
 export const Logo = Template.bind({});

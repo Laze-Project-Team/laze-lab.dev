@@ -1,14 +1,14 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { StyledLink } from '.';
+import { PresentialStyledLink } from './StyledLink';
 
 export default {
   title: 'ui/StyledLink',
-  component: StyledLink,
-} as ComponentMeta<typeof StyledLink>;
+  component: PresentialStyledLink,
+} as ComponentMeta<typeof PresentialStyledLink>;
 
-const Template: ComponentStory<typeof StyledLink> = (args) => (
-  <StyledLink {...args} />
+const Template: ComponentStory<typeof PresentialStyledLink> = (props) => (
+  <PresentialStyledLink {...props} />
 );
 
 export const Primary = Template.bind({});
