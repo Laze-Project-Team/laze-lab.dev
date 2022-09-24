@@ -11,9 +11,7 @@ export const PresentialHome: FC = () => {
     <>
       <Descriptions title={t('title')} description={t('description')} />
 
-      <body>
-        <IndexLayout>This is Home</IndexLayout>
-      </body>
+      <IndexLayout>This is Home</IndexLayout>
     </>
   );
 };
