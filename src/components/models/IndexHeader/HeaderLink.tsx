@@ -17,7 +17,7 @@ export const HeaderLink: FC<styledLinkProps> = (props) => {
           transition: background-color 0.2s;
 
           &:hover {
-            background-color: rgb(255 255 255 / 10%);
+            background-color: rgba(255, 255, 255, 0.1);
           }
         `}
         {...props}

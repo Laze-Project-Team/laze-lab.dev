@@ -12,5 +12,8 @@ module.exports = {
   ],
   rules: {
     'string-quotes': ['single'],
+    'hue-degree-notation': 'number',
+    'color-function-notation': 'legacy',
+    'alpha-value-notation': 'number',
   },
 };
