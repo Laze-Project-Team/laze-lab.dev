@@ -1,6 +1,7 @@
 import type { PaletteMode } from '@mui/material';
 import { CssBaseline, ThemeProvider, useMediaQuery } from '@mui/material';
 import type { FC, ReactNode } from 'react';
+import { useEffect } from 'react';
 import { createContext, useContext, useMemo, useState } from 'react';
 
 import { getTheme } from '@/lib/theme';
@@ -24,13 +25,23 @@ export const useColorMode = (): colorModeContextType => {
 
 export type colorModeProviderProps = {
   children?: ReactNode;
+  preferTheme?: PaletteMode;
 };
 
-export const ColorModeProvider: FC<colorModeProviderProps> = ({ children }) => {
+export const ColorModeProvider: FC<colorModeProviderProps> = ({
+  children,
+  preferTheme,
+}) => {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const [mode, setMode] = useState<PaletteMode>(
-    prefersDarkMode ? 'dark' : 'light',
+    preferTheme ?? prefersDarkMode ? 'dark' : 'light',
   );
+
+  useEffect(() => {
+    if (preferTheme !== undefined) {
+      setMode(preferTheme);
+    }
+  }, [preferTheme]);
 
   const colorMode = useMemo(
     () => ({
@@ -48,8 +59,10 @@ export const ColorModeProvider: FC<colorModeProviderProps> = ({ children }) => {
 
   return (
     <colorModeContext.Provider value={colorMode}>
-      <CssBaseline />
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        {children}
+      </ThemeProvider>
     </colorModeContext.Provider>
   );
 };

@@ -20,7 +20,13 @@ const withI18next = (Story, { globals: { locale } }) => {
   );
 };
 
-const withMyApp = (Story) => <MyApp Component={Story} />;
+const withMyApp = (Story, { globals: { theme } }) => {
+  if (!['light', 'dark'].includes(theme)) {
+    throw new Error(`"${theme}" is not valid as PaletteMode`);
+  }
+
+  return <MyApp Component={Story} preferTheme={theme} />;
+};
 
 export const decorators = [withI18next, withMyApp];
 
@@ -44,6 +50,18 @@ export const globalTypes = {
       items: [
         { value: 'en', right: '🇺🇸', title: 'English' },
         { value: 'ja', right: 'jp', title: 'Japanese' },
+      ],
+    },
+  },
+  theme: {
+    name: 'Theme',
+    description: 'Color Theme',
+    defaultValue: 'light',
+    toolbar: {
+      icon: 'flag',
+      items: [
+        { value: 'dark', title: 'Dark' },
+        { value: 'light', title: 'Light' },
       ],
     },
   },

@@ -1,7 +1,8 @@
 import 'ress';
 
 import { Global } from '@emotion/react';
-import type { AppProps } from 'next/app';
+import type { PaletteMode } from '@mui/material';
+import type { AppProps as NextAppProps } from 'next/app';
 import type { SSRConfig } from 'next-i18next';
 import { appWithTranslation } from 'next-i18next';
 import type { ComponentType } from 'react';
@@ -11,15 +12,20 @@ import { ColorModeProvider } from '@/components/contexts/ColorModeContext';
 import { store } from '@/lib/redux/root';
 import { globalStyle } from '@/styles/global';
 
-export const MyApp: ComponentType<
-  AppProps & {
-    pageProps: SSRConfig;
-  }
-> = ({ Component, pageProps }) => {
+type AppProps = NextAppProps & {
+  pageProps: SSRConfig;
+  preferTheme?: PaletteMode;
+};
+
+export const MyApp: ComponentType<AppProps> = ({
+  Component,
+  pageProps,
+  preferTheme,
+}) => {
   return (
     <>
       <ReduxProvider store={store}>
-        <ColorModeProvider>
+        <ColorModeProvider preferTheme={preferTheme}>
           <Global styles={globalStyle} />
           <Component {...pageProps} />
         </ColorModeProvider>
