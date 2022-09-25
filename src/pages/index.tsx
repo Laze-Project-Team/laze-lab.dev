@@ -1,5 +1,4 @@
-import type { GetStaticProps } from 'next';
-import type { NextPage } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { Home as HomeComponent } from '@/components/pages/Home';

@@ -9,8 +9,8 @@ import type {
   explorerSaveFilePayload,
   explorerSetProjectPayload,
   explorerState,
+  path,
 } from '@/typings/redux';
-import type { path } from '@/typings/redux';
 
 const initialState: explorerState = {
   currentDirectory: {},

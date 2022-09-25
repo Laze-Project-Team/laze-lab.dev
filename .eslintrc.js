@@ -60,6 +60,7 @@ module.exports = {
       'error',
       { varsIgnorePattern: '^_', argsIgnorePattern: '^_' },
     ], // 未使用変数はエラー
+    'import/no-duplicates': 'error',
   },
   overrides: [
     {
