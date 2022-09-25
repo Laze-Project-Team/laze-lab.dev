@@ -1,7 +1,9 @@
 import '@testing-library/jest-dom';
 
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { expect, it } from 'vitest';
+
+import { render } from '/render';
 
 import { IndexHeader } from '.';
 

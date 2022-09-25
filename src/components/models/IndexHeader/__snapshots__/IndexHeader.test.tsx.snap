@@ -11,7 +11,7 @@ exports[`should be rendered correctly 1`] = `
       class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-hyum1k-MuiToolbar-root"
     >
       <a
-        class="css-t70qdf-HeaderLink"
+        class="css-f6n97z-PresentialStyledLink-PresentialStyledLink-HeaderLink"
         href="/"
       >
         <span

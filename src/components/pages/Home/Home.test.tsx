@@ -1,7 +1,8 @@
 import '@testing-library/jest-dom';
 
-import { render } from '@testing-library/react';
 import { expect, it, vi } from 'vitest';
+
+import { render } from '/render';
 
 import { Home } from '.';
 

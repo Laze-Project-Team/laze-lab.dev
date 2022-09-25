@@ -4,8 +4,10 @@ to: src/components/<%- component_type %>/<%- h.changeCase.pascal(component_name)
 
 import '@testing-library/jest-dom';
 
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { expect, it } from 'vitest';
+
+import { render } from '/render';
 
 import { <%- h.changeCase.pascal(component_name) %> } from '.';
 
