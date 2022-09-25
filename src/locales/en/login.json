@@ -1,12 +1,9 @@
 {
   "title": "Login",
   "description": "",
-  "auth": {
-    "google": "Login with Google",
-    "twitter": "Login with Twitter",
-    "github": "Login with GitHub"
-  },
+  "authwith": "Login with {{method}}",
   "form": {
+    "title": "Login with email address",
     "label": {
       "email": "Email address",
       "password": "Password",
@@ -17,10 +14,12 @@
         "required": "Email address is required",
         "invalid": "Email address is not valid"
       },
-      "password": "Enter your password"
+      "password": {
+        "required": "Password is required"
+      }
     }
   },
-  "footer": "Click here to [register an account](/signup)",
+  "footer": "Click here to <0>register an account</0>",
   "error": {
     "account-exists-with-different-credential": "The account has been registered using a different method. Please select a different authentication method.",
     "user-not-found": "Your email address or password is incorrect.",

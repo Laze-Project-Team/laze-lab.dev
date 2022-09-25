@@ -2,18 +2,14 @@
   "title": "Sign Up",
   "description": "",
   "or": "or",
-  "auth": {
-    "google": "Sign up with Google",
-    "twitter": "Sign up with Twitter",
-    "github": "Sign up with GitHub"
-  },
+  "authwith": "Sign up with {{method}}",
   "form": {
     "label": {
       "email": "Email address",
       "password": "Password",
-      "agreement": "I agree to the [Terms of Use](/terms) and [Privacy Policy](/privacy).",
-      "agreement_text": "By creating an account, you agree to the [Terms of Use](/terms) and [Privacy Policy](/privacy)",
-      "submit": "Send confirmation email"
+      "agreement": "I agree to the <0>Terms of Use</0> and <1>Privacy Policy</1>.",
+      "agreement_text": "By creating an account, you agree to the <0>Terms of Use</0> and <1>Privacy Policy</1>",
+      "submit": "Register"
     },
     "message": {
       "email": {
@@ -27,7 +23,7 @@
       }
     }
   },
-  "footer": "Click here to [login](/login)",
+  "footer": "Click here to <0>login</0>",
   "success": {
     "title": "Successfully sent confirmation email!",
     "message": "Please access the URL in the email to activate your account."
