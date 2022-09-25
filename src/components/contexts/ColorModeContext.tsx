@@ -1,10 +1,7 @@
-import type { PaletteMode} from '@mui/material';
-import { useMediaQuery } from '@mui/material';
-import { ThemeProvider } from '@mui/material';
+import type { PaletteMode } from '@mui/material';
+import { CssBaseline, ThemeProvider, useMediaQuery } from '@mui/material';
 import type { FC, ReactNode } from 'react';
-import { useContext } from 'react';
-import { useMemo, useState } from 'react';
-import { createContext } from 'react';
+import { createContext, useContext, useMemo, useState } from 'react';
 
 import { getTheme } from '@/lib/theme';
 
@@ -51,6 +48,7 @@ export const ColorModeProvider: FC<colorModeProviderProps> = ({ children }) => {
 
   return (
     <colorModeContext.Provider value={colorMode}>
+      <CssBaseline />
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </colorModeContext.Provider>
   );
