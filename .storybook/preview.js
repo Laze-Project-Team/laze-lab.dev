@@ -1,14 +1,28 @@
+import { useEffect, Suspense } from 'react';
 import { I18nextProvider } from 'react-i18next';
+
 import i18n from './i18n';
 import { MyApp } from '../src/pages/_app';
 
-export const decorators = [
-  (Story) => (
-    <I18nextProvider i18n={i18n}>
-      <MyApp Component={Story}></MyApp>
-    </I18nextProvider>
-  ),
-];
+const withI18next = (Story, { globals: { locale } }) => {
+  // When the locale global changes
+  // Set the new locale in i18n
+  useEffect(() => {
+    i18n.changeLanguage(locale);
+  }, [locale]);
+
+  return (
+    <Suspense fallback={<div>loading translations...</div>}>
+      <I18nextProvider i18n={i18n}>
+        <Story />
+      </I18nextProvider>
+    </Suspense>
+  );
+};
+
+const withMyApp = (Story) => <MyApp Component={Story} />;
+
+export const decorators = [withI18next, withMyApp];
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -16,6 +30,21 @@ export const parameters = {
     matchers: {
       color: /(background|color)$/i,
       date: /Date$/,
+    },
+  },
+};
+
+export const globalTypes = {
+  locale: {
+    name: 'Locale',
+    description: 'Internationalization locale',
+    defaultValue: 'en',
+    toolbar: {
+      icon: 'globe',
+      items: [
+        { value: 'en', right: '🇺🇸', title: 'English' },
+        { value: 'ja', right: 'jp', title: 'Japanese' },
+      ],
     },
   },
 };
