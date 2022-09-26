@@ -1,6 +1,7 @@
 import { Stack } from '@mui/material';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import type { DOMAttributes, FC } from 'react';
 import type { Control, FieldErrorsImpl } from 'react-hook-form';
@@ -8,6 +9,7 @@ import { Controller, useForm } from 'react-hook-form';
 
 import { useEmailAuth } from '@/components/hooks/useAuth';
 import { useAuthError } from '@/components/layouts/LoginLayout/useAuthError';
+import { pagesPath } from '@/lib/$path';
 
 export type loginFormValue = {
   email: string;
@@ -86,6 +88,7 @@ export const PresentialLoginForm: FC<presentialLoginFormProps> = ({
 export const LoginForm: FC = (props) => {
   const { authenticate } = useEmailAuth('login');
   const { handleError } = useAuthError();
+  const { push } = useRouter();
 
   const {
     control,
@@ -101,8 +104,8 @@ export const LoginForm: FC = (props) => {
 
   const onSubmit = (data: loginFormValue) => {
     authenticate(data.email, data.password)
-      .then((credential) => {
-        console.log(credential);
+      .then((_credential) => {
+        push(pagesPath.$url().pathname);
       })
       .catch(handleError);
   };

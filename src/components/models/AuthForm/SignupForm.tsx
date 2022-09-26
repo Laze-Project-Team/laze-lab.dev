@@ -4,6 +4,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
+import { useRouter } from 'next/router';
 import { Trans, useTranslation } from 'next-i18next';
 import type { DOMAttributes, FC } from 'react';
 import type { Control, FieldErrorsImpl } from 'react-hook-form';
@@ -12,6 +13,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { useEmailAuth } from '@/components/hooks/useAuth';
 import { useAuthError } from '@/components/layouts/LoginLayout/useAuthError';
 import { DefaultLink } from '@/components/ui/DefaultLink';
+import { pagesPath } from '@/lib/$path';
 
 export type signupFormValue = {
   email: string;
@@ -124,6 +126,7 @@ export const PresentialSignupForm: FC<presentialSignupFormProps> = ({
 export const SignupForm: FC = (props) => {
   const { authenticate } = useEmailAuth('signup');
   const { handleError } = useAuthError();
+  const { push } = useRouter();
 
   const {
     control,
@@ -140,8 +143,8 @@ export const SignupForm: FC = (props) => {
 
   const onSubmit = (data: signupFormValue) => {
     authenticate(data.email, data.password)
-      .then((credential) => {
-        console.log(credential);
+      .then((_credential) => {
+        push(pagesPath.$url().pathname);
       })
       .catch(handleError);
   };
