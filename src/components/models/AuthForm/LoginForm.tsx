@@ -1,9 +1,12 @@
-import { Stack } from '@mui/material';
+import Backdrop from '@mui/material/Backdrop';
 import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
+import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import type { DOMAttributes, FC } from 'react';
+import { useState } from 'react';
 import type { Control, FieldErrorsImpl } from 'react-hook-form';
 import { Controller, useForm } from 'react-hook-form';
 
@@ -21,6 +24,7 @@ export type presentialLoginFormProps = {
   control: Control<loginFormValue>;
   errors: FieldErrorsImpl<loginFormValue>;
   isValid: boolean;
+  isProcessing: boolean;
 };
 
 export const PresentialLoginForm: FC<presentialLoginFormProps> = ({
@@ -28,11 +32,19 @@ export const PresentialLoginForm: FC<presentialLoginFormProps> = ({
   control,
   errors,
   isValid,
+  isProcessing,
 }) => {
   const [t] = useTranslation('login');
 
   return (
     <>
+      <Backdrop
+        open={isProcessing}
+        sx={{ color: 'white', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+
       <form onSubmit={onSubmit} aria-label={t('form.label')} role="form">
         <Stack direction="column" spacing={1}>
           <Controller
@@ -74,8 +86,8 @@ export const PresentialLoginForm: FC<presentialLoginFormProps> = ({
           <Button
             type="submit"
             variant="contained"
-            disabled={!isValid}
-            aria-disabled={!isValid}
+            disabled={!isValid && !isProcessing}
+            aria-disabled={!isValid && !isProcessing}
           >
             {t('form.label.submit')}
           </Button>
@@ -89,6 +101,7 @@ export const LoginForm: FC = (props) => {
   const { authenticate } = useEmailAuth('login');
   const { handleError } = useAuthError();
   const { push } = useRouter();
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const {
     control,
@@ -103,11 +116,14 @@ export const LoginForm: FC = (props) => {
   });
 
   const onSubmit = (data: loginFormValue) => {
+    setIsProcessing(true);
+
     authenticate(data.email, data.password)
       .then((_credential) => {
         push(pagesPath.$url().pathname);
       })
-      .catch(handleError);
+      .catch(handleError)
+      .finally(() => setIsProcessing(false));
   };
 
   return (
@@ -116,6 +132,7 @@ export const LoginForm: FC = (props) => {
       control={control}
       errors={errors}
       isValid={isValid}
+      isProcessing={isProcessing}
       {...props}
     />
   );

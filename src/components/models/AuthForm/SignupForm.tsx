@@ -1,5 +1,7 @@
+import Backdrop from '@mui/material/Backdrop';
 import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
+import CircularProgress from '@mui/material/CircularProgress';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import Stack from '@mui/material/Stack';
@@ -7,6 +9,7 @@ import TextField from '@mui/material/TextField';
 import { useRouter } from 'next/router';
 import { Trans, useTranslation } from 'next-i18next';
 import type { DOMAttributes, FC } from 'react';
+import { useState } from 'react';
 import type { Control, FieldErrorsImpl } from 'react-hook-form';
 import { Controller, useForm } from 'react-hook-form';
 
@@ -26,6 +29,7 @@ export type presentialSignupFormProps = {
   control: Control<signupFormValue>;
   errors: FieldErrorsImpl<signupFormValue>;
   isValid: boolean;
+  isProcessing: boolean;
 };
 
 export const PresentialSignupForm: FC<presentialSignupFormProps> = ({
@@ -33,11 +37,19 @@ export const PresentialSignupForm: FC<presentialSignupFormProps> = ({
   control,
   errors,
   isValid,
+  isProcessing,
 }) => {
   const [t] = useTranslation('signup');
 
   return (
     <>
+      <Backdrop
+        open={isProcessing}
+        sx={{ color: 'white', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+
       <form onSubmit={onSubmit} aria-label={t('form.label')} role="form">
         <Stack direction="column" spacing={2}>
           <Controller
@@ -112,8 +124,8 @@ export const PresentialSignupForm: FC<presentialSignupFormProps> = ({
           <Button
             type="submit"
             variant="contained"
-            disabled={!isValid}
-            aria-disabled={!isValid}
+            disabled={!isValid && !isProcessing}
+            aria-disabled={!isValid && !isProcessing}
           >
             {t('form.label.submit')}
           </Button>
@@ -127,6 +139,7 @@ export const SignupForm: FC = (props) => {
   const { authenticate } = useEmailAuth('signup');
   const { handleError } = useAuthError();
   const { push } = useRouter();
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const {
     control,
@@ -142,11 +155,14 @@ export const SignupForm: FC = (props) => {
   });
 
   const onSubmit = (data: signupFormValue) => {
+    setIsProcessing(true);
+
     authenticate(data.email, data.password)
       .then((_credential) => {
         push(pagesPath.$url().pathname);
       })
-      .catch(handleError);
+      .catch(handleError)
+      .finally(() => setIsProcessing(false));
   };
 
   return (
@@ -155,6 +171,7 @@ export const SignupForm: FC = (props) => {
       control={control}
       errors={errors}
       isValid={isValid}
+      isProcessing={isProcessing}
       {...props}
     />
   );
