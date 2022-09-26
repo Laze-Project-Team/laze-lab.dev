@@ -1,5 +1,7 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
+import { AuthErrorProvider } from '@/components/layouts/LoginLayout/AuthError';
+
 import { GitHubAuthButton } from './GitHubAuthButton';
 
 export default {
@@ -8,7 +10,9 @@ export default {
 } as ComponentMeta<typeof GitHubAuthButton>;
 
 const Template: ComponentStory<typeof GitHubAuthButton> = (props) => (
-  <GitHubAuthButton {...props} />
+  <AuthErrorProvider>
+    <GitHubAuthButton {...props} />
+  </AuthErrorProvider>
 );
 
 export const Login = Template.bind({});

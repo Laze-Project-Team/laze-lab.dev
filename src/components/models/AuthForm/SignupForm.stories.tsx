@@ -1,5 +1,7 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
+import { AuthErrorProvider } from '@/components/layouts/LoginLayout/AuthError';
+
 import { SignupForm } from './SignupForm';
 
 export default {
@@ -8,7 +10,9 @@ export default {
 } as ComponentMeta<typeof SignupForm>;
 
 const Template: ComponentStory<typeof SignupForm> = (props) => (
-  <SignupForm {...props} />
+  <AuthErrorProvider>
+    <SignupForm {...props} />
+  </AuthErrorProvider>
 );
 
 export const Primary = Template.bind({});
