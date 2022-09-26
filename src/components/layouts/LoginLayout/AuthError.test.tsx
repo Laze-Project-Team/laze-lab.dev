@@ -4,7 +4,7 @@ import { renderHook, screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import { expect, it, vi } from 'vitest';
 
-import { render } from '/render';
+import { render } from '@/lib/test/render';
 
 import { AuthError, AuthErrorProvider } from './AuthError';
 import * as AuthErrorNS from './useAuthError';

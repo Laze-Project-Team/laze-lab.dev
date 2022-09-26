@@ -3,9 +3,9 @@ import '@testing-library/jest-dom';
 import { screen } from '@testing-library/react';
 import { expect, it } from 'vitest';
 
-import { render } from '/render';
 import type { authMethod, authType } from '@/components/hooks/useAuth';
 import { AuthErrorProvider } from '@/components/layouts/LoginLayout/AuthError';
+import { render } from '@/lib/test/render';
 
 import { AuthButton } from '.';
 

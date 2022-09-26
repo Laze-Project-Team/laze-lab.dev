@@ -5,14 +5,14 @@ import { expect, it } from 'vitest';
 
 import { render } from '@/lib/test/render';
 
-import { QiitaIcon } from '.';
+import { IndexLayoutProvider } from '.';
 
 it('should be rendered correctly', () => {
-  const { container } = render(<QiitaIcon />);
+  const { container } = render(<IndexLayoutProvider />);
   expect(container.firstChild).toMatchSnapshot();
 });
 
-it('should have "presentation" role', () => {
-  render(<QiitaIcon />);
-  expect(screen.getByRole('presentation')).toBeInTheDocument();
+it('should have "???" role', () => {
+  render(<IndexLayoutProvider />);
+  expect(screen.getByRole('???')).toBeInTheDocument();
 });

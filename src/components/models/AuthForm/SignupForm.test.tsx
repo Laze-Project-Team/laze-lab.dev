@@ -4,8 +4,8 @@ import { fireEvent, screen } from '@testing-library/react';
 import { expect, it } from 'vitest';
 
 import { mockEachRouter } from '/__mocks__/router';
-import { render } from '/render';
 import { AuthErrorProvider } from '@/components/layouts/LoginLayout/AuthError';
+import { render } from '@/lib/test/render';
 
 import { SignupForm } from '.';
 

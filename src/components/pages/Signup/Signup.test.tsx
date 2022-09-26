@@ -3,8 +3,8 @@ import '@testing-library/jest-dom';
 import { expect, it } from 'vitest';
 
 import { mockEachRouter } from '/__mocks__/router';
-import { render } from '/render';
 import { ColorModeProvider } from '@/components/contexts/ColorModeContext';
+import { render } from '@/lib/test/render';
 
 import { Signup } from '.';
 

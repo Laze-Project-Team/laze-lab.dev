@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { screen } from '@testing-library/react';
 import { expect, it } from 'vitest';
 
-import { render } from '/render';
+import { render } from '@/lib/test/render';
 
 import { IndexLayout } from '.';
 

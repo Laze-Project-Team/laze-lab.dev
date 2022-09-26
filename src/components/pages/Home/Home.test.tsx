@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { expect, it } from 'vitest';
 
 import { mockEachRouter } from '/__mocks__/router';
-import { render } from '/render';
+import { render } from '@/lib/test/render';
 
 import { Home } from '.';
 
