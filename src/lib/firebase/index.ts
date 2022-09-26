@@ -25,7 +25,7 @@ export const analytics = isSupported().then((supported) => {
 });
 
 // Performance
-export const perf = getPerformance(app);
+export const perf = typeof window !== 'undefined' ? getPerformance(app) : null;
 
 // Authentication
 export const auth = getAuth();
