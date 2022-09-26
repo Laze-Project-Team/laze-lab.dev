@@ -19,6 +19,7 @@ import {
 } from '@/components/models/AuthButton';
 import { LoginForm } from '@/components/models/AuthForm';
 import { DefaultLink } from '@/components/ui/DefaultLink';
+import { pagesPath } from '@/lib/$path';
 
 export const PresentialLogin: FC = () => {
   const [t] = useTranslation(['login', 'common']);
@@ -57,7 +58,12 @@ export const PresentialLogin: FC = () => {
           `}
         >
           <Trans t={t} i18nKey="footer">
-            {[<DefaultLink href="/signup" key="/signup" />]}
+            {[
+              <DefaultLink
+                href={pagesPath.signup.$url().pathname}
+                key="/signup"
+              />,
+            ]}
           </Trans>
         </p>
       </LoginLayout>

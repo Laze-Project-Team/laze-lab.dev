@@ -5,6 +5,7 @@ import { useTranslation } from 'next-i18next';
 import type { FC, ReactNode } from 'react';
 
 import { DefaultLink } from '@/components/ui/DefaultLink';
+import { pagesPath } from '@/lib/$path';
 
 export type loginLayoutProps = {
   title: ReactNode;
@@ -32,7 +33,7 @@ export const PresentialLoginLayout: FC<presentialLoginLayoutProps> = ({
           {title}
         </h1>
 
-        <DefaultLink href="/">
+        <DefaultLink href={pagesPath.$url().pathname}>
           <ArrowBackIosIcon sx={{ fontSize: '1rem' }} />
           <span>{t('backToHome')}</span>
         </DefaultLink>

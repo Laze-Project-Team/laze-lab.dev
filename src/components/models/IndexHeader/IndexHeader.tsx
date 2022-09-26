@@ -5,6 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import type { FC } from 'react';
 
 import { LazeLogo } from '@/components/ui/LazeLogo';
+import { pagesPath } from '@/lib/$path';
 
 import { HeaderLink } from './HeaderLink';
 
@@ -18,7 +19,7 @@ export const PresentialIndexHeader: FC = () => {
       >
         <Container maxWidth="md">
           <Toolbar>
-            <HeaderLink href="/">
+            <HeaderLink href={pagesPath.$url().pathname}>
               <LazeLogo option="logo" size={30} />
               <span
                 css={css`
