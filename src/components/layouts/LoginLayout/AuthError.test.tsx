@@ -16,10 +16,6 @@ const err = {
   message: 'Something went wrong (code: error-code-400)',
 };
 
-afterEach(() => {
-  vi.restoreAllMocks();
-});
-
 it('should render correctly', () => {
   vi.spyOn(AuthErrorNS, 'useAuthError').mockImplementation(() => ({
     error,

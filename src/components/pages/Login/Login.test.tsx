@@ -1,26 +1,15 @@
 import '@testing-library/jest-dom';
 
-import { expect, it, vi } from 'vitest';
+import { expect, it } from 'vitest';
 
+import { mockEachRouter } from '/__mocks__/router';
 import { render } from '/render';
 import { ColorModeProvider } from '@/components/contexts/ColorModeContext';
 
 import { Login } from '.';
 
-afterEach(() => {
-  vi.restoreAllMocks();
-});
-
+mockEachRouter();
 it('should be rendered correctly', () => {
-  vi.mock('next/router', () => ({
-    useRouter: () => {
-      return {
-        pathname: '/',
-        locale: 'en',
-      };
-    },
-  }));
-
   const { container } = render(<Login />, { wrapper: ColorModeProvider });
   expect(container.firstChild).toMatchSnapshot();
 });

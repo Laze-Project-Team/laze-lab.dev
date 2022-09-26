@@ -19,5 +19,6 @@ export default defineConfig({
     coverage: {
       provider: 'c8',
     },
+    restoreMocks: true, // restore mocks before every tests run
   },
 });

@@ -292,7 +292,7 @@ exports[`should be rendered correctly 1`] = `
     >
       <a
         class="css-hn4o6p-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
-        href="/signup"
+        href="/login"
       />
     </p>
   </main>
