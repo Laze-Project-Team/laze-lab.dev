@@ -1,0 +1,37 @@
+// Vitest Snapshot v1
+
+exports[`should be rendered correctly (H1) 1`] = `
+<h1
+  class="MuiTypography-root MuiTypography-h1 css-o2w69a-MuiTypography-root"
+/>
+`;
+
+exports[`should be rendered correctly (H2) 1`] = `
+<h2
+  class="MuiTypography-root MuiTypography-h2 css-1sra7t5-MuiTypography-root"
+/>
+`;
+
+exports[`should be rendered correctly (H3) 1`] = `
+<h3
+  class="MuiTypography-root MuiTypography-h3 css-gepadz-MuiTypography-root"
+/>
+`;
+
+exports[`should be rendered correctly (H4) 1`] = `
+<h4
+  class="MuiTypography-root MuiTypography-h4 css-5lbw0b-MuiTypography-root"
+/>
+`;
+
+exports[`should be rendered correctly (H5) 1`] = `
+<h5
+  class="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"
+/>
+`;
+
+exports[`should be rendered correctly (H6) 1`] = `
+<h6
+  class="MuiTypography-root MuiTypography-h6 css-2ulfj5-MuiTypography-root"
+/>
+`;

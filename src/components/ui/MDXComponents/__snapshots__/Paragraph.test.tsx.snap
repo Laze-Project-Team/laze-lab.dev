@@ -1,0 +1,7 @@
+// Vitest Snapshot v1
+
+exports[`should be rendered correctly 1`] = `
+<p
+  class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+/>
+`;
