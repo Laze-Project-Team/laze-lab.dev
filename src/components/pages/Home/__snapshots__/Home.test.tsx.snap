@@ -49,7 +49,9 @@ exports[`should be rendered correctly 1`] = `
       </div>
     </div>
   </header>
-  <main>
+  <main
+    class="css-d8nlvz-PresentialIndexLayout"
+  >
     <div
       class="MuiContainer-root MuiContainer-maxWidthMd css-xdmu94-MuiContainer-root"
     >

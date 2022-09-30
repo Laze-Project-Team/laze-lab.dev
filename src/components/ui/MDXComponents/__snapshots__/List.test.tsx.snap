@@ -2,7 +2,7 @@
 
 exports[`should be rendered correctly (ol) 1`] = `
 <ol
-  class="css-1zaw5a-listStyle"
+  class="css-ygswl4-listStyle"
 >
   <li
     class="css-1xiymud-Li"
@@ -24,7 +24,7 @@ exports[`should be rendered correctly (ol) 1`] = `
 
 exports[`should be rendered correctly (ul) 1`] = `
 <ul
-  class="css-1zaw5a-listStyle"
+  class="css-ygswl4-listStyle"
 >
   <li
     class="css-1xiymud-Li"
