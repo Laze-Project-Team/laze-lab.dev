@@ -26,7 +26,11 @@ module.exports = {
     'google',
     'prettier',
     'plugin:storybook/recommended',
+    'plugin:mdx/recommended',
   ],
+  settings: {
+    'mdx/code-blocks': true,
+  },
   rules: {
     'require-jsdoc': ['off'],
     '@next/next/no-img-element': ['off'],

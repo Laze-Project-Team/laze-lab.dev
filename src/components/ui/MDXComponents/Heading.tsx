@@ -1,13 +1,33 @@
+import { css } from '@emotion/react';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 import { match } from 'ts-pattern';
 
 export const H1: FC<JSX.IntrinsicElements['h1']> = ({ children }) => (
-  <Typography variant="h1">{children}</Typography>
+  <Typography
+    variant="h1"
+    css={css`
+      padding: 0 0.25rem;
+      border-bottom: solid 1px gray;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+    `}
+  >
+    {children}
+  </Typography>
 );
 
 export const H2: FC<JSX.IntrinsicElements['h2']> = ({ children }) => (
-  <Typography variant="h2">{children}</Typography>
+  <Typography
+    variant="h2"
+    css={css`
+      margin: 2rem 0 0.5rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+    `}
+  >
+    {children}
+  </Typography>
 );
 
 export const H3: FC<JSX.IntrinsicElements['h3']> = ({ children }) => (
