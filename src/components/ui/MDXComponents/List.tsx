@@ -4,6 +4,7 @@ import type { FC } from 'react';
 const listStyle = css`
   padding: 0 0 0 2rem;
   margin: 0.25rem;
+  font-size: 0.9rem;
 `;
 
 export const Ul: FC<JSX.IntrinsicElements['ul']> = ({ children }) => (

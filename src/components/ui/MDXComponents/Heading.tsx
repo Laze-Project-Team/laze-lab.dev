@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { grey } from '@mui/material/colors';
 import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 import { match } from 'ts-pattern';
@@ -22,7 +23,8 @@ export const H2: FC<JSX.IntrinsicElements['h2']> = ({ children }) => (
     variant="h2"
     css={css`
       margin: 2rem 0 0.5rem;
-      font-size: 1.2rem;
+      color: ${grey['800']};
+      font-size: 1rem;
       font-weight: bold;
     `}
   >
