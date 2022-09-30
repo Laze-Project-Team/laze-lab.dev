@@ -4,3 +4,4 @@ next.config.js
 _templates/**/*
 next-i18next.config.js
 jest.config.js
+src/contents/**/*
