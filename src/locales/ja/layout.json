@@ -8,7 +8,7 @@
     "Logout": "ログアウト",
     "drawer": "サイトマップ"
   },
-  "changeLanguage": "言語を変更",
+  "changeLocale": "言語を変更",
   "footer": {
     "Guides": "ガイドとヘルプ",
     "guides": {

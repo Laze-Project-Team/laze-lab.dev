@@ -26,11 +26,13 @@ export const useColorMode = (): colorModeContextType => {
 export type colorModeProviderProps = {
   children?: ReactNode;
   preferTheme?: PaletteMode;
+  isLocal?: boolean;
 };
 
 export const ColorModeProvider: FC<colorModeProviderProps> = ({
   children,
   preferTheme,
+  isLocal,
 }) => {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const [mode, setMode] = useState<PaletteMode>(
@@ -61,7 +63,7 @@ export const ColorModeProvider: FC<colorModeProviderProps> = ({
   return (
     <colorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
+        {!isLocal && <CssBaseline />}
         {children}
       </ThemeProvider>
     </colorModeContext.Provider>

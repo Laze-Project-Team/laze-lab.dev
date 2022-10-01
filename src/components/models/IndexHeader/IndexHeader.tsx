@@ -4,6 +4,8 @@ import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
 import type { FC } from 'react';
 
+import { ColorModeProvider } from '@/components/contexts/ColorModeContext';
+import { LocaleSelectButton } from '@/components/models/LocaleSelectButton';
 import { LazeLogo } from '@/components/ui/LazeLogo';
 import { pagesPath } from '@/lib/$path';
 
@@ -18,7 +20,11 @@ export const PresentialIndexHeader: FC = () => {
         sx={{ backgroundColor: 'var(--color-darkgray)' }}
       >
         <Container maxWidth="md">
-          <Toolbar>
+          <Toolbar
+            css={css`
+              display: flex;
+            `}
+          >
             <HeaderLink href={pagesPath.$url().pathname}>
               <LazeLogo option="logo" size={30} />
               <span
@@ -30,6 +36,16 @@ export const PresentialIndexHeader: FC = () => {
                 Laze
               </span>
             </HeaderLink>
+
+            <div
+              css={css`
+                margin-left: auto;
+              `}
+            >
+              <ColorModeProvider preferTheme="dark" isLocal>
+                <LocaleSelectButton />
+              </ColorModeProvider>
+            </div>
           </Toolbar>
         </Container>
       </AppBar>
