@@ -13,12 +13,10 @@ const Template: ComponentStory<typeof PresentialColorModeSwitcher> = (
 
 export const Dark = Template.bind({});
 Dark.args = {
-  colorMode: 'dark',
   handleClick: () => void 0,
 };
 
 export const Light = Template.bind({});
 Light.args = {
-  colorMode: 'light',
   handleClick: () => void 0,
 };
