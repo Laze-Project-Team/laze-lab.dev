@@ -4,6 +4,8 @@ import Typography from '@mui/material/Typography';
 import type { FC } from 'react';
 import { match } from 'ts-pattern';
 
+import { useColorMode } from '@/components/contexts/ColorModeContext';
+
 export const H1: FC<JSX.IntrinsicElements['h1']> = ({ children }) => (
   <Typography
     variant="h1"
@@ -18,19 +20,24 @@ export const H1: FC<JSX.IntrinsicElements['h1']> = ({ children }) => (
   </Typography>
 );
 
-export const H2: FC<JSX.IntrinsicElements['h2']> = ({ children }) => (
-  <Typography
-    variant="h2"
-    css={css`
-      margin: 2rem 0 0.5rem;
-      color: ${grey['800']};
-      font-size: 1rem;
-      font-weight: bold;
-    `}
-  >
-    {children}
-  </Typography>
-);
+export const H2: FC<JSX.IntrinsicElements['h2']> = ({ children }) => {
+  const { themePattern } = useColorMode();
+  const color = themePattern(grey['800'], grey['300']);
+
+  return (
+    <Typography
+      variant="h2"
+      css={css`
+        margin: 2rem 0 0.5rem;
+        color: ${color};
+        font-size: 1rem;
+        font-weight: bold;
+      `}
+    >
+      {children}
+    </Typography>
+  );
+};
 
 export const H3: FC<JSX.IntrinsicElements['h3']> = ({ children }) => (
   <Typography variant="h3">{children}</Typography>
