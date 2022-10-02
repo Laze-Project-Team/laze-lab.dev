@@ -1,11 +1,11 @@
 import { css } from '@emotion/react';
 import AppBar from '@mui/material/AppBar';
+import { blue, grey } from '@mui/material/colors';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import Toolbar from '@mui/material/Toolbar';
 import type { FC } from 'react';
 
-import { ColorModeProvider } from '@/components/contexts/ColorModeContext';
 import { ColorModeSwitcher } from '@/components/models/ColorModeSwitcher';
 import { LocaleSelectButton } from '@/components/models/LocaleSelectButton';
 import { LazeLogo } from '@/components/ui/LazeLogo';
@@ -55,9 +55,34 @@ export const PresentialIndexHeader: FC = () => {
                 `}
               />
 
-              <ColorModeProvider preferTheme="dark" isLocal>
-                <LocaleSelectButton />
-              </ColorModeProvider>
+              <LocaleSelectButton
+                css={css`
+                  && {
+                    fieldset {
+                      border-color: ${grey['600']};
+                    }
+
+                    .MuiInputBase-root:hover fieldset {
+                      border-color: ${grey['400']};
+                    }
+
+                    .MuiInputBase-root.Mui-focused fieldset {
+                      border-color: ${blue['200']};
+                    }
+
+                    .MuiInputBase-root,
+                    label,
+                    svg {
+                      color: ${grey['200']};
+                    }
+
+                    label.Mui-focused,
+                    .MuiInputBase-root.Mui-focused {
+                      color: ${blue['200']};
+                    }
+                  }
+                `}
+              />
             </Stack>
           </Toolbar>
         </Container>

@@ -20,7 +20,7 @@ export type presentialLocaleSelectButtonProps = {
 
 export const PresentialLocaleSelectButton: FC<
   presentialLocaleSelectButtonProps
-> = ({ locale, handleChange }) => {
+> = ({ locale, handleChange, ...props }) => {
   const [t] = useTranslation('layout');
 
   return (
@@ -30,6 +30,7 @@ export const PresentialLocaleSelectButton: FC<
         css={css`
           width: 8rem;
         `}
+        {...props}
       >
         <InputLabel id="locale-select-label">{t('changeLocale')}</InputLabel>
         <Select
@@ -50,7 +51,7 @@ export const PresentialLocaleSelectButton: FC<
   );
 };
 
-export const LocaleSelectButton: FC = () => {
+export const LocaleSelectButton: FC = (props) => {
   const router = useRouter();
   const defaultLocale = isLocale(router.locale) ? router.locale : 'en';
 
@@ -66,6 +67,10 @@ export const LocaleSelectButton: FC = () => {
     );
 
   return (
-    <PresentialLocaleSelectButton locale={locale} handleChange={handleChange} />
+    <PresentialLocaleSelectButton
+      locale={locale}
+      handleChange={handleChange}
+      {...props}
+    />
   );
 };

@@ -15,5 +15,7 @@ module.exports = {
     'hue-degree-notation': 'number',
     'color-function-notation': 'legacy',
     'alpha-value-notation': 'number',
+    // styling for MUI components
+    'selector-class-pattern': null,
   },
 };
