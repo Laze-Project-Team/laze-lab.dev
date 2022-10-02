@@ -6,6 +6,7 @@ import Container from '@mui/material/Container';
 import { useTranslation } from 'next-i18next';
 import type { FC } from 'react';
 
+import { useColorMode } from '@/components/contexts/ColorModeContext';
 import { DiscordIcon } from '@/components/ui/icons/DiscordIcon';
 import { QiitaIcon } from '@/components/ui/icons/QiitaIcon';
 import { LazeLogo } from '@/components/ui/LazeLogo';
@@ -27,6 +28,11 @@ const footerIconStyle = css`
 
 export const PresentialIndexFooter: FC = () => {
   const [t] = useTranslation(['layout', 'common']);
+  const { themePattern } = useColorMode();
+  const bgImage = themePattern(
+    'none',
+    'linear-gradient(rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.09))',
+  );
 
   return (
     <>
@@ -36,6 +42,7 @@ export const PresentialIndexFooter: FC = () => {
           padding: 2rem 0;
           margin: 0 auto;
           background-color: var(--color-darkgray);
+          background-image: ${bgImage};
           color: ${grey['400']};
         `}
       >

@@ -2,7 +2,7 @@
 
 exports[`should be rendered correctly 1`] = `
 <footer
-  class="css-1eygvux-PresentialIndexFooter"
+  class="css-cyplqf-PresentialIndexFooter"
 >
   <div
     class="MuiContainer-root MuiContainer-maxWidthLg css-1oqqzyl-MuiContainer-root"
