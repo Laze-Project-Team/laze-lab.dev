@@ -1,6 +1,5 @@
 import { css } from '@emotion/react';
 import type { FC } from 'react';
-import { match } from 'ts-pattern';
 
 import { useColorMode } from '@/components/contexts/ColorModeContext';
 import type { authType } from '@/components/hooks/useAuth';
@@ -13,12 +12,9 @@ export type googleAuthButtonProps = {
 };
 
 export const GoogleAuthButton: FC<googleAuthButtonProps> = ({ type }) => {
-  const { colorMode } = useColorMode();
+  const { themePattern } = useColorMode();
 
-  const hoverBgColor = match(colorMode)
-    .with('light', () => '#f2f2f2')
-    .with('dark', () => '#e6e6e6')
-    .exhaustive();
+  const hoverBgColor = themePattern('#f2f2f2', '#e6e6e6');
 
   return (
     <AuthButton

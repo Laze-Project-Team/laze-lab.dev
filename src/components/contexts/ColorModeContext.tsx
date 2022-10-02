@@ -2,11 +2,13 @@ import type { PaletteMode, Theme } from '@mui/material';
 import { CssBaseline, ThemeProvider, useMediaQuery } from '@mui/material';
 import type { FC, ReactNode } from 'react';
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { match } from 'ts-pattern';
 
 import { getTheme } from '@/lib/theme';
 
 export type colorModeContextType = {
   toggleColorMode: () => void;
+  themePattern: <T, K>(valueWithLight: T, valueWithDark: K) => T | K;
   colorMode: PaletteMode;
   theme: Theme;
 };
@@ -54,6 +56,11 @@ export const ColorModeProvider: FC<colorModeProviderProps> = ({
       toggleColorMode: () => {
         setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
       },
+      themePattern: <T, K>(valueWithLight: T, valueWithDark: K): T | K =>
+        match(mode)
+          .with('light', () => valueWithLight)
+          .with('dark', () => valueWithDark)
+          .exhaustive(),
       colorMode: mode,
       theme,
     }),
