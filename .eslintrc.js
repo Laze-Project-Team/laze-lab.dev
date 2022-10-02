@@ -75,5 +75,9 @@ module.exports = {
       ],
       rules: { 'import/no-default-export': 'off' },
     },
+    {
+      files: ['**/*.d.ts'],
+      rules: { '@typescript-eslint/consistent-type-imports': 'off' },
+    },
   ],
 };
