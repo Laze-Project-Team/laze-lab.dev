@@ -9,6 +9,7 @@
     "Logout": "Log-Out"
   },
 
+  "switchColorMode": "Switch Color Theme",
   "changeLocale": "Change Language",
 
   "footer": {

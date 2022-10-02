@@ -8,6 +8,7 @@
     "Logout": "ログアウト",
     "drawer": "サイトマップ"
   },
+  "switchColorMode": "カラーテーマを切り替え",
   "changeLocale": "言語を変更",
   "footer": {
     "Guides": "ガイドとヘルプ",
