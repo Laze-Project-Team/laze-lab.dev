@@ -10,6 +10,7 @@ import { ColorModeSwitcher } from '.';
 const useColorModeMock = {
   colorMode: 'dark',
   toggleColorMode: vi.fn(),
+  themePattern: (_light: unknown, dark: unknown) => dark,
 };
 
 beforeEach(() => {

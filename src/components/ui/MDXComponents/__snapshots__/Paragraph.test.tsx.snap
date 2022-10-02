@@ -2,6 +2,6 @@
 
 exports[`should be rendered correctly 1`] = `
 <p
-  class="MuiTypography-root MuiTypography-body1 css-1sute3l-MuiTypography-root-Paragraph"
+  class="MuiTypography-root MuiTypography-body1 css-2dh8jr-MuiTypography-root-Paragraph"
 />
 `;

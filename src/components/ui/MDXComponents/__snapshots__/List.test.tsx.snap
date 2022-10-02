@@ -5,17 +5,17 @@ exports[`should be rendered correctly (ol) 1`] = `
   class="css-ygswl4-listStyle"
 >
   <li
-    class="css-1xiymud-Li"
+    class="css-x78bqw-Li"
   >
     item 1
   </li>
   <li
-    class="css-1xiymud-Li"
+    class="css-x78bqw-Li"
   >
     item 2
   </li>
   <li
-    class="css-1xiymud-Li"
+    class="css-x78bqw-Li"
   >
     item 3
   </li>
@@ -27,17 +27,17 @@ exports[`should be rendered correctly (ul) 1`] = `
   class="css-ygswl4-listStyle"
 >
   <li
-    class="css-1xiymud-Li"
+    class="css-x78bqw-Li"
   >
     item 1
   </li>
   <li
-    class="css-1xiymud-Li"
+    class="css-x78bqw-Li"
   >
     item 2
   </li>
   <li
-    class="css-1xiymud-Li"
+    class="css-x78bqw-Li"
   >
     item 3
   </li>
