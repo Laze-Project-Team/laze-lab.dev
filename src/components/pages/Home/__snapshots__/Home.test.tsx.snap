@@ -8,7 +8,7 @@ exports[`should be rendered correctly 1`] = `
     class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorDefault MuiAppBar-positionStatic css-jj504k-MuiPaper-root-MuiAppBar-root"
   >
     <div
-      class="MuiContainer-root MuiContainer-maxWidthMd css-xdmu94-MuiContainer-root"
+      class="MuiContainer-root MuiContainer-maxWidthLg css-1oqqzyl-MuiContainer-root"
     >
       <div
         class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-1joxij9-MuiToolbar-root-PresentialIndexHeader"
@@ -121,7 +121,7 @@ exports[`should be rendered correctly 1`] = `
     class="css-1eygvux-PresentialIndexFooter"
   >
     <div
-      class="MuiContainer-root MuiContainer-maxWidthMd css-xdmu94-MuiContainer-root"
+      class="MuiContainer-root MuiContainer-maxWidthLg css-1oqqzyl-MuiContainer-root"
     >
       <div
         class="css-oqt7gk-PresentialIndexFooter"
@@ -280,7 +280,7 @@ exports[`should be rendered correctly 1`] = `
           </div>
           <div>
             <p
-              class="css-q9vjwf-PresentialIndexFooter"
+              class="css-1r885e9-PresentialIndexFooter"
             >
               common:copyright
             </p>

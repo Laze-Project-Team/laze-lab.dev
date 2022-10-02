@@ -39,7 +39,7 @@ export const PresentialIndexFooter: FC = () => {
           color: ${grey['400']};
         `}
       >
-        <Container maxWidth="md">
+        <Container maxWidth="lg">
           <div
             css={css`
               display: flex;
@@ -121,7 +121,7 @@ export const PresentialIndexFooter: FC = () => {
               <div>
                 <p
                   css={css`
-                    margin-top: 0.25rem;
+                    margin-top: 0.5rem;
                     font-size: 0.8rem;
                   `}
                 >

@@ -19,7 +19,7 @@ export const PresentialIndexHeader: FC = () => {
         position="static"
         sx={{ backgroundColor: 'var(--color-darkgray)' }}
       >
-        <Container maxWidth="md">
+        <Container maxWidth="lg">
           <Toolbar
             css={css`
               display: flex;
