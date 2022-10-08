@@ -4,6 +4,7 @@ import Skeleton from '@mui/material/Skeleton';
 import { useTranslation } from 'next-i18next';
 import type { FC } from 'react';
 
+import { useColorMode } from '@/components/contexts/ColorModeContext';
 import type { presentialProfileProps } from '@/components/pages/Profile/Profile';
 import { DefaultLink } from '@/components/ui/DefaultLink';
 
@@ -16,13 +17,16 @@ export const PresentialUserName: FC<presentialUserNameProps> = ({
 }) => {
   const [t] = useTranslation('profile');
 
+  const { themePattern } = useColorMode();
+  const textColor = themePattern(grey['800'], grey['300']);
+
   return (
     <>
       <div>
         {userData.data ? (
           <p
             css={css`
-              color: ${grey['800']};
+              color: ${textColor};
               font-size: 1.5rem;
               font-weight: bold;
             `}
