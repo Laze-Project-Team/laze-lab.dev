@@ -18,6 +18,7 @@ const resources = {
     signup_complete: require('../src/locales/ja/signup_complete.json'),
     signup: require('../src/locales/ja/signup.json'),
     terms: require('../src/locales/ja/terms.json'),
+    404: require('../src/locales/ja/404.json'),
   },
   en: {
     common: require('../src/locales/en/common.json'),
@@ -35,6 +36,7 @@ const resources = {
     signup_complete: require('../src/locales/en/signup_complete.json'),
     signup: require('../src/locales/en/signup.json'),
     terms: require('../src/locales/en/terms.json'),
+    404: require('../src/locales/en/404.json'),
   },
 };
 
