@@ -52,6 +52,8 @@ export type emailAuthObject = {
 };
 
 export const useEmailAuth = (type: authType): emailAuthObject => {
+  const { auth } = useFirebase();
+
   return match(type)
     .with('login', () => ({
       authenticate: async (email: string, password: string) => {
