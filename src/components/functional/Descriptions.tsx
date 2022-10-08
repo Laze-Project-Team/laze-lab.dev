@@ -5,11 +5,13 @@ import type { FC } from 'react';
 export type descriptionProps = {
   title: string;
   description: string;
+  noindex?: boolean;
 };
 
 export const Descriptions: FC<descriptionProps> = ({
   title: titleContent,
   description,
+  noindex,
 }) => {
   const title = `${titleContent} | Laze`;
   const { locale, pathname } = useRouter();
@@ -42,6 +44,8 @@ export const Descriptions: FC<descriptionProps> = ({
           name="twitter:image"
           content="https://laze.ddns.net/favicons/android-chrome-192x192.png"
         />
+
+        {noindex && <meta name="robots" content="noindex" />}
       </Head>
     </>
   );

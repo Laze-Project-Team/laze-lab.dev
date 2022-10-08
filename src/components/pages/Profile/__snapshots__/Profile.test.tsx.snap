@@ -136,7 +136,97 @@ exports[`should be rendered correctly 1`] = `
     <div
       class="MuiContainer-root MuiContainer-maxWidthMd css-xdmu94-MuiContainer-root"
     >
-      This is Home
+      <div
+        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 css-1bkr2am-MuiGrid-root-PresentialProfile"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-item css-13i4rnv-MuiGrid-root"
+        >
+          <div
+            class="css-oo313a-MuiStack-root-PresentialProfile"
+          >
+            <div
+              class="css-1qhwi4c-PresentialProfile"
+            >
+              <div
+                class="css-4r7jvw-PresentialUserAvatar"
+              >
+                <span
+                  class="MuiSkeleton-root MuiSkeleton-circular MuiSkeleton-pulse css-fomgco-MuiSkeleton-root"
+                  style="width: 100%; height: 100%;"
+                />
+              </div>
+            </div>
+            <div>
+              <span
+                class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-cwtuop-MuiSkeleton-root-PresentialUserName"
+              />
+              <p
+                class="css-1ehj47y-PresentialUserName"
+              >
+                <a
+                  class="css-hn4o6p-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
+                  href="/profile/edit"
+                >
+                  profile.edit
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true css-yurqa-MuiGrid-root-PresentialProfile"
+        >
+          <p
+            class="css-1r3novd-PresentialUserProjects"
+          >
+            <span>
+              profile.projects.title
+            </span>
+            <button
+              aria-label="profile.projects.add"
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1gid0rt-MuiButtonBase-root-MuiIconButton-root-PresentialUserProjects"
+              data-mui-internal-clone-element="true"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="AddIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                />
+              </svg>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+          </p>
+          <div
+            class="css-1p5q5e5-MuiStack-root"
+          >
+            <span
+              class="MuiSkeleton-root MuiSkeleton-rectangular MuiSkeleton-pulse css-p1d66t-MuiSkeleton-root"
+            />
+            <span
+              class="MuiSkeleton-root MuiSkeleton-rectangular MuiSkeleton-pulse css-p1d66t-MuiSkeleton-root"
+            />
+            <span
+              class="MuiSkeleton-root MuiSkeleton-rectangular MuiSkeleton-pulse css-p1d66t-MuiSkeleton-root"
+            />
+            <span
+              class="MuiSkeleton-root MuiSkeleton-rectangular MuiSkeleton-pulse css-p1d66t-MuiSkeleton-root"
+            />
+            <span
+              class="MuiSkeleton-root MuiSkeleton-rectangular MuiSkeleton-pulse css-p1d66t-MuiSkeleton-root"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   </main>
   <footer

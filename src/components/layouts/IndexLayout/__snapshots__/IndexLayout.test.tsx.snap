@@ -131,7 +131,7 @@ exports[`should be rendered correctly 1`] = `
     </div>
   </header>
   <main
-    class="css-d8nlvz-PresentialIndexLayout"
+    class="css-waibsz-PresentialIndexLayout"
   >
     <div
       class="MuiContainer-root MuiContainer-maxWidthMd css-xdmu94-MuiContainer-root"

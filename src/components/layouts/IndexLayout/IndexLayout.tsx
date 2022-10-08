@@ -27,6 +27,7 @@ export const PresentialIndexLayout: FC<presentialIndexLayoutProps> = ({
 
         <main
           css={css`
+            width: 100vw;
             padding: 4rem 0;
           `}
         >

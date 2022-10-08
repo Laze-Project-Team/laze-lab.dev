@@ -1,0 +1,21 @@
+// Vitest Snapshot v1
+
+exports[`should be rendered correctly 1`] = `
+<div>
+  <p
+    class="css-ai2zs0-PresentialUserName"
+  >
+    Laze Project Team
+  </p>
+  <p
+    class="css-1ehj47y-PresentialUserName"
+  >
+    <a
+      class="css-hn4o6p-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
+      href="/profile/edit"
+    >
+      profile.edit
+    </a>
+  </p>
+</div>
+`;

@@ -1,0 +1,44 @@
+// Vitest Snapshot v1
+
+exports[`should be rendered correctly 1`] = `
+<div
+  class="css-4r7jvw-PresentialUserAvatar"
+>
+  <div
+    class="MuiAvatar-root MuiAvatar-circular css-sxq756-MuiAvatar-root"
+  >
+    <img
+      alt="Laze Project Team"
+      class="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
+      src="https://laze.ddns.net/img/logo/logo.png"
+    />
+  </div>
+  <label
+    aria-label="profile.avatar.edit.title"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1ssy60s-MuiButtonBase-root-MuiIconButton-root-UploadAvatarButton-PresentialUserAvatar"
+    data-mui-internal-clone-element="true"
+    role="button"
+    tabindex="0"
+  >
+    <input
+      accept="image/*"
+      hidden=""
+      type="file"
+    />
+    <svg
+      aria-hidden="true"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+      data-testid="FileUploadIcon"
+      focusable="false"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"
+      />
+    </svg>
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </label>
+</div>
+`;

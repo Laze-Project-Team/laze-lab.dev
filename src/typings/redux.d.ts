@@ -11,14 +11,15 @@ export type explorerState = {
   currentDirectory: explorerDirectory;
 };
 
-export type projectConfig = {
+type projectConfig = {
   id: string;
+  locale: localeId;
   lang: LangId;
-  name: projectName;
+  name: string;
+  description: string;
+  tags: string[];
   private: boolean;
 };
-
-export type projectName = Record<langId, string>;
 
 export type explorerDirectory = Record<path, explorerDirent>;
 
@@ -40,8 +41,6 @@ export type explorerFolder = {
 // TODO: 未確定
 export type explorerLazeFile = {
   type: 'laze';
-  // Lazeの言語
-  lang: LangId;
   content: string;
 };
 

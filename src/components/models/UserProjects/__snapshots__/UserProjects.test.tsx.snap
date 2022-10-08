@@ -1,0 +1,33 @@
+// Vitest Snapshot v1
+
+exports[`should be rendered correctly 1`] = `
+<p
+  class="css-1r3novd-PresentialUserProjects"
+>
+  <span>
+    profile.projects.title
+  </span>
+  <button
+    aria-label="profile.projects.add"
+    class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1gid0rt-MuiButtonBase-root-MuiIconButton-root-PresentialUserProjects"
+    data-mui-internal-clone-element="true"
+    tabindex="0"
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+      data-testid="AddIcon"
+      focusable="false"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+      />
+    </svg>
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+</p>
+`;

@@ -3,10 +3,14 @@
   "description": "",
   "loading": "Loading",
   "profile": {
+    "edit": "edit profile info",
     "avatar": {
       "title": "Avatar image",
       "edit": {
         "title": "Upload new avatar image",
+        "dialog_title": "Check your avatar image",
+        "dialog_confirm": "Confirm",
+        "dialog_cancel": "Cancel",
         "invalid": "The avatar image must be a JPEG or PNG format file.",
         "success": "New avatar image has been updated successfully.",
         "error": "Failed to upload new avatar image."
