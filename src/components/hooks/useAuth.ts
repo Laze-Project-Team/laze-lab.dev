@@ -10,7 +10,7 @@ import {
 import { useCallback } from 'react';
 import { match } from 'ts-pattern';
 
-import { auth } from '@/lib/firebase';
+import { useFirebase } from '@/lib/firebase';
 
 export type authType = 'login' | 'signup';
 export type authMethod = 'Google' | 'Twitter' | 'GitHub';
@@ -27,6 +27,8 @@ export type authObject<T extends authMethod> = {
 };
 
 export const useAuth = <T extends authMethod>(method: T): authObject<T> => {
+  const { auth } = useFirebase();
+
   const Provider = providers[method];
 
   const authenticate = useCallback(async () => {
@@ -34,7 +36,7 @@ export const useAuth = <T extends authMethod>(method: T): authObject<T> => {
     // This gives you a Google Access Token. You can use it to access the Google API.
     const credential = Provider.credentialFromResult(result);
     return credential;
-  }, [Provider]);
+  }, [Provider, auth]);
 
   return {
     provider: Provider,
