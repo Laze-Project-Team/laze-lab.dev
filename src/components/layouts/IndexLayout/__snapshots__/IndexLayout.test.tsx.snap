@@ -14,7 +14,7 @@ exports[`should be rendered correctly 1`] = `
         class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-1joxij9-MuiToolbar-root-PresentialIndexHeader"
       >
         <a
-          class="css-f6n97z-PresentialStyledLink-PresentialStyledLink-HeaderLink"
+          class="css-16o5ewe-PresentialStyledLink-PresentialStyledLink-HeaderLink"
           href="/"
         >
           <span
@@ -189,7 +189,7 @@ exports[`should be rendered correctly 1`] = `
             class="css-1506kd7-PresentialIndexFooter"
           >
             <a
-              class="css-1qn4jyq-PresentialStyledLink-PresentialStyledLink"
+              class="css-h3zm4e-PresentialStyledLink-PresentialStyledLink"
               href="https://github.com/Laze-Project-Team"
               rel="noopener noreferrer"
               target="_blank"
@@ -208,7 +208,7 @@ exports[`should be rendered correctly 1`] = `
               </svg>
             </a>
             <a
-              class="css-1qn4jyq-PresentialStyledLink-PresentialStyledLink"
+              class="css-h3zm4e-PresentialStyledLink-PresentialStyledLink"
               href="https://twitter.com/LazeProjectTeam"
               rel="noopener noreferrer"
               target="_blank"
@@ -227,7 +227,7 @@ exports[`should be rendered correctly 1`] = `
               </svg>
             </a>
             <a
-              class="css-1qn4jyq-PresentialStyledLink-PresentialStyledLink"
+              class="css-h3zm4e-PresentialStyledLink-PresentialStyledLink"
               href="https://discord.gg/K3prMrmS7e"
               rel="noopener noreferrer"
               target="_blank"
@@ -264,7 +264,7 @@ exports[`should be rendered correctly 1`] = `
               </svg>
             </a>
             <a
-              class="css-1qn4jyq-PresentialStyledLink-PresentialStyledLink"
+              class="css-h3zm4e-PresentialStyledLink-PresentialStyledLink"
               href="https://qiita.com/tags/laze"
               rel="noopener noreferrer"
               target="_blank"
@@ -319,25 +319,25 @@ exports[`should be rendered correctly 1`] = `
               class="css-1uqyzoi-FooterLinkList"
             >
               <a
-                class="css-3gu0b6-PresentialStyledLink-PresentialStyledLink-FooterLinkList"
+                class="css-1i9c38n-PresentialStyledLink-PresentialStyledLink-FooterLinkList"
                 href="/"
               >
                 footer.guides.Terms
               </a>
               <a
-                class="css-3gu0b6-PresentialStyledLink-PresentialStyledLink-FooterLinkList"
+                class="css-1i9c38n-PresentialStyledLink-PresentialStyledLink-FooterLinkList"
                 href="/guideline"
               >
                 footer.guides.Guideline
               </a>
               <a
-                class="css-3gu0b6-PresentialStyledLink-PresentialStyledLink-FooterLinkList"
+                class="css-1i9c38n-PresentialStyledLink-PresentialStyledLink-FooterLinkList"
                 href="/privacy"
               >
                 footer.guides.Privacy
               </a>
               <a
-                class="css-3gu0b6-PresentialStyledLink-PresentialStyledLink-FooterLinkList"
+                class="css-1i9c38n-PresentialStyledLink-PresentialStyledLink-FooterLinkList"
                 href="/license"
               >
                 footer.guides.License
@@ -354,25 +354,25 @@ exports[`should be rendered correctly 1`] = `
               class="css-1uqyzoi-FooterLinkList"
             >
               <a
-                class="css-3gu0b6-PresentialStyledLink-PresentialStyledLink-FooterLinkList"
+                class="css-1i9c38n-PresentialStyledLink-PresentialStyledLink-FooterLinkList"
                 href="/"
               >
                 footer.sitemap.Home
               </a>
               <a
-                class="css-3gu0b6-PresentialStyledLink-PresentialStyledLink-FooterLinkList"
+                class="css-1i9c38n-PresentialStyledLink-PresentialStyledLink-FooterLinkList"
                 href="/guideline"
               >
                 footer.sitemap.Editor
               </a>
               <a
-                class="css-3gu0b6-PresentialStyledLink-PresentialStyledLink-FooterLinkList"
+                class="css-1i9c38n-PresentialStyledLink-PresentialStyledLink-FooterLinkList"
                 href="/privacy"
               >
                 footer.sitemap.Docs
               </a>
               <a
-                class="css-3gu0b6-PresentialStyledLink-PresentialStyledLink-FooterLinkList"
+                class="css-1i9c38n-PresentialStyledLink-PresentialStyledLink-FooterLinkList"
                 href="/license"
               >
                 footer.sitemap.Compete

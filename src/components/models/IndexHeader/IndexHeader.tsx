@@ -27,7 +27,7 @@ export const PresentialIndexHeader: FC = () => {
               display: flex;
             `}
           >
-            <HeaderLink href={pagesPath.$url().pathname}>
+            <HeaderLink href={pagesPath.$url()}>
               <LazeLogo option="logo" size={30} />
               <span
                 css={css`

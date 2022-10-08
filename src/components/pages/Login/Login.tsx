@@ -58,12 +58,7 @@ export const PresentialLogin: FC = () => {
           `}
         >
           <Trans t={t} i18nKey="footer">
-            {[
-              <DefaultLink
-                href={pagesPath.signup.$url().pathname}
-                key="/signup"
-              />,
-            ]}
+            {[<DefaultLink href={pagesPath.signup.$url()} key="/signup" />]}
           </Trans>
         </p>
       </LoginLayout>

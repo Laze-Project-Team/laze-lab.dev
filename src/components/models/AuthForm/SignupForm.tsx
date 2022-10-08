@@ -159,7 +159,7 @@ export const SignupForm: FC = (props) => {
 
     authenticate(data.email, data.password)
       .then((_credential) => {
-        push(pagesPath.$url().pathname);
+        push(pagesPath.$url());
       })
       .catch(handleError)
       .finally(() => setIsProcessing(false));

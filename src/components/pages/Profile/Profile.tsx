@@ -104,7 +104,7 @@ export const Profile: FC = () => {
   useEffect(() => {
     // send to home when user is not logged in
     if (user === null) {
-      router.push(pagesPath.$url().pathname);
+      router.push(pagesPath.$url());
     }
   }, [router, user]);
 

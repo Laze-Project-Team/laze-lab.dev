@@ -2,7 +2,7 @@
 
 exports[`should be rendered correctly 1`] = `
 <a
-  class="css-1qn4jyq-PresentialStyledLink-PresentialStyledLink"
+  class="css-h3zm4e-PresentialStyledLink-PresentialStyledLink"
   href="/"
 />
 `;

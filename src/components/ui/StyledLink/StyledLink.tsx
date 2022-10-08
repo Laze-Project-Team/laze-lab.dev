@@ -3,11 +3,14 @@ import { css } from '@emotion/react';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import Link from 'next/link';
 import type { ComponentPropsWithRef, FC } from 'react';
+import type { UrlObject } from 'url';
+
+import { isInternalLink } from '@/lib/utils/isInternalLink';
 
 export type styledLinkProps = {
-  href: string;
+  href: UrlObject | string;
   disableIcon?: boolean;
-} & ComponentPropsWithRef<'a'>;
+} & Omit<ComponentPropsWithRef<'a'>, 'href'>;
 
 export type presentialStyledLinkProps = styledLinkProps;
 
@@ -15,20 +18,17 @@ export const PresentialStyledLink: FC<presentialStyledLinkProps> = ({
   href,
   children,
   disableIcon,
-  css: cssProp,
   ...props
 }) => {
-  const isInternal = href.startsWith('/') || href.startsWith('#');
+  const isInternal = isInternalLink(href);
 
   return (
     <>
       <Link href={href} passHref>
         <a
-          href={href}
           target={isInternal ? undefined : '_blank'}
           rel={isInternal ? undefined : 'noopener noreferrer'}
           css={[
-            cssProp,
             css`
               display: inline-flex;
               align-items: center;

@@ -11,7 +11,7 @@ exports[`should be rendered correctly 1`] = `
       title
     </h1>
     <a
-      class="css-hn4o6p-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
+      class="css-1ln0tcx-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
       href="/"
     >
       <svg
@@ -253,7 +253,7 @@ exports[`should be rendered correctly 1`] = `
       class="css-t8y7ia-PresentialLogin"
     >
       <a
-        class="css-hn4o6p-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
+        class="css-1ln0tcx-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
         href="/signup"
       />
     </p>

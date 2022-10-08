@@ -11,7 +11,7 @@ exports[`should be rendered correctly 1`] = `
       title
     </h1>
     <a
-      class="css-hn4o6p-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
+      class="css-1ln0tcx-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
       href="/"
     >
       <svg
@@ -271,11 +271,11 @@ exports[`should be rendered correctly 1`] = `
             class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
           >
             <a
-              class="css-hn4o6p-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
+              class="css-1ln0tcx-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
               href="/terms"
             />
             <a
-              class="css-hn4o6p-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
+              class="css-1ln0tcx-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
               href="/privacy"
             />
           </span>
@@ -284,11 +284,11 @@ exports[`should be rendered correctly 1`] = `
           class="MuiFormHelperText-root css-1d1r5q-MuiFormHelperText-root"
         >
           <a
-            class="css-hn4o6p-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
+            class="css-1ln0tcx-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
             href="/terms"
           />
           <a
-            class="css-hn4o6p-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
+            class="css-1ln0tcx-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
             href="/privacy"
           />
         </p>
@@ -316,7 +316,7 @@ exports[`should be rendered correctly 1`] = `
       class="css-1f0g64o-PresentialSignup"
     >
       <a
-        class="css-hn4o6p-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
+        class="css-1ln0tcx-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
         href="/login"
       />
     </p>

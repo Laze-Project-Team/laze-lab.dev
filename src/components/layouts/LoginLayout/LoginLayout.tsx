@@ -33,7 +33,7 @@ export const PresentialLoginLayout: FC<presentialLoginLayoutProps> = ({
           {title}
         </h1>
 
-        <DefaultLink href={pagesPath.$url().pathname}>
+        <DefaultLink href={pagesPath.$url()}>
           <ArrowBackIosIcon sx={{ fontSize: '1rem' }} />
           <span>{t('backToHome')}</span>
         </DefaultLink>
