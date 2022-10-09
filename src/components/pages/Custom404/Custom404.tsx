@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import Stack from '@mui/material/Stack';
 import { Trans, useTranslation } from 'next-i18next';
 import type { FC } from 'react';
 
@@ -15,32 +16,38 @@ export const PresentialCustom404: FC = () => {
       <Descriptions title={t('title')} description={t('description')} noindex />
 
       <IndexLayout>
-        <p
+        <Stack
+          spacing={4}
           css={css`
-            font-size: 8rem;
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            justify-content: center;
             text-align: center;
           `}
         >
-          404
-        </p>
-        <p
-          css={css`
-            font-size: 2rem;
-            text-align: center;
-          `}
-        >
-          PAGE NOT FOUND
-        </p>
-        <p
-          css={css`
-            margin-top: 2rem;
-            text-align: center;
-          `}
-        >
-          <Trans t={t} i18nKey="message">
-            <DefaultLink href={pagesPath.$url()} />
-          </Trans>
-        </p>
+          <p
+            css={css`
+              font-size: 8rem;
+              line-height: 6rem;
+            `}
+          >
+            404
+          </p>
+          <p
+            css={css`
+              font-size: 2rem;
+            `}
+          >
+            PAGE NOT FOUND
+          </p>
+          <p>{t('message')}</p>
+          <p>
+            <Trans t={t} i18nKey="action">
+              <DefaultLink href={pagesPath.$url()} />
+            </Trans>
+          </p>
+        </Stack>
       </IndexLayout>
     </>
   );

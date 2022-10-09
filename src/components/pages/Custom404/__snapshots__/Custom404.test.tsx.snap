@@ -136,24 +136,29 @@ exports[`should be rendered correctly 1`] = `
     <div
       class="MuiContainer-root MuiContainer-maxWidthMd css-xdmu94-MuiContainer-root"
     >
-      <p
-        class="css-8wd5qf-PresentialCustom404"
+      <div
+        class="css-1x1htjo-MuiStack-root-PresentialCustom404"
       >
-        404
-      </p>
-      <p
-        class="css-3bvihv-PresentialCustom404"
-      >
-        PAGE NOT FOUND
-      </p>
-      <p
-        class="css-w0dd8k-PresentialCustom404"
-      >
-        <a
-          class="css-1ln0tcx-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
-          href="/"
-        />
-      </p>
+        <p
+          class="css-19cg1ij-PresentialCustom404"
+        >
+          404
+        </p>
+        <p
+          class="css-6dsl7-PresentialCustom404"
+        >
+          PAGE NOT FOUND
+        </p>
+        <p>
+          message
+        </p>
+        <p>
+          <a
+            class="css-1ln0tcx-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
+            href="/"
+          />
+        </p>
+      </div>
     </div>
   </main>
   <footer

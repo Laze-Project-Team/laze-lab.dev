@@ -2,5 +2,6 @@
   "title": "The page you were looking for could not be found",
   "description": "The page you were looking for could not be found",
 
-  "message": "Please use the sitemap to find the page you are looking for, or return to the <0>top Page</0>."
+  "message": "The page you were looking for could not be found",
+  "action": "Please make sure the URL is correct, or return to the <0>top Page</0>."
 }
