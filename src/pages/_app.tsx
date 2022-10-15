@@ -12,6 +12,7 @@ import { useEffect } from 'react';
 import { Provider as ReduxProvider } from 'react-redux';
 
 import { ColorModeProvider } from '@/components/contexts/ColorModeContext';
+import { ToastContainer } from '@/components/functional/ToastContainer';
 import { store } from '@/lib/redux/root';
 import { globalStyle } from '@/styles/global';
 
@@ -37,6 +38,7 @@ export const MyApp: ComponentType<AppProps> = ({
     <>
       <ReduxProvider store={store}>
         <ColorModeProvider preferTheme={preferTheme}>
+          <ToastContainer />
           <Global styles={globalStyle} />
           <Component {...pageProps} />
         </ColorModeProvider>
