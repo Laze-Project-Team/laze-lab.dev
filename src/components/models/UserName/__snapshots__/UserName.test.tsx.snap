@@ -7,15 +7,5 @@ exports[`should be rendered correctly 1`] = `
   >
     Laze Project Team
   </p>
-  <p
-    class="css-1ehj47y-PresentialUserName"
-  >
-    <a
-      class="css-1ln0tcx-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
-      href="/profile/edit"
-    >
-      profile.edit
-    </a>
-  </p>
 </div>
 `;

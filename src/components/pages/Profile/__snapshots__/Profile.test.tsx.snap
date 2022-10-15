@@ -161,17 +161,17 @@ exports[`should be rendered correctly 1`] = `
               <span
                 class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-cwtuop-MuiSkeleton-root-PresentialUserName"
               />
-              <p
-                class="css-1ehj47y-PresentialUserName"
-              >
-                <a
-                  class="css-1ln0tcx-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
-                  href="/profile/edit"
-                >
-                  profile.edit
-                </a>
-              </p>
             </div>
+            <p
+              class="css-13iez5p-PresentialProfile"
+            >
+              <a
+                class="css-1ln0tcx-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
+                href="/profile/edit"
+              >
+                profile.edit
+              </a>
+            </p>
           </div>
         </div>
         <div
