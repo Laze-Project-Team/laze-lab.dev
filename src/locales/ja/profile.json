@@ -10,6 +10,7 @@
         "dialog_title": "アバター画像の確認",
         "dialog_confirm": "変更",
         "dialog_cancel": "キャンセル",
+        "size_limit": "画像の容量が大きすぎます。1MB以下に抑えて下さい。",
         "error": "アバター画像のアップロードに失敗しました。"
       }
     },

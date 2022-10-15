@@ -6,6 +6,7 @@ import { useTranslation } from 'next-i18next';
 import type { ChangeEventHandler, FC } from 'react';
 import { useState } from 'react';
 import Jdenticon from 'react-jdenticon';
+import { toast } from 'react-toastify';
 import { mutate } from 'swr';
 
 import { useColorMode } from '@/components/contexts/ColorModeContext';
@@ -100,7 +101,16 @@ export const UserAvatar: FC<userAvatarProps> = ({ user, ...props }) => {
     const files = e.target.files;
     if (files === null) return;
 
-    setAvatarFile(files[0]);
+    const [file] = files;
+
+    if (file.size > 1024 * 1024) {
+      toast(t('profile.avatar.edit.size_limit'), {
+        type: 'error',
+      });
+      return;
+    }
+
+    setAvatarFile(file);
   };
 
   const handleConfirm: presentialUserAvatarProps['handleConfirm'] = () => {

@@ -11,8 +11,7 @@
         "dialog_title": "Check your avatar image",
         "dialog_confirm": "Confirm",
         "dialog_cancel": "Cancel",
-        "invalid": "The avatar image must be a JPEG or PNG format file.",
-        "success": "New avatar image has been updated successfully.",
+        "size_limit": "The images are too large; please keep them under 1 MB.",
         "error": "Failed to upload new avatar image."
       }
     },
