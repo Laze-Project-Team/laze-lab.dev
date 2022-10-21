@@ -28,10 +28,7 @@ jobs:
       - name: Testing build Next.js App
         run: yarn build
 
-      - name: Testing with Vitest
-        run: yarn test
-
-      - name: Generate coverage
+      - name: Testing with Vitest + coverage
         run: yarn coverage
 
       - name: Codecov
