@@ -27,3 +27,14 @@ jobs:
 
       - name: Testing build Next.js App
         run: yarn build
+
+      - name: Testing with Vitest
+        run: yarn test
+
+      - name: Generate coverage
+        run: yarn coverage
+
+      - name: Codecov
+        uses: codecov/codecov-action@v2.1.0
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
