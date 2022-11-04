@@ -4,29 +4,29 @@ import Stack from '@mui/material/Stack';
 import { useTranslation } from 'next-i18next';
 import type { FC } from 'react';
 
+import {
+  UserInfoProvider,
+  useUserInfoContext,
+} from '@/components/contexts/UserInfoContext';
 import { Descriptions } from '@/components/functional/Descriptions';
-import type { userInfo } from '@/components/hooks/useUserInfo';
-import { useUserInfoStrictly } from '@/components/hooks/useUserInfo';
+import type { baseUserInfo } from '@/components/hooks/useUserInfo';
 import { IndexLayout } from '@/components/layouts/IndexLayout';
+import { ProfileEditDialogButton } from '@/components/models/ProfileEditDialogButton';
 import { UserAvatar } from '@/components/models/UserAvatar';
 import { UserName } from '@/components/models/UserName';
 import { UserProjects } from '@/components/models/UserProjects';
-import { DefaultLink } from '@/components/ui/DefaultLink';
 import { sp } from '@/styles/media-query';
 
-export type presentialProfileProps = userInfo;
+export type presentialProfileProps = baseUserInfo;
 
-export const PresentialProfile: FC<presentialProfileProps> = ({
-  user,
-  userData,
-}) => {
+export const PresentialProfile: FC<presentialProfileProps> = ({ userData }) => {
   const [t] = useTranslation('profile');
 
   return (
     <>
       <Descriptions
         title={t('title', {
-          name: userData?.data?.name ?? t('profile.displayName.undefined'),
+          name: userData?.data?.name ?? t('profile.name.undefined'),
         })}
         description={t('description')}
         noindex
@@ -63,19 +63,10 @@ export const PresentialProfile: FC<presentialProfileProps> = ({
                   height: min(10rem, calc(100vw - 16px));
                 `}
               >
-                <UserAvatar user={user} userData={userData} />
+                <UserAvatar />
               </div>
-              <UserName user={user} userData={userData}></UserName>
-
-              <p
-                css={css`
-                  font-size: 0.8rem;
-                `}
-              >
-                <DefaultLink href="/profile/edit">
-                  {t('profile.edit')}
-                </DefaultLink>
-              </p>
+              <UserName />
+              <ProfileEditDialogButton variant="outlined" />
             </Stack>
           </Grid>
           <Grid
@@ -85,7 +76,7 @@ export const PresentialProfile: FC<presentialProfileProps> = ({
               min-width: 15rem;
             `}
           >
-            <UserProjects user={user} userData={userData} />
+            <UserProjects />
           </Grid>
         </Grid>
       </IndexLayout>
@@ -94,7 +85,11 @@ export const PresentialProfile: FC<presentialProfileProps> = ({
 };
 
 export const Profile: FC = () => {
-  const { user, userData } = useUserInfoStrictly();
+  const { user, userData } = useUserInfoContext();
 
-  return <PresentialProfile user={user} userData={userData} />;
+  return (
+    <UserInfoProvider>
+      <PresentialProfile user={user} userData={userData} />
+    </UserInfoProvider>
+  );
 };

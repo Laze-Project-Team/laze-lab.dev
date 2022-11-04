@@ -7,6 +7,7 @@ import type {
 import { render as defaultRender } from '@testing-library/react';
 import type { FC, ReactNode } from 'react';
 
+import { UserInfoProvider } from '/__mocks__/UserInfoProvider';
 import { ColorModeProvider } from '@/components/contexts/ColorModeContext';
 
 export type renderType<
@@ -29,13 +30,15 @@ type globalWrapperHOCType = (
 const globalWrapperHOC: globalWrapperHOCType = (Wrapper) => {
   const globalWrapper: FC<wrapperProps> = ({ children }) => (
     <ColorModeProvider>
-      {Wrapper ? (
-        <Wrapper>
-          <>{children}</>
-        </Wrapper>
-      ) : (
-        children
-      )}
+      <UserInfoProvider>
+        {Wrapper ? (
+          <Wrapper>
+            <>{children}</>
+          </Wrapper>
+        ) : (
+          children
+        )}
+      </UserInfoProvider>
     </ColorModeProvider>
   );
 

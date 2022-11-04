@@ -4,6 +4,9 @@
   "loading": "Loading",
   "profile": {
     "edit": "edit profile info",
+    "edit_submit": "Update profile",
+    "edit_success": "Your profile information has been successfully updated!",
+    "edit_failed": "Profile information could not be updated.",
     "avatar": {
       "title": "Avatar image",
       "edit": {
@@ -15,16 +18,12 @@
         "error": "Failed to upload new avatar image."
       }
     },
-    "displayName": {
+    "name": {
       "label": "Username",
-      "undefined": "Noname",
-      "edit": "Edit your username",
-      "submit": "Update your username",
-      "placeholder": "Enter new username",
-      "validation": {
-        "max": "Username must be less than 32 characters"
-      },
-      "error": "Failed to update your username."
+      "undefined": "Unknown user"
+    },
+    "locale": {
+      "label": "Display language"
     },
     "projects": {
       "title": "My Projects",

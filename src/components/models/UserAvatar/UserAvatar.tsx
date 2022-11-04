@@ -7,26 +7,20 @@ import type { ChangeEventHandler, FC } from 'react';
 import { useState } from 'react';
 import Jdenticon from 'react-jdenticon';
 import { toast } from 'react-toastify';
-import { mutate } from 'swr';
 
 import { useColorMode } from '@/components/contexts/ColorModeContext';
-import type { presentialProfileProps } from '@/components/pages/Profile/Profile';
+import { useUserInfoContext } from '@/components/contexts/UserInfoContext';
 import { useUserManager } from '@/lib/firebase/user';
 
 import { UploadAvatarButton } from './UploadAvatarButton';
 import type { uploadConfirmationDialogProps } from './UploadConfirmationDialog';
 import { UploadConfirmationDialog } from './UploadConfirmationDialog';
 
-export type userAvatarProps = presentialProfileProps;
-
 export type presentialUserAvatarProps = {
   handleChange: ChangeEventHandler<HTMLInputElement>;
-} & userAvatarProps &
-  uploadConfirmationDialogProps;
+} & uploadConfirmationDialogProps;
 
 export const PresentialUserAvatar: FC<presentialUserAvatarProps> = ({
-  user,
-  userData,
   avatarFile,
   isAvatarUploading,
   confirmError,
@@ -36,6 +30,7 @@ export const PresentialUserAvatar: FC<presentialUserAvatarProps> = ({
   handleErrorClose,
   ...props
 }) => {
+  const { user, userData } = useUserInfoContext();
   const { themePattern } = useColorMode();
   const borderColor = themePattern(grey['300'], grey['800']);
 
@@ -87,9 +82,10 @@ export const PresentialUserAvatar: FC<presentialUserAvatarProps> = ({
   );
 };
 
-export const UserAvatar: FC<userAvatarProps> = ({ user, ...props }) => {
+export const UserAvatar: FC = ({ ...props }) => {
   const [t] = useTranslation('profile');
-  const { updateUserAvatar, fetchUserData } = useUserManager();
+  const { user, syncUserData } = useUserInfoContext();
+  const { updateUserAvatar } = useUserManager();
 
   const [avatarFile, setAvatarFile] =
     useState<presentialUserAvatarProps['avatarFile']>(null);
@@ -135,7 +131,7 @@ export const UserAvatar: FC<userAvatarProps> = ({ user, ...props }) => {
       })
       .finally(() => {
         setIsAvatarUploading(false);
-        mutate('userData', user && fetchUserData(user));
+        syncUserData();
       });
   };
 
@@ -150,7 +146,6 @@ export const UserAvatar: FC<userAvatarProps> = ({ user, ...props }) => {
 
   return (
     <PresentialUserAvatar
-      user={user}
       avatarFile={avatarFile}
       isAvatarUploading={isAvatarUploading}
       confirmError={confirmError}

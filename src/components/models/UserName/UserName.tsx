@@ -4,11 +4,10 @@ import Skeleton from '@mui/material/Skeleton';
 import type { FC } from 'react';
 
 import { useColorMode } from '@/components/contexts/ColorModeContext';
-import type { presentialProfileProps } from '@/components/pages/Profile/Profile';
+import { useUserInfoContext } from '@/components/contexts/UserInfoContext';
+import type { baseUserInfo } from '@/components/hooks/useUserInfo';
 
-export type userNameProps = presentialProfileProps;
-
-export type presentialUserNameProps = userNameProps;
+export type presentialUserNameProps = baseUserInfo;
 
 export const PresentialUserName: FC<presentialUserNameProps> = ({
   userData,
@@ -42,6 +41,7 @@ export const PresentialUserName: FC<presentialUserNameProps> = ({
   );
 };
 
-export const UserName: FC<userNameProps> = (props) => {
-  return <PresentialUserName {...props} />;
+export const UserName: FC = (props) => {
+  const { user, userData } = useUserInfoContext();
+  return <PresentialUserName user={user} userData={userData} {...props} />;
 };

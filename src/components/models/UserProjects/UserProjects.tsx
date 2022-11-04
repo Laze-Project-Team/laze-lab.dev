@@ -9,23 +9,21 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import type { FC } from 'react';
 import { useCallback } from 'react';
-import { mutate } from 'swr';
 
-import type { presentialProfileProps } from '@/components/pages/Profile/Profile';
+import { useUserInfoContext } from '@/components/contexts/UserInfoContext';
+import type { baseUserInfo } from '@/components/hooks/useUserInfo';
 import { useProjectManager } from '@/lib/firebase/project';
 import { useUserManager } from '@/lib/firebase/user';
 import type { userData as userDataType } from '@/typings/database';
 
 import { UserProjectList } from './UserProjectList';
 
-export type userProjectsProps = presentialProfileProps;
-
 export type presentialUserProjectsProps = {
   handleClickNewProject: () => Promise<void>;
   syncUserData: (
     userDataCallback: (userData: userDataType) => userDataType,
   ) => void;
-} & userProjectsProps;
+} & baseUserInfo;
 
 export const PresentialUserProjects: FC<presentialUserProjectsProps> = ({
   userData,
@@ -81,13 +79,14 @@ export const PresentialUserProjects: FC<presentialUserProjectsProps> = ({
   );
 };
 
-export const UserProjects: FC<userProjectsProps> = ({
-  user,
-  userData,
-  ...props
-}) => {
+export const UserProjects: FC = ({ ...props }) => {
   const [t] = useTranslation('profile');
   const { locale } = useRouter();
+  const {
+    user,
+    userData,
+    syncUserData: syncSWRUserData,
+  } = useUserInfoContext();
 
   const { createProject } = useProjectManager();
   const { updateUserData } = useUserManager();
@@ -98,9 +97,9 @@ export const UserProjects: FC<userProjectsProps> = ({
       const data = userData.data;
       if (!data) return;
 
-      mutate('userData', userDataCallback(data));
+      syncSWRUserData(userDataCallback(data));
     },
-    [userData],
+    [syncSWRUserData, userData.data],
   );
 
   const handleClickNewProject = async () => {

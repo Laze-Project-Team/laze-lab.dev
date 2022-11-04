@@ -162,16 +162,16 @@ exports[`should be rendered correctly 1`] = `
                 class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-cwtuop-MuiSkeleton-root-PresentialUserName"
               />
             </div>
-            <p
-              class="css-13iez5p-PresentialProfile"
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-1rwt2y5-MuiButtonBase-root-MuiButton-root"
+              tabindex="0"
+              type="button"
             >
-              <a
-                class="css-1ln0tcx-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
-                href="/profile/edit"
-              >
-                profile.edit
-              </a>
-            </p>
+              profile.edit
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
           </div>
         </div>
         <div

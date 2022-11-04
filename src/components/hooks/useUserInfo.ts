@@ -1,6 +1,6 @@
 import type { User } from 'firebase/auth';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import type { SWRResponse } from 'swr';
 import { mutate } from 'swr';
 import useSWRImmutable from 'swr/immutable';
@@ -9,14 +9,18 @@ import { pagesPath } from '@/lib/$path';
 import { useUserManager } from '@/lib/firebase/user';
 import type { userData } from '@/typings/database';
 
-export type userInfo = {
+export type baseUserInfo = {
   user: User | null | undefined;
   userData: SWRResponse<userData | null | undefined>;
 };
 
+export type userInfo = {
+  syncUserData: (data?: userData) => void;
+} & baseUserInfo;
+
 /**
  * @description get "User" and "userData" using SWR
- * @return {userInfo}
+ * @return {baseUserInfo}
  */
 export const useUserInfo = (): userInfo => {
   const { getUser, fetchUserData } = useUserManager();
@@ -25,21 +29,27 @@ export const useUserInfo = (): userInfo => {
     'userData',
     () => user && fetchUserData(user),
   );
+  const syncUserData = useCallback(
+    (data?: userData) => {
+      // update userData when user is changed
+      mutate('userData', data ?? (user && fetchUserData(user)));
+    },
+    [fetchUserData, user],
+  );
 
   useEffect(() => {
-    // update userData when user is changed
-    mutate('userData', user && fetchUserData(user));
-  }, [fetchUserData, user]);
+    syncUserData();
+  }, [syncUserData]);
 
-  return { user, userData };
+  return { user, userData, syncUserData };
 };
 
 /**
  * @description almost same as useUserInfo but push back to Home when user is not logged in
- * @return {userInfo}
+ * @return {baseUserInfo}
  */
 export const useUserInfoStrictly = (): userInfo => {
-  const { user, userData } = useUserInfo();
+  const { user, userData, syncUserData } = useUserInfo();
 
   const { push } = useRouter();
   useEffect(() => {
@@ -49,5 +59,5 @@ export const useUserInfoStrictly = (): userInfo => {
     }
   }, [push, user]);
 
-  return { user, userData };
+  return { user, userData, syncUserData };
 };
