@@ -84,12 +84,20 @@ export const PresentialProfile: FC<presentialProfileProps> = ({ userData }) => {
   );
 };
 
-export const Profile: FC = () => {
+export const UnwrappedProfile: FC = () => {
   const { user, userData } = useUserInfoContext();
 
   return (
     <UserInfoProvider>
       <PresentialProfile user={user} userData={userData} />
+    </UserInfoProvider>
+  );
+};
+
+export const Profile: FC = () => {
+  return (
+    <UserInfoProvider>
+      <UnwrappedProfile />
     </UserInfoProvider>
   );
 };

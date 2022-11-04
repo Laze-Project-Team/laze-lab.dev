@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 
 import { useColorMode } from '@/components/contexts/ColorModeContext';
 import { useUserInfoContext } from '@/components/contexts/UserInfoContext';
+import type { baseUserInfo } from '@/components/hooks/useUserInfo';
 import { useUserManager } from '@/lib/firebase/user';
 
 import { UploadAvatarButton } from './UploadAvatarButton';
@@ -18,9 +19,12 @@ import { UploadConfirmationDialog } from './UploadConfirmationDialog';
 
 export type presentialUserAvatarProps = {
   handleChange: ChangeEventHandler<HTMLInputElement>;
-} & uploadConfirmationDialogProps;
+} & baseUserInfo &
+  uploadConfirmationDialogProps;
 
 export const PresentialUserAvatar: FC<presentialUserAvatarProps> = ({
+  user,
+  userData,
   avatarFile,
   isAvatarUploading,
   confirmError,
@@ -30,7 +34,6 @@ export const PresentialUserAvatar: FC<presentialUserAvatarProps> = ({
   handleErrorClose,
   ...props
 }) => {
-  const { user, userData } = useUserInfoContext();
   const { themePattern } = useColorMode();
   const borderColor = themePattern(grey['300'], grey['800']);
 
@@ -84,7 +87,7 @@ export const PresentialUserAvatar: FC<presentialUserAvatarProps> = ({
 
 export const UserAvatar: FC = ({ ...props }) => {
   const [t] = useTranslation('profile');
-  const { user, syncUserData } = useUserInfoContext();
+  const { user, userData, syncUserData } = useUserInfoContext();
   const { updateUserAvatar } = useUserManager();
 
   const [avatarFile, setAvatarFile] =
@@ -146,6 +149,8 @@ export const UserAvatar: FC = ({ ...props }) => {
 
   return (
     <PresentialUserAvatar
+      user={user}
+      userData={userData}
       avatarFile={avatarFile}
       isAvatarUploading={isAvatarUploading}
       confirmError={confirmError}

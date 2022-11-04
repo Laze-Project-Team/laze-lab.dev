@@ -20,7 +20,7 @@ import { localeList } from '@/const/locale';
 import { useUserManager } from '@/lib/firebase/user';
 import type { localeId } from '@/lib/utils/isLocale';
 
-export type ProfileEditDialogButtonProps = ButtonProps;
+export type profileEditDialogButtonProps = ButtonProps;
 
 export type presentialProfileEditDialogButtonProps = {
   open: boolean;
@@ -29,7 +29,7 @@ export type presentialProfileEditDialogButtonProps = {
   handleOpen: () => void;
   handleClose: () => void;
   handleSubmit: (data: profileEditFormValue) => void;
-} & ProfileEditDialogButtonProps;
+} & profileEditDialogButtonProps;
 
 export type profileEditFormValue = {
   name: string;
@@ -102,7 +102,7 @@ export const PresentialProfileEditDialogButton: FC<
   );
 };
 
-export const ProfileEditDialogButton: FC<ProfileEditDialogButtonProps> = ({
+export const ProfileEditDialogButton: FC<profileEditDialogButtonProps> = ({
   ...props
 }) => {
   const [t] = useTranslation('profile');
