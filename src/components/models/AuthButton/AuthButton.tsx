@@ -7,12 +7,7 @@ import { useCallback } from 'react';
 import type { authMethod, authType } from '@/components/hooks/useAuth';
 import { useAuth } from '@/components/hooks/useAuth';
 import { useAuthError } from '@/components/layouts/LoginLayout/useAuthError';
-import {
-  GitHubAuthButtonBase,
-  GoogleAuthButtonBase,
-  TwitterAuthButtonBase,
-} from '@/components/ui/AuthButtonBase';
-import type { authButtonBaseProps } from '@/components/ui/AuthButtonBase/AuthButtonBase';
+import { AuthButtonBases } from '@/components/ui/AuthButtonBase';
 
 export const authIconStyle = css`
   width: 1.5rem;
@@ -26,12 +21,6 @@ export type authButtonProps = {
 export type presentialAuthButtonProps = {
   onClick: MouseEventHandler<HTMLButtonElement>;
 } & authButtonProps;
-
-const AuthButtonBases: Record<authMethod, FC<authButtonBaseProps>> = {
-  Google: GoogleAuthButtonBase,
-  Twitter: TwitterAuthButtonBase,
-  GitHub: GitHubAuthButtonBase,
-};
 
 export const PresentialAuthButton: FC<presentialAuthButtonProps> = ({
   onClick,
