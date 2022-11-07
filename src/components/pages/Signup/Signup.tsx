@@ -12,11 +12,7 @@ import {
   AuthError,
   AuthErrorProvider,
 } from '@/components/layouts/LoginLayout/AuthError';
-import {
-  GitHubAuthButton,
-  GoogleAuthButton,
-  TwitterAuthButton,
-} from '@/components/models/AuthButton';
+import { AuthButton } from '@/components/models/AuthButton';
 import { SignupForm } from '@/components/models/AuthForm';
 import { DefaultLink } from '@/components/ui/DefaultLink';
 import { pagesPath } from '@/lib/$path';
@@ -34,9 +30,9 @@ export const PresentialSignup: FC = () => {
             <AuthError />
           </Box>
           <Stack spacing={2} direction="column">
-            <GoogleAuthButton type="signup" />
-            <TwitterAuthButton type="signup" />
-            <GitHubAuthButton type="signup" />
+            <AuthButton method="Google" authType="signup" />
+            <AuthButton method="Twitter" authType="signup" />
+            <AuthButton method="GitHub" authType="signup" />
           </Stack>
         </AuthErrorProvider>
 

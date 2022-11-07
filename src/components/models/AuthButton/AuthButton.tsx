@@ -1,48 +1,53 @@
 import { css } from '@emotion/react';
 import type { ButtonProps } from '@mui/material/Button';
-import Button from '@mui/material/Button';
 import { useTranslation } from 'next-i18next';
-import type { FC, MouseEventHandler, ReactNode } from 'react';
+import type { FC, MouseEventHandler } from 'react';
 import { useCallback } from 'react';
 
 import type { authMethod, authType } from '@/components/hooks/useAuth';
 import { useAuth } from '@/components/hooks/useAuth';
 import { useAuthError } from '@/components/layouts/LoginLayout/useAuthError';
+import {
+  GitHubAuthButtonBase,
+  GoogleAuthButtonBase,
+  TwitterAuthButtonBase,
+} from '@/components/ui/AuthButtonBase';
+import type { authButtonBaseProps } from '@/components/ui/AuthButtonBase/AuthButtonBase';
 
 export const authIconStyle = css`
   width: 1.5rem;
   height: 1.5rem;
 `;
 export type authButtonProps = {
-  type: authType;
+  authType: authType;
   method: authMethod;
-  icon?: ReactNode;
-} & Omit<ButtonProps, 'type'>;
+} & ButtonProps;
 
 export type presentialAuthButtonProps = {
   onClick: MouseEventHandler<HTMLButtonElement>;
 } & authButtonProps;
 
+const AuthButtonBases: Record<authMethod, FC<authButtonBaseProps>> = {
+  Google: GoogleAuthButtonBase,
+  Twitter: TwitterAuthButtonBase,
+  GitHub: GitHubAuthButtonBase,
+};
+
 export const PresentialAuthButton: FC<presentialAuthButtonProps> = ({
   onClick,
-  type,
+  authType,
   method,
-  icon,
   ...props
 }) => {
-  const [t] = useTranslation(type);
+  const [t] = useTranslation(authType);
+
+  const AuthButtonBase = AuthButtonBases[method];
 
   return (
     <>
-      <Button
-        variant="outlined"
-        onClick={onClick}
-        startIcon={icon}
-        {...props}
-        sx={{ textTransform: 'none' }}
-      >
+      <AuthButtonBase onClick={onClick} {...props}>
         {t('authwith', { method })}
-      </Button>
+      </AuthButtonBase>
     </>
   );
 };

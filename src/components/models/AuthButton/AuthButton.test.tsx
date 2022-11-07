@@ -15,16 +15,19 @@ it('should be rendered correctly', () => {
 
   for (const method of methods) {
     for (const type of types) {
-      const { container } = render(<AuthButton method={method} type={type} />, {
-        wrapper: AuthErrorProvider,
-      });
+      const { container } = render(
+        <AuthButton method={method} authType={type} />,
+        {
+          wrapper: AuthErrorProvider,
+        },
+      );
       expect(container.firstChild).toMatchSnapshot();
     }
   }
 });
 
 it('should have "button" role', () => {
-  render(<AuthButton method="Google" type="login" />, {
+  render(<AuthButton method="Google" authType="login" />, {
     wrapper: AuthErrorProvider,
   });
   expect(screen.getByRole('button')).toBeInTheDocument();

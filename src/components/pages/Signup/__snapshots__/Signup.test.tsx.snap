@@ -36,7 +36,7 @@ exports[`should be rendered correctly 1`] = `
       class="css-1p5q5e5-MuiStack-root"
     >
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedInherit MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorInherit css-122v83d-MuiButtonBase-root-MuiButton-root-GoogleAuthButton"
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-1h349pu-MuiButtonBase-root-MuiButton-root-googleAuthButtonStyle-GoogleAuthButtonBase"
         tabindex="0"
         type="button"
       >
@@ -73,7 +73,7 @@ exports[`should be rendered correctly 1`] = `
         />
       </button>
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-xc95sr-MuiButtonBase-root-MuiButton-root-TwitterAuthButton"
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-uahfif-MuiButtonBase-root-MuiButton-root-twitterAuthButtonStyle"
         tabindex="0"
         type="button"
       >
@@ -82,7 +82,7 @@ exports[`should be rendered correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-9wsq0j-MuiSvgIcon-root-authIconStyle-TwitterAuthButton"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1qul6xz-MuiSvgIcon-root-authIconStyle-twitterIconStyle"
             data-testid="TwitterIcon"
             focusable="false"
             viewBox="0 0 24 24"
@@ -98,7 +98,7 @@ exports[`should be rendered correctly 1`] = `
         />
       </button>
       <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-fsg24z-MuiButtonBase-root-MuiButton-root-GitHubAuthButton"
+        class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium css-1lozw16-MuiButtonBase-root-MuiButton-root-githubAuthButtonStyle"
         tabindex="0"
         type="button"
       >
@@ -107,7 +107,7 @@ exports[`should be rendered correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-ql7u85-MuiSvgIcon-root-authIconStyle-GitHubAuthButton"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-185grv1-MuiSvgIcon-root-authIconStyle-githubIconStyle"
             data-testid="GitHubIcon"
             focusable="false"
             viewBox="0 0 24 24"
