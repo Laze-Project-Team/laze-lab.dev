@@ -4,6 +4,7 @@
   "profile": {
     "edit": "プロフィール情報を編集",
     "edit_submit": "更新",
+    "edit_cancel": "キャンセル",
     "edit_success": "プロフィール情報を正常に更新しました！",
     "edit_failed": "プロフィール情報を更新できませんでした",
     "avatar": {
@@ -43,16 +44,18 @@
     }
   },
   "auth": {
+    "edit": "認証情報を編集",
+    "edit_cancel": "キャンセル",
+    "edit_submit": "更新",
+    "edit_failed": "認証情報の更新中にエラーが発生しました",
+    "edit_success": "認証情報を正常に更新しました",
     "auth_info": "認証情報",
-    "auth_with_email": "Eメール認証",
-    "email": {
-      "label": "Eメール"
-    },
-    "password": {
-      "label": "パスワード"
-    },
-    "auth_with_google": "Google認証",
-    "auth_with_twitter": "Twitter認証",
-    "auth_with_github": "GitHub認証"
+    "auth_with": "{{method}}で認証",
+    "unlink": "アカウント連携を解除",
+    "unlink_confirmation": "本当に{{method}}のアカウント連携を解除してもよろしいですか？",
+    "unlink_cancel": "キャンセル",
+    "unlink_confirm": "解除",
+    "unlink_failed": "アカウント連携の解除に失敗しました",
+    "unlink_success": "アカウント連携を正常に解除できました"
   }
 }

@@ -22,7 +22,16 @@ export const userMock: User | null | undefined = {
   metadata: {},
   phoneNumber: null,
   photoURL: null,
-  providerData: [],
+  providerData: [
+    {
+      providerId: 'google.com',
+      uid: 'unique-id',
+      displayName: 'Laze Project Team',
+      email: 'laze@example.com',
+      phoneNumber: '',
+      photoURL: 'https://laze.ddns.net/img/logo/logo.png',
+    },
+  ],
   providerId: 'email',
   refreshToken: 'token',
   reload: async () => void 0,

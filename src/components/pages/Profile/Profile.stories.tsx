@@ -1,6 +1,9 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { User } from 'firebase/auth';
 
-import { userDataLoadingMock, userDataMock, userMock } from '/__mocks__/user';
+import { mockSWRResponse } from '/__mocks__/swr';
+import { userDataMock, userMock } from '/__mocks__/user';
+import type { userData } from '@/typings/database';
 
 import { PresentialProfile } from './Profile';
 
@@ -15,12 +18,12 @@ const Template: ComponentStory<typeof PresentialProfile> = (props) => (
 
 export const Primary = Template.bind({});
 Primary.args = {
-  user: userMock,
-  userData: userDataMock,
+  user: mockSWRResponse(userMock),
+  userData: mockSWRResponse(userDataMock),
 };
 
 export const Loading = Template.bind({});
 Loading.args = {
-  user: null,
-  userData: userDataLoadingMock,
+  user: mockSWRResponse(null as User | null | undefined),
+  userData: mockSWRResponse(null as userData | null | undefined),
 };

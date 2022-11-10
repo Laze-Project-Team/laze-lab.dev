@@ -11,6 +11,7 @@ import {
 import { Descriptions } from '@/components/functional/Descriptions';
 import type { baseUserInfo } from '@/components/hooks/useUserInfo';
 import { IndexLayout } from '@/components/layouts/IndexLayout';
+import { AuthEditDialogButton } from '@/components/models/AuthEditDialog';
 import { ProfileEditDialogButton } from '@/components/models/ProfileEditDialogButton';
 import { UserAvatar } from '@/components/models/UserAvatar';
 import { UserName } from '@/components/models/UserName';
@@ -67,6 +68,7 @@ export const PresentialProfile: FC<presentialProfileProps> = ({ userData }) => {
               </div>
               <UserName />
               <ProfileEditDialogButton variant="outlined" />
+              <AuthEditDialogButton variant="outlined" />
             </Stack>
           </Grid>
           <Grid

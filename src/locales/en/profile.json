@@ -5,6 +5,7 @@
   "profile": {
     "edit": "edit profile info",
     "edit_submit": "Update profile",
+    "edit_cancel": "Cancel",
     "edit_success": "Your profile information has been successfully updated!",
     "edit_failed": "Profile information could not be updated.",
     "avatar": {
@@ -29,6 +30,10 @@
       "title": "My Projects",
       "image": "Project image",
       "delete": "Delete",
+      "delete_confirm_title": "Confirm deletion",
+      "delete_confirm_description": "Are you sure you want to delete {{project}}?",
+      "delete_cancel": "Cancel",
+      "delete_confirm": "Delete",
       "add": "Add new",
       "lastMod": "Last Modification - {{date}}",
       "newProject": "New project",
@@ -39,5 +44,20 @@
         "delete": "Failed to delete the project."
       }
     }
+  },
+  "auth": {
+    "edit": "Edit authentication info",
+    "edit_cancel": "Cancel",
+    "edit_submit": "Update",
+    "edit_failed": "An error occurred while updating credentials",
+    "edit_success": "Authentication information has been successfully updated.",
+    "auth_info": "Authentication info",
+    "auth_with": "Authentication by {{method}}",
+    "unlink": "Cancel account linkage",
+    "unlink_confirmation": "Are you sure you want to remove the {{method}} account linkage?",
+    "unlink_cancel": "Cancel",
+    "unlink_confirm": "Unlink",
+    "unlink_failed": "Failed to unlink accounts.",
+    "unlink_success": "Account linkage has been successfully deactivated."
   }
 }
