@@ -1,9 +1,11 @@
 import type { FC, ReactNode } from 'react';
 import { vi } from 'vitest';
 
+import { mockSWRResponse } from '/__mocks__/swr';
 import { userDataMock, userMock } from '/__mocks__/user';
 import { userInfoContext } from '@/components/contexts/UserInfoContext';
 
+export const syncUserMock = vi.fn();
 export const syncUserDataMock = vi.fn();
 
 export const UserInfoProvider: FC<{ children?: ReactNode }> = ({
@@ -11,8 +13,9 @@ export const UserInfoProvider: FC<{ children?: ReactNode }> = ({
 }) => (
   <userInfoContext.Provider
     value={{
-      user: userMock,
-      userData: userDataMock,
+      user: mockSWRResponse(userMock),
+      userData: mockSWRResponse(userDataMock),
+      syncUser: syncUserMock,
       syncUserData: syncUserDataMock,
     }}
   >

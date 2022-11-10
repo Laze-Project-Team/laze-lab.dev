@@ -88,6 +88,7 @@ export const PresentialProfileEditDialogButton: FC<
           </Stack>
         </DialogContent>
         <DialogActions>
+          <Button onClick={handleClose}>{t('profile.edit_cancel')}</Button>
           <LoadingButton
             type="submit"
             loading={isSubmitting}
@@ -124,8 +125,9 @@ export const ProfileEditDialogButton: FC<profileEditDialogButtonProps> = ({
 
   const handleSubmit = (data: profileEditFormValue) => {
     setIsSubmitting(true);
-    if (user) {
-      updateUserData(user, data)
+    const currentUser = user.data;
+    if (currentUser) {
+      updateUserData(currentUser, data)
         .then(() => {
           syncUserData();
           toast(t('profile.edit_success'), { type: 'success' });

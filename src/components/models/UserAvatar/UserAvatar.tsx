@@ -58,7 +58,7 @@ export const PresentialUserAvatar: FC<presentialUserAvatarProps> = ({
                 sx={{ width: '100%', height: '100%' }}
               />
             ) : (
-              <Jdenticon size="100%" value={user?.uid ?? 'some text'} />
+              <Jdenticon size="100%" value={user.data?.uid ?? 'some text'} />
             )}
             <UploadAvatarButton
               handleChange={handleChange}
@@ -115,7 +115,9 @@ export const UserAvatar: FC = ({ ...props }) => {
   const handleConfirm: presentialUserAvatarProps['handleConfirm'] = () => {
     setIsAvatarUploading(true);
 
-    if (user == null) {
+    const currentUser = user.data;
+
+    if (!currentUser) {
       setConfirmError(t('profile.avatar.edit.error'));
       return;
     }
@@ -125,7 +127,7 @@ export const UserAvatar: FC = ({ ...props }) => {
       return;
     }
 
-    updateUserAvatar(user, avatarFile)
+    updateUserAvatar(currentUser, avatarFile)
       .then(() => {
         setAvatarFile(null);
       })

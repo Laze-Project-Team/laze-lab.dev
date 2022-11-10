@@ -103,12 +103,15 @@ export const UserProjects: FC = ({ ...props }) => {
   );
 
   const handleClickNewProject = async () => {
-    if (!user) {
+    const currentUser = user.data;
+
+    if (!currentUser) {
+      // TODO: error handling
       return;
     }
 
     const projectId = await createProject({
-      owner: user.uid,
+      owner: currentUser.uid,
       config: {
         name: t('profile.projects.newProject'),
         description: '',
@@ -119,7 +122,7 @@ export const UserProjects: FC = ({ ...props }) => {
       },
     });
 
-    await updateUserData(user, { projects: arrayUnion(projectId) });
+    await updateUserData(currentUser, { projects: arrayUnion(projectId) });
 
     syncUserData((userData) => ({
       ...userData,

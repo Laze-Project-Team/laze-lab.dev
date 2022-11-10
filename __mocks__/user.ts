@@ -1,9 +1,8 @@
 import type { User } from 'firebase/auth';
-import type { SWRResponse } from 'swr';
 
 import type { userData } from '@/typings/database';
 
-export const userMock: User = {
+export const userMock: User | null | undefined = {
   uid: 'unique-id',
   delete: async () => void 0,
   displayName: 'Laze Project Team',
@@ -31,35 +30,10 @@ export const userMock: User = {
   toJSON: () => ({}),
 };
 
-export const userDataMock: SWRResponse<userData | null | undefined> = {
-  isValidating: false,
-  mutate: async (_a: unknown, _b: unknown) => void 0,
-  data: {
-    name: 'Laze Project Team',
-    avatarURL: 'https://laze.ddns.net/img/logo/logo.png',
-    locale: 'ja',
-    projects: [],
-    createdAt: new Date(),
-  },
-};
-
-export const getUserDataMock = <T extends Partial<userData>>(
-  data: T,
-): SWRResponse<userData | null | undefined> => ({
-  isValidating: false,
-  mutate: async (_a: unknown, _b: unknown) => void 0,
-  data: {
-    name: 'Laze Project Team',
-    avatarURL: 'https://laze.ddns.net/img/logo/logo.png',
-    locale: 'ja',
-    projects: [],
-    createdAt: new Date(),
-    ...data,
-  },
-});
-
-export const userDataLoadingMock: SWRResponse<userData | null | undefined> = {
-  isValidating: false,
-  mutate: async (_a: unknown, _b: unknown) => void 0,
-  data: null,
+export const userDataMock: userData | null | undefined = {
+  name: 'Laze Project Team',
+  avatarURL: 'https://laze.ddns.net/img/logo/logo.png',
+  locale: 'ja',
+  projects: [],
+  createdAt: new Date(),
 };

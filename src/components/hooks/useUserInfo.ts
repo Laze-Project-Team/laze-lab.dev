@@ -10,11 +10,12 @@ import { useUserManager } from '@/lib/firebase/user';
 import type { userData } from '@/typings/database';
 
 export type baseUserInfo = {
-  user: User | null | undefined;
+  user: SWRResponse<User | null | undefined>;
   userData: SWRResponse<userData | null | undefined>;
 };
 
 export type userInfo = {
+  syncUser: () => void;
   syncUserData: (data?: userData) => void;
 } & baseUserInfo;
 
@@ -23,16 +24,16 @@ export type userInfo = {
  * @return {baseUserInfo}
  */
 export const useUserInfo = (): userInfo => {
-  const { getUser, fetchUserData } = useUserManager();
+  const { getUser, fetchUserData, syncUser } = useUserManager();
   const user = getUser();
   const userData = useSWRImmutable(
     'userData',
-    () => user && fetchUserData(user),
+    () => user.data && fetchUserData(user.data),
   );
   const syncUserData = useCallback(
     (data?: userData) => {
       // update userData when user is changed
-      mutate('userData', data ?? (user && fetchUserData(user)));
+      mutate('userData', data ?? (user.data && fetchUserData(user.data)));
     },
     [fetchUserData, user],
   );
@@ -41,7 +42,7 @@ export const useUserInfo = (): userInfo => {
     syncUserData();
   }, [syncUserData]);
 
-  return { user, userData, syncUserData };
+  return { user, userData, syncUser, syncUserData };
 };
 
 /**
@@ -49,7 +50,7 @@ export const useUserInfo = (): userInfo => {
  * @return {baseUserInfo}
  */
 export const useUserInfoStrictly = (): userInfo => {
-  const { user, userData, syncUserData } = useUserInfo();
+  const { user, userData, syncUser, syncUserData } = useUserInfo();
 
   const { push } = useRouter();
   useEffect(() => {
@@ -59,5 +60,5 @@ export const useUserInfoStrictly = (): userInfo => {
     }
   }, [push, user]);
 
-  return { user, userData, syncUserData };
+  return { user, userData, syncUser, syncUserData };
 };
