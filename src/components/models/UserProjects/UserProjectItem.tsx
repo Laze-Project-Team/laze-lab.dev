@@ -101,6 +101,7 @@ export const PresentialUserProjectItem: FC<presentialUserItemProps> = ({
                 css={css`
                   font-weight: bold;
                 `}
+                key="project-name"
               >
                 {projectMeta.data?.config.name ?? '???'}
               </span>,
