@@ -95,6 +95,7 @@ export const PresentialSignupForm: FC<presentialSignupFormProps> = ({
                   id="signup-password"
                   autoComplete="new-password"
                   type={showPassword ? 'text' : 'password'}
+                  inputProps={{ role: 'textbox' }}
                   error={!!errors.password?.type}
                   endAdornment={
                     <InputAdornment position="end">
