@@ -1,9 +1,16 @@
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import Backdrop from '@mui/material/Backdrop';
 import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
 import CircularProgress from '@mui/material/CircularProgress';
+import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/material/FormHelperText';
+import IconButton from '@mui/material/IconButton';
+import Input from '@mui/material/Input';
+import InputAdornment from '@mui/material/InputAdornment';
+import InputLabel from '@mui/material/InputLabel';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import { useRouter } from 'next/router';
@@ -30,6 +37,8 @@ export type presentialSignupFormProps = {
   errors: FieldErrorsImpl<signupFormValue>;
   isValid: boolean;
   isProcessing: boolean;
+  showPassword: boolean;
+  handleClickShowPassword: () => void;
 };
 
 export const PresentialSignupForm: FC<presentialSignupFormProps> = ({
@@ -38,6 +47,8 @@ export const PresentialSignupForm: FC<presentialSignupFormProps> = ({
   errors,
   isValid,
   isProcessing,
+  showPassword,
+  handleClickShowPassword,
 }) => {
   const [t] = useTranslation('signup');
 
@@ -59,6 +70,7 @@ export const PresentialSignupForm: FC<presentialSignupFormProps> = ({
             render={({ field }) => {
               return (
                 <TextField
+                  autoComplete="email"
                   label={t('form.label.email')}
                   variant="standard"
                   error={!!errors.email?.type}
@@ -75,17 +87,35 @@ export const PresentialSignupForm: FC<presentialSignupFormProps> = ({
             control={control}
             rules={{ required: true }}
             render={({ field }) => (
-              <TextField
-                label={t('form.label.password')}
-                variant="standard"
-                error={!!errors.password?.type}
-                helperText={
-                  errors.password?.type
-                    ? t('form.message.password.required')
-                    : ' '
-                }
-                {...field}
-              />
+              <FormControl variant="standard">
+                <InputLabel htmlFor="signup-password">
+                  {t('form.label.password')}
+                </InputLabel>
+                <Input
+                  id="signup-password"
+                  autoComplete="new-password"
+                  type={showPassword ? 'text' : 'password'}
+                  error={!!errors.password?.type}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label={t('form.label.show_password')}
+                        onClick={handleClickShowPassword}
+                      >
+                        {showPassword ? (
+                          <VisibilityOffIcon />
+                        ) : (
+                          <VisibilityIcon />
+                        )}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                  {...field}
+                />
+                <FormHelperText error>
+                  {errors.password ? t('form.message.password.required') : ' '}
+                </FormHelperText>
+              </FormControl>
             )}
           />
           <Controller
@@ -140,6 +170,7 @@ export const SignupForm: FC = (props) => {
   const { handleError } = useAuthError();
   const { push } = useRouter();
   const [isProcessing, setIsProcessing] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     control,
@@ -165,6 +196,10 @@ export const SignupForm: FC = (props) => {
       .finally(() => setIsProcessing(false));
   };
 
+  const handleClickShowPassword = () => {
+    setShowPassword((show) => !show);
+  };
+
   return (
     <PresentialSignupForm
       onSubmit={handleSubmit(onSubmit)}
@@ -172,6 +207,8 @@ export const SignupForm: FC = (props) => {
       errors={errors}
       isValid={isValid}
       isProcessing={isProcessing}
+      showPassword={showPassword}
+      handleClickShowPassword={handleClickShowPassword}
       {...props}
     />
   );

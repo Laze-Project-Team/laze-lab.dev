@@ -7,6 +7,7 @@
     "label": {
       "email": "Email address",
       "password": "Password",
+      "show_password": "Toggle password visibility",
       "agreement": "I agree to the <0>Terms of Use</0> and <1>Privacy Policy</1>.",
       "agreement_text": "By creating an account, you agree to the <0>Terms of Use</0> and <1>Privacy Policy</1>",
       "submit": "Register"
