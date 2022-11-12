@@ -33,7 +33,7 @@ export const PresentialLoadingButton: FC<presentialLoadingButtonProps> = ({
           )
         }
         size={size}
-        disabled={loading}
+        {...(loading ? { disabled: true } : {})}
       />
     </>
   );
