@@ -1,5 +1,23 @@
 {
   "motto": "全ての人に快適なプログラミングを",
   "backToHome": "ホームに戻る",
-  "DeepL": "[DeepL](https://www.deepl.com/translator)によって翻訳されています"
+  "DeepL": "[DeepL](https://www.deepl.com/translator)によって翻訳されています",
+
+  "form": {
+    "email": {
+      "label": "メールアドレス",
+      "required": "メールアドレスは必須です"
+    },
+    "password": {
+      "label": "パスワード",
+      "show_button": "パスワードの表示/非表示を変更",
+      "required": "パスワードは必須です",
+      "min_length": "パスワードは8文字以上である必要があります"
+    },
+    "agreement": {
+      "label": "<0>利用規約</0>と<1>プライバシーポリシー</1>に同意する",
+      "description": "アカウントを作成すると、<0>利用規約</0>と<1>プライバシーポリシー</1>に同意したことになります",
+      "required": "利用規約とプライバシーポリシーに同意してください"
+    }
+  }
 }

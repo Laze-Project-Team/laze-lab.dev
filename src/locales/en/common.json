@@ -2,5 +2,23 @@
   "motto": "A Great Programming Experience For All",
   "copyright": "© 2021-2022 Laze Project Team",
   "backToHome": "Back to home",
-  "DeepL": "Translated with [DeepL](https://www.deepl.com/translator)"
+  "DeepL": "Translated with [DeepL](https://www.deepl.com/translator)",
+
+  "form": {
+    "email": {
+      "label": "E-mail address",
+      "required": "Email address is required."
+    },
+    "password": {
+      "label": "Password",
+      "show_button": "Toggle password visibility",
+      "required": "Password is required.",
+      "min_length": "Password must be at least 8 characters."
+    },
+    "agreement": {
+      "label": "I agree to the <0>Terms of Use</0> and <1>Privacy Policy</1>.",
+      "description": "By creating an account, you agree to the <0>Terms of Use</0> and <1>Privacy Policy</1>.",
+      "required": "Please agree to the Terms of Use and Privacy Policy."
+    }
+  }
 }
