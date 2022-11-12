@@ -177,13 +177,12 @@ exports[`should be rendered correctly 1`] = `
             for=":r0:"
             id=":r0:-label"
           >
-            form.label.email
+            form.email.label
           </label>
           <div
             class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-1ptx2yq-MuiInputBase-root-MuiInput-root"
           >
             <input
-              aria-describedby=":r0:-helper-text"
               aria-invalid="false"
               autocomplete="email"
               class="MuiInputBase-input MuiInput-input css-1x51dt5-MuiInputBase-input-MuiInput-input"
@@ -193,16 +192,6 @@ exports[`should be rendered correctly 1`] = `
               type="text"
             />
           </div>
-          <p
-            class="MuiFormHelperText-root MuiFormHelperText-sizeMedium css-1d1r5q-MuiFormHelperText-root"
-            id=":r0:-helper-text"
-          >
-            <span
-              class="notranslate"
-            >
-              ​
-            </span>
-          </p>
         </div>
         <div
           class="MuiFormControl-root css-1nrlq1o-MuiFormControl-root"
@@ -210,9 +199,9 @@ exports[`should be rendered correctly 1`] = `
           <label
             class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-colorPrimary css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root"
             data-shrink="false"
-            for="signup-password"
+            for="password-input"
           >
-            form.label.password
+            form.password.label
           </label>
           <div
             class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedEnd css-1ptx2yq-MuiInputBase-root-MuiInput-root"
@@ -222,7 +211,7 @@ exports[`should be rendered correctly 1`] = `
               autocomplete="new-password"
               class="MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedEnd css-1x51dt5-MuiInputBase-input-MuiInput-input"
               defaultvalue=""
-              id="signup-password"
+              id="password-input"
               name="password"
               role="textbox"
               type="password"
@@ -231,7 +220,7 @@ exports[`should be rendered correctly 1`] = `
               class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-standard MuiInputAdornment-sizeMedium css-1laqsz7-MuiInputAdornment-root"
             >
               <button
-                aria-label="form.label.show_password"
+                aria-label="form.password.show_button"
                 class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
                 tabindex="0"
                 type="button"
@@ -254,46 +243,60 @@ exports[`should be rendered correctly 1`] = `
             </div>
           </div>
           <p
-            class="MuiFormHelperText-root Mui-error MuiFormHelperText-sizeMedium css-1d1r5q-MuiFormHelperText-root"
+            class="MuiFormHelperText-root MuiFormHelperText-sizeMedium css-1d1r5q-MuiFormHelperText-root"
           >
-            <span
-              class="notranslate"
-            >
-              ​
-            </span>
+            form.password.min_length
           </p>
         </div>
-        <label
-          class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
+        <div
+          class="MuiFormControl-root css-1nrlq1o-MuiFormControl-root"
         >
-          <span
-            class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorPrimary css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root"
+          <label
+            class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
+            for="agreement-checkbox"
           >
-            <input
-              class="PrivateSwitchBase-input css-1m9pwf3"
-              data-indeterminate="false"
-              defaultvalue="false"
-              name="agreement"
-              type="checkbox"
-              value="false"
-            />
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-              data-testid="CheckBoxOutlineBlankIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
-              />
-            </svg>
             <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            />
-          </span>
-          <span
-            class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+              class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorPrimary css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root"
+            >
+              <input
+                class="PrivateSwitchBase-input css-1m9pwf3"
+                data-indeterminate="false"
+                defaultvalue="false"
+                id="agreement-checkbox"
+                name="agreement"
+                type="checkbox"
+                value="false"
+              />
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="CheckBoxOutlineBlankIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                />
+              </svg>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </span>
+            <span
+              class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+            >
+              <a
+                class="css-1ln0tcx-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
+                href="/terms"
+              />
+              <a
+                class="css-1ln0tcx-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
+                href="/privacy"
+              />
+            </span>
+          </label>
+          <p
+            class="MuiFormHelperText-root MuiFormHelperText-sizeMedium css-1d1r5q-MuiFormHelperText-root"
           >
             <a
               class="css-1ln0tcx-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
@@ -303,29 +306,11 @@ exports[`should be rendered correctly 1`] = `
               class="css-1ln0tcx-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
               href="/privacy"
             />
-          </span>
-        </label>
-        <p
-          class="MuiFormHelperText-root css-1d1r5q-MuiFormHelperText-root"
-        >
-          <a
-            class="css-1ln0tcx-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
-            href="/terms"
+          </p>
+          <p
+            class="MuiFormHelperText-root MuiFormHelperText-sizeMedium css-1d1r5q-MuiFormHelperText-root"
           />
-          <a
-            class="css-1ln0tcx-PresentialStyledLink-PresentialStyledLink-PresentialDefaultLink-PresentialDefaultLink"
-            href="/privacy"
-          />
-        </p>
-        <p
-          class="MuiFormHelperText-root Mui-error css-1d1r5q-MuiFormHelperText-root"
-        >
-          <span
-            class="notranslate"
-          >
-            ​
-          </span>
-        </p>
+        </div>
         <button
           aria-disabled="true"
           class="MuiButtonBase-root Mui-disabled MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-sghohy-MuiButtonBase-root-MuiButton-root"

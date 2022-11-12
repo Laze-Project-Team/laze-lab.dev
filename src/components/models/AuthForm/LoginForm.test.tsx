@@ -25,7 +25,7 @@ it('should work as login form', () => {
   const form = render(<LoginForm />, { wrapper: AuthErrorProvider });
 
   const emailInput = form.getByRole('textbox', {
-    name: 'form.label.email',
+    name: 'form.email.label',
   }) as HTMLInputElement;
   const emailValue = 'aaa-bbb-ccc@example.com';
   fireEvent.change(emailInput, {
@@ -34,7 +34,7 @@ it('should work as login form', () => {
   expect(emailInput.value).toBe(emailValue);
 
   const passwordInput = form.getByRole('textbox', {
-    name: 'form.label.password',
+    name: 'form.password.label',
   }) as HTMLInputElement;
   const passwordValue = 'this is password';
   fireEvent.change(passwordInput, {

@@ -177,13 +177,12 @@ exports[`should be rendered correctly 1`] = `
             for=":r0:"
             id=":r0:-label"
           >
-            form.label.email
+            form.email.label
           </label>
           <div
             class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl css-1ptx2yq-MuiInputBase-root-MuiInput-root"
           >
             <input
-              aria-describedby=":r0:-helper-text"
               aria-invalid="false"
               autocomplete="email"
               class="MuiInputBase-input MuiInput-input css-1x51dt5-MuiInputBase-input-MuiInput-input"
@@ -193,16 +192,6 @@ exports[`should be rendered correctly 1`] = `
               type="text"
             />
           </div>
-          <p
-            class="MuiFormHelperText-root MuiFormHelperText-sizeMedium css-1d1r5q-MuiFormHelperText-root"
-            id=":r0:-helper-text"
-          >
-            <span
-              class="notranslate"
-            >
-              ​
-            </span>
-          </p>
         </div>
         <div
           class="MuiFormControl-root css-1nrlq1o-MuiFormControl-root"
@@ -210,9 +199,9 @@ exports[`should be rendered correctly 1`] = `
           <label
             class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-standard MuiFormLabel-colorPrimary css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root"
             data-shrink="false"
-            for="login-password"
+            for="password-input"
           >
-            form.label.password
+            form.password.label
           </label>
           <div
             class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedEnd css-1ptx2yq-MuiInputBase-root-MuiInput-root"
@@ -222,7 +211,7 @@ exports[`should be rendered correctly 1`] = `
               autocomplete="current-password"
               class="MuiInputBase-input MuiInput-input MuiInputBase-inputAdornedEnd css-1x51dt5-MuiInputBase-input-MuiInput-input"
               defaultvalue=""
-              id="login-password"
+              id="password-input"
               name="password"
               role="textbox"
               type="password"
@@ -231,7 +220,7 @@ exports[`should be rendered correctly 1`] = `
               class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-standard MuiInputAdornment-sizeMedium css-1laqsz7-MuiInputAdornment-root"
             >
               <button
-                aria-label="form.label.show_password"
+                aria-label="form.password.show_button"
                 class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
                 tabindex="0"
                 type="button"
@@ -254,14 +243,8 @@ exports[`should be rendered correctly 1`] = `
             </div>
           </div>
           <p
-            class="MuiFormHelperText-root Mui-error MuiFormHelperText-sizeMedium css-1d1r5q-MuiFormHelperText-root"
-          >
-            <span
-              class="notranslate"
-            >
-              ​
-            </span>
-          </p>
+            class="MuiFormHelperText-root MuiFormHelperText-sizeMedium css-1d1r5q-MuiFormHelperText-root"
+          />
         </div>
         <button
           aria-disabled="true"
