@@ -2,7 +2,7 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import type { User } from 'firebase/auth';
 
 import { mockSWRResponse } from '/__mocks__/swr';
-import { userDataMock, userMock } from '/__mocks__/user';
+import { authMock, userDataMock, userMock } from '/__mocks__/user';
 import { userInfoContext } from '@/components/contexts/UserInfoContext';
 
 import { PresentialAuthEditDialog } from './AuthEditDialog';
@@ -15,7 +15,7 @@ export default {
 const Template: ComponentStory<typeof PresentialAuthEditDialog> = (props) => (
   <userInfoContext.Provider
     value={{
-      user: mockSWRResponse(userMock),
+      user: props.user,
       userData: mockSWRResponse(userDataMock),
       syncUser: () => void 0,
       syncUserData: () => void 0,
@@ -29,6 +29,26 @@ export const Primary = Template.bind({});
 Primary.args = {
   open: true,
   user: mockSWRResponse(userMock),
+};
+
+export const EmailAuthed = Template.bind({});
+EmailAuthed.args = {
+  open: true,
+  user: mockSWRResponse({
+    ...userMock,
+    providerData: [authMock.password].concat(userMock?.providerData || []),
+    emailVerified: true,
+  } as User | null | undefined),
+};
+
+export const EmailUnverified = Template.bind({});
+EmailUnverified.args = {
+  open: true,
+  user: mockSWRResponse({
+    ...userMock,
+    providerData: [authMock.password].concat(userMock?.providerData || []),
+    emailVerified: false,
+  } as User | null | undefined),
 };
 
 export const Loading = Template.bind({});

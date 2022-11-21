@@ -54,29 +54,38 @@ export const AuthEditButtons: FC<authEditButtonsProps> = ({ providerData }) => {
             <h3>{provider.method}</h3>
             {authDatas.length > 0 ? (
               <List>
-                {authDatas.map((authData) => (
-                  <ListItem
-                    key={authData.uid}
-                    secondaryAction={
-                      <AuthUnlinkButton
-                        providerId={authData.providerId}
-                        disabled={providerData.length === 1}
-                      />
-                    }
-                  >
-                    {authData.photoURL && (
-                      <ListItemAvatar>
-                        <Avatar src={authData.photoURL} />
-                      </ListItemAvatar>
-                    )}
-                    <div>
-                      <ListItemText
-                        primary={authData.displayName}
-                        secondary={authData.email}
-                      />
-                    </div>
-                  </ListItem>
-                ))}
+                {authDatas.map((authData) => {
+                  const method = providers.find(
+                    (provider) => provider.id === authData.providerId,
+                  )?.method;
+
+                  return (
+                    <ListItem
+                      key={authData.uid}
+                      secondaryAction={
+                        <AuthUnlinkButton
+                          message={t('auth.unlink_confirmation', {
+                            method: method ?? '???',
+                          })}
+                          providerId={authData.providerId}
+                          disabled={providerData.length === 1}
+                        />
+                      }
+                    >
+                      {authData.photoURL && (
+                        <ListItemAvatar>
+                          <Avatar src={authData.photoURL} />
+                        </ListItemAvatar>
+                      )}
+                      <div>
+                        <ListItemText
+                          primary={authData.displayName}
+                          secondary={authData.email}
+                        />
+                      </div>
+                    </ListItem>
+                  );
+                })}
               </List>
             ) : (
               <Box p={2}>

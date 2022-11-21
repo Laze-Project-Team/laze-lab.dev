@@ -18,21 +18,21 @@ const Template: ComponentStory<typeof PresentialAuthUnlinkButton> = (props) => (
 
 export const Primary = Template.bind({});
 Primary.args = {
-  providerId: 'google.com',
+  message: 'Auth with Google',
   isWorking: false,
   isConfirmationDialogOpen: false,
 };
 
 export const Confirmation = Template.bind({});
 Confirmation.args = {
-  providerId: 'google.com',
+  message: 'Auth with Google',
   isWorking: false,
   isConfirmationDialogOpen: true,
 };
 
 export const Unlinking = Template.bind({});
 Unlinking.args = {
-  providerId: 'google.com',
+  message: 'Auth with Google',
   isWorking: true,
   isConfirmationDialogOpen: false,
 };

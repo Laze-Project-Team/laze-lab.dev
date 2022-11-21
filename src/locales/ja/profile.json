@@ -51,11 +51,22 @@
     "edit_success": "認証情報を正常に更新しました",
     "auth_info": "認証情報",
     "auth_with": "{{method}}で認証",
-    "unlink": "アカウント連携を解除",
+    "unlink": "連携を解除",
     "unlink_confirmation": "本当に{{method}}のアカウント連携を解除してもよろしいですか？",
+    "unlink_email_confirmation": "本当に{{email}}との連携を解除してもよろしいですか？",
     "unlink_cancel": "キャンセル",
     "unlink_confirm": "解除",
-    "unlink_failed": "アカウント連携の解除に失敗しました",
-    "unlink_success": "アカウント連携を正常に解除できました"
+    "unlink_failed": "連携の解除に失敗しました",
+    "unlink_success": "連携を正常に解除できました",
+    "auth_with_email_label": "メールアドレス",
+    "auth_with_email": "メールアドレスで認証",
+    "auth_email_submit": "認証",
+    "hide_email_auth_form": "認証フォームを閉じる",
+    "verified": "認証済み",
+    "not_verified": "未認証",
+    "send_verification_email": "認証メールを送信する",
+    "send_verification_email_failed": "認証メールの送信に失敗しました",
+    "send_verification_email_success": "認証メールは正しく送信されました",
+    "send_verification_email_timeout": "認証メールは30秒に1回しか送信できません"
   }
 }

@@ -10,6 +10,7 @@ import type { FC } from 'react';
 
 import { useUserInfoContext } from '@/components/contexts/UserInfoContext';
 import type { userInfo } from '@/components/hooks/useUserInfo';
+import { EmailAuthEdit } from '@/components/models/AuthEditDialog/EmailAuthEdit';
 
 import { AuthEditButtons } from './AuthEditButtons';
 
@@ -43,7 +44,10 @@ export const PresentialAuthEditDialog: FC<presentialAuthEditDialogProps> = ({
                 <CircularProgress />
               </Box>
             ) : (
-              <AuthEditButtons providerData={providerData} />
+              <>
+                <AuthEditButtons providerData={providerData} />
+                <EmailAuthEdit providerData={providerData} />
+              </>
             )}
           </Stack>
         </DialogContent>

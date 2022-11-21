@@ -53,11 +53,22 @@
     "edit_success": "Authentication information has been successfully updated.",
     "auth_info": "Authentication info",
     "auth_with": "Authentication by {{method}}",
-    "unlink": "Cancel account linkage",
+    "unlink": "Cancel linkage",
     "unlink_confirmation": "Are you sure you want to remove the {{method}} account linkage?",
+    "unlink_email_confirmation": "Are you sure you want to remove your association with {{email}}?",
     "unlink_cancel": "Cancel",
     "unlink_confirm": "Unlink",
-    "unlink_failed": "Failed to unlink accounts.",
-    "unlink_success": "Account linkage has been successfully deactivated."
+    "unlink_failed": "Failed to unlink.",
+    "unlink_success": "linkage has been successfully deactivated.",
+    "auth_with_email_label": "E-mail address",
+    "auth_with_email": "Authentication by E-mail",
+    "auth_email_submit": "Authenticate",
+    "hide_email_auth_form": "Close authentication form",
+    "verified": "Verified",
+    "not_verified": "Not verified",
+    "send_verification_email": "Send authentication email",
+    "send_verification_email_failed": "Failed to send authentication email",
+    "send_verification_email_success": "Authentication email was sent correctly",
+    "send_verification_email_timeout": "Authentication email can only be sent once every 30 seconds"
   }
 }

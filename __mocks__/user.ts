@@ -1,6 +1,25 @@
-import type { User } from 'firebase/auth';
+import type { User, UserInfo } from 'firebase/auth';
 
 import type { userData } from '@/typings/database';
+
+export const authMock: Record<string, UserInfo> = {
+  google: {
+    providerId: 'google.com',
+    uid: 'unique-id',
+    displayName: 'Laze Project Team',
+    email: 'laze@example.com',
+    phoneNumber: '',
+    photoURL: 'https://laze.ddns.net/img/logo/logo.png',
+  },
+  password: {
+    providerId: 'password',
+    displayName: '',
+    email: 'aaa.bbb.ccc@examle.com',
+    phoneNumber: '000-0000-0000',
+    photoURL: null,
+    uid: 'unique-id',
+  },
+} as const;
 
 export const userMock: User | null | undefined = {
   uid: 'unique-id',
@@ -22,16 +41,7 @@ export const userMock: User | null | undefined = {
   metadata: {},
   phoneNumber: null,
   photoURL: null,
-  providerData: [
-    {
-      providerId: 'google.com',
-      uid: 'unique-id',
-      displayName: 'Laze Project Team',
-      email: 'laze@example.com',
-      phoneNumber: '',
-      photoURL: 'https://laze.ddns.net/img/logo/logo.png',
-    },
-  ],
+  providerData: [authMock.google],
   providerId: 'email',
   refreshToken: 'token',
   reload: async () => void 0,
