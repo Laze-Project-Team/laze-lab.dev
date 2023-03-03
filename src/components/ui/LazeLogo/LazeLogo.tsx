@@ -38,6 +38,7 @@ export const PresentialLazeLogo: FC<presentialLazeLogoProps> = ({
       alt=""
       width={size}
       height={size}
+      layout="fixed"
       role="presentation"
       {...props}
     />
