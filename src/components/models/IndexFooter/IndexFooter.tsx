@@ -146,7 +146,7 @@ export const PresentialIndexFooter: FC = () => {
               <FooterLinkList
                 title={t('footer.Guides')}
                 links={[
-                  { title: t('footer.guides.Terms'), href: '/' },
+                  { title: t('footer.guides.Terms'), href: '/terms' },
                   { title: t('footer.guides.Guideline'), href: '/guideline' },
                   { title: t('footer.guides.Privacy'), href: '/privacy' },
                   { title: t('footer.guides.License'), href: '/license' },
