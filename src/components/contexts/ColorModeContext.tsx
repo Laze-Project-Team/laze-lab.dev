@@ -37,6 +37,8 @@ export const ColorModeProvider: FC<colorModeProviderProps> = ({
   isLocal,
 }) => {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  // TODO: 言語を変更するとカラーモードがリセットされる
+  // TODO: Changing language resets color mode
   const [mode, setMode] = useState<PaletteMode>(
     preferTheme ?? prefersDarkMode ? 'dark' : 'light',
   );
