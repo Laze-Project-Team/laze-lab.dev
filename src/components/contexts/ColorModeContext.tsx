@@ -1,5 +1,5 @@
 import type { PaletteMode, Theme } from '@mui/material';
-import { CssBaseline, ThemeProvider, useMediaQuery } from '@mui/material';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 import type { FC, ReactNode } from 'react';
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { match } from 'ts-pattern';
@@ -36,11 +36,12 @@ export const ColorModeProvider: FC<colorModeProviderProps> = ({
   preferTheme,
   isLocal,
 }) => {
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  // const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   // TODO: 言語を変更するとカラーモードがリセットされる
   // TODO: Changing language resets color mode
   const [mode, setMode] = useState<PaletteMode>(
-    preferTheme ?? prefersDarkMode ? 'dark' : 'light',
+    // preferTheme ?? prefersDarkMode ? 'dark' : 'light',
+    preferTheme ?? 'light',
   );
 
   useEffect(() => {
