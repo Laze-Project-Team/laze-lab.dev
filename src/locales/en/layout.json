@@ -15,18 +15,18 @@
   "footer": {
     "Guides": "Guide & Help",
     "guides": {
-      "Terms": "Terms of use",
-      "Guideline": "Guideline",
-      "Privacy": "Privacy Policy",
-      "License": "License Information"
+      "Terms": "Terms of use (in preparation)",
+      "Guideline": "Guideline (in preparation)",
+      "Privacy": "Privacy Policy (in preparation)",
+      "License": "License Information (in preparation)"
     },
 
     "Sitemap": "Sitemap",
     "sitemap": {
       "Home": "Home",
-      "Editor": "Editor",
-      "Docs": "Documentation",
-      "Compete": "Compete"
+      "Editor": "Editor (in preparation)",
+      "Docs": "Documentation (in preparation)",
+      "Compete": "Compete (in preparation)"
     }
   }
 }

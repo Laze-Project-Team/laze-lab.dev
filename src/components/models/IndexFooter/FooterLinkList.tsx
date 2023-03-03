@@ -41,7 +41,10 @@ export const FooterLinkList: FC<footerLinkListProps> = ({ title, links }) => {
                   text-decoration: underline;
                 }
               `}
-              href={link.href}
+              // TODO: フッターでリンクされているページの整備
+              // TODO: Implement pages linked in footer
+              // href={link.href}
+              href="/"
               key={link.href}
             >
               {link.title}

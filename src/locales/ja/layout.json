@@ -13,17 +13,17 @@
   "footer": {
     "Guides": "ガイドとヘルプ",
     "guides": {
-      "Terms": "利用規約",
-      "Guideline": "ガイドライン",
-      "Privacy": "プライバシーポリシー",
-      "License": "ライセンス情報"
+      "Terms": "利用規約 (準備中)",
+      "Guideline": "ガイドライン (準備中)",
+      "Privacy": "プライバシーポリシー (準備中)",
+      "License": "ライセンス情報 (準備中)"
     },
     "Sitemap": "サイトマップ",
     "sitemap": {
       "Home": "ホーム",
-      "Editor": "エディタ",
-      "Docs": "ドキュメンテーション",
-      "Compete": "コンテスト"
+      "Editor": "エディタ (準備中)",
+      "Docs": "ドキュメンテーション (準備中)",
+      "Compete": "コンテスト (準備中)"
     }
   }
 }
