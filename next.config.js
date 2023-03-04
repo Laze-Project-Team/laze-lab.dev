@@ -6,6 +6,7 @@ const localeSubpaths = {};
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  optimizeFonts: true,
 
   // next-i18next
   i18n,
