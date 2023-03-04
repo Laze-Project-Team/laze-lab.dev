@@ -35,12 +35,11 @@ export const PresentialLazeLogo: FC<presentialLazeLogoProps> = ({
   return (
     <Image
       src={images[option]}
-      alt=""
       width={size}
       height={size}
-      layout="fixed"
       role="presentation"
       {...props}
+      alt=""
     />
   );
 };

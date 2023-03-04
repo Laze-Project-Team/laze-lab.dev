@@ -1,13 +1,9 @@
 import { css } from '@emotion/react';
+import type { ImageProps } from 'next/image';
 import NextImage from 'next/image';
 import type { FC } from 'react';
 
-export const Image: FC<JSX.IntrinsicElements['img']> = ({
-  src,
-  placeholder: _,
-  alt,
-  ...props
-}) => (
+export const Image: FC<ImageProps> = ({ src, placeholder: _, ...props }) => (
   <div
     css={css`
       width: 100%;
@@ -17,9 +13,10 @@ export const Image: FC<JSX.IntrinsicElements['img']> = ({
     {src && (
       <NextImage
         src={src}
-        alt={alt}
-        layout="fill"
-        objectFit="contain"
+        fill
+        css={css`
+          object-fit: contain;
+        `}
         {...props}
       />
     )}
