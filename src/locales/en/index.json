@@ -1,62 +1,35 @@
 {
-  "title": "Home Page for Laze Programming Language",
-  "description": "Laze is a programming language that has been developed with the goal of making programming easy for everyone. You can start programming right now in your browser, so let's jump into the world of Laze.",
+  "title": "Laze | Programming Learning That Fits You",
+  "description": "",
 
-  "Try Laze": "Try Laze now!",
-  "FailedToTry": "Something went wrong. Please try again later.",
-  "Learn with Laze": "Tutorial",
-  "requests": "Requests, Bugs, and Feedback",
-  "discord": "Join our discord community!",
+  "hero_section": {
+    "hero_text": " Programming Learning<0>That Fits You</0><br/>",
+    "hero_text_description": "LazeLab offers a variety of learning environments so that each student can learn programming in a way that suits them best.",
+    "waitlist": {
+      "title": "Sign up for Beta (free)",
+      "input_label": "Email Address",
+      "submit": "Registration"
+    }
+  },
 
-  "Laze Features": "Why Laze? : Laze Features",
   "features": {
     "1": {
-      "title": "Native Language",
-      "description": "Currently, we are developing mainly Japanese language support. But, we will prepare you to program in a variety of languages in the future."
+      "title": "Programming in your native language",
+      "description": "LazeLab lets you write programs in a variety of languages! It brings a whole new programming learning experience that overturns the preconceived notion that English is essential for learning programming."
     },
     "2": {
-      "title": "Latest Technologies",
-      "description": "It is built using WebAssembly, which makes it faster than other languages running on the web. Furthermore, it uses a drawing method called WebGL2.0, which makes it versatile and fast!"
+      "title": "Intuitive editor",
+      "description": "LazeLab comes standard with a programming beginner-friendly visual editor. Because it can be operated intuitively by drag-and-drop, even those who are not good at typing can learn without problems."
     },
     "3": {
-      "title": "Wherever you are",
-      "description": "You can start right now, right in your browser. Everything you need for Laze is right there in the Playground. You don't need to go through the hassle of setting up your own environment anymore."
+      "title": "Careful tutorials",
+      "description": "The tutorial explains the basics in detail, so even beginners who know nothing about programming can proceed with confidence. Self-checks and exercises allow you to check your understanding as you progress."
+    },
+    "4": {
+      "title": "Anytime, anywhere, immediately.",
+      "description": "LazeLab is complete on the website, so you can start learning programming immediately, regardless of time or location."
     }
   },
 
-  "Laze Production": "What can you do with Laze?",
-  "productions": {
-    "1": {
-      "title": "2D Games",
-      "description": "Using the standard library, 2D drawing can be done with very simple code."
-    },
-
-    "2": {
-      "title": "3D Games",
-      "description": "It uses WebGL, which means that it can perform as well in 3D as it does in 2D. It comes with a standard library to make it easy to get started."
-    },
-    "3": {
-      "title": "GUI apps (in preparation)",
-      "description": "You will be able to easily create GUI applications as good as GUI using HTML and CSS. (In preparation)"
-    }
-  },
-
-  "Join Laze": "Join Laze!",
-  "activities": {
-    "1": {
-      "title": "Read the documentation",
-      "description": "Read the Laze documentation. It is available online for free and anyone can read it.",
-      "action": "Laze Documentation"
-    },
-    "2": {
-      "title": "Join the community",
-      "description": "Let's ask and answer questions in the community to keep the community engaged. A thriving community leads to a thriving language itself.",
-      "action": "Laze Community"
-    },
-    "3": {
-      "title": "Contribute to Laze",
-      "description": "There are many things you can do, such as writing Laze standard libraries, reporting bugs, suggesting improvements, etc. Laze is still a developing language, so let's make Laze even better with your help.",
-      "action": "GitHub Repository of Laze"
-    }
-  }
+  "beta_message": "The content of this page contains information that has not yet been finalized. All or part of the information is subject to change without notice at the time of release."
 }
