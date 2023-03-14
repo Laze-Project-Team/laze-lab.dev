@@ -2,6 +2,8 @@
 
 The repository of the [Laze website](https://laze.ddns.net/)
 
+**This repository is currently in development!!!**
+
 ## Dependencies
 
 | package                                        | version |
