@@ -24,29 +24,28 @@ export const PresentialStyledLink: FC<presentialStyledLinkProps> = ({
 
   return (
     <>
-      <Link href={href} passHref>
-        <a
-          target={isInternal ? undefined : '_blank'}
-          rel={isInternal ? undefined : 'noopener noreferrer'}
-          css={[
-            css`
-              display: inline-flex;
-              align-items: center;
-            `,
-          ]}
-          {...props}
-        >
-          {children}
-          {!disableIcon && !isInternal && (
-            <OpenInNewIcon
-              css={css`
-                width: 1rem;
-                height: 1rem;
-                margin-left: 0.25rem;
-              `}
-            />
-          )}
-        </a>
+      <Link
+        href={href}
+        target={isInternal ? undefined : '_blank'}
+        rel={isInternal ? undefined : 'noopener noreferrer'}
+        css={[
+          css`
+            display: inline-flex;
+            align-items: center;
+          `,
+        ]}
+        {...props}
+      >
+        {children}
+        {!disableIcon && !isInternal && (
+          <OpenInNewIcon
+            css={css`
+              width: 1rem;
+              height: 1rem;
+              margin-left: 0.25rem;
+            `}
+          />
+        )}
       </Link>
     </>
   );
