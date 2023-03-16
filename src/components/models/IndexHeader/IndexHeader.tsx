@@ -28,7 +28,7 @@ export const PresentialIndexHeader: FC = () => {
             `}
           >
             <HeaderLink href={pagesPath.$url()}>
-              <LazeLogo option="logo" size={30} />
+              <LazeLogo option="logo" size={30} alt="" />
               <span
                 css={css`
                   color: var(--color-laze-primary);
