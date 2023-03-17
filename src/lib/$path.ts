@@ -5,6 +5,24 @@ export const pagesPath = {
   _path: (path: string | number) => ({
     $url: (url?: { hash?: string }) => ({ pathname: '/[path]' as const, query: { path }, hash: url?.hash })
   }),
+  "learning_path": {
+    "courses": {
+      _course_id: (course_id: string | number) => ({
+        $url: (url?: { hash?: string }) => ({ pathname: '/learning-path/courses/[course_id]' as const, query: { course_id }, hash: url?.hash })
+      })
+    },
+    "paths": {
+      _path_id: (path_id: string | number) => ({
+        $url: (url?: { hash?: string }) => ({ pathname: '/learning-path/paths/[path_id]' as const, query: { path_id }, hash: url?.hash })
+      })
+    },
+    "steps": {
+      _step_id: (step_id: string | number) => ({
+        $url: (url?: { hash?: string }) => ({ pathname: '/learning-path/steps/[step_id]' as const, query: { step_id }, hash: url?.hash })
+      })
+    },
+    $url: (url?: { hash?: string }) => ({ pathname: '/learning-path' as const, hash: url?.hash })
+  },
   "login": {
     $url: (url?: { hash?: string }) => ({ pathname: '/login' as const, hash: url?.hash })
   },

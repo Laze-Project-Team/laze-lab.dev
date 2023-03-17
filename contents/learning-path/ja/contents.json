@@ -1,0 +1,93 @@
+{
+  "paths": {
+    "path-1": {
+      "id": "path-1",
+      "title": "Path 1",
+      "description": "this is path 1 description",
+      "courses": ["course-1", "course-2", "course-3", "course-4", "course-5"]
+    },
+    "path-2": {
+      "id": "path-2",
+      "title": "Path 2",
+      "description": "this is path 2 description",
+      "courses": ["course-1"]
+    },
+    "path-3": {
+      "id": "path-3",
+      "title": "Path 3",
+      "description": "this is path 3 description",
+      "courses": ["course-1"]
+    },
+    "path-4": {
+      "id": "path-4",
+      "title": "Path 4",
+      "description": "this is path 4 description",
+      "courses": ["course-1"]
+    },
+    "path-5": {
+      "id": "path-5",
+      "title": "Path 5",
+      "description": "this is path 5 description",
+      "courses": ["course-1"]
+    }
+  },
+  "courses": {
+    "course-1": {
+      "id": "course-1",
+      "title": "Course 1",
+      "description": "this is course 1 description",
+      "steps": ["step-1", "step-2", "step-3", "step-4", "step-5"]
+    },
+    "course-2": {
+      "id": "course-2",
+      "title": "Course 2",
+      "description": "this is course 2 description",
+      "steps": ["step-1"]
+    },
+    "course-3": {
+      "id": "course-3",
+      "title": "Course 3",
+      "description": "this is course 3 description",
+      "steps": ["step-1"]
+    },
+    "course-4": {
+      "id": "course-4",
+      "title": "Course 4",
+      "description": "this is course 4 description",
+      "steps": ["step-1"]
+    },
+    "course-5": {
+      "id": "course-5",
+      "title": "Course 5",
+      "description": "this is course 5 description",
+      "steps": ["step-1"]
+    }
+  },
+  "steps": {
+    "step-1": {
+      "id": "step-1",
+      "title": "Step 1",
+      "description": "this is step 1 description"
+    },
+    "step-2": {
+      "id": "step-2",
+      "title": "Step 2",
+      "description": "this is step 2 description"
+    },
+    "step-3": {
+      "id": "step-3",
+      "title": "Step 3",
+      "description": "this is step 3 description"
+    },
+    "step-4": {
+      "id": "step-4",
+      "title": "Step 4",
+      "description": "this is step 4 description"
+    },
+    "step-5": {
+      "id": "step-5",
+      "title": "Step 5",
+      "description": "this is step 5 description"
+    }
+  }
+}
