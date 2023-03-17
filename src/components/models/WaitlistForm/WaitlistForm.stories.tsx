@@ -1,4 +1,4 @@
-import type { ComponentMeta,ComponentStory } from '@storybook/react';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { PresentialWaitlistForm } from './WaitlistForm';
 

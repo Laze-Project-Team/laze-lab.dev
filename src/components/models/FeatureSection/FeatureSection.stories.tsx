@@ -1,4 +1,4 @@
-import type { ComponentMeta,ComponentStory } from '@storybook/react';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { PresentialFeatureSection } from './FeatureSection';
 
