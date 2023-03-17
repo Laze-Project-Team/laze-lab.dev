@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import Container from '@mui/material/Container';
 import type { FC, ReactNode } from 'react';
 
+import { useColorMode } from '@/components/contexts/ColorModeContext';
 import { IndexFooter } from '@/components/models/IndexFooter';
 import { IndexHeader } from '@/components/models/IndexHeader';
 
@@ -14,6 +15,9 @@ export type presentialIndexLayoutProps = indexLayoutProps;
 export const PresentialIndexLayout: FC<presentialIndexLayoutProps> = ({
   children,
 }) => {
+  const { themePattern } = useColorMode();
+  const backgroundColor = themePattern('#f9fbfe', '#0a1929');
+
   return (
     <>
       <div
@@ -29,6 +33,7 @@ export const PresentialIndexLayout: FC<presentialIndexLayoutProps> = ({
           css={css`
             width: 100vw;
             padding: 4rem 0;
+            background-color: ${backgroundColor};
           `}
         >
           <Container maxWidth="md">
