@@ -1,9 +1,10 @@
 import { css } from '@emotion/react';
-import type { ImageProps } from 'next/image';
 import NextImage from 'next/image';
-import type { FC } from 'react';
+import type { DetailedHTMLProps, FC, ImgHTMLAttributes } from 'react';
 
-export const Image: FC<ImageProps> = ({ src, placeholder: _, ...props }) => (
+export const Image: FC<
+  DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>
+> = ({ src, placeholder: _, alt, width, height }) => (
   <div
     css={css`
       width: 100%;
@@ -17,7 +18,9 @@ export const Image: FC<ImageProps> = ({ src, placeholder: _, ...props }) => (
         css={css`
           object-fit: contain;
         `}
-        {...props}
+        alt={alt ?? ''}
+        width={Number(width)}
+        height={Number(height)}
       />
     )}
   </div>

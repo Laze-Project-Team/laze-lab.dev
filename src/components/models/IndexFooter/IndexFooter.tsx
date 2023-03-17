@@ -66,6 +66,7 @@ export const PresentialIndexFooter: FC = () => {
                 <LazeLogo
                   size={40}
                   option="logo_gray"
+                  alt=""
                   css={css`
                     top: 0.25rem;
                     display: inline-block;
