@@ -84,7 +84,9 @@ export const PresentialLearningPath: FC<presentialLearningPathProps> = ({
                       box-shadow: ${grey['300']} 0 0 12px 0;
                     }
                   `}
-                  href={pagesPath.learning_path.paths._path_id(path.id).$url()}
+                  href={pagesPath.learning_path.courses
+                    ._course_id(courseId)
+                    .$url()}
                 >
                   <Skeleton variant="rounded" width={64} height={64} />
 
