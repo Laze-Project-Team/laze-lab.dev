@@ -1,7 +1,5 @@
 import { css } from '@emotion/react';
-import { blue, grey } from '@mui/material/colors';
-import Skeleton from '@mui/material/Skeleton';
-import Stack from '@mui/material/Stack';
+import { Skeleton, Stack } from '@mantine/core';
 import { Trans, useTranslation } from 'next-i18next';
 import type { FC } from 'react';
 
@@ -12,12 +10,13 @@ import {
 } from '@/components/models/FeatureSection';
 import { WaitlistForm } from '@/components/models/WaitlistForm';
 import { LazeLogo } from '@/components/ui/LazeLogo';
+import { blue, gray } from '@/styles/colors';
 
 const emphasized = (
   <span
     key="0"
     css={css`
-      color: ${blue['800']};
+      color: ${blue[8]};
     `}
   />
 );
@@ -33,7 +32,7 @@ export const PresentialHome: FC = () => {
         css={css`
           padding: 8px 16px;
           margin-bottom: 64px;
-          box-shadow: ${grey['300']} 0 0 5px 0;
+          box-shadow: ${gray[3]} 0 0 5px 0;
         `}
       >
         <div
@@ -67,8 +66,8 @@ export const PresentialHome: FC = () => {
           margin: 0 auto;
         `}
       >
-        <Stack direction="column" gap={12} alignItems="center" paddingX={2}>
-          <Stack direction="column" gap={4}>
+        <Stack dir="column" spacing={96} align="center" px={16}>
+          <Stack dir="column" spacing={32}>
             <p
               css={css`
                 font-size: 5rem;
@@ -82,7 +81,7 @@ export const PresentialHome: FC = () => {
             </p>
             <p
               css={css`
-                color: ${grey['700']};
+                color: ${gray[7]};
                 font-size: 1.2rem;
                 font-weight: 500;
                 text-align: center;
@@ -98,25 +97,19 @@ export const PresentialHome: FC = () => {
               imagePosition="right"
               title={<Trans t={t} i18nKey="features.1.title" />}
               description={<Trans t={t} i18nKey="features.1.description" />}
-              image={
-                <Skeleton variant="rectangular" width="100%" height="100%" />
-              }
+              image={<Skeleton width="100%" height="100%" />}
             />
             <FeatureSection
               imagePosition="left"
               title={<Trans t={t} i18nKey="features.2.title" />}
               description={<Trans t={t} i18nKey="features.2.description" />}
-              image={
-                <Skeleton variant="rectangular" width="100%" height="100%" />
-              }
+              image={<Skeleton width="100%" height="100%" />}
             />
             <FeatureSection
               imagePosition="right"
               title={<Trans t={t} i18nKey="features.3.title" />}
               description={<Trans t={t} i18nKey="features.3.description" />}
-              image={
-                <Skeleton variant="rectangular" width="100%" height="100%" />
-              }
+              image={<Skeleton width="100%" height="100%" />}
             />
             <FeatureSection
               imagePosition="left"
@@ -130,7 +123,7 @@ export const PresentialHome: FC = () => {
           <WaitlistForm />
           <p
             css={css`
-              color: ${grey['600']};
+              color: ${gray[6]};
             `}
           >
             {t('beta_message')}
@@ -142,12 +135,12 @@ export const PresentialHome: FC = () => {
         css={css`
           padding: 16px;
           margin-top: 128px;
-          background-color: ${grey['100']};
+          background-color: ${gray[1]};
         `}
       >
         <p
           css={css`
-            color: ${grey['700']};
+            color: ${gray[7]};
             text-align: center;
           `}
         >

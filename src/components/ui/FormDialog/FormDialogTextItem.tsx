@@ -1,6 +1,7 @@
-import type { TextFieldProps } from '@mui/material/TextField';
-import TextField from '@mui/material/TextField';
-import type { FC } from 'react';
+import { css } from '@emotion/react';
+import type { InputProps } from '@mantine/core';
+import { Input } from '@mantine/core';
+import type { FC, InputHTMLAttributes } from 'react';
 import type { Control } from 'react-hook-form';
 import { Controller } from 'react-hook-form';
 
@@ -9,7 +10,8 @@ import { useFormDialogContext } from '@/components/ui/FormDialog/FormDialogConte
 export type formDialogTextItemProps = {
   label: string;
   name: string;
-} & TextFieldProps;
+} & InputProps &
+  InputHTMLAttributes<HTMLInputElement>;
 
 export type presentialFormDialogTextItemProps = {
   id: string;
@@ -25,14 +27,17 @@ export const PresentialFormDialogTextItem: FC<
         name={name}
         control={control}
         render={({ field }) => (
-          <TextField
-            id={`${id}-${name}`}
-            label={label}
-            variant="outlined"
-            fullWidth
-            {...props}
-            {...field}
-          />
+          <Input.Wrapper label={label}>
+            <Input
+              id={`${id}-${name}`}
+              variant="outlined"
+              css={css`
+                width: 100%;
+              `}
+              {...props}
+              {...field}
+            />
+          </Input.Wrapper>
         )}
       />
     </>

@@ -1,32 +1,21 @@
 import { css } from '@emotion/react';
-import AppBar from '@mui/material/AppBar';
-import { blue, grey } from '@mui/material/colors';
-import Container from '@mui/material/Container';
-import Stack from '@mui/material/Stack';
-import Toolbar from '@mui/material/Toolbar';
+import { Container, Flex, Header, Stack } from '@mantine/core';
 import type { FC } from 'react';
 
 import { ColorModeSwitcher } from '@/components/models/ColorModeSwitcher';
 import { LocaleSelectButton } from '@/components/models/LocaleSelectButton';
 import { LazeLogo } from '@/components/ui/LazeLogo';
 import { pagesPath } from '@/lib/$path';
+import { blue, gray } from '@/styles/colors';
 
 import { HeaderLink } from './HeaderLink';
 
 export const PresentialIndexHeader: FC = () => {
   return (
     <>
-      <AppBar
-        color="default"
-        position="static"
-        sx={{ backgroundColor: 'var(--color-darkgray)' }}
-      >
-        <Container maxWidth="lg">
-          <Toolbar
-            css={css`
-              display: flex;
-            `}
-          >
+      <Header bg="#001529" height={64}>
+        <Container maw="1200px">
+          <Flex>
             <HeaderLink href={pagesPath.$url()}>
               <LazeLogo option="logo" size={30} alt="" />
               <span
@@ -44,8 +33,8 @@ export const PresentialIndexHeader: FC = () => {
                 margin-left: auto;
                 color: #eee;
               `}
-              direction="row"
-              spacing={2}
+              dir="row"
+              spacing={16}
             >
               <ColorModeSwitcher
                 css={css`
@@ -59,34 +48,34 @@ export const PresentialIndexHeader: FC = () => {
                 css={css`
                   && {
                     fieldset {
-                      border-color: ${grey['600']};
+                      border-color: ${gray[6]};
                     }
 
                     .MuiInputBase-root:hover fieldset {
-                      border-color: ${grey['400']};
+                      border-color: ${gray[4]};
                     }
 
                     .MuiInputBase-root.Mui-focused fieldset {
-                      border-color: ${blue['200']};
+                      border-color: ${blue[2]};
                     }
 
                     .MuiInputBase-root,
                     label,
                     svg {
-                      color: ${grey['200']};
+                      color: ${gray[2]};
                     }
 
                     label.Mui-focused,
                     .MuiInputBase-root.Mui-focused {
-                      color: ${blue['200']};
+                      color: ${blue[2]};
                     }
                   }
                 `}
               />
             </Stack>
-          </Toolbar>
+          </Flex>
         </Container>
-      </AppBar>
+      </Header>
     </>
   );
 };

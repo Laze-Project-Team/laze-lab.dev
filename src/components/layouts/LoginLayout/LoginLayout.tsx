@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import Container from '@mui/material/Container';
+import { Container } from '@mantine/core';
+import { IconArrowBack } from '@tabler/icons-react';
 import { useTranslation } from 'next-i18next';
 import type { FC, ReactNode } from 'react';
 
@@ -21,7 +21,7 @@ export const PresentialLoginLayout: FC<presentialLoginLayoutProps> = ({
   const [t] = useTranslation('common');
 
   return (
-    <Container maxWidth="sm">
+    <Container maw="720px">
       <main>
         <h1
           css={css`
@@ -34,7 +34,7 @@ export const PresentialLoginLayout: FC<presentialLoginLayoutProps> = ({
         </h1>
 
         <DefaultLink href={pagesPath.$url()}>
-          <ArrowBackIosIcon sx={{ fontSize: '1rem' }} />
+          <IconArrowBack size="1rem" />
           <span>{t('backToHome')}</span>
         </DefaultLink>
 

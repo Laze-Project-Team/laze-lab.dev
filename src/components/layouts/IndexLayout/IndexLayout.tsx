@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import Container from '@mui/material/Container';
+import { Container } from '@mantine/core';
 import type { FC, ReactNode } from 'react';
 
 import { useColorMode } from '@/components/contexts/ColorModeContext';
@@ -36,7 +36,7 @@ export const PresentialIndexLayout: FC<presentialIndexLayoutProps> = ({
             background-color: ${backgroundColor};
           `}
         >
-          <Container maxWidth="md">
+          <Container maw="1200px">
             {/* Matching the children type of Container */}
             <>{children}</>
           </Container>

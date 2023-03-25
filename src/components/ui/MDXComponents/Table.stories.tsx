@@ -1,7 +1,7 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import type { FC, ReactNode } from 'react';
 
-import { Table, Tbody, Td, Th, Thead, Tr } from './Table';
+import { Table } from './Table';
 
 export default {
   title: 'ui/MDXComponents/Table',
@@ -10,22 +10,22 @@ export default {
 
 const Template: ComponentStory<FC<{ data: ReactNode[][] }>> = ({ data }) => (
   <Table>
-    <Thead>
-      <Tr>
+    <thead>
+      <tr>
         {data[0].map((val, i) => (
-          <Th key={`0-${i}`}>{val}</Th>
+          <th key={`0-${i}`}>{val}</th>
         ))}
-      </Tr>
-    </Thead>
-    <Tbody>
+      </tr>
+    </thead>
+    <tbody>
       {data.slice(1).map((vals, i) => (
-        <Tr key={i}>
+        <tr key={i}>
           {vals.map((val, j) => (
-            <Td key={`${i}-${j}`}>{val}</Td>
+            <td key={`${i}-${j}`}>{val}</td>
           ))}
-        </Tr>
+        </tr>
       ))}
-    </Tbody>
+    </tbody>
   </Table>
 );
 

@@ -5,39 +5,39 @@ import { expect, it } from 'vitest';
 
 import { render } from '@/lib/test/render';
 
-import { Table, Tbody, Td, Th, Thead, Tr } from './Table';
+import { Table } from './Table';
 
 const component = (
   <Table>
-    <Thead>
-      <Tr>
-        <Th>data 1</Th>
-        <Th>data 2</Th>
-        <Th>data 3</Th>
-      </Tr>
-    </Thead>
-    <Tbody>
-      <Tr>
-        <Td>1</Td>
-        <Td>2</Td>
-        <Td>3</Td>
-      </Tr>
-      <Tr>
-        <Td>2</Td>
-        <Td>4</Td>
-        <Td>6</Td>
-      </Tr>
-      <Tr>
-        <Td>3</Td>
-        <Td>6</Td>
-        <Td>9</Td>
-      </Tr>
-      <Tr>
-        <Td>4</Td>
-        <Td>8</Td>
-        <Td>12</Td>
-      </Tr>
-    </Tbody>
+    <thead>
+      <tr>
+        <th>data 1</th>
+        <th>data 2</th>
+        <th>data 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>4</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>6</td>
+        <td>9</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>8</td>
+        <td>12</td>
+      </tr>
+    </tbody>
   </Table>
 );
 

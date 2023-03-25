@@ -1,5 +1,4 @@
 import { css } from '@emotion/react';
-import type { ButtonProps } from '@mui/material/Button';
 import { useTranslation } from 'next-i18next';
 import type { FC, MouseEventHandler } from 'react';
 import { useCallback } from 'react';
@@ -8,6 +7,7 @@ import type { authMethod, authType } from '@/components/hooks/useAuth';
 import { useAuth } from '@/components/hooks/useAuth';
 import { useAuthError } from '@/components/layouts/LoginLayout/useAuthError';
 import { AuthButtonBases } from '@/components/ui/AuthButtonBase';
+import type { authButtonBaseProps } from '@/components/ui/AuthButtonBase/AuthButtonBase';
 
 export const authIconStyle = css`
   width: 1.5rem;
@@ -16,7 +16,7 @@ export const authIconStyle = css`
 export type authButtonProps = {
   authType: authType;
   method: authMethod;
-} & ButtonProps;
+} & authButtonBaseProps;
 
 export type presentialAuthButtonProps = {
   onClick: MouseEventHandler<HTMLButtonElement>;

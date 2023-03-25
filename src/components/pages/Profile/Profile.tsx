@@ -1,6 +1,5 @@
 import { css } from '@emotion/react';
-import { Grid } from '@mui/material';
-import Stack from '@mui/material/Stack';
+import { Stack } from '@mantine/core';
 import { useTranslation } from 'next-i18next';
 import type { FC } from 'react';
 
@@ -34,9 +33,7 @@ export const PresentialProfile: FC<presentialProfileProps> = ({ userData }) => {
       />
 
       <IndexLayout>
-        <Grid
-          container
-          spacing={2}
+        <div
           css={css`
             flex-wrap: nowrap;
             ${sp} {
@@ -44,9 +41,9 @@ export const PresentialProfile: FC<presentialProfileProps> = ({ userData }) => {
             }
           `}
         >
-          <Grid item>
+          <div>
             <Stack
-              spacing={2}
+              spacing={16}
               css={css`
                 width: 12rem;
 
@@ -70,17 +67,15 @@ export const PresentialProfile: FC<presentialProfileProps> = ({ userData }) => {
               <ProfileEditDialogButton variant="outlined" />
               <AuthEditDialogButton variant="outlined" />
             </Stack>
-          </Grid>
-          <Grid
-            item
-            xs
+          </div>
+          <div
             css={css`
               min-width: 15rem;
             `}
           >
             <UserProjects />
-          </Grid>
-        </Grid>
+          </div>
+        </div>
       </IndexLayout>
     </>
   );

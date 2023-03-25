@@ -1,13 +1,5 @@
 import { css } from '@emotion/react';
-import Alert from '@mui/material/Alert';
-import Backdrop from '@mui/material/Backdrop';
-import Button from '@mui/material/Button';
-import CircularProgress from '@mui/material/CircularProgress';
-import Collapse from '@mui/material/Collapse';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
+import { Alert, Button, Collapse, LoadingOverlay, Modal } from '@mantine/core';
 import { useTranslation } from 'next-i18next';
 import type { FC } from 'react';
 
@@ -32,31 +24,25 @@ export const UploadConfirmationDialog: FC<uploadConfirmationDialogProps> = ({
 
   return (
     <>
-      <Dialog
-        open={!!avatarFile}
+      <Modal
+        title={t('profile.avatar.edit.dialog_title')}
+        opened={!!avatarFile}
         onClose={handleReject}
         aria-labelledby="upload-confirmation-dialog-title"
-        maxWidth="sm"
+        css={css`
+          max-width: 480px;
+        `}
       >
-        <Backdrop
-          open={isAvatarUploading}
-          sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        >
-          <CircularProgress color="inherit" />
-        </Backdrop>
+        <LoadingOverlay visible={isAvatarUploading} />
 
-        <DialogTitle id="upload-confirmation-dialog-title">
-          {t('profile.avatar.edit.dialog_title')}
-        </DialogTitle>
-        <DialogContent>
+        <div>
           <Collapse in={!!confirmError}>
             <Alert
-              severity="error"
               onClose={handleErrorClose}
-              sx={{
-                marginBottom: '2rem',
-                width: 'min(30rem, calc(100vw - 112px))',
-              }}
+              css={css`
+                width: min(30rem, calc(100vw - 112px));
+                margin-bottom: 2rem;
+              `}
             >
               {confirmError}
             </Alert>
@@ -105,16 +91,16 @@ export const UploadConfirmationDialog: FC<uploadConfirmationDialogProps> = ({
               />
             )}
           </div>
-        </DialogContent>
-        <DialogActions>
+        </div>
+        <div>
           <Button onClick={handleReject}>
             {t('profile.avatar.edit.dialog_cancel')}
           </Button>
           <Button onClick={handleConfirm} autoFocus>
             {t('profile.avatar.edit.dialog_confirm')}
           </Button>
-        </DialogActions>
-      </Dialog>
+        </div>
+      </Modal>
     </>
   );
 };

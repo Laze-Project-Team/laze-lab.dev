@@ -1,12 +1,8 @@
 import { css } from '@emotion/react';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import type { SelectChangeEvent } from '@mui/material/Select';
-import Select from '@mui/material/Select';
+import { Select } from '@mantine/core';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import type { FC, ReactNode } from 'react';
+import type { FC } from 'react';
 import { useCallback, useState } from 'react';
 
 import { localeList } from '@/const/locale';
@@ -15,7 +11,7 @@ import { isLocale, locales } from '@/lib/utils/isLocale';
 
 export type presentialLocaleSelectButtonProps = {
   locale: localeId;
-  handleChange: (event: SelectChangeEvent<localeId>, child: ReactNode) => void;
+  handleChange: (value: string) => void;
 };
 
 export const PresentialLocaleSelectButton: FC<
@@ -25,28 +21,22 @@ export const PresentialLocaleSelectButton: FC<
 
   return (
     <>
-      <FormControl
-        size="small"
+      <div
         css={css`
           width: 8rem;
         `}
         {...props}
       >
-        <InputLabel id="locale-select-label">{t('changeLocale')}</InputLabel>
         <Select
-          labelId="locale-select-label"
-          id="locale-select"
           value={locale}
           label={t('changeLocale')}
           onChange={handleChange}
-        >
-          {locales.map((locale) => (
-            <MenuItem value={locale} key={locale}>
-              {localeList[locale]}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
+          data={locales.map((locale) => ({
+            value: locale,
+            label: localeList[locale],
+          }))}
+        />
+      </div>
     </>
   );
 };
@@ -58,10 +48,11 @@ export const LocaleSelectButton: FC = (props) => {
   const [locale, setLocale] = useState<localeId>(defaultLocale);
   const handleChange: presentialLocaleSelectButtonProps['handleChange'] =
     useCallback(
-      (e) => {
-        const newLocale = e.target.value as localeId;
-        setLocale(newLocale);
-        router.push(router.pathname, router.asPath, { locale: newLocale });
+      (newLocale) => {
+        if (isLocale(newLocale)) {
+          setLocale(newLocale);
+          router.push(router.pathname, router.asPath, { locale: newLocale });
+        }
       },
       [router],
     );

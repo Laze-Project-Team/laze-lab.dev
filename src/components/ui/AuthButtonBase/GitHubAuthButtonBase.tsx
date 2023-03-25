@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import GitHubIcon from '@mui/icons-material/GitHub';
+import { IconBrandGithub } from '@tabler/icons-react';
 import type { FC } from 'react';
 
 import type { authButtonBaseProps } from '@/components/ui/AuthButtonBase/AuthButtonBase';
@@ -30,7 +30,7 @@ export const GitHubAuthButtonBase: FC<authButtonBaseProps> = (props) => {
   return (
     <AuthButtonBase
       {...props}
-      startIcon={<GitHubIcon css={githubIconStyle} />}
+      leftIcon={<IconBrandGithub css={githubIconStyle} />}
       css={githubAuthButtonStyle}
     />
   );

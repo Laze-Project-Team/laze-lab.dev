@@ -1,4 +1,4 @@
-import Stack from '@mui/material/Stack';
+import { Stack } from '@mantine/core';
 import type { FC, ReactNode } from 'react';
 
 export type featureSectionWrapperProps = {
@@ -9,7 +9,7 @@ export const FeatureSectionWrapper: FC<featureSectionWrapperProps> = ({
   children,
 }) => {
   return (
-    <Stack direction="column" gap={32}>
+    <Stack dir="column" spacing={32}>
       {children}
     </Stack>
   );

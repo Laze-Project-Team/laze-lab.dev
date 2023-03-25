@@ -1,7 +1,5 @@
-import DarkModeIcon from '@mui/icons-material/DarkMode';
-import LightModeIcon from '@mui/icons-material/LightMode';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
+import { ActionIcon, Tooltip } from '@mantine/core';
+import { IconMoon, IconSun } from '@tabler/icons-react';
 import { useTranslation } from 'next-i18next';
 import type { FC } from 'react';
 import { useCallback } from 'react';
@@ -20,10 +18,10 @@ export const PresentialColorModeSwitcher: FC<
 
   return (
     <>
-      <Tooltip title={t('switchColorMode')}>
-        <IconButton onClick={handleClick} color="inherit" {...props}>
-          {themePattern(<LightModeIcon />, <DarkModeIcon />)}
-        </IconButton>
+      <Tooltip label={t('switchColorMode')}>
+        <ActionIcon onClick={handleClick} color="inherit" {...props}>
+          {themePattern(<IconSun />, <IconMoon />)}
+        </ActionIcon>
       </Tooltip>
     </>
   );

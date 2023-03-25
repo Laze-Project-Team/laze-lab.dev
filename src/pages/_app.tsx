@@ -2,7 +2,7 @@ import 'ress';
 import 'nprogress/nprogress.css';
 
 import { Global } from '@emotion/react';
-import type { PaletteMode } from '@mui/material';
+import type { ColorScheme } from '@mantine/core';
 import type { AppProps as NextAppProps } from 'next/app';
 import type { SSRConfig } from 'next-i18next';
 import { appWithTranslation } from 'next-i18next';
@@ -13,12 +13,13 @@ import { Provider as ReduxProvider } from 'react-redux';
 
 import { ColorModeProvider } from '@/components/contexts/ColorModeContext';
 import { ToastContainer } from '@/components/functional/ToastContainer';
+import { MantineProvider } from '@/components/providers/MantineProvider';
 import { store } from '@/lib/redux/root';
 import { globalStyle } from '@/styles/global';
 
 type AppProps = NextAppProps & {
   pageProps: SSRConfig;
-  preferTheme?: PaletteMode;
+  preferTheme?: ColorScheme;
 };
 
 export const MyApp: ComponentType<AppProps> = ({
@@ -38,11 +39,13 @@ export const MyApp: ComponentType<AppProps> = ({
     <>
       <ReduxProvider store={store}>
         <ColorModeProvider preferTheme={preferTheme}>
-          <ToastContainer />
-          <Global styles={globalStyle} />
-          <div>
-            <Component {...pageProps} />
-          </div>
+          <MantineProvider>
+            <ToastContainer />
+            <Global styles={globalStyle} />
+            <div>
+              <Component {...pageProps} />
+            </div>
+          </MantineProvider>
         </ColorModeProvider>
       </ReduxProvider>
     </>

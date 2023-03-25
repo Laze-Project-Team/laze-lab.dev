@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import Typography from '@mui/material/Typography';
+import { Text } from '@mantine/core';
 import type { FC } from 'react';
 
 import { useColorMode } from '@/components/contexts/ColorModeContext';
@@ -9,8 +9,7 @@ export const Paragraph: FC<JSX.IntrinsicElements['p']> = ({ children }) => {
   const color = themePattern('rgba(0, 0, 0, 0.87)', 'rgb(189, 189, 189)');
 
   return (
-    <Typography
-      variant="body1"
+    <Text
       css={css`
         margin-bottom: 0.5rem;
         color: ${color};
@@ -19,6 +18,6 @@ export const Paragraph: FC<JSX.IntrinsicElements['p']> = ({ children }) => {
       `}
     >
       {children}
-    </Typography>
+    </Text>
   );
 };

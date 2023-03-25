@@ -1,8 +1,9 @@
 import { css } from '@emotion/react';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import { grey } from '@mui/material/colors';
-import Container from '@mui/material/Container';
+import { Container } from '@mantine/core';
+import {
+  IconBrandGithubFilled,
+  IconBrandTwitterFilled,
+} from '@tabler/icons-react';
 import { useTranslation } from 'next-i18next';
 import type { FC } from 'react';
 
@@ -11,6 +12,7 @@ import { DiscordIcon } from '@/components/ui/icons/DiscordIcon';
 import { QiitaIcon } from '@/components/ui/icons/QiitaIcon';
 import { LazeLogo } from '@/components/ui/LazeLogo';
 import { StyledLink } from '@/components/ui/StyledLink';
+import { gray } from '@/styles/colors';
 
 import { FooterLinkList } from './FooterLinkList';
 
@@ -18,11 +20,11 @@ const footerIconStyle = css`
   display: inline-flex;
   width: 1.4rem;
   height: 1.4rem;
-  color: ${grey['400']};
+  color: ${gray[4]};
   transition: color 0.2s;
 
   &:hover {
-    color: ${grey['200']};
+    color: ${gray[2]};
   }
 `;
 
@@ -43,10 +45,10 @@ export const PresentialIndexFooter: FC = () => {
           margin: 0 auto;
           background-color: var(--color-darkgray);
           background-image: ${bgImage};
-          color: ${grey['400']};
+          color: ${gray[4]};
         `}
       >
-        <Container maxWidth="lg">
+        <Container maw="1200px">
           <div
             css={css`
               display: flex;
@@ -102,14 +104,14 @@ export const PresentialIndexFooter: FC = () => {
                   title="GitHub"
                   disableIcon
                 >
-                  <GitHubIcon css={footerIconStyle} />
+                  <IconBrandGithubFilled css={footerIconStyle} />
                 </StyledLink>
                 <StyledLink
                   href="https://twitter.com/LazeProjectTeam"
                   title="Twitter"
                   disableIcon
                 >
-                  <TwitterIcon css={footerIconStyle} />
+                  <IconBrandTwitterFilled css={footerIconStyle} />
                 </StyledLink>
                 <StyledLink
                   href="https://discord.gg/K3prMrmS7e"

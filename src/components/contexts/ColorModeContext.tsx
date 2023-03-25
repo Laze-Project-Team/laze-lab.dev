@@ -1,16 +1,12 @@
-import type { PaletteMode, Theme } from '@mui/material';
-import { CssBaseline, ThemeProvider } from '@mui/material';
+import type { ColorScheme } from '@mantine/core';
 import type { FC, ReactNode } from 'react';
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { match } from 'ts-pattern';
 
-import { getTheme } from '@/lib/theme';
-
 export type colorModeContextType = {
   toggleColorMode: () => void;
   themePattern: <T, K>(valueWithLight: T, valueWithDark: K) => T | K;
-  colorMode: PaletteMode;
-  theme: Theme;
+  colorMode: ColorScheme;
 };
 
 const colorModeContext = createContext<colorModeContextType | null>(null);
@@ -27,19 +23,19 @@ export const useColorMode = (): colorModeContextType => {
 
 export type colorModeProviderProps = {
   children?: ReactNode;
-  preferTheme?: PaletteMode;
+  preferTheme?: ColorScheme;
   isLocal?: boolean;
 };
 
 export const ColorModeProvider: FC<colorModeProviderProps> = ({
   children,
   preferTheme,
-  isLocal,
+  isLocal: _,
 }) => {
   // const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   // TODO: 言語を変更するとカラーモードがリセットされる
   // TODO: Changing language resets color mode
-  const [mode, setMode] = useState<PaletteMode>(
+  const [mode, setMode] = useState<ColorScheme>(
     // preferTheme ?? prefersDarkMode ? 'dark' : 'light',
     preferTheme ?? 'light',
   );
@@ -49,9 +45,6 @@ export const ColorModeProvider: FC<colorModeProviderProps> = ({
       setMode(preferTheme);
     }
   }, [preferTheme]);
-
-  // Update the theme only if the mode changes
-  const theme = useMemo(() => getTheme(mode), [mode]);
 
   const colorMode = useMemo(
     () => ({
@@ -65,17 +58,13 @@ export const ColorModeProvider: FC<colorModeProviderProps> = ({
           .with('dark', () => valueWithDark)
           .exhaustive(),
       colorMode: mode,
-      theme,
     }),
-    [mode, theme],
+    [mode],
   );
 
   return (
     <colorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>
-        {!isLocal && <CssBaseline />}
-        {children}
-      </ThemeProvider>
+      {children}
     </colorModeContext.Provider>
   );
 };

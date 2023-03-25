@@ -1,8 +1,8 @@
 import { css } from '@emotion/react';
-import { grey } from '@mui/material/colors';
 import type { FC, ReactNode } from 'react';
 
 import { StyledLink } from '@/components/ui/StyledLink';
+import { gray } from '@/styles/colors';
 
 export type footerLinkListProps = {
   title: ReactNode;
@@ -34,7 +34,7 @@ export const FooterLinkList: FC<footerLinkListProps> = ({ title, links }) => {
           {links.map((link) => (
             <StyledLink
               css={css`
-                color: ${grey['400']};
+                color: ${gray[4]};
                 text-decoration: none;
 
                 &:hover {

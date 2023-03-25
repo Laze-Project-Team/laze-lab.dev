@@ -1,9 +1,5 @@
-import Avatar from '@mui/material/Avatar';
-import Box from '@mui/material/Box';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import ListItemText from '@mui/material/ListItemText';
+import { css } from '@emotion/react';
+import { Avatar, List } from '@mantine/core';
 import type { UserInfo } from 'firebase/auth';
 import { useTranslation } from 'next-i18next';
 import type { FC } from 'react';
@@ -60,9 +56,24 @@ export const AuthEditButtons: FC<authEditButtonsProps> = ({ providerData }) => {
                   )?.method;
 
                   return (
-                    <ListItem
+                    <List.Item
                       key={authData.uid}
-                      secondaryAction={
+                      icon={
+                        authData.photoURL && <Avatar src={authData.photoURL} />
+                      }
+                      css={css`
+                        display: flex;
+                      `}
+                    >
+                      <div>
+                        <p>{authData.displayName}</p>
+                        <p>{authData.email}</p>
+                      </div>
+                      <div
+                        css={css`
+                          margin-left: auto;
+                        `}
+                      >
                         <AuthUnlinkButton
                           message={t('auth.unlink_confirmation', {
                             method: method ?? '???',
@@ -70,25 +81,17 @@ export const AuthEditButtons: FC<authEditButtonsProps> = ({ providerData }) => {
                           providerId={authData.providerId}
                           disabled={providerData.length === 1}
                         />
-                      }
-                    >
-                      {authData.photoURL && (
-                        <ListItemAvatar>
-                          <Avatar src={authData.photoURL} />
-                        </ListItemAvatar>
-                      )}
-                      <div>
-                        <ListItemText
-                          primary={authData.displayName}
-                          secondary={authData.email}
-                        />
                       </div>
-                    </ListItem>
+                    </List.Item>
                   );
                 })}
               </List>
             ) : (
-              <Box p={2}>
+              <div
+                css={css`
+                  padding: 16px;
+                `}
+              >
                 <AuthEditButton
                   method={provider.method}
                   key={provider.id}
@@ -96,7 +99,7 @@ export const AuthEditButtons: FC<authEditButtonsProps> = ({ providerData }) => {
                 >
                   {t('auth.auth_with', { method: provider.method })}
                 </AuthEditButton>
-              </Box>
+              </div>
             )}
           </div>
         );

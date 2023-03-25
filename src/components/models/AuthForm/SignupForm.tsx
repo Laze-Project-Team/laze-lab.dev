@@ -1,7 +1,4 @@
-import Backdrop from '@mui/material/Backdrop';
-import Button from '@mui/material/Button';
-import CircularProgress from '@mui/material/CircularProgress';
-import Stack from '@mui/material/Stack';
+import { Button, LoadingOverlay, Stack } from '@mantine/core';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import type { DOMAttributes, FC } from 'react';
@@ -42,15 +39,10 @@ export const PresentialSignupForm: FC<presentialSignupFormProps> = ({
 
   return (
     <>
-      <Backdrop
-        open={isProcessing}
-        sx={{ color: 'white', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-      >
-        <CircularProgress color="inherit" />
-      </Backdrop>
+      <LoadingOverlay visible={isProcessing} />
 
       <form onSubmit={onSubmit} aria-label={t('form.label')} role="form">
-        <Stack direction="column" spacing={2}>
+        <Stack dir="column" spacing={2}>
           <FormElementEmail
             name="email"
             control={control}

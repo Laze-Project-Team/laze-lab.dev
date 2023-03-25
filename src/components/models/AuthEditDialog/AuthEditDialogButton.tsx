@@ -1,12 +1,13 @@
-import type { ButtonProps } from '@mui/material/Button';
-import Button from '@mui/material/Button';
+import type { ButtonProps } from '@mantine/core';
+import { Button } from '@mantine/core';
 import { useTranslation } from 'next-i18next';
-import type { FC } from 'react';
+import type { ButtonHTMLAttributes, FC } from 'react';
 import { useState } from 'react';
 
 import { AuthEditDialog } from './AuthEditDialog';
 
-export type authEditDialogButtonProps = ButtonProps;
+export type authEditDialogButtonProps = ButtonProps &
+  ButtonHTMLAttributes<HTMLButtonElement>;
 export type presentialAuthEditDialogButtonProps = {
   isDialogOpen: boolean;
   handleClick: () => void;
@@ -23,7 +24,7 @@ export const PresentialAuthEditDialogButton: FC<
       <Button onClick={handleClick} {...props}>
         {t('auth.edit')}
       </Button>
-      <AuthEditDialog open={isDialogOpen} onClose={handleClose} />
+      <AuthEditDialog opened={isDialogOpen} onClose={handleClose} />
     </>
   );
 };
