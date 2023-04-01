@@ -4,12 +4,12 @@ import { Trans, useTranslation } from 'next-i18next';
 import type { FC } from 'react';
 
 import { Descriptions } from '@/components/functional/Descriptions';
+import { IndexLayout } from '@/components/layouts/IndexLayout';
 import {
   FeatureSection,
   FeatureSectionWrapper,
 } from '@/components/models/FeatureSection';
 import { WaitlistForm } from '@/components/models/WaitlistForm';
-import { LazeLogo } from '@/components/ui/LazeLogo';
 import { blue, gray } from '@/styles/colors';
 
 const emphasized = (
@@ -28,46 +28,9 @@ export const PresentialHome: FC = () => {
     <>
       <Descriptions title={t('title')} description={t('description')} />
 
-      <header
-        css={css`
-          padding: 8px 16px;
-          margin-bottom: 64px;
-          box-shadow: ${gray[3]} 0 0 5px 0;
-        `}
-      >
-        <div
-          css={css`
-            max-width: 1200px;
-            margin: 0 auto;
-          `}
-        >
-          <div
-            css={css`
-              display: flex;
-              align-items: center;
-              gap: 4px;
-            `}
-          >
-            <LazeLogo option="logo" alt="" size={30}></LazeLogo>
-            <span
-              css={css`
-                color: var(--color-laze-primary);
-                font-size: 1.5rem;
-              `}
-            >
-              LazeLab
-            </span>
-          </div>
-        </div>
-      </header>
-      <main
-        css={css`
-          max-width: 1200px;
-          margin: 0 auto;
-        `}
-      >
-        <Stack dir="column" spacing={96} align="center" px={16}>
-          <Stack dir="column" spacing={32}>
+      <IndexLayout>
+        <Stack spacing={96} align="center" px={16}>
+          <Stack spacing={32}>
             <p
               css={css`
                 font-size: 5rem;
@@ -129,24 +92,7 @@ export const PresentialHome: FC = () => {
             {t('beta_message')}
           </p>
         </Stack>
-      </main>
-
-      <footer
-        css={css`
-          padding: 16px;
-          margin-top: 128px;
-          background-color: ${gray[1]};
-        `}
-      >
-        <p
-          css={css`
-            color: ${gray[7]};
-            text-align: center;
-          `}
-        >
-          {t('common:copyright')}
-        </p>
-      </footer>
+      </IndexLayout>
     </>
   );
 };

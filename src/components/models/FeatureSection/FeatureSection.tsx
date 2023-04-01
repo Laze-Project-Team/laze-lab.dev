@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { Stack, useMantineTheme } from '@mantine/core';
+import { Flex, Stack, useMantineTheme } from '@mantine/core';
 import type { FC, ReactNode } from 'react';
 
 import { sp } from '@/styles/media-query';
@@ -21,9 +21,9 @@ export const PresentialFeatureSection: FC<presentialFeatureSectionProps> = ({
 }) => {
   const { colors } = useMantineTheme();
   return (
-    <Stack
-      dir={imagePosition === 'right' ? 'row' : 'row-reverse'}
-      spacing={32}
+    <Flex
+      direction={imagePosition === 'right' ? 'row' : 'row-reverse'}
+      gap={32}
       justify="space-between"
       css={css`
         ${sp} {
@@ -32,7 +32,6 @@ export const PresentialFeatureSection: FC<presentialFeatureSectionProps> = ({
       `}
     >
       <Stack
-        dir="column"
         justify="center"
         spacing={16}
         css={css`
@@ -64,7 +63,7 @@ export const PresentialFeatureSection: FC<presentialFeatureSectionProps> = ({
       >
         {image}
       </div>
-    </Stack>
+    </Flex>
   );
 };
 
