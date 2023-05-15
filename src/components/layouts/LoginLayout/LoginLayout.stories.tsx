@@ -1,13 +1,13 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { PresentialLoginLayout } from './LoginLayout';
 
 export default {
   title: 'layouts/LoginLayout',
   component: PresentialLoginLayout,
-} as ComponentMeta<typeof PresentialLoginLayout>;
+} as Meta<typeof PresentialLoginLayout>;
 
-const Template: ComponentStory<typeof PresentialLoginLayout> = (props) => (
+const Template: StoryFn<typeof PresentialLoginLayout> = (props) => (
   <PresentialLoginLayout {...props} />
 );
 

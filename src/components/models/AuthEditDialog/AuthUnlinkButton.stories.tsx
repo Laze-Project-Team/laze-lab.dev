@@ -1,13 +1,13 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { PresentialAuthUnlinkButton } from './AuthUnlinkButton';
 
 export default {
   title: 'models/AuthEditDialog/AuthUnlinkButton',
   component: PresentialAuthUnlinkButton,
-} as ComponentMeta<typeof PresentialAuthUnlinkButton>;
+} as Meta<typeof PresentialAuthUnlinkButton>;
 
-const Template: ComponentStory<typeof PresentialAuthUnlinkButton> = (props) => (
+const Template: StoryFn<typeof PresentialAuthUnlinkButton> = (props) => (
   <PresentialAuthUnlinkButton
     {...props}
     handleClick={() => void 0}

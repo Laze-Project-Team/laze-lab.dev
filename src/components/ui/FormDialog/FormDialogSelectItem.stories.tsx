@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import type { FieldValues } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 
@@ -7,11 +7,9 @@ import { PresentialFormDialogSelectItem } from './FormDialogSelectItem';
 export default {
   title: 'models/FormDialogSelectItem',
   component: PresentialFormDialogSelectItem,
-} as ComponentMeta<typeof PresentialFormDialogSelectItem>;
+} as Meta<typeof PresentialFormDialogSelectItem>;
 
-const Template: ComponentStory<typeof PresentialFormDialogSelectItem> = (
-  props,
-) => {
+const Template: StoryFn<typeof PresentialFormDialogSelectItem> = (props) => {
   const { control } = useForm<FieldValues>({
     defaultValues: {
       select: 'item-1',

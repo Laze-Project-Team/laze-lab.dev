@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { PresentialLoadingButton } from './LoadingButton';
 
@@ -12,9 +12,9 @@ export default {
       control: { type: 'select' },
     },
   },
-} as ComponentMeta<typeof PresentialLoadingButton>;
+} as Meta<typeof PresentialLoadingButton>;
 
-const Template: ComponentStory<typeof PresentialLoadingButton> = (props) => (
+const Template: StoryFn<typeof PresentialLoadingButton> = (props) => (
   <PresentialLoadingButton {...props} />
 );
 

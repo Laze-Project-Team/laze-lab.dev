@@ -1,5 +1,5 @@
 import DialogContent from '@mui/material/DialogContent';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { FormDialogTextItem } from '@/components/ui/FormDialog';
 
@@ -8,9 +8,9 @@ import { FormDialog } from './FormDialog';
 export default {
   title: 'models/FormDialog',
   component: FormDialog,
-} as ComponentMeta<typeof FormDialog>;
+} as Meta<typeof FormDialog>;
 
-const Template: ComponentStory<typeof FormDialog> = (props) => (
+const Template: StoryFn<typeof FormDialog> = (props) => (
   <FormDialog {...props} />
 );
 

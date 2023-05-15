@@ -1,13 +1,13 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { TwitterAuthButtonBase } from './TwitterAuthButtonBase';
 
 export default {
   title: 'models/AuthButtonBase/TwitterAuthButtonBase',
   component: TwitterAuthButtonBase,
-} as ComponentMeta<typeof TwitterAuthButtonBase>;
+} as Meta<typeof TwitterAuthButtonBase>;
 
-const Template: ComponentStory<typeof TwitterAuthButtonBase> = (props) => (
+const Template: StoryFn<typeof TwitterAuthButtonBase> = (props) => (
   <TwitterAuthButtonBase {...props} />
 );
 

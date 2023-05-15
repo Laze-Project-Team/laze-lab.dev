@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import type { User } from 'firebase/auth';
 
 import { mockSWRResponse } from '/__mocks__/swr';
@@ -16,9 +16,9 @@ const userWithEmailAuth = {
 export default {
   title: 'models/AuthEditDialog/EmailAuthDisplay',
   component: PresentialEmailAuthDisplay,
-} as ComponentMeta<typeof PresentialEmailAuthDisplay>;
+} as Meta<typeof PresentialEmailAuthDisplay>;
 
-const Template: ComponentStory<typeof PresentialEmailAuthDisplay> = (props) => (
+const Template: StoryFn<typeof PresentialEmailAuthDisplay> = (props) => (
   <userInfoContext.Provider
     value={{
       user: mockSWRResponse(userWithEmailAuth),

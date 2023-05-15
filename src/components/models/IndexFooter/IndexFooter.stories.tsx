@@ -1,13 +1,13 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { PresentialIndexFooter } from './IndexFooter';
 
 export default {
   title: 'models/IndexFooter',
   component: PresentialIndexFooter,
-} as ComponentMeta<typeof PresentialIndexFooter>;
+} as Meta<typeof PresentialIndexFooter>;
 
-const Template: ComponentStory<typeof PresentialIndexFooter> = (props) => (
+const Template: StoryFn<typeof PresentialIndexFooter> = (props) => (
   <PresentialIndexFooter {...props} />
 );
 

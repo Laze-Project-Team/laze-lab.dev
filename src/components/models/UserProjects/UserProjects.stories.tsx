@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { mockSWRResponse } from '/__mocks__/swr';
 import { userDataMock, userMock } from '/__mocks__/user';
@@ -9,9 +9,9 @@ import { PresentialUserProjects } from './UserProjects';
 export default {
   title: 'models/UserProjects',
   component: PresentialUserProjects,
-} as ComponentMeta<typeof PresentialUserProjects>;
+} as Meta<typeof PresentialUserProjects>;
 
-const Template: ComponentStory<typeof PresentialUserProjects> = (props) => (
+const Template: StoryFn<typeof PresentialUserProjects> = (props) => (
   <PresentialUserProjects {...props} />
 );
 

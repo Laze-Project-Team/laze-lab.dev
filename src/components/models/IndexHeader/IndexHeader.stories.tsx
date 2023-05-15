@@ -1,13 +1,13 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { PresentialIndexHeader } from './IndexHeader';
 
 export default {
   title: 'models/IndexHeader',
   component: PresentialIndexHeader,
-} as ComponentMeta<typeof PresentialIndexHeader>;
+} as Meta<typeof PresentialIndexHeader>;
 
-const Template: ComponentStory<typeof PresentialIndexHeader> = (props) => (
+const Template: StoryFn<typeof PresentialIndexHeader> = (props) => (
   <PresentialIndexHeader {...props} />
 );
 
