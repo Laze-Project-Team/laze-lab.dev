@@ -1,15 +1,13 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { Headings } from './Heading';
 
 export default {
   title: 'ui/MDXComponents/Heading',
   component: Headings,
-} as ComponentMeta<typeof Headings>;
+} as Meta<typeof Headings>;
 
-const Template: ComponentStory<typeof Headings> = (props) => (
-  <Headings {...props} />
-);
+const Template: StoryFn<typeof Headings> = (props) => <Headings {...props} />;
 
 export const H1 = Template.bind({});
 H1.args = {

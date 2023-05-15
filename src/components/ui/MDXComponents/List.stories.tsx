@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import type { FC, ReactNode } from 'react';
 import { match } from 'ts-pattern';
 
@@ -18,9 +18,9 @@ const List: FC<{ data: ReactNode[] } & { type: 'ul' | 'ol' }> = ({
 export default {
   title: 'ui/MDXComponents/List',
   component: List,
-} as ComponentMeta<typeof List>;
+} as Meta<typeof List>;
 
-const Template: ComponentStory<typeof List> = (props) => <List {...props} />;
+const Template: StoryFn<typeof List> = (props) => <List {...props} />;
 
 export const OrderedList = Template.bind({});
 OrderedList.args = {

@@ -1,13 +1,13 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { LocaleSelectButton } from './LocaleSelectButton';
 
 export default {
   title: 'models/LanguageSelectButton',
   component: LocaleSelectButton,
-} as ComponentMeta<typeof LocaleSelectButton>;
+} as Meta<typeof LocaleSelectButton>;
 
-const Template: ComponentStory<typeof LocaleSelectButton> = (props) => (
+const Template: StoryFn<typeof LocaleSelectButton> = (props) => (
   <LocaleSelectButton {...props} />
 );
 

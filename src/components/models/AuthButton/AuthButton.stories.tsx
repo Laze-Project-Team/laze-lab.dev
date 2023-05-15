@@ -1,13 +1,13 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { PresentialAuthButton } from './AuthButton';
 
 export default {
   title: 'models/AuthButton',
   component: PresentialAuthButton,
-} as ComponentMeta<typeof PresentialAuthButton>;
+} as Meta<typeof PresentialAuthButton>;
 
-const Template: ComponentStory<typeof PresentialAuthButton> = (props) => (
+const Template: StoryFn<typeof PresentialAuthButton> = (props) => (
   <PresentialAuthButton {...props} />
 );
 

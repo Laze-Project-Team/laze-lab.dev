@@ -1,15 +1,15 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { PresentialColorModeSwitcher } from './ColorModeSwitcher';
 
 export default {
   title: 'models/ColorModeSwitcher',
   component: PresentialColorModeSwitcher,
-} as ComponentMeta<typeof PresentialColorModeSwitcher>;
+} as Meta<typeof PresentialColorModeSwitcher>;
 
-const Template: ComponentStory<typeof PresentialColorModeSwitcher> = (
-  props,
-) => <PresentialColorModeSwitcher {...props} />;
+const Template: StoryFn<typeof PresentialColorModeSwitcher> = (props) => (
+  <PresentialColorModeSwitcher {...props} />
+);
 
 export const Dark = Template.bind({});
 Dark.args = {

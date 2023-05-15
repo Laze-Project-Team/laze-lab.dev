@@ -1,13 +1,13 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { PresentialIndexLayout } from './IndexLayout';
 
 export default {
   title: 'layouts/IndexLayout',
   component: PresentialIndexLayout,
-} as ComponentMeta<typeof PresentialIndexLayout>;
+} as Meta<typeof PresentialIndexLayout>;
 
-const Template: ComponentStory<typeof PresentialIndexLayout> = (props) => (
+const Template: StoryFn<typeof PresentialIndexLayout> = (props) => (
   <PresentialIndexLayout {...props} />
 );
 
