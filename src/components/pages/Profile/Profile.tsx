@@ -50,10 +50,11 @@ export const PresentialProfile: FC<presentialProfileProps> = ({ userData }) => {
               css={css`
                 width: 12rem;
 
-                @media (min-width: 600px) {
+                @media (width >= 600px) {
                   width: 15rem;
                 }
-                @media (min-width: 800px) {
+
+                @media (width >= 800px) {
                   width: 20rem;
                 }
               `}

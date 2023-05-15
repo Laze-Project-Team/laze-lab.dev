@@ -29,8 +29,8 @@ const LearningPathPanel: FC<learningPathPanelProps> = ({ path }) => (
         display: flex;
         flex-direction: column;
         padding: 16px;
-        background-color: white;
         border-radius: 4px;
+        background-color: white;
         box-shadow: ${grey['200']} 0 0 4px 0;
         gap: 4px;
 
