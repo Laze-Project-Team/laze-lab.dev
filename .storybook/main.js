@@ -1,18 +1,18 @@
 const path = require('path');
-
 module.exports = {
-  typescript: { reactDocgen: 'react-docgen' },
+  typescript: {
+    reactDocgen: 'react-docgen',
+  },
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     '@storybook/addon-toolbars',
-    'storybook-addon-next',
   ],
-  framework: '@storybook/react',
-  core: {
-    builder: '@storybook/builder-webpack5',
+  framework: {
+    name: '@storybook/nextjs',
+    options: {},
   },
   staticDirs: ['../public'],
   webpackFinal: async (config) => {
@@ -47,7 +47,9 @@ module.exports = {
         plugins: ['@emotion/babel-plugin'],
       },
     });
-
     return config;
+  },
+  docs: {
+    autodocs: true,
   },
 };
