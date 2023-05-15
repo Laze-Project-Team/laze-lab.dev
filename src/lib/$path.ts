@@ -26,6 +26,9 @@ export const pagesPath = {
   "login": {
     $url: (url?: { hash?: string }) => ({ pathname: '/login' as const, hash: url?.hash })
   },
+  "playground": {
+    $url: (url?: { hash?: string }) => ({ pathname: '/playground' as const, hash: url?.hash })
+  },
   "profile": {
     $url: (url?: { hash?: string }) => ({ pathname: '/profile' as const, hash: url?.hash })
   },
