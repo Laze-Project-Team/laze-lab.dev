@@ -1,8 +1,7 @@
 import { css } from '@emotion/react';
-import MenuItem from '@mui/material/MenuItem';
-import type { TextFieldProps } from '@mui/material/TextField';
-import TextField from '@mui/material/TextField';
-import type { FC } from 'react';
+import type { SelectProps } from '@mantine/core';
+import { Select } from '@mantine/core';
+import type { FC, RefAttributes } from 'react';
 import type { Control } from 'react-hook-form';
 import { Controller } from 'react-hook-form';
 
@@ -15,7 +14,8 @@ export type formDialogSelectItemProps = {
     value: string;
     label: string;
   }[];
-} & TextFieldProps;
+} & Omit<SelectProps, 'data'> &
+  RefAttributes<HTMLInputElement>;
 
 export type presentialFormDialogSelectItemProps = {
   id: string;
@@ -31,27 +31,21 @@ export const PresentialFormDialogSelectItem: FC<
         name={name}
         control={control}
         render={({ field: { onChange, ...field } }) => (
-          <TextField
+          <Select
             {...field}
-            select
             label={label}
             id={`${id}-${name}`}
             value={options.find((item) => item.value === field.value)?.value}
-            onChange={(e) => {
-              onChange(e.target.value);
+            onChange={(value) => {
+              onChange(value);
             }}
-            fullWidth
+            data={options}
             css={css`
+              width: 100%;
               margin-top: 0.5rem;
             `}
             {...props}
-          >
-            {options.map((item) => (
-              <MenuItem value={item.value} key={item.value}>
-                {item.label}
-              </MenuItem>
-            ))}
-          </TextField>
+          ></Select>
         )}
       />
     </>

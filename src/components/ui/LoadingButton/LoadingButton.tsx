@@ -1,18 +1,17 @@
-import type { ButtonProps } from '@mui/material/Button';
-import Button from '@mui/material/Button';
-import type { CircularProgressProps } from '@mui/material/CircularProgress';
-import CircularProgress from '@mui/material/CircularProgress';
-import type { FC } from 'react';
+import type { ButtonProps, LoaderProps } from '@mantine/core';
+import { Button, Loader } from '@mantine/core';
+import type { ButtonHTMLAttributes, FC } from 'react';
 
 export type loadingButtonProps = {
   loading?: boolean;
-  loadingIconProps?: CircularProgressProps;
-} & ButtonProps;
+  loadingIconProps?: LoaderProps;
+} & ButtonProps &
+  ButtonHTMLAttributes<HTMLButtonElement>;
 
 export type presentialLoadingButtonProps = loadingButtonProps;
 export const PresentialLoadingButton: FC<presentialLoadingButtonProps> = ({
   loading,
-  endIcon,
+  rightIcon,
   loadingIconProps,
   size,
   ...props
@@ -21,15 +20,11 @@ export const PresentialLoadingButton: FC<presentialLoadingButtonProps> = ({
     <>
       <Button
         {...props}
-        endIcon={
+        rightIcon={
           loading ? (
-            <CircularProgress
-              size="0.7em"
-              color="inherit"
-              {...loadingIconProps}
-            />
+            <Loader size="0.7em" color="inherit" {...loadingIconProps} />
           ) : (
-            endIcon
+            rightIcon
           )
         }
         size={size}

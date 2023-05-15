@@ -1,7 +1,5 @@
 import { css } from '@emotion/react';
-import Avatar from '@mui/material/Avatar';
-import { grey } from '@mui/material/colors';
-import Skeleton from '@mui/material/Skeleton';
+import { Avatar, Skeleton } from '@mantine/core';
 import { useTranslation } from 'next-i18next';
 import type { ChangeEventHandler, FC } from 'react';
 import { useState } from 'react';
@@ -12,6 +10,7 @@ import { useColorMode } from '@/components/contexts/ColorModeContext';
 import { useUserInfoContext } from '@/components/contexts/UserInfoContext';
 import type { baseUserInfo } from '@/components/hooks/useUserInfo';
 import { useUserManager } from '@/lib/firebase/user';
+import { gray } from '@/styles/colors';
 
 import { UploadAvatarButton } from './UploadAvatarButton';
 import type { uploadConfirmationDialogProps } from './UploadConfirmationDialog';
@@ -35,7 +34,7 @@ export const PresentialUserAvatar: FC<presentialUserAvatarProps> = ({
   ...props
 }) => {
   const { themePattern } = useColorMode();
-  const borderColor = themePattern(grey['300'], grey['800']);
+  const borderColor = themePattern(gray[3], gray[8]);
 
   return (
     <>
@@ -78,7 +77,7 @@ export const PresentialUserAvatar: FC<presentialUserAvatarProps> = ({
             />
           </>
         ) : (
-          <Skeleton variant="circular" width="100%" height="100%" />
+          <Skeleton circle width="100%" height="100%" />
         )}
       </div>
     </>

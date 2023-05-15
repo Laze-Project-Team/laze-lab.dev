@@ -8,11 +8,11 @@ import { render } from '@/lib/test/render';
 import { AuthEditDialog } from '.';
 
 it('should be rendered correctly', () => {
-  const { container } = render(<AuthEditDialog open />);
+  const { container } = render(<AuthEditDialog opened />);
   expect(container.firstChild).toMatchSnapshot();
 });
 
 it('should have "dialog" role', () => {
-  render(<AuthEditDialog open />);
+  render(<AuthEditDialog opened />);
   expect(screen.getByRole('dialog')).toBeInTheDocument();
 });

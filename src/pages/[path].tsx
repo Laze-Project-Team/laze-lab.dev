@@ -20,11 +20,6 @@ import {
   Ol,
   Paragraph,
   Table,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr,
   Ul,
 } from '@/components/ui/MDXComponents';
 import { findMdx } from '@/lib/utils/findMdx';
@@ -45,11 +40,6 @@ type docsProps = {
 
 const components: MDXComponents = {
   table: Table,
-  tbody: Tbody,
-  thead: Thead,
-  tr: Tr,
-  th: Th,
-  td: Td,
   img: Image,
   ul: Ul,
   ol: Ol,

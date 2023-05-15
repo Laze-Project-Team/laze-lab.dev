@@ -27,13 +27,13 @@ const Template: StoryFn<typeof PresentialAuthEditDialog> = (props) => (
 
 export const Primary = Template.bind({});
 Primary.args = {
-  open: true,
+  opened: true,
   user: mockSWRResponse(userMock),
 };
 
 export const EmailAuthed = Template.bind({});
 EmailAuthed.args = {
-  open: true,
+  opened: true,
   user: mockSWRResponse({
     ...userMock,
     providerData: [authMock.password].concat(userMock?.providerData || []),
@@ -43,7 +43,7 @@ EmailAuthed.args = {
 
 export const EmailUnverified = Template.bind({});
 EmailUnverified.args = {
-  open: true,
+  opened: true,
   user: mockSWRResponse({
     ...userMock,
     providerData: [authMock.password].concat(userMock?.providerData || []),
@@ -53,6 +53,6 @@ EmailUnverified.args = {
 
 export const Loading = Template.bind({});
 Loading.args = {
-  open: true,
+  opened: true,
   user: mockSWRResponse(undefined as User | null | undefined),
 };

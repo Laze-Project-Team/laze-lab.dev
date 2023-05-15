@@ -1,92 +1,43 @@
 import { css } from '@emotion/react';
-import AppBar from '@mui/material/AppBar';
-import { blue, grey } from '@mui/material/colors';
-import Container from '@mui/material/Container';
-import Stack from '@mui/material/Stack';
-import Toolbar from '@mui/material/Toolbar';
 import type { FC } from 'react';
 
-import { ColorModeSwitcher } from '@/components/models/ColorModeSwitcher';
-import { LocaleSelectButton } from '@/components/models/LocaleSelectButton';
 import { LazeLogo } from '@/components/ui/LazeLogo';
-import { pagesPath } from '@/lib/$path';
-
-import { HeaderLink } from './HeaderLink';
+import { gray } from '@/styles/colors';
 
 export const PresentialIndexHeader: FC = () => {
   return (
     <>
-      <AppBar
-        color="default"
-        position="static"
-        sx={{ backgroundColor: 'var(--color-darkgray)' }}
+      <header
+        css={css`
+          padding: 8px 16px;
+          box-shadow: ${gray[3]} 0 0 5px 0;
+        `}
       >
-        <Container maxWidth="lg">
-          <Toolbar
+        <div
+          css={css`
+            max-width: 1200px;
+            margin: 0 auto;
+          `}
+        >
+          <div
             css={css`
               display: flex;
+              align-items: center;
+              gap: 4px;
             `}
           >
-            <HeaderLink href={pagesPath.$url()}>
-              <LazeLogo option="logo" size={30} alt="" />
-              <span
-                css={css`
-                  color: var(--color-laze-primary);
-                  font-size: 1.75rem;
-                `}
-              >
-                Laze
-              </span>
-            </HeaderLink>
-
-            <Stack
+            <LazeLogo option="logo" alt="" size={30}></LazeLogo>
+            <span
               css={css`
-                margin-left: auto;
-                color: #eee;
+                color: var(--color-laze-primary);
+                font-size: 1.5rem;
               `}
-              direction="row"
-              spacing={2}
             >
-              <ColorModeSwitcher
-                css={css`
-                  &&:hover {
-                    background-color: rgba(255, 255, 255, 0.1);
-                  }
-                `}
-              />
-
-              <LocaleSelectButton
-                css={css`
-                  && {
-                    fieldset {
-                      border-color: ${grey['600']};
-                    }
-
-                    .MuiInputBase-root:hover fieldset {
-                      border-color: ${grey['400']};
-                    }
-
-                    .MuiInputBase-root.Mui-focused fieldset {
-                      border-color: ${blue['200']};
-                    }
-
-                    .MuiInputBase-root,
-                    label,
-                    svg {
-                      color: ${grey['200']};
-                    }
-
-                    label.Mui-focused,
-                    .MuiInputBase-root.Mui-focused {
-                      color: ${blue['200']};
-                    }
-                  }
-                `}
-              />
-            </Stack>
-          </Toolbar>
-        </Container>
-      </AppBar>
+              LazeLab
+            </span>
+          </div>
+        </div>
+      </header>
     </>
   );
 };

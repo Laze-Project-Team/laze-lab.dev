@@ -1,5 +1,4 @@
-import Button from '@mui/material/Button';
-import Collapse from '@mui/material/Collapse';
+import { Button, Collapse } from '@mantine/core';
 import type { UserInfo } from 'firebase/auth';
 import { useTranslation } from 'next-i18next';
 import type { FC } from 'react';
@@ -34,10 +33,7 @@ export const PresentialEmailAuthEdit: FC<presentialEmailAuthEditProps> = ({
         <EmailAuthDisplay />
       ) : (
         <>
-          <Collapse
-            in={isEmailAuthFormVisible}
-            style={{ transformOrigin: 'top' }}
-          >
+          <Collapse in={isEmailAuthFormVisible}>
             <div>
               <EmailAuthForm />
             </div>

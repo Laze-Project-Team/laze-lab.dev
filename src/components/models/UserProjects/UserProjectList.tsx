@@ -1,5 +1,4 @@
-import Divider from '@mui/material/Divider';
-import List from '@mui/material/List';
+import { Divider, List } from '@mantine/core';
 import type { FC } from 'react';
 
 import type { userData as userDataType } from '@/typings/database';

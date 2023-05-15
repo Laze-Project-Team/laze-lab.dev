@@ -1,5 +1,5 @@
-import type { DialogProps } from '@mui/material';
-import Dialog from '@mui/material/Dialog';
+import type { ModalProps } from '@mantine/core';
+import { Modal } from '@mantine/core';
 import type { FC, ReactElement, ReactNode } from 'react';
 import { useEffect } from 'react';
 import type { Control, DefaultValues, FieldValues } from 'react-hook-form';
@@ -15,11 +15,11 @@ export type formDialogProps<T extends FieldValues> = {
   defaultValues: DefaultValues<T>;
   handleSubmit: (data: T) => void;
   children?: ReactNode;
-} & DialogProps;
+} & ModalProps;
 
 export type presentialFormDialogProps = {
   children: ReactNode;
-} & DialogProps;
+} & ModalProps;
 
 export const PresentialFormDialog: FC<presentialFormDialogProps> = ({
   children,
@@ -27,9 +27,9 @@ export const PresentialFormDialog: FC<presentialFormDialogProps> = ({
 }) => {
   const { onSubmit } = useFormDialogContext();
   return (
-    <Dialog {...props}>
+    <Modal {...props}>
       <form onSubmit={onSubmit}>{children}</form>
-    </Dialog>
+    </Modal>
   );
 };
 
@@ -37,7 +37,7 @@ export const FormDialog = <T extends FieldValues>({
   id,
   defaultValues,
   children,
-  open,
+  opened,
   handleSubmit: handleSubmitCallback,
   ...props
 }: formDialogProps<T>): ReactElement => {
@@ -47,10 +47,10 @@ export const FormDialog = <T extends FieldValues>({
   const onSubmit = handleSubmit(handleSubmitCallback);
 
   useEffect(() => {
-    if (open) {
+    if (opened) {
       reset(defaultValues);
     }
-  }, [defaultValues, open, reset]);
+  }, [defaultValues, opened, reset]);
 
   return (
     <FormDialogContextProvider
@@ -60,7 +60,7 @@ export const FormDialog = <T extends FieldValues>({
         onSubmit,
       }}
     >
-      <PresentialFormDialog open={open} {...props}>
+      <PresentialFormDialog opened={opened} {...props}>
         {children}
       </PresentialFormDialog>
     </FormDialogContextProvider>

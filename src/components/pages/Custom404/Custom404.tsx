@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import Stack from '@mui/material/Stack';
+import { Stack } from '@mantine/core';
 import { Trans, useTranslation } from 'next-i18next';
 import type { FC } from 'react';
 
@@ -17,7 +17,7 @@ export const PresentialCustom404: FC = () => {
 
       <IndexLayout>
         <Stack
-          spacing={4}
+          spacing={32}
           css={css`
             display: flex;
             height: 100%;

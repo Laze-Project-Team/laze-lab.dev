@@ -1,8 +1,5 @@
 import { css } from '@emotion/react';
-import Chip from '@mui/material/Chip';
-import Skeleton from '@mui/material/Skeleton';
-import Tooltip from '@mui/material/Tooltip';
-import Typography from '@mui/material/Typography';
+import { Badge, Skeleton, Text, Tooltip } from '@mantine/core';
 import { sendEmailVerification } from 'firebase/auth';
 import { useTranslation } from 'next-i18next';
 import type { FC } from 'react';
@@ -28,38 +25,48 @@ export const PresentialEmailAuthDisplay: FC<
 
   const currentUser = user.data;
   if (!currentUser) {
-    return <Skeleton variant="text" />;
+    return (
+      <>
+        <Skeleton height={8} radius="xl" />
+        <Skeleton height={8} mt={6} radius="xl" />
+        <Skeleton height={8} mt={6} width="70%" radius="xl" />
+      </>
+    );
   }
 
   return (
     <>
-      <Typography
-        variant="body2"
-        sx={{ display: 'flex', alignItems: 'center' }}
+      <Text
+        color="dimmed"
+        css={css`
+          display: flex;
+          align-items: center;
+        `}
       >
         {currentUser.email}
-        <Chip
-          size="small"
-          sx={{ marginLeft: '0.5rem' }}
-          label={
-            currentUser.emailVerified
-              ? `✔${t('auth.verified')}`
-              : t('auth.not_verified')
-          }
-        />
+        <Badge
+          size="sm"
+          css={css`
+            margin-left: 0.5rem;
+          `}
+        >
+          {currentUser.emailVerified
+            ? `✔${t('auth.verified')}`
+            : t('auth.not_verified')}
+        </Badge>
         <AuthUnlinkButton
           wrapperProps={{
             css: css`
               margin: 0 8px 0 auto;
             `,
           }}
-          size="small"
+          size="sm"
           providerId="password"
           message={t('auth.unlink_email_confirmation', {
             email: currentUser.email,
           })}
         />
-      </Typography>
+      </Text>
       {!currentUser.emailVerified &&
         (() => {
           const button = (
@@ -67,8 +74,10 @@ export const PresentialEmailAuthDisplay: FC<
               onClick={handleClickSendVerificationEmail}
               loading={status === 'processing'}
               disabled={status === 'timeout'}
-              sx={{ marginTop: '0.5rem' }}
-              size="small"
+              css={css`
+                margin-top: 0.5rem;
+              `}
+              size="sm"
               fullWidth
             >
               {t('auth.send_verification_email')}
@@ -77,7 +86,7 @@ export const PresentialEmailAuthDisplay: FC<
 
           if (status === 'timeout') {
             return (
-              <Tooltip title={t('auth.send_verification_email_timeout')}>
+              <Tooltip label={t('auth.send_verification_email_timeout')}>
                 <span>{button}</span>
               </Tooltip>
             );

@@ -24,7 +24,7 @@ export const GoogleAuthButtonBase: FC<authButtonBaseProps> = (props) => {
   return (
     <AuthButtonBase
       {...props}
-      startIcon={<GoogleIcon css={authIconStyle} />}
+      leftIcon={<GoogleIcon css={authIconStyle} />}
       css={css`
         ${googleAuthButtonStyle};
 

@@ -13,7 +13,8 @@ it('should be rendered correctly', () => {
       id="test"
       defaultValues={{}}
       handleSubmit={() => void 0}
-      open
+      onClose={() => void 0}
+      opened
     />,
   );
   expect(container.firstChild).toMatchSnapshot();
@@ -25,7 +26,8 @@ it('should have "dialog" role', () => {
       id="test"
       defaultValues={{}}
       handleSubmit={() => void 0}
-      open
+      onClose={() => void 0}
+      opened
     />,
   );
   expect(screen.getByRole('dialog')).toBeInTheDocument();

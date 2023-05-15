@@ -1,7 +1,4 @@
-import Checkbox from '@mui/material/Checkbox';
-import FormControl from '@mui/material/FormControl';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormHelperText from '@mui/material/FormHelperText';
+import { Checkbox, Text } from '@mantine/core';
 import { Trans, useTranslation } from 'next-i18next';
 import type { ReactElement } from 'react';
 import type { Control, FieldError, FieldValues, Path } from 'react-hook-form';
@@ -28,9 +25,9 @@ export const FormElementAgreement = <T extends FieldValues>({
       control={control}
       rules={{ validate: (val) => val }}
       render={({ field }) => (
-        <FormControl variant="standard">
-          <FormControlLabel
-            htmlFor="agreement-checkbox"
+        <div>
+          <Checkbox
+            {...field}
             label={
               <Trans t={t} i18nKey="form.agreement.label">
                 {[
@@ -39,20 +36,20 @@ export const FormElementAgreement = <T extends FieldValues>({
                 ]}
               </Trans>
             }
-            control={<Checkbox id="agreement-checkbox" {...field} />}
           />
-          <FormHelperText>
+
+          <Text color="dimmed">
             <Trans t={t} i18nKey="form.agreement.description">
               {[
                 <DefaultLink href="/terms" key="terms" />,
                 <DefaultLink href="/privacy" key="privacy" />,
               ]}
             </Trans>
-          </FormHelperText>
-          <FormHelperText error={!!error}>
+          </Text>
+          <Text color={error ? 'red' : 'dimmed'}>
             {error?.type === 'validate' && t('form.agreement.required')}
-          </FormHelperText>
-        </FormControl>
+          </Text>
+        </div>
       )}
     />
   );

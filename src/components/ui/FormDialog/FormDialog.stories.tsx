@@ -1,4 +1,3 @@
-import DialogContent from '@mui/material/DialogContent';
 import type { Meta, StoryFn } from '@storybook/react';
 
 import { FormDialogTextItem } from '@/components/ui/FormDialog';
@@ -21,10 +20,10 @@ Primary.args = {
     name: 'this is name',
   },
   children: (
-    <DialogContent>
+    <div>
       <FormDialogTextItem label="name" name="name" />
-    </DialogContent>
+    </div>
   ),
-  open: true,
+  opened: true,
   handleSubmit: (data) => console.log('submitted', data),
 };

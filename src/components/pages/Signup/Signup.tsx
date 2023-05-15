@@ -1,8 +1,5 @@
 import { css } from '@emotion/react';
-import Box from '@mui/material/Box';
-import { grey } from '@mui/material/colors';
-import Divider from '@mui/material/Divider';
-import Stack from '@mui/material/Stack';
+import { Divider, Stack } from '@mantine/core';
 import { Trans, useTranslation } from 'next-i18next';
 import type { FC } from 'react';
 
@@ -16,6 +13,7 @@ import { AuthButton } from '@/components/models/AuthButton';
 import { SignupForm } from '@/components/models/AuthForm';
 import { DefaultLink } from '@/components/ui/DefaultLink';
 import { pagesPath } from '@/lib/$path';
+import { gray } from '@/styles/colors';
 
 export const PresentialSignup: FC = () => {
   const [t] = useTranslation(['signup', 'common']);
@@ -26,23 +24,38 @@ export const PresentialSignup: FC = () => {
 
       <LoginLayout title={t('title')}>
         <AuthErrorProvider>
-          <Box mb={4}>
+          <div
+            css={css`
+              margin-bottom: 32px;
+            `}
+          >
             <AuthError />
-          </Box>
-          <Stack spacing={2} direction="column">
+          </div>
+          <Stack spacing={16} dir="column">
             <AuthButton method="Google" authType="signup" />
             <AuthButton method="Twitter" authType="signup" />
             <AuthButton method="GitHub" authType="signup" />
           </Stack>
         </AuthErrorProvider>
 
-        <Divider sx={{ margin: '2rem 0 1rem 0', color: grey['400'] }}>
+        <Divider
+          css={css`
+            margin: 2rem 0 1rem;
+            color: ${gray[4]};
+          `}
+        >
           {t('common:or')}
         </Divider>
+
         <AuthErrorProvider>
-          <Box mt={2} mb={4}>
+          <div
+            css={css`
+              margin-top: 16px;
+              margin-bottom: 32px;
+            `}
+          >
             <AuthError />
-          </Box>
+          </div>
           <SignupForm />
         </AuthErrorProvider>
 

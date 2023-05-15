@@ -1,16 +1,13 @@
 import { css } from '@emotion/react';
-import DeleteIcon from '@mui/icons-material/Delete';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import Tooltip from '@mui/material/Tooltip';
+import {
+  ActionIcon,
+  Button,
+  Divider,
+  List,
+  Modal,
+  Tooltip,
+} from '@mantine/core';
+import { IconTrash } from '@tabler/icons-react';
 import { useTranslation } from 'next-i18next';
 import type { FC } from 'react';
 import { useCallback, useState } from 'react';
@@ -83,17 +80,14 @@ export const PresentialUserProjectItem: FC<presentialUserItemProps> = ({
 
   return (
     <>
-      <Dialog
-        open={isConfirmOpen}
+      <Modal
+        opened={isConfirmOpen}
         onClose={handleReject}
-        aria-labelledby="delete-project-confirmation-dialog-title"
+        title={t('profile.projects.delete_confirm_title')}
         aria-describedby="delete-project-confirmation-dialog-description"
       >
-        <DialogTitle id="delete-project-confirmation-dialog-title">
-          {t('profile.projects.delete_confirm_title')}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="delete-project-confirmation-dialog-description">
+        <div>
+          <p id="delete-project-confirmation-dialog-description">
             {replaceWithElement(
               t('profile.projects.delete_confirm_description'),
               '{{project}}',
@@ -106,53 +100,52 @@ export const PresentialUserProjectItem: FC<presentialUserItemProps> = ({
                 {projectMeta.data?.config.name ?? '???'}
               </span>,
             )}
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
+          </p>
+        </div>
+        <div>
           <Button onClick={handleReject}>
             {t('profile.projects.delete_cancel')}
           </Button>
           <Button onClick={handleConfirm} autoFocus color="error">
             {t('profile.projects.delete_confirm')}
           </Button>
-        </DialogActions>
-      </Dialog>
+        </div>
+      </Modal>
 
       <div css={itemAnimationCss(isDeleted)}>
-        <ListItem
+        <List.Item
           css={css`
             padding: '0.5rem 1rem';
           `}
         >
-          <ListItemText
-            primary={
-              projectMeta.data ? (
-                <DefaultLink href={`/projects/${projectId}`}>
-                  {projectMeta.data.config.name}
-                </DefaultLink>
-              ) : (
-                ' '
-              )
-            }
-            secondary={projectMeta.data?.config.description}
-            secondaryTypographyProps={{
-              sx: {
-                textOverflow: 'ellipsis',
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-              },
-            }}
-          />
+          <p>
+            {projectMeta.data ? (
+              <DefaultLink href={`/projects/${projectId}`}>
+                {projectMeta.data.config.name}
+              </DefaultLink>
+            ) : (
+              ' '
+            )}
+          </p>
+          <p
+            css={css`
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            `}
+          >
+            {projectMeta.data?.config.description}
+          </p>
 
-          <Tooltip title={t('profile.projects.delete')}>
-            <IconButton
+          <Tooltip label={t('profile.projects.delete')}>
+            <ActionIcon
               aria-label={t('profile.projects.delete')}
               onClick={handleDeleteClick}
             >
-              <DeleteIcon />
-            </IconButton>
+              <IconTrash />
+            </ActionIcon>
           </Tooltip>
-        </ListItem>
+        </List.Item>
 
         <Divider />
       </div>

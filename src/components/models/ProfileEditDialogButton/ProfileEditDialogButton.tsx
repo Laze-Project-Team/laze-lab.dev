@@ -1,11 +1,8 @@
-import type { ButtonProps } from '@mui/material/Button';
-import Button from '@mui/material/Button';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-import Stack from '@mui/material/Stack';
+import { css } from '@emotion/react';
+import type { ButtonProps } from '@mantine/core';
+import { Button, Stack } from '@mantine/core';
 import { useTranslation } from 'next-i18next';
-import type { FC } from 'react';
+import type { ButtonHTMLAttributes, FC } from 'react';
 import { useMemo, useState } from 'react';
 import { toast } from 'react-toastify';
 
@@ -20,10 +17,11 @@ import { localeList } from '@/const/locale';
 import { useUserManager } from '@/lib/firebase/user';
 import type { localeId } from '@/lib/utils/isLocale';
 
-export type profileEditDialogButtonProps = ButtonProps;
+export type profileEditDialogButtonProps = ButtonProps &
+  ButtonHTMLAttributes<HTMLButtonElement>;
 
 export type presentialProfileEditDialogButtonProps = {
-  open: boolean;
+  opened: boolean;
   isSubmitting: boolean;
   defaultValues: profileEditFormValue;
   handleOpen: () => void;
@@ -39,7 +37,7 @@ export type profileEditFormValue = {
 export const PresentialProfileEditDialogButton: FC<
   presentialProfileEditDialogButtonProps
 > = ({
-  open,
+  opened,
   isSubmitting,
   defaultValues,
   handleOpen,
@@ -55,22 +53,20 @@ export const PresentialProfileEditDialogButton: FC<
         {t('profile.edit')}
       </Button>
 
-      <FormDialog
+      <FormDialog<profileEditFormValue>
         id="profile-edit-dialog"
+        title={t('profile.edit')}
         defaultValues={defaultValues}
-        open={open}
+        opened={opened}
         onClose={handleClose}
         handleSubmit={handleSubmit}
-        aria-labelledby="profile-edit-dialog-title"
-        maxWidth="xs"
-        fullWidth
+        css={css`
+          width: 100%;
+          max-width: 480px;
+        `}
       >
-        <DialogTitle id="profile-edit-dialog-title">
-          {t('profile.edit')}
-        </DialogTitle>
-
-        <DialogContent>
-          <Stack spacing={4} mt={2}>
+        <div>
+          <Stack spacing={32} mt={16}>
             <FormDialogTextItem
               disabled={isSubmitting}
               label={t('profile.name.label')}
@@ -86,8 +82,8 @@ export const PresentialProfileEditDialogButton: FC<
               }))}
             />
           </Stack>
-        </DialogContent>
-        <DialogActions>
+        </div>
+        <div>
           <Button onClick={handleClose}>{t('profile.edit_cancel')}</Button>
           <LoadingButton
             type="submit"
@@ -97,7 +93,7 @@ export const PresentialProfileEditDialogButton: FC<
           >
             {t('profile.edit_submit')}
           </LoadingButton>
-        </DialogActions>
+        </div>
       </FormDialog>
     </>
   );
@@ -110,10 +106,10 @@ export const ProfileEditDialogButton: FC<profileEditDialogButtonProps> = ({
   const { user, userData, syncUserData } = useUserInfoContext();
 
   const { updateUserData } = useUserManager();
-  const [open, setOpen] = useState(false);
+  const [opened, setOpened] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleOpen = () => setOpened(true);
+  const handleClose = () => setOpened(false);
 
   const defaultValues: profileEditFormValue = useMemo(
     () => ({
@@ -137,7 +133,7 @@ export const ProfileEditDialogButton: FC<profileEditDialogButtonProps> = ({
         })
         .finally(() => {
           setIsSubmitting(false);
-          setOpen(false);
+          setOpened(false);
         });
     } else {
       toast(t('profile.edit_failed'), { type: 'error' });
@@ -146,7 +142,7 @@ export const ProfileEditDialogButton: FC<profileEditDialogButtonProps> = ({
 
   return (
     <PresentialProfileEditDialogButton
-      open={open}
+      opened={opened}
       isSubmitting={isSubmitting}
       defaultValues={defaultValues}
       handleOpen={handleOpen}

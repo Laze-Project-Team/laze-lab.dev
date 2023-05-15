@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { css } from '@emotion/react';
-import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import { IconExternalLink } from '@tabler/icons-react';
 import Link from 'next/link';
 import type { ComponentPropsWithRef, FC } from 'react';
 import type { UrlObject } from 'url';
@@ -38,7 +38,7 @@ export const PresentialStyledLink: FC<presentialStyledLinkProps> = ({
       >
         {children}
         {!disableIcon && !isInternal && (
-          <OpenInNewIcon
+          <IconExternalLink
             css={css`
               width: 1rem;
               height: 1rem;

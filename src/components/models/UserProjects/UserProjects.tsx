@@ -1,9 +1,6 @@
 import { css } from '@emotion/react';
-import AddIcon from '@mui/icons-material/Add';
-import IconButton from '@mui/material/IconButton';
-import Skeleton from '@mui/material/Skeleton';
-import Stack from '@mui/material/Stack';
-import Tooltip from '@mui/material/Tooltip';
+import { ActionIcon, Skeleton, Stack, Tooltip } from '@mantine/core';
+import { IconPlus } from '@tabler/icons-react';
 import { arrayUnion } from 'firebase/firestore';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
@@ -45,17 +42,17 @@ export const PresentialUserProjects: FC<presentialUserProjectsProps> = ({
         <span>{t('profile.projects.title')}</span>
 
         <Tooltip
-          title={t('profile.projects.add')}
+          label={t('profile.projects.add')}
           css={css`
             margin-left: auto;
           `}
         >
-          <IconButton
+          <ActionIcon
             aria-label={t('profile.projects.add')}
             onClick={handleClickNewProject}
           >
-            <AddIcon />
-          </IconButton>
+            <IconPlus />
+          </ActionIcon>
         </Tooltip>
       </p>
 
@@ -65,13 +62,9 @@ export const PresentialUserProjects: FC<presentialUserProjectsProps> = ({
           syncUserData={syncUserData}
         />
       ) : (
-        <Stack spacing={2}>
+        <Stack spacing={16}>
           {[0, 1, 2, 3, 4].map((val) => (
-            <Skeleton
-              variant="rectangular"
-              sx={{ width: '100%', height: '2rem' }}
-              key={val}
-            />
+            <Skeleton width="100%" height="2rem" radius="md" key={val} />
           ))}
         </Stack>
       )}

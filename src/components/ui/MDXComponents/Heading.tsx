@@ -1,13 +1,13 @@
 import { css } from '@emotion/react';
-import { grey } from '@mui/material/colors';
-import Typography from '@mui/material/Typography';
+import { Text } from '@mantine/core';
 import type { FC } from 'react';
 import { match } from 'ts-pattern';
 
 import { useColorMode } from '@/components/contexts/ColorModeContext';
+import { gray } from '@/styles/colors';
 
 export const H1: FC<JSX.IntrinsicElements['h1']> = ({ children }) => (
-  <Typography
+  <Text
     variant="h1"
     css={css`
       padding: 0 0.25rem;
@@ -17,15 +17,15 @@ export const H1: FC<JSX.IntrinsicElements['h1']> = ({ children }) => (
     `}
   >
     {children}
-  </Typography>
+  </Text>
 );
 
 export const H2: FC<JSX.IntrinsicElements['h2']> = ({ children }) => {
   const { themePattern } = useColorMode();
-  const color = themePattern(grey['800'], grey['300']);
+  const color = themePattern(gray[8], gray[3]);
 
   return (
-    <Typography
+    <Text
       variant="h2"
       css={css`
         margin: 2rem 0 0.5rem;
@@ -35,24 +35,24 @@ export const H2: FC<JSX.IntrinsicElements['h2']> = ({ children }) => {
       `}
     >
       {children}
-    </Typography>
+    </Text>
   );
 };
 
 export const H3: FC<JSX.IntrinsicElements['h3']> = ({ children }) => (
-  <Typography variant="h3">{children}</Typography>
+  <Text variant="h3">{children}</Text>
 );
 
 export const H4: FC<JSX.IntrinsicElements['h4']> = ({ children }) => (
-  <Typography variant="h4">{children}</Typography>
+  <Text variant="h4">{children}</Text>
 );
 
 export const H5: FC<JSX.IntrinsicElements['h5']> = ({ children }) => (
-  <Typography variant="h5">{children}</Typography>
+  <Text variant="h5">{children}</Text>
 );
 
 export const H6: FC<JSX.IntrinsicElements['h6']> = ({ children }) => (
-  <Typography variant="h6">{children}</Typography>
+  <Text variant="h6">{children}</Text>
 );
 
 export type HeadingsProps = {

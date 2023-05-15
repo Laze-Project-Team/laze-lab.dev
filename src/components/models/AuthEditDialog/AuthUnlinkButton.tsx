@@ -1,33 +1,21 @@
 import { css } from '@emotion/react';
-import LinkOffIcon from '@mui/icons-material/LinkOff';
-import Button from '@mui/material/Button';
-import CircularProgress from '@mui/material/CircularProgress';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-import type { IconButtonProps } from '@mui/material/IconButton';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
+import type { ActionIconProps } from '@mantine/core';
+import { ActionIcon, Button, Loader, Modal, Tooltip } from '@mantine/core';
+import { IconLinkOff } from '@tabler/icons-react';
 import { unlink } from 'firebase/auth';
 import { useTranslation } from 'next-i18next';
-import type { FC, ReactNode } from 'react';
+import type { ButtonHTMLAttributes, FC, ReactNode } from 'react';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 
 import { useUserInfoContext } from '@/components/contexts/UserInfoContext';
 
-const sizeTable = {
-  small: '34px',
-  medium: '40px',
-  large: '48px',
-} as const;
-
 export type authUnlinkButtonProps = {
   providerId: string;
   message: ReactNode;
   wrapperProps?: JSX.IntrinsicElements['span'];
-} & IconButtonProps;
+} & ActionIconProps &
+  ButtonHTMLAttributes<HTMLButtonElement>;
 
 export type presentialAuthUnlinkButtonProps = {
   message: ReactNode;
@@ -52,24 +40,12 @@ export const PresentialAuthUnlinkButton: FC<
 }) => {
   const [t] = useTranslation('profile');
 
-  const size = sizeTable[props.size ?? 'medium'];
-
   return (
     <>
-      <Tooltip title={t('auth.unlink')} enterDelay={500}>
+      <Tooltip label={t('auth.unlink')} openDelay={500}>
         {/* wrapper for Tooltip (when disabled) */}
-        <span
-          {...wrapperProps}
-          css={[
-            wrapperProps?.css,
-            css`
-              width: ${size};
-              height: ${size};
-            `,
-          ]}
-        >
-          <IconButton
-            edge="end"
+        <span {...wrapperProps} css={wrapperProps?.css}>
+          <ActionIcon
             aria-label={t('auth.unlink')}
             color="error"
             disabled={isWorking}
@@ -77,23 +53,30 @@ export const PresentialAuthUnlinkButton: FC<
             {...props}
           >
             {isWorking ? (
-              <CircularProgress color="inherit" size="1em" />
+              <Loader color="inherit" size="1em" />
             ) : (
-              <LinkOffIcon />
+              <IconLinkOff />
             )}
-          </IconButton>
+          </ActionIcon>
         </span>
       </Tooltip>
-      <Dialog open={isConfirmationDialogOpen} onClose={handleCancel}>
-        <DialogTitle>{t('auth.unlink')}</DialogTitle>
-        <DialogContent>{message}</DialogContent>
-        <DialogActions>
+      <Modal
+        opened={isConfirmationDialogOpen}
+        onClose={handleCancel}
+        title={t('auth.unlink')}
+      >
+        <div>{message}</div>
+        <div
+          css={css`
+            margin-top: 32px;
+          `}
+        >
           <Button onClick={handleCancel}>{t('auth.unlink_cancel')}</Button>
           <Button onClick={handleConfirm} autoFocus color="error">
             {t('auth.unlink_confirm')}
           </Button>
-        </DialogActions>
-      </Dialog>
+        </div>
+      </Modal>
     </>
   );
 };

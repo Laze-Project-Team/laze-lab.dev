@@ -1,6 +1,5 @@
 import { css } from '@emotion/react';
-import { Skeleton } from '@mui/material';
-import { grey } from '@mui/material/colors';
+import { Skeleton } from '@mantine/core';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 import type { FC } from 'react';
@@ -11,6 +10,7 @@ import type {
   learningPath,
 } from '@/components/pages/LearningPath/learningPathType';
 import { pagesPath } from '@/lib/$path';
+import { gray } from '@/styles/colors';
 import { pc } from '@/styles/media-query';
 
 type learningPathPanelProps = {
@@ -31,18 +31,18 @@ const LearningPathPanel: FC<learningPathPanelProps> = ({ path }) => (
         padding: 16px;
         border-radius: 4px;
         background-color: white;
-        box-shadow: ${grey['200']} 0 0 4px 0;
+        box-shadow: ${gray[2]} 0 0 4px 0;
         gap: 4px;
 
         & > p {
-          color: ${grey['800']};
+          color: ${gray[8]};
           text-align: center;
           text-decoration: none;
         }
       `}
     >
       <p>{path.title}</p>
-      <Skeleton variant="rounded" width="100%" height={100} />
+      <Skeleton radius="md" width="100%" height={100} />
       <p>{path.description}</p>
     </div>
   </Link>

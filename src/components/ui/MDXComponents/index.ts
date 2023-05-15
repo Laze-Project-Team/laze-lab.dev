@@ -3,4 +3,4 @@ export { Image } from './Image';
 export { Link } from './Link';
 export { Li, Ol, Ul } from './List';
 export { Paragraph } from './Paragraph';
-export { Table, Tbody, Td, Th, Thead, Tr } from './Table';
+export { Table } from './Table';

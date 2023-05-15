@@ -1,4 +1,4 @@
-import TextField from '@mui/material/TextField';
+import { Input } from '@mantine/core';
 import { useTranslation } from 'next-i18next';
 import type { ReactElement } from 'react';
 import type { Control, FieldError, FieldValues, Path } from 'react-hook-form';
@@ -24,14 +24,17 @@ export const FormElementEmail = <T extends FieldValues>({
       rules={{ required: true }}
       render={({ field }) => {
         return (
-          <TextField
-            autoComplete="email"
+          <Input.Wrapper
             label={t('form.email.label')}
-            variant="standard"
-            error={!!error}
-            helperText={error?.type === 'required' && t('form.email.required')}
-            {...field}
-          />
+            error={error?.type === 'required' && t('form.email.required')}
+          >
+            <Input
+              autoComplete="email"
+              variant="standard"
+              error={!!error}
+              {...field}
+            />
+          </Input.Wrapper>
         );
       }}
     />

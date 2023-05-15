@@ -1,6 +1,5 @@
 import { css } from '@emotion/react';
-import { grey } from '@mui/material/colors';
-import Stack from '@mui/material/Stack';
+import { Flex, Stack, useMantineTheme } from '@mantine/core';
 import type { FC, ReactNode } from 'react';
 
 import { sp } from '@/styles/media-query';
@@ -19,52 +18,54 @@ export const PresentialFeatureSection: FC<presentialFeatureSectionProps> = ({
   title,
   description,
   image,
-}) => (
-  <Stack
-    direction={imagePosition === 'right' ? 'row' : 'row-reverse'}
-    gap={4}
-    justifyContent="space-between"
-    css={css`
-      ${sp} {
-        flex-direction: column;
-      }
-    `}
-  >
-    <Stack
-      direction="column"
-      justifyContent="center"
-      gap={2}
+}) => {
+  const { colors } = useMantineTheme();
+  return (
+    <Flex
+      direction={imagePosition === 'right' ? 'row' : 'row-reverse'}
+      gap={32}
+      justify="space-between"
       css={css`
-        flex: 1;
+        ${sp} {
+          flex-direction: column;
+        }
       `}
     >
-      <p
+      <Stack
+        justify="center"
+        spacing={16}
         css={css`
-          color: ${grey['800']};
-          font-size: 2rem;
-          font-weight: 700;
+          flex: 1;
         `}
       >
-        {title}
-      </p>
-      <p
+        <p
+          css={css`
+            color: ${colors.gray[8]};
+            font-size: 2rem;
+            font-weight: 700;
+          `}
+        >
+          {title}
+        </p>
+        <p
+          css={css`
+            color: ${colors.gray[6]};
+          `}
+        >
+          {description}
+        </p>
+      </Stack>
+      <div
         css={css`
-          color: ${grey['600']};
+          width: 45%;
+          height: 500px;
         `}
       >
-        {description}
-      </p>
-    </Stack>
-    <div
-      css={css`
-        width: 45%;
-        height: 500px;
-      `}
-    >
-      {image}
-    </div>
-  </Stack>
-);
+        {image}
+      </div>
+    </Flex>
+  );
+};
 
 export const FeatureSection: FC<featureSectionProps> = (props) => {
   return <PresentialFeatureSection {...props} />;

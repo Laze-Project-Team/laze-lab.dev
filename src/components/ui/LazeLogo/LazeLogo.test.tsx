@@ -8,11 +8,11 @@ import { render } from '@/lib/test/render';
 import { LazeLogo } from '.';
 
 it('should be rendered correctly', () => {
-  const { container } = render(<LazeLogo size={40} option="logo" />);
+  const { container } = render(<LazeLogo size={40} option="logo" alt="" />);
   expect(container.firstChild).toMatchSnapshot();
 });
 
 it('should have "presentation" role', () => {
-  render(<LazeLogo size={40} option="logo" />);
+  render(<LazeLogo size={40} option="logo" alt="" />);
   expect(screen.getByRole('presentation')).toBeInTheDocument();
 });

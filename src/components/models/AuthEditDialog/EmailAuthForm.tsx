@@ -1,4 +1,4 @@
-import Stack from '@mui/material/Stack';
+import { Stack } from '@mantine/core';
 import {
   EmailAuthProvider,
   linkWithCredential,
@@ -41,7 +41,7 @@ export const PresentialEmailAuthForm: FC<presentialEmailAuthFormProps> = ({
 
   return (
     <form onSubmit={onSubmit} {...props}>
-      <Stack spacing={2}>
+      <Stack spacing={16}>
         <FormElementEmail name="email" control={control} error={errors.email} />
         <FormElementPassword
           name="password"

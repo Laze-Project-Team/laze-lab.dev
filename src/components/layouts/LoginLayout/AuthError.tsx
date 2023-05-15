@@ -1,4 +1,4 @@
-import Alert from '@mui/material/Alert';
+import { Alert } from '@mantine/core';
 import type { FC, ReactNode } from 'react';
 import { createContext, useState } from 'react';
 
@@ -37,13 +37,5 @@ export const AuthErrorProvider: FC<authErrorsProviderProps> = ({
 export const AuthError: FC = () => {
   const { error, setError } = useAuthError();
 
-  return (
-    <>
-      {error && (
-        <Alert severity="error" onClose={() => setError(null)}>
-          {error}
-        </Alert>
-      )}
-    </>
-  );
+  return <>{error && <Alert onClose={() => setError(null)}>{error}</Alert>}</>;
 };

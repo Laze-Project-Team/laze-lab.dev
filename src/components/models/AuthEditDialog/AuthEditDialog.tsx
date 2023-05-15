@@ -1,10 +1,6 @@
-import Box from '@mui/material/Box';
-import CircularProgress from '@mui/material/CircularProgress';
-import type { DialogProps } from '@mui/material/Dialog';
-import Dialog from '@mui/material/Dialog';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-import Stack from '@mui/material/Stack';
+import { css } from '@emotion/react';
+import type { ModalProps } from '@mantine/core';
+import { Loader, Modal, Stack } from '@mantine/core';
 import { useTranslation } from 'next-i18next';
 import type { FC } from 'react';
 
@@ -14,8 +10,7 @@ import { EmailAuthEdit } from '@/components/models/AuthEditDialog/EmailAuthEdit'
 
 import { AuthEditButtons } from './AuthEditButtons';
 
-export type authEditDialogProps = DialogProps;
-
+export type authEditDialogProps = ModalProps;
 export type presentialAuthEditDialogProps = Pick<userInfo, 'user'> &
   authEditDialogProps;
 
@@ -28,30 +23,35 @@ export const PresentialAuthEditDialog: FC<presentialAuthEditDialogProps> = ({
 
   return (
     <>
-      <Dialog maxWidth="xs" fullWidth {...props}>
-        <DialogTitle>{t('auth.edit')}</DialogTitle>
-        <DialogContent>
-          <Stack spacing={2}>
-            {providerData === undefined ? (
-              <Box
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  height: '10rem',
-                }}
-              >
-                <CircularProgress />
-              </Box>
-            ) : (
-              <>
-                <AuthEditButtons providerData={providerData} />
-                <EmailAuthEdit providerData={providerData} />
-              </>
-            )}
-          </Stack>
-        </DialogContent>
-      </Dialog>
+      <Modal
+        title={t('auth.edit')}
+        css={css`
+          width: 100%;
+          max-width: 480px;
+        `}
+        centered
+        {...props}
+      >
+        <Stack spacing={16}>
+          {providerData === undefined ? (
+            <div
+              css={css`
+                display: flex;
+                height: 10rem;
+                align-items: center;
+                justify-content: center;
+              `}
+            >
+              <Loader />
+            </div>
+          ) : (
+            <>
+              <AuthEditButtons providerData={providerData} />
+              <EmailAuthEdit providerData={providerData} />
+            </>
+          )}
+        </Stack>
+      </Modal>
     </>
   );
 };

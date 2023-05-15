@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import TwitterIcon from '@mui/icons-material/Twitter';
+import { IconBrandTwitterFilled } from '@tabler/icons-react';
 import type { FC } from 'react';
 
 import type { authButtonBaseProps } from '@/components/ui/AuthButtonBase/AuthButtonBase';
@@ -30,7 +30,7 @@ export const TwitterAuthButtonBase: FC<authButtonBaseProps> = (props) => {
   return (
     <AuthButtonBase
       {...props}
-      startIcon={<TwitterIcon css={twitterIconStyle} />}
+      leftIcon={<IconBrandTwitterFilled css={twitterIconStyle} />}
       css={twitterAuthButtonStyle}
     />
   );

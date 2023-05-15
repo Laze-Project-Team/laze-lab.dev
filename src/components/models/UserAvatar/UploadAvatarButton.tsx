@@ -1,12 +1,10 @@
 import { css } from '@emotion/react';
-import FileUploadIcon from '@mui/icons-material/FileUpload';
-import { blue } from '@mui/material/colors';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
+import { ActionIcon, Tooltip } from '@mantine/core';
+import { IconUpload } from '@tabler/icons-react';
 import { useTranslation } from 'next-i18next';
 import type { ChangeEventHandler, FC } from 'react';
 
-import { useColorMode } from '@/components/contexts/ColorModeContext';
+import { blue, gray } from '@/styles/colors';
 
 export type uploadAvatarButtonProps = {
   handleChange: ChangeEventHandler<HTMLInputElement>;
@@ -17,13 +15,12 @@ export const UploadAvatarButton: FC<uploadAvatarButtonProps> = ({
   ...props
 }) => {
   const [t] = useTranslation('profile');
-  const { theme } = useColorMode();
 
   return (
-    <Tooltip title={t('profile.avatar.edit.title')}>
-      <IconButton
+    <Tooltip label={t('profile.avatar.edit.title')}>
+      <ActionIcon
         aria-label={t('profile.avatar.edit.title')}
-        size="small"
+        size="sm"
         component="label"
         css={css`
           && {
@@ -31,21 +28,21 @@ export const UploadAvatarButton: FC<uploadAvatarButtonProps> = ({
             top: 85%;
             left: 85%;
             border: solid 2px;
-            background-color: ${theme.palette.background.default};
+            background-color: ${gray[7]};
             transform: translate(-50%, -50%);
             transition: border-color color 0.2s;
 
             &:hover {
-              border-color: ${blue['300']};
-              color: ${blue['300']};
+              border-color: ${blue[3]};
+              color: ${blue[3]};
             }
           }
         `}
         {...props}
       >
         <input hidden accept="image/*" type="file" onChange={handleChange} />
-        <FileUploadIcon color="inherit" />
-      </IconButton>
+        <IconUpload color="inherit" />
+      </ActionIcon>
     </Tooltip>
   );
 };

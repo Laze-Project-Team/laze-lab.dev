@@ -1,6 +1,5 @@
 import { css } from '@emotion/react';
-import { Skeleton } from '@mui/material';
-import { grey } from '@mui/material/colors';
+import { Skeleton } from '@mantine/core';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 import type { FC } from 'react';
@@ -9,6 +8,7 @@ import { Fragment } from 'react';
 import { Descriptions } from '@/components/functional/Descriptions';
 import { IndexLayout } from '@/components/layouts/IndexLayout';
 import { pagesPath } from '@/lib/$path';
+import { gray } from '@/styles/colors';
 
 import type { learningContents, learningPath } from './learningPathType';
 
@@ -59,7 +59,7 @@ export const PresentialLearningPath: FC<presentialLearningPathProps> = ({
                   <div
                     css={css`
                       height: 32px;
-                      border-left: dashed ${grey['300']} 2px;
+                      border-left: dashed ${gray[3]} 2px;
                       margin-left: 64px;
                     `}
                   />
@@ -68,8 +68,8 @@ export const PresentialLearningPath: FC<presentialLearningPathProps> = ({
                   css={css`
                     display: flex;
                     padding: 16px 32px;
-                    box-shadow: ${grey['200']} 0 0 8px 0;
-                    color: ${grey['800']};
+                    box-shadow: ${gray[2]} 0 0 8px 0;
+                    color: ${gray[8]};
                     gap: 16px;
                     text-decoration: none;
                     transition: all 0.1s;
@@ -81,14 +81,14 @@ export const PresentialLearningPath: FC<presentialLearningPathProps> = ({
                     }
 
                     &:hover {
-                      box-shadow: ${grey['300']} 0 0 12px 0;
+                      box-shadow: ${gray[3]} 0 0 12px 0;
                     }
                   `}
                   href={pagesPath.learning_path.courses
                     ._course_id(courseId)
                     .$url()}
                 >
-                  <Skeleton variant="rounded" width={64} height={64} />
+                  <Skeleton radius="md" width={64} height={64} />
 
                   <div>
                     <p>{course.title}</p>

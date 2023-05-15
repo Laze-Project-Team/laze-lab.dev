@@ -1,11 +1,11 @@
 import { css } from '@emotion/react';
-import { grey } from '@mui/material/colors';
-import Typography from '@mui/material/Typography';
+import { Text } from '@mantine/core';
 import Link from 'next/link';
 import type { FC } from 'react';
 
 import { IndexLayout } from '@/components/layouts/IndexLayout';
 import { pagesPath } from '@/lib/$path';
+import { gray } from '@/styles/colors';
 
 import type { learningContents, learningCourse } from './learningPathType';
 
@@ -22,9 +22,9 @@ export const PresentialLearningCourse: FC<learningCourseProps> = ({
     <>
       <IndexLayout>
         <h1>{course.title}</h1>
-        <Typography color="text.secondary" mt={2}>
+        <Text color="dimmed" mt={16}>
           {course.description}
-        </Typography>
+        </Text>
         <div
           css={css`
             display: flex;
@@ -38,7 +38,7 @@ export const PresentialLearningCourse: FC<learningCourseProps> = ({
 
               & > li {
                 padding: 8px 32px;
-                border: solid 1px ${grey['300']};
+                border: solid 1px ${gray[3]};
 
                 &:not(:last-of-type) {
                   border-bottom: none;
@@ -53,7 +53,7 @@ export const PresentialLearningCourse: FC<learningCourseProps> = ({
                   <Link
                     href={pagesPath.learning_path.steps._step_id(stepId).$url()}
                     css={css`
-                      color: ${grey['800']};
+                      color: ${gray[8]};
                       text-decoration: none;
                     `}
                   >
