@@ -1,13 +1,13 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { GitHubAuthButtonBase } from './GitHubAuthButtonBase';
 
 export default {
   title: 'models/AuthButtonBase/GitHubAuthButtonBase',
   component: GitHubAuthButtonBase,
-} as ComponentMeta<typeof GitHubAuthButtonBase>;
+} as Meta<typeof GitHubAuthButtonBase>;
 
-const Template: ComponentStory<typeof GitHubAuthButtonBase> = (props) => (
+const Template: StoryFn<typeof GitHubAuthButtonBase> = (props) => (
   <GitHubAuthButtonBase {...props} />
 );
 

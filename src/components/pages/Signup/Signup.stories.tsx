@@ -1,13 +1,13 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { PresentialSignup } from './Signup';
 
 export default {
   title: 'pages/Signup',
   component: PresentialSignup,
-} as ComponentMeta<typeof PresentialSignup>;
+} as Meta<typeof PresentialSignup>;
 
-const Template: ComponentStory<typeof PresentialSignup> = (props) => (
+const Template: StoryFn<typeof PresentialSignup> = (props) => (
   <PresentialSignup {...props} />
 );
 

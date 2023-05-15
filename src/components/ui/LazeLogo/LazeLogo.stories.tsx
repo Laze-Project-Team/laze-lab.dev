@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { PresentialLazeLogo } from './LazeLogo';
 
@@ -6,9 +6,9 @@ export default {
   title: 'ui/LazeLogo',
   component: PresentialLazeLogo,
   argTypes: {},
-} as ComponentMeta<typeof PresentialLazeLogo>;
+} as Meta<typeof PresentialLazeLogo>;
 
-const Template: ComponentStory<typeof PresentialLazeLogo> = (props) => (
+const Template: StoryFn<typeof PresentialLazeLogo> = (props) => (
   <PresentialLazeLogo {...props} />
 );
 

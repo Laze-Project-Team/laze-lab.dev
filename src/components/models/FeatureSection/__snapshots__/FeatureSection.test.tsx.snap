@@ -1,0 +1,21 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should be rendered correctly 1`] = `
+<div
+  class="MuiStack-root css-lfv8is-PresentialFeatureSection css-1q5l9v0-MuiStack-root"
+>
+  <div
+    class="MuiStack-root css-18kh449-PresentialFeatureSection css-1yb627j-MuiStack-root"
+  >
+    <p
+      class="css-9odm4h-PresentialFeatureSection"
+    />
+    <p
+      class="css-xdyl2v-PresentialFeatureSection"
+    />
+  </div>
+  <div
+    class="css-14za7fe-PresentialFeatureSection"
+  />
+</div>
+`;

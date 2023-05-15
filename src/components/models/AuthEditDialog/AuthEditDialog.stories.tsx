@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import type { User } from 'firebase/auth';
 
 import { mockSWRResponse } from '/__mocks__/swr';
@@ -10,9 +10,9 @@ import { PresentialAuthEditDialog } from './AuthEditDialog';
 export default {
   title: 'models/AuthEditDialog',
   component: PresentialAuthEditDialog,
-} as ComponentMeta<typeof PresentialAuthEditDialog>;
+} as Meta<typeof PresentialAuthEditDialog>;
 
-const Template: ComponentStory<typeof PresentialAuthEditDialog> = (props) => (
+const Template: StoryFn<typeof PresentialAuthEditDialog> = (props) => (
   <userInfoContext.Provider
     value={{
       user: props.user,

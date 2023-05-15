@@ -68,11 +68,7 @@ const MDXHome: NextPage<docsProps> = ({ content, meta }) => {
 
 export default MDXHome;
 
-type paramType = { path: string };
-
-export const getStaticProps: GetStaticProps<docsProps, paramType> = async (
-  context,
-) => {
+export const getStaticProps: GetStaticProps = async (context) => {
   if (context.locale === undefined) {
     throw new Error('context.locale is not defined');
   }

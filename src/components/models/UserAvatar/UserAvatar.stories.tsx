@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import type { User } from 'firebase/auth';
 
 import { mockSWRResponse } from '/__mocks__/swr';
@@ -11,9 +11,9 @@ import { PresentialUserAvatar } from './UserAvatar';
 export default {
   title: 'models/UserAvatar',
   component: PresentialUserAvatar,
-} as ComponentMeta<typeof PresentialUserAvatar>;
+} as Meta<typeof PresentialUserAvatar>;
 
-const Template: ComponentStory<typeof PresentialUserAvatar> = (props) => (
+const Template: StoryFn<typeof PresentialUserAvatar> = (props) => (
   <div
     css={css`
       width: 20rem;

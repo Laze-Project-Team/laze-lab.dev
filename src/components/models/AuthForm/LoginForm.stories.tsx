@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { AuthErrorProvider } from '@/components/layouts/LoginLayout/AuthError';
 
@@ -7,9 +7,9 @@ import { LoginForm } from './LoginForm';
 export default {
   title: 'models/LoginForm',
   component: LoginForm,
-} as ComponentMeta<typeof LoginForm>;
+} as Meta<typeof LoginForm>;
 
-const Template: ComponentStory<typeof LoginForm> = (props) => (
+const Template: StoryFn<typeof LoginForm> = (props) => (
   <AuthErrorProvider>
     <LoginForm {...props} />
   </AuthErrorProvider>

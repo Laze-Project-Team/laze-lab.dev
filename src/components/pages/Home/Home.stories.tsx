@@ -1,13 +1,13 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { PresentialHome } from './Home';
 
 export default {
   title: 'pages/Home',
   component: PresentialHome,
-} as ComponentMeta<typeof PresentialHome>;
+} as Meta<typeof PresentialHome>;
 
-const Template: ComponentStory<typeof PresentialHome> = (props) => (
+const Template: StoryFn<typeof PresentialHome> = (props) => (
   <PresentialHome {...props} />
 );
 

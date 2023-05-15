@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import type { User } from 'firebase/auth';
 import type { FC } from 'react';
 
@@ -13,9 +13,9 @@ import { PresentialEmailAuthEdit } from './EmailAuthEdit';
 export default {
   title: 'models/AuthEditDialog/EmailAuthEdit',
   component: PresentialEmailAuthEdit,
-} as ComponentMeta<typeof PresentialEmailAuthEdit>;
+} as Meta<typeof PresentialEmailAuthEdit>;
 
-const Template: ComponentStory<
+const Template: StoryFn<
   FC<presentialEmailAuthEditProps & Partial<Pick<userInfo, 'user'>>>
 > = ({ user, ...props }) => (
   <userInfoContext.Provider

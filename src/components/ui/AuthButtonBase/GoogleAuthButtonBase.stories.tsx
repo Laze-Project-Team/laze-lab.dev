@@ -1,13 +1,13 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { GoogleAuthButtonBase } from './GoogleAuthButtonBase';
 
 export default {
   title: 'models/AuthButtonBase/GoogleAuthButtonBase',
   component: GoogleAuthButtonBase,
-} as ComponentMeta<typeof GoogleAuthButtonBase>;
+} as Meta<typeof GoogleAuthButtonBase>;
 
-const Template: ComponentStory<typeof GoogleAuthButtonBase> = (props) => (
+const Template: StoryFn<typeof GoogleAuthButtonBase> = (props) => (
   <GoogleAuthButtonBase {...props} />
 );
 

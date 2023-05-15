@@ -1,13 +1,13 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 
 import { PresentialWaitlistForm } from './WaitlistForm';
 
 export default {
   title: 'models/WaitlistForm',
   component: PresentialWaitlistForm,
-} as ComponentMeta<typeof PresentialWaitlistForm>;
+} as Meta<typeof PresentialWaitlistForm>;
 
-const Template: ComponentStory<typeof PresentialWaitlistForm> = (props) => (
+const Template: StoryFn<typeof PresentialWaitlistForm> = (props) => (
   <PresentialWaitlistForm {...props} />
 );
 

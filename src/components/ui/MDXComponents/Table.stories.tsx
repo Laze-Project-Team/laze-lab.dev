@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import type { FC, ReactNode } from 'react';
 
 import { Table } from './Table';
@@ -6,9 +6,9 @@ import { Table } from './Table';
 export default {
   title: 'ui/MDXComponents/Table',
   component: Table,
-} as ComponentMeta<typeof Table>;
+} as Meta<typeof Table>;
 
-const Template: ComponentStory<FC<{ data: ReactNode[][] }>> = ({ data }) => (
+const Template: StoryFn<FC<{ data: ReactNode[][] }>> = ({ data }) => (
   <Table>
     <thead>
       <tr>

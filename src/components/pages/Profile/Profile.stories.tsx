@@ -1,4 +1,4 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import type { User } from 'firebase/auth';
 
 import { mockSWRResponse } from '/__mocks__/swr';
@@ -10,9 +10,9 @@ import { PresentialProfile } from './Profile';
 export default {
   title: 'pages/Profile',
   component: PresentialProfile,
-} as ComponentMeta<typeof PresentialProfile>;
+} as Meta<typeof PresentialProfile>;
 
-const Template: ComponentStory<typeof PresentialProfile> = (props) => (
+const Template: StoryFn<typeof PresentialProfile> = (props) => (
   <PresentialProfile {...props} />
 );
 

@@ -48,8 +48,8 @@ export const PresentialAuthUnlinkButton: FC<
           <ActionIcon
             aria-label={t('auth.unlink')}
             color="error"
-            onClick={handleClick}
             disabled={isWorking}
+            onClick={handleClick}
             {...props}
           >
             {isWorking ? (
