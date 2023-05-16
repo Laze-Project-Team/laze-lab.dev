@@ -8,6 +8,7 @@ export const PresentialPlaygroundHeader: FC = () => {
     <>
       <div
         css={css`
+          position: static;
           z-index: 10;
           display: flex;
           height: 40px;

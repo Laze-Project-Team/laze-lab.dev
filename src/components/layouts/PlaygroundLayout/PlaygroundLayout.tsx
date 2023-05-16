@@ -3,7 +3,6 @@ import type { FC, ReactNode } from 'react';
 
 import { PlaygroundFooter } from './PlaygroundFooter';
 import { PlaygroundHeader } from './PlaygroundHeader';
-import { PlaygroundSider } from './PlaygroundSider';
 
 export type playgroundLayoutProps = {
   children?: ReactNode;
@@ -24,10 +23,11 @@ export const PresentialPlaygroundLayout: FC<playgroundLayoutProps> = ({
           height: calc(100vh - 66px);
         `}
       >
-        <PlaygroundSider />
         <main
           css={css`
             display: flex;
+            width: 100%;
+            height: 100%;
           `}
         >
           {children}
@@ -38,6 +38,6 @@ export const PresentialPlaygroundLayout: FC<playgroundLayoutProps> = ({
   );
 };
 
-export const PlaygroundLayout: FC = () => {
-  return <PresentialPlaygroundLayout />;
+export const PlaygroundLayout: FC<playgroundLayoutProps> = ({ children }) => {
+  return <PresentialPlaygroundLayout>{children}</PresentialPlaygroundLayout>;
 };

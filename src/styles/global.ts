@@ -8,4 +8,8 @@ export const globalStyle = css`
 
     font-family: 'Noto Sans JP', Roboto, Helvetica, Arial, sans-serif;
   }
+
+  * {
+    position: relative;
+  }
 `;
