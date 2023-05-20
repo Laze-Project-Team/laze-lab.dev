@@ -11,5 +11,6 @@ export const globalStyle = css`
 
   * {
     position: relative;
+    font-family: 'Noto Sans JP', Roboto, Helvetica, Arial, sans-serif;
   }
 `;

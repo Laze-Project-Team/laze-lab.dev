@@ -54,6 +54,10 @@ export const staticPath = {
     safari_pinned_tab_svg: '/favicons/safari-pinned-tab.svg',
     site_webmanifest: '/favicons/site.webmanifest'
   },
+  icons: {
+    box_multiple_svg: '/icons/box-multiple.svg',
+    list_svg: '/icons/list.svg'
+  },
   img: {
     logo: {
       logo_png: '/img/logo/logo.png',

@@ -1,0 +1,110 @@
+{
+  "id": "html",
+  "title": "HTML",
+  "description": "Create websites with HTML.",
+  "wordTypes": {
+    "none": { "id": "none", "color": "black" },
+    "keyword": { "id": "keyword", "color": "blue" },
+    "attribute": { "id": "attribute", "color": "lightblue" },
+    "operator": { "id": "operator", "color": "black" },
+    "string": { "id": "string", "color": "orange" }
+  },
+  "categories": [
+    {
+      "id": "basics",
+      "title": "基本",
+      "descriptiveTitle": "基本的な要素",
+      "icon": "box-multiple.svg",
+      "blocks": [
+        {
+          "id": "img",
+          "title": "imgタグ",
+          "description": "画像です。",
+          "grammar": [
+            {
+              "type": "fixed",
+              "data": { "word": "<", "wordType": "operator" }
+            },
+            {
+              "type": "fixed",
+              "data": { "word": "img ", "wordType": "keyword" }
+            },
+            {
+              "type": "fixed",
+              "data": { "word": "src", "wordType": "variable" }
+            },
+            {
+              "type": "fixed",
+              "data": { "word": "=", "wordType": "operator" }
+            },
+            { "type": "fixed", "data": { "word": "\"", "wordType": "string" } },
+            { "type": "input", "data": { "inputType": "string" } },
+            { "type": "fixed", "data": { "word": "\"", "wordType": "string" } },
+            { "type": "fixed", "data": { "word": ">", "wordType": "operator" } }
+          ]
+        },
+        {
+          "id": "div",
+          "title": "divタグ",
+          "description": "divです。",
+          "grammar": [
+            {
+              "type": "fixed",
+              "data": { "word": "<", "wordType": "operator" }
+            },
+            {
+              "type": "fixed",
+              "data": { "word": "div", "wordType": "keyword" }
+            },
+            {
+              "type": "fixed",
+              "data": { "word": ">", "wordType": "operator" }
+            },
+            { "type": "input", "data": { "inputType": "element" } },
+            {
+              "type": "fixed",
+              "data": { "word": "</", "wordType": "operator" }
+            },
+            {
+              "type": "fixed",
+              "data": { "word": "div", "wordType": "keyword" }
+            },
+            { "type": "fixed", "data": { "word": ">", "wordType": "operator" } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "list",
+      "title": "リスト",
+      "descriptiveTitle": "リスト要素",
+      "icon": "list.svg",
+      "blocks": [
+        {
+          "id": "img",
+          "title": "imgタグ",
+          "description": "画像です。",
+          "grammar": [
+            { "type": "fixed", "data": { "word": "<", "wordType": "none" } },
+            {
+              "type": "fixed",
+              "data": { "word": "img ", "wordType": "keyword" }
+            },
+            {
+              "type": "fixed",
+              "data": { "word": "src", "wordType": "variable" }
+            },
+            {
+              "type": "fixed",
+              "data": { "word": "=", "wordType": "operator" }
+            },
+            { "type": "fixed", "data": { "word": "\"", "wordType": "string" } },
+            { "type": "input", "data": { "inputType": "string" } },
+            { "type": "fixed", "data": { "word": "\"", "wordType": "string" } },
+            { "type": "fixed", "data": { "word": ">", "wordType": "operator" } }
+          ]
+        }
+      ]
+    }
+  ]
+}

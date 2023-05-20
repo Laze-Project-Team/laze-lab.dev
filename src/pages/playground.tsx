@@ -13,6 +13,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   if (context.locale === undefined) {
     throw new Error('context.locale is not defined');
   }
+
   return {
     props: {
       ...(await serverSideTranslations(context.locale, [
