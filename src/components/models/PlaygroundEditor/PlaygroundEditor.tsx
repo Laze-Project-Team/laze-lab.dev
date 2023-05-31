@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import type { FC } from 'react';
+import type { Dispatch, FC, SetStateAction } from 'react';
 import { useEffect, useState } from 'react';
 
 import type {
@@ -16,6 +16,7 @@ type presentialPlaygroundEditor = {
   editorLanguage: editorLanguage;
   isDraggingBlock: boolean;
   languageId: string;
+  setAstArray: Dispatch<SetStateAction<ast[]>>;
   totalLineCount: number;
 };
 
@@ -24,6 +25,7 @@ export const PresentialPlaygroundEditor: FC<presentialPlaygroundEditor> = ({
   editorLanguage,
   isDraggingBlock,
   languageId,
+  setAstArray,
   totalLineCount,
 }) => {
   return (
@@ -66,12 +68,17 @@ export const PresentialPlaygroundEditor: FC<presentialPlaygroundEditor> = ({
         >
           <DroppableSpace
             acceptedAstId={editorLanguage.editorRootAST}
+            astArray={astArray}
+            astPath={[]}
             css={css`
               z-index: ${isDraggingBlock ? '100' : '-100'};
               height: 14px;
               margin-bottom: -14px;
               opacity: 0;
             `}
+            keyName={0}
+            setAstArray={setAstArray}
+            type="insert"
           />
           {astArray.map((ast, index) => (
             <>
@@ -86,14 +93,19 @@ export const PresentialPlaygroundEditor: FC<presentialPlaygroundEditor> = ({
               >
                 <ASTToBlock
                   ast={ast}
+                  astArray={astArray}
+                  astPath={[index.toString()]}
                   astToBlock={editorLanguage.astToBlock}
                   draggable={true}
                   languageId={languageId}
+                  setAstArray={setAstArray}
                   wordTypes={editorLanguage.wordTypes}
                 />
               </div>
               <DroppableSpace
                 acceptedAstId={editorLanguage.editorRootAST}
+                astArray={astArray}
+                astPath={[]}
                 css={css`
                   z-index: ${isDraggingBlock ? '100' : '-100'};
                   height: 28px;
@@ -101,6 +113,9 @@ export const PresentialPlaygroundEditor: FC<presentialPlaygroundEditor> = ({
                   margin-bottom: -14px;
                   opacity: 0;
                 `}
+                keyName={index + 1}
+                setAstArray={setAstArray}
+                type="insert"
               />
             </>
           ))}
@@ -121,7 +136,7 @@ export const PlaygroundEditor: FC<playgroundEditor> = ({
   editorLanguage,
   languageId,
 }) => {
-  const [astArray] = useState<ast[]>([
+  const [astArray, setAstArray] = useState<ast[]>([
     {
       $astId: '#?single',
       tagName: 'img',
@@ -159,6 +174,7 @@ export const PlaygroundEditor: FC<playgroundEditor> = ({
         editorLanguage={editorLanguage}
         isDraggingBlock={isDraggingBlock}
         languageId={languageId}
+        setAstArray={setAstArray}
         totalLineCount={totalLineCountState}
       />
     </div>

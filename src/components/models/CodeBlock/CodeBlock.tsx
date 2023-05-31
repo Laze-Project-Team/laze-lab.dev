@@ -51,9 +51,12 @@ export const PresentialCodeBlock: FC<presentialCodeBlockProps> = ({
       <ASTToBlock
         astToBlock={astToBlock}
         ast={block.ast}
+        astArray={[]}
+        astPath={[]}
         draggable={false}
         languageId={languageId}
         wordTypes={wordTypes}
+        setAstArray={() => null}
       />
     </div>
   );
