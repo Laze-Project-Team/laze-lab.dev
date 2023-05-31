@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import type { Dispatch, FC, SetStateAction } from 'react';
+import type { FC } from 'react';
 import { useState } from 'react';
 import { useDrag } from 'react-dnd';
 
@@ -48,25 +48,28 @@ export const PresentialFixedASTToBlock: FC<presentialFixedASTToBlockProps> = ({
 
 type presentialASTToBlockProps = {
   ast: ast;
-  astArray: ast[];
   astToBlock: Record<string, astToBlock>;
   astPath: (string | number)[];
   draggable: boolean;
   grammar: grammar;
   languageId: string;
-  setAstArray: Dispatch<SetStateAction<ast[]>>;
+  updateAstArray: (
+    astPath: (string | number)[],
+    type: 'edit' | 'insert',
+    keyName: string | number,
+    value: ast | string,
+  ) => void;
   wordTypes: Record<string, wordType>;
 };
 
 export const PresentialASTToBlock: FC<presentialASTToBlockProps> = ({
   ast,
-  astArray,
   astToBlock,
   astPath,
   draggable,
   grammar,
   languageId,
-  setAstArray,
+  updateAstArray,
   wordTypes,
 }) => {
   if (Array.isArray(ast)) {
@@ -136,12 +139,11 @@ export const PresentialASTToBlock: FC<presentialASTToBlockProps> = ({
       return (
         <ASTToBlock
           ast={newChildAst}
-          astArray={astArray}
           astPath={[...astPath, grammar.data.var]}
           draggable={draggable}
           astToBlock={astToBlock}
           languageId={languageId}
-          setAstArray={setAstArray}
+          updateAstArray={updateAstArray}
           wordTypes={wordTypes}
         />
       );
@@ -149,12 +151,11 @@ export const PresentialASTToBlock: FC<presentialASTToBlockProps> = ({
     return (
       <ASTToBlock
         ast={childAst}
-        astArray={astArray}
         astPath={[...astPath, grammar.data.var]}
         draggable={draggable}
         astToBlock={astToBlock}
         languageId={languageId}
-        setAstArray={setAstArray}
+        updateAstArray={updateAstArray}
         wordTypes={wordTypes}
       />
     );
@@ -185,23 +186,26 @@ export type DragBlockItem = {
 
 type ASTToBlockProps = {
   ast: ast;
-  astArray: ast[];
   astToBlock: Record<string, astToBlock>;
   astPath: (string | number)[];
   draggable: boolean;
   languageId: string;
-  setAstArray: Dispatch<SetStateAction<ast[]>>;
+  updateAstArray: (
+    astPath: (string | number)[],
+    type: 'edit' | 'insert',
+    keyName: string | number,
+    value: ast | string,
+  ) => void;
   wordTypes: Record<string, wordType>;
 };
 
 export const ASTToBlock: FC<ASTToBlockProps> = ({
   ast,
-  astArray,
   astToBlock,
   astPath,
   draggable,
   languageId,
-  setAstArray,
+  updateAstArray,
   wordTypes,
 }) => {
   const [hoverState, setHoverState] = useState(false);
@@ -243,12 +247,11 @@ export const ASTToBlock: FC<ASTToBlockProps> = ({
             >
               <ASTToBlock
                 ast={astElement}
-                astArray={astArray}
                 astToBlock={astToBlock}
                 astPath={[...astPath, index.toString()]}
                 draggable={draggable}
                 languageId={languageId}
-                setAstArray={setAstArray}
+                updateAstArray={updateAstArray}
                 wordTypes={wordTypes}
               />
               {separatorGrammars &&
@@ -256,14 +259,13 @@ export const ASTToBlock: FC<ASTToBlockProps> = ({
                 separatorGrammars.map((separatorGrammar, index) => (
                   <PresentialASTToBlock
                     ast={[]}
-                    astArray={astArray}
                     astToBlock={astToBlock}
                     astPath={[...astPath, index.toString()]}
                     draggable={draggable}
                     grammar={separatorGrammar}
                     key={index}
                     languageId={languageId}
-                    setAstArray={setAstArray}
+                    updateAstArray={updateAstArray}
                     wordTypes={wordTypes}
                   />
                 ))}
@@ -316,14 +318,13 @@ export const ASTToBlock: FC<ASTToBlockProps> = ({
       {grammars.map((grammar, index) => (
         <PresentialASTToBlock
           ast={ast}
-          astArray={astArray}
           astPath={astPath}
           astToBlock={astToBlock}
           draggable={draggable}
           grammar={grammar}
           key={index}
           languageId={languageId}
-          setAstArray={setAstArray}
+          updateAstArray={updateAstArray}
           wordTypes={wordTypes}
         />
       ))}

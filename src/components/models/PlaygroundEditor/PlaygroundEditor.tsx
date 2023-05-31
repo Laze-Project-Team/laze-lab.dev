@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import type { Dispatch, FC, SetStateAction } from 'react';
+import type { FC } from 'react';
 import { useEffect, useState } from 'react';
 
 import type {
@@ -16,8 +16,13 @@ type presentialPlaygroundEditor = {
   editorLanguage: editorLanguage;
   isDraggingBlock: boolean;
   languageId: string;
-  setAstArray: Dispatch<SetStateAction<ast[]>>;
   totalLineCount: number;
+  updateAstArray: (
+    astPath: (string | number)[],
+    type: 'edit' | 'insert',
+    keyName: string | number,
+    value: ast | string,
+  ) => void;
 };
 
 export const PresentialPlaygroundEditor: FC<presentialPlaygroundEditor> = ({
@@ -25,8 +30,8 @@ export const PresentialPlaygroundEditor: FC<presentialPlaygroundEditor> = ({
   editorLanguage,
   isDraggingBlock,
   languageId,
-  setAstArray,
   totalLineCount,
+  updateAstArray,
 }) => {
   return (
     <div
@@ -68,7 +73,6 @@ export const PresentialPlaygroundEditor: FC<presentialPlaygroundEditor> = ({
         >
           <DroppableSpace
             acceptedAstId={editorLanguage.editorRootAST}
-            astArray={astArray}
             astPath={[]}
             css={css`
               z-index: ${isDraggingBlock ? '100' : '-100'};
@@ -77,8 +81,8 @@ export const PresentialPlaygroundEditor: FC<presentialPlaygroundEditor> = ({
               opacity: 0;
             `}
             keyName={0}
-            setAstArray={setAstArray}
             type="insert"
+            updateAstArray={updateAstArray}
           />
           {astArray.map((ast, index) => (
             <>
@@ -93,18 +97,16 @@ export const PresentialPlaygroundEditor: FC<presentialPlaygroundEditor> = ({
               >
                 <ASTToBlock
                   ast={ast}
-                  astArray={astArray}
                   astPath={[index.toString()]}
                   astToBlock={editorLanguage.astToBlock}
                   draggable={true}
                   languageId={languageId}
-                  setAstArray={setAstArray}
+                  updateAstArray={updateAstArray}
                   wordTypes={editorLanguage.wordTypes}
                 />
               </div>
               <DroppableSpace
                 acceptedAstId={editorLanguage.editorRootAST}
-                astArray={astArray}
                 astPath={[]}
                 css={css`
                   z-index: ${isDraggingBlock ? '100' : '-100'};
@@ -114,8 +116,8 @@ export const PresentialPlaygroundEditor: FC<presentialPlaygroundEditor> = ({
                   opacity: 0;
                 `}
                 keyName={index + 1}
-                setAstArray={setAstArray}
                 type="insert"
+                updateAstArray={updateAstArray}
               />
             </>
           ))}
@@ -152,6 +154,57 @@ export const PlaygroundEditor: FC<playgroundEditor> = ({
       text: '',
     },
   ]);
+  const updateAstArray = (
+    astPath: (string | number)[],
+    type: 'edit' | 'insert',
+    keyName: string | number,
+    value: ast | string,
+  ) => {
+    const editObject = astPath.reduce<ast>((accAst, currKey) => {
+      if (!Array.isArray(accAst)) {
+        const newEditObject = accAst[currKey];
+        if (typeof newEditObject === 'string') {
+          console.error(`${newEditObject} is a string.`);
+          return accAst;
+        }
+        return newEditObject;
+      }
+      if (Array.isArray(accAst) && typeof currKey === 'number') {
+        return accAst[currKey];
+      }
+      if (typeof currKey === 'number') {
+        console.error(`${accAst} is not an array.`);
+        return accAst;
+      }
+      return accAst;
+    }, astArray);
+    if (type === 'edit') {
+      if (
+        Array.isArray(editObject) &&
+        typeof keyName === 'number' &&
+        typeof value !== 'string'
+      ) {
+        editObject[keyName] = value;
+      }
+      if (!Array.isArray(editObject) && typeof keyName === 'string') {
+        editObject[keyName] = value;
+      }
+    }
+    if (type === 'insert') {
+      if (
+        Array.isArray(editObject) &&
+        typeof keyName === 'number' &&
+        typeof value !== 'string'
+      ) {
+        editObject.splice(keyName, 0, value);
+        console.log(editObject);
+      }
+      if (!Array.isArray(editObject)) {
+        editObject[keyName] = value;
+      }
+    }
+    setAstArray(astArray);
+  };
   const [lineHeight] = useState(28);
   const [totalLineCountState, setTotalLineCountState] = useState(1);
   useEffect(() => {
@@ -174,8 +227,8 @@ export const PlaygroundEditor: FC<playgroundEditor> = ({
         editorLanguage={editorLanguage}
         isDraggingBlock={isDraggingBlock}
         languageId={languageId}
-        setAstArray={setAstArray}
         totalLineCount={totalLineCountState}
+        updateAstArray={updateAstArray}
       />
     </div>
   );
