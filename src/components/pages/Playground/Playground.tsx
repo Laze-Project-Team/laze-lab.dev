@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import { Loader } from '@mantine/core';
 import type { FC } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { useTranslation } from 'react-i18next';
@@ -18,12 +18,23 @@ import type { editorLanguage } from './editorLanguageType';
 
 type playgroundProps = {
   editorLanguage: editorLanguage;
+  languageId: string;
 };
 
 export const PresentialPlayground: FC<playgroundProps> = ({
   editorLanguage,
+  languageId,
 }) => {
   const [t] = useTranslation(['playground']);
+  const [isDraggingBlockState, setIsDraggingBlockState] = useState(false);
+  useEffect(() => {
+    window.addEventListener('dragover', () => {
+      setIsDraggingBlockState(true);
+    });
+    window.addEventListener('dragend', () => {
+      setIsDraggingBlockState(false);
+    });
+  }, []);
 
   return (
     <>
@@ -33,7 +44,10 @@ export const PresentialPlayground: FC<playgroundProps> = ({
         <DndProvider backend={HTML5Backend}>
           <PanelGroup direction="horizontal">
             <Panel defaultSize={20} minSize={20}>
-              <PlaygroundSider editorLanguage={editorLanguage} />
+              <PlaygroundSider
+                editorLanguage={editorLanguage}
+                languageId={languageId}
+              />
             </Panel>
             <PanelResizeHandle
               css={css`
@@ -61,7 +75,11 @@ export const PresentialPlayground: FC<playgroundProps> = ({
                   height: 100%;
                 `}
               >
-                <PlaygroundEditor />
+                <PlaygroundEditor
+                  editorLanguage={editorLanguage}
+                  isDraggingBlock={isDraggingBlockState}
+                  languageId={languageId}
+                />
               </div>
             </Panel>
             <PanelResizeHandle
@@ -100,11 +118,12 @@ const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 export const Playground: FC = () => {
   const [languageState] = useState('html');
-  const { data: editorLanguage, isLoading } = useSWR(
+  const { data: editorLanguage, isLoading } = useSWR<editorLanguage>(
     `/api/editor_languages/${languageState}`,
     fetcher,
   );
-  if (isLoading) {
+
+  if (isLoading || !editorLanguage) {
     return (
       <div
         css={css`
@@ -130,5 +149,10 @@ export const Playground: FC = () => {
       </div>
     );
   }
-  return <PresentialPlayground editorLanguage={editorLanguage} />;
+  return (
+    <PresentialPlayground
+      languageId={languageState}
+      editorLanguage={editorLanguage}
+    />
+  );
 };

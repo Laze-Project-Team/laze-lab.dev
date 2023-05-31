@@ -1,0 +1,30 @@
+{
+  "id": "#",
+  "type": "object",
+  "required": ["attr", "tagName", "text", "children"],
+  "properties": {
+    "attr": {
+      "id": "#/attr",
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z0-9]+": {
+          "type": "string"
+        }
+      }
+    },
+    "tagName": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "children": {
+      "type": "array",
+      "items": {
+        "id": "#/children/items",
+        "type": "object",
+        "$ref": "#"
+      }
+    }
+  }
+}

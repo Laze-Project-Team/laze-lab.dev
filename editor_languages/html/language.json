@@ -9,6 +9,25 @@
     "operator": { "id": "operator", "color": "black" },
     "string": { "id": "string", "color": "orange" }
   },
+  "astTemplate": {
+    "htmlElement": {
+      "id": "#",
+      "type": "object",
+      "required": ["attr", "tagName", "text", "children"],
+      "properties": {
+        "attr": { "type": "record", "valueType": "string" },
+        "tagName": { "type": "string" },
+        "text": { "type": "string" },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#",
+            "type": "object"
+          }
+        }
+      }
+    }
+  },
   "categories": [
     {
       "id": "basics",
@@ -20,6 +39,17 @@
           "id": "img",
           "title": "imgタグ",
           "description": "画像です。",
+          "ast": {
+            "type": "htmlElement",
+            "ast": {
+              "attr": {
+                "src": ""
+              },
+              "tagName": "img",
+              "text": "",
+              "children": []
+            }
+          },
           "grammar": [
             {
               "type": "fixed",
