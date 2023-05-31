@@ -197,7 +197,6 @@ export const PlaygroundEditor: FC<playgroundEditor> = ({
         typeof value !== 'string'
       ) {
         editObject.splice(keyName, 0, value);
-        console.log(editObject);
       }
       if (!Array.isArray(editObject)) {
         editObject[keyName] = value;

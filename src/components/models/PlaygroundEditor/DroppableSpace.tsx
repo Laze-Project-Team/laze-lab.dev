@@ -41,7 +41,6 @@ export const DroppableSpace: FC<droppableSpaceProps> = ({
   const [, drop] = useDrop<DragBlockItem>(() => ({
     accept: 'block',
     drop: (item) => {
-      console.log(item);
       updateAstArray(astPath, type, keyName, item.ast);
     },
     canDrop: (item) => {
