@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import type { FC } from 'react';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import type {
   ast,
@@ -9,6 +9,7 @@ import type {
 import { gray } from '@/styles/colors';
 
 import { ASTToBlock } from '../CodeBlock/ASTToBlock';
+import { BlockDragLayer } from './BlockDragLayer';
 import { DroppableSpace } from './DroppableSpace';
 
 type presentialPlaygroundEditor = {
@@ -19,7 +20,7 @@ type presentialPlaygroundEditor = {
   totalLineCount: number;
   updateAstArray: (
     astPath: (string | number)[],
-    type: 'edit' | 'insert',
+    type: 'edit' | 'insert' | 'delete',
     keyName: string | number,
     value: ast | string,
   ) => void;
@@ -97,7 +98,7 @@ export const PresentialPlaygroundEditor: FC<presentialPlaygroundEditor> = ({
               >
                 <ASTToBlock
                   ast={ast}
-                  astPath={[index.toString()]}
+                  astPath={[index]}
                   astToBlock={editorLanguage.astToBlock}
                   draggable={true}
                   languageId={languageId}
@@ -105,20 +106,26 @@ export const PresentialPlaygroundEditor: FC<presentialPlaygroundEditor> = ({
                   wordTypes={editorLanguage.wordTypes}
                 />
               </div>
-              <DroppableSpace
-                acceptedAstId={editorLanguage.editorRootAST}
-                astPath={[]}
+              <div
                 css={css`
                   z-index: ${isDraggingBlock ? '100' : '-100'};
-                  height: 28px;
-                  margin-top: -14px;
-                  margin-bottom: -14px;
-                  opacity: 0;
                 `}
-                keyName={index + 1}
-                type="insert"
-                updateAstArray={updateAstArray}
-              />
+              >
+                <DroppableSpace
+                  acceptedAstId={editorLanguage.editorRootAST}
+                  astPath={[]}
+                  css={css`
+                    z-index: ${isDraggingBlock ? '100' : '-100'};
+                    height: 28px;
+                    margin-top: -14px;
+                    margin-bottom: -14px;
+                    opacity: 0;
+                  `}
+                  keyName={index + 1}
+                  type="insert"
+                  updateAstArray={updateAstArray}
+                />
+              </div>
             </>
           ))}
         </div>
@@ -148,77 +155,119 @@ export const PlaygroundEditor: FC<playgroundEditor> = ({
     },
     {
       $astId: '#?single',
-      tagName: 'img',
+      tagName: 'div',
       attr: { $astId: '#/attr', src: 'a.png' },
       children: [],
       text: '',
     },
   ]);
-  const updateAstArray = (
-    astPath: (string | number)[],
-    type: 'edit' | 'insert',
-    keyName: string | number,
-    value: ast | string,
-  ) => {
-    const editObject = astPath.reduce<ast>((accAst, currKey) => {
-      if (!Array.isArray(accAst)) {
-        const newEditObject = accAst[currKey];
-        if (typeof newEditObject === 'string') {
-          console.error(`${newEditObject} is a string.`);
+  const updateAstArray = useCallback(
+    (
+      astPath: (string | number)[],
+      type: 'edit' | 'insert' | 'delete',
+      keyName: string | number,
+      value: ast | string,
+    ) => {
+      setAstArray((astArray) => {
+        const editObject = astPath.reduce<ast>((accAst, currKey) => {
+          if (!Array.isArray(accAst)) {
+            const newEditObject = accAst[currKey];
+            if (typeof newEditObject === 'string') {
+              console.error(`${newEditObject} is a string.`);
+              return accAst;
+            }
+            return newEditObject;
+          }
+          if (Array.isArray(accAst) && typeof currKey === 'number') {
+            return accAst[currKey];
+          }
+          if (typeof currKey === 'number') {
+            console.error(`${accAst} is not an array.`);
+            return accAst;
+          }
           return accAst;
+        }, astArray);
+        if (type === 'edit') {
+          if (
+            Array.isArray(editObject) &&
+            typeof keyName === 'number' &&
+            typeof value !== 'string'
+          ) {
+            editObject[keyName] = value;
+          }
+          if (!Array.isArray(editObject) && typeof keyName === 'string') {
+            editObject[keyName] = value;
+          }
         }
-        return newEditObject;
-      }
-      if (Array.isArray(accAst) && typeof currKey === 'number') {
-        return accAst[currKey];
-      }
-      if (typeof currKey === 'number') {
-        console.error(`${accAst} is not an array.`);
-        return accAst;
-      }
-      return accAst;
-    }, astArray);
-    if (type === 'edit') {
-      if (
-        Array.isArray(editObject) &&
-        typeof keyName === 'number' &&
-        typeof value !== 'string'
-      ) {
-        editObject[keyName] = value;
-      }
-      if (!Array.isArray(editObject) && typeof keyName === 'string') {
-        editObject[keyName] = value;
-      }
-    }
-    if (type === 'insert') {
-      if (
-        Array.isArray(editObject) &&
-        typeof keyName === 'number' &&
-        typeof value !== 'string'
-      ) {
-        editObject.splice(keyName, 0, value);
-      }
-      if (!Array.isArray(editObject)) {
-        editObject[keyName] = value;
-      }
-    }
-    setAstArray(astArray);
-  };
+        if (type === 'insert') {
+          if (
+            Array.isArray(editObject) &&
+            typeof keyName === 'number' &&
+            typeof value !== 'string'
+          ) {
+            editObject.splice(keyName, 0, value);
+          }
+          if (!Array.isArray(editObject)) {
+            editObject[keyName] = value;
+          }
+        }
+        if (type === 'delete') {
+          if (
+            Array.isArray(editObject) &&
+            typeof keyName === 'number' &&
+            typeof value !== 'string' &&
+            editObject[keyName]
+          ) {
+            editObject.splice(keyName, 1);
+          }
+          if (!Array.isArray(editObject)) {
+            delete editObject[keyName];
+          }
+        }
+        return astArray;
+      });
+    },
+    [setAstArray],
+  );
+  console.log(astArray);
   const [lineHeight] = useState(28);
   const [totalLineCountState, setTotalLineCountState] = useState(1);
   useEffect(() => {
     const editorHeight =
       document.getElementById('playground-editor')?.clientHeight;
     if (editorHeight) {
-      setTotalLineCountState(Math.floor(editorHeight / lineHeight) + 1);
+      setTotalLineCountState(
+        Math.floor((editorHeight - lineHeight / 2) / lineHeight) + 1,
+      );
     }
-  }, [lineHeight]);
+  }, [lineHeight, astArray, isDraggingBlock]);
 
   return (
     <div
       css={css`
+        overflow: auto;
         width: 100%;
         height: 100%;
+
+        &::-webkit-scrollbar {
+          width: 12px;
+          border-left: 1px solid ${gray[2]};
+        }
+
+        &::-webkit-scrollbar-thumb {
+          width: 8px;
+          background-color: ${gray[4]};
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+          width: 8px;
+          background-color: ${gray[5]};
+        }
+
+        &::-webkit-scrollbar-thumb:active {
+          width: 8px;
+          background-color: ${gray[6]};
+        }
       `}
     >
       <PresentialPlaygroundEditor
@@ -229,6 +278,7 @@ export const PlaygroundEditor: FC<playgroundEditor> = ({
         totalLineCount={totalLineCountState}
         updateAstArray={updateAstArray}
       />
+      <BlockDragLayer />
     </div>
   );
 };

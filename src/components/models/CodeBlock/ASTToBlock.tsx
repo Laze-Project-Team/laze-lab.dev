@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import type { FC } from 'react';
 import { useState } from 'react';
 import { useDrag } from 'react-dnd';
+import { uuid } from 'uuidv4';
 
 import type {
   ast,
@@ -55,7 +56,7 @@ type presentialASTToBlockProps = {
   languageId: string;
   updateAstArray: (
     astPath: (string | number)[],
-    type: 'edit' | 'insert',
+    type: 'edit' | 'insert' | 'delete',
     keyName: string | number,
     value: ast | string,
   ) => void;
@@ -93,7 +94,7 @@ export const PresentialASTToBlock: FC<presentialASTToBlockProps> = ({
       if (typeof varString !== 'string') {
         return <div />;
       }
-      return <CodeBlockTextInput defaultValue={varString} />;
+      return <CodeBlockTextInput astPath={astPath} defaultValue={varString} />;
     }
   }
   if (grammar.type === 'varAst' && checkVarAstGrammarType(grammar.data)) {
@@ -180,11 +181,14 @@ export const PresentialASTToBlock: FC<presentialASTToBlockProps> = ({
 };
 
 export type DragBlockItem = {
-  ast: ast;
+  astToBlockProps: ASTToBlockProps;
   astId: string;
+  id: string;
+  keyName: number | string;
+  source: 'sidebar' | 'editor';
 };
 
-type ASTToBlockProps = {
+export type ASTToBlockProps = {
   ast: ast;
   astToBlock: Record<string, astToBlock>;
   astPath: (string | number)[];
@@ -192,7 +196,7 @@ type ASTToBlockProps = {
   languageId: string;
   updateAstArray: (
     astPath: (string | number)[],
-    type: 'edit' | 'insert',
+    type: 'edit' | 'insert' | 'delete',
     keyName: string | number,
     value: ast | string,
   ) => void;
@@ -209,19 +213,37 @@ export const ASTToBlock: FC<ASTToBlockProps> = ({
   wordTypes,
 }) => {
   const [hoverState, setHoverState] = useState(false);
-  const [, drag] = useDrag<DragBlockItem>(() => ({
-    type: 'block',
-    item:
-      !Array.isArray(ast) && ast['$astId']
-        ? {
-            ast: ast,
-            astId: typeof ast['$astId'] === 'string' ? ast['$astId'] : '',
-          }
-        : undefined,
-    collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
+  const [{ isDragging }, drag] = useDrag<
+    DragBlockItem,
+    unknown,
+    { isDragging: boolean }
+  >(
+    () => ({
+      type: 'block',
+      item:
+        !Array.isArray(ast) && ast['$astId']
+          ? {
+              astToBlockProps: {
+                ast,
+                astToBlock,
+                astPath,
+                draggable,
+                languageId,
+                updateAstArray,
+                wordTypes,
+              },
+              astId: typeof ast['$astId'] === 'string' ? ast['$astId'] : '',
+              id: uuid(),
+              keyName: astPath.length ? astPath.slice(-1)[0] : 0,
+              source: 'editor',
+            }
+          : undefined,
+      collect: (monitor) => ({
+        isDragging: !!monitor.isDragging(),
+      }),
     }),
-  }));
+    [ast, astPath],
+  );
   if (Array.isArray(ast)) {
     return (
       <>
@@ -248,7 +270,7 @@ export const ASTToBlock: FC<ASTToBlockProps> = ({
               <ASTToBlock
                 ast={astElement}
                 astToBlock={astToBlock}
-                astPath={[...astPath, index.toString()]}
+                astPath={[...astPath, index]}
                 draggable={draggable}
                 languageId={languageId}
                 updateAstArray={updateAstArray}
@@ -258,9 +280,9 @@ export const ASTToBlock: FC<ASTToBlockProps> = ({
                 index !== ast.length - 1 &&
                 separatorGrammars.map((separatorGrammar, index) => (
                   <PresentialASTToBlock
-                    ast={[]}
+                    ast={{ '': '' }}
                     astToBlock={astToBlock}
-                    astPath={[...astPath, index.toString()]}
+                    astPath={[...astPath, index]}
                     draggable={draggable}
                     grammar={separatorGrammar}
                     key={index}
@@ -287,8 +309,9 @@ export const ASTToBlock: FC<ASTToBlockProps> = ({
   return (
     <div
       css={css`
-        display: flex;
+        display: ${isDragging ? 'none' : 'flex'};
         align-items: center;
+        opacity: ${isDragging ? '0' : '1'};
         white-space: pre;
 
         ${hoverState ? 'box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);' : ''}

@@ -1,6 +1,6 @@
 import { TextInput } from '@mantine/core';
 import type { ChangeEventHandler, FC } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type presentialCodeBlockTextInputProps = {
   value: string;
@@ -25,7 +25,7 @@ export const PresentialCodeBlockTextInput: FC<
           fontFamily: 'Consolas, Arial, sans-serif !important',
           transition: '0.2s',
           backgroundColor: '#f3f4f6',
-          borderRadius: '4px',
+          borderRadius: '2px',
           textAlign: 'center',
           ':hover': {
             backgroundColor: '#e3e4e6',
@@ -40,13 +40,18 @@ export const PresentialCodeBlockTextInput: FC<
 };
 
 type codeBlockTextInputProps = {
+  astPath: (string | number)[];
   defaultValue: string;
 };
 
 export const CodeBlockTextInput: FC<codeBlockTextInputProps> = ({
+  astPath,
   defaultValue,
 }) => {
   const [valueState, setValueState] = useState(defaultValue);
+  useEffect(() => {
+    setValueState(defaultValue);
+  }, [astPath, defaultValue]);
 
   return (
     <PresentialCodeBlockTextInput
