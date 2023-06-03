@@ -22,7 +22,7 @@ const providers = {
 } as const;
 
 export type authObject<T extends authMethod> = {
-  provider: (typeof providers)[T];
+  provider: typeof providers[T];
   authenticate: () => Promise<OAuthCredential | null>;
 };
 
