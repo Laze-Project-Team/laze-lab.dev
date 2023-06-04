@@ -1,8 +1,6 @@
 import { css } from '@emotion/react';
 import type { FC } from 'react';
 import { useState } from 'react';
-import { useDrag } from 'react-dnd';
-import { uuid } from 'uuidv4';
 
 import { useEditorLanguage } from '@/components/pages/Playground/EditorLanguageContext';
 import type {
@@ -16,10 +14,11 @@ import {
   checkVarAstGrammarType,
   checkVarStringGrammarType,
 } from '@/components/pages/Playground/editorLanguageType';
-import { useLanguageId } from '@/components/pages/Playground/LanguageIdContext';
+import { useIsDraggingBlock } from '@/components/pages/Playground/IsDraggingBlockContext';
 import { gray } from '@/styles/colors';
 
 import { CodeBlockTextInput } from './CodeBlockTextInput';
+import { useBlockDrag } from './useBlockDrag';
 
 type presentialFixedASTToBlockProps = {
   word: string;
@@ -53,12 +52,6 @@ type presentialASTToBlockProps = {
   astPath: (string | number)[];
   draggable: boolean;
   grammar: grammar;
-  updateAstArray: (
-    astPath: (string | number)[],
-    type: 'edit' | 'insert' | 'delete',
-    keyName: string | number,
-    value: ast | string,
-  ) => void;
   wordTypes: Record<string, wordType>;
 };
 
@@ -67,7 +60,6 @@ export const PresentialASTToBlock: FC<presentialASTToBlockProps> = ({
   astPath,
   draggable,
   grammar,
-  updateAstArray,
   wordTypes,
 }) => {
   if (Array.isArray(ast)) {
@@ -139,7 +131,6 @@ export const PresentialASTToBlock: FC<presentialASTToBlockProps> = ({
           ast={newChildAst}
           astPath={[...astPath, grammar.data.var]}
           draggable={draggable}
-          updateAstArray={updateAstArray}
         />
       );
     }
@@ -148,7 +139,6 @@ export const PresentialASTToBlock: FC<presentialASTToBlockProps> = ({
         ast={childAst}
         astPath={[...astPath, grammar.data.var]}
         draggable={draggable}
-        updateAstArray={updateAstArray}
       />
     );
   }
@@ -171,66 +161,22 @@ export const PresentialASTToBlock: FC<presentialASTToBlockProps> = ({
   return <div />;
 };
 
-export type DragBlockItem = {
-  astToBlockProps: ASTToBlockProps;
-  astId: string;
-  id: string;
-  keyName: number | string;
-  source: 'sidebar' | 'editor';
-};
-
 export type ASTToBlockProps = {
   ast: ast;
   astPath: (string | number)[];
   draggable: boolean;
-  updateAstArray: (
-    astPath: (string | number)[],
-    type: 'edit' | 'insert' | 'delete',
-    keyName: string | number,
-    value: ast | string,
-  ) => void;
 };
 
 export const ASTToBlock: FC<ASTToBlockProps> = ({
   ast,
   astPath,
   draggable,
-  updateAstArray,
 }) => {
   const { astToBlock, wordTypes } = useEditorLanguage();
-  const { languageId } = useLanguageId();
   const [hoverState, setHoverState] = useState(false);
-  const [{ isDragging }, drag] = useDrag<
-    DragBlockItem,
-    unknown,
-    { isDragging: boolean }
-  >(
-    () => ({
-      type: 'block',
-      item:
-        !Array.isArray(ast) && ast['$astId']
-          ? {
-              astToBlockProps: {
-                ast,
-                astToBlock: astToBlock,
-                astPath,
-                draggable,
-                languageId: languageId,
-                updateAstArray,
-                wordTypes: wordTypes,
-              },
-              astId: typeof ast['$astId'] === 'string' ? ast['$astId'] : '',
-              id: uuid(),
-              keyName: astPath.length ? astPath.slice(-1)[0] : 0,
-              source: 'editor',
-            }
-          : undefined,
-      collect: (monitor) => ({
-        isDragging: !!monitor.isDragging(),
-      }),
-    }),
-    [ast, astPath],
-  );
+  const { isDragging, drag } = useBlockDrag(ast, astPath, draggable, 'editor');
+  const isDraggingBlock = useIsDraggingBlock();
+
   if (Array.isArray(ast)) {
     return (
       <>
@@ -258,7 +204,6 @@ export const ASTToBlock: FC<ASTToBlockProps> = ({
                 ast={astElement}
                 astPath={[...astPath, index]}
                 draggable={draggable}
-                updateAstArray={updateAstArray}
               />
               {separatorGrammars &&
                 index !== ast.length - 1 &&
@@ -269,7 +214,6 @@ export const ASTToBlock: FC<ASTToBlockProps> = ({
                     draggable={draggable}
                     grammar={separatorGrammar}
                     key={index}
-                    updateAstArray={updateAstArray}
                     wordTypes={wordTypes}
                   />
                 ))}
@@ -296,10 +240,14 @@ export const ASTToBlock: FC<ASTToBlockProps> = ({
         opacity: ${isDragging ? '0' : '1'};
         white-space: pre;
 
-        ${hoverState ? 'box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);' : ''}
-        ${hoverState ? `outline: 2px solid ${gray[2]};` : ''}
-        ${hoverState ? `border-radius: 4px;` : ''}
-        ${hoverState ? 'cursor: pointer;' : ''}
+        ${!isDraggingBlock && hoverState
+          ? 'box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);'
+          : ''}
+        ${!isDraggingBlock && hoverState
+          ? `outline: 2px solid ${gray[2]};`
+          : ''}
+        ${!isDraggingBlock && hoverState ? `border-radius: 4px;` : ''}
+        ${!isDraggingBlock && hoverState ? 'cursor: pointer;' : ''}
       `}
       id={astId}
       onMouseOver={
@@ -327,7 +275,6 @@ export const ASTToBlock: FC<ASTToBlockProps> = ({
           draggable={draggable}
           grammar={grammar}
           key={index}
-          updateAstArray={updateAstArray}
           wordTypes={wordTypes}
         />
       ))}

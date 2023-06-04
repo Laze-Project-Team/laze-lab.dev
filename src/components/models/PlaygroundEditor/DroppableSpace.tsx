@@ -4,11 +4,12 @@ import { useState } from 'react';
 import type { ConnectDropTarget } from 'react-dnd';
 import { useDrop } from 'react-dnd';
 
-import type { ast } from '@/components/pages/Playground/editorLanguageType';
+import { useAstArray } from '@/components/pages/Playground/ASTArrayContext';
 import { gray } from '@/styles/colors';
 
-import type { ASTToBlockProps, DragBlockItem } from '../CodeBlock/ASTToBlock';
+import type { ASTToBlockProps } from '../CodeBlock/ASTToBlock';
 import { ASTToBlock } from '../CodeBlock/ASTToBlock';
+import type { DragBlockItem } from '../CodeBlock/useBlockDrag';
 
 type presentialDroppableSpaceProps = {
   drop: ConnectDropTarget;
@@ -26,12 +27,6 @@ type droppableSpaceProps = {
   astPath: (string | number)[];
   keyName: string | number;
   type: 'edit' | 'insert' | 'delete';
-  updateAstArray: (
-    astPath: (string | number)[],
-    type: 'edit' | 'insert' | 'delete',
-    keyName: string | number,
-    value: ast | string,
-  ) => void;
 };
 
 export const DroppableSpace: FC<droppableSpaceProps> = ({
@@ -39,9 +34,9 @@ export const DroppableSpace: FC<droppableSpaceProps> = ({
   astPath,
   keyName,
   type,
-  updateAstArray,
   ...props
 }) => {
+  const { updateAstArray } = useAstArray();
   const [hoverState, setHoverState] = useState(false);
   const [hoverItemState, setHoverItemState] = useState<
     ASTToBlockProps | undefined

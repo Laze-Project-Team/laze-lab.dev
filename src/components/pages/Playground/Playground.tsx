@@ -1,6 +1,5 @@
 import { css } from '@emotion/react';
 import type { FC } from 'react';
-import { useEffect, useState } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { useTranslation } from 'react-i18next';
@@ -12,20 +11,13 @@ import { PlaygroundEditor } from '@/components/models/PlaygroundEditor';
 import { PlaygroundSider } from '@/components/models/PlaygroundSider';
 import { gray } from '@/styles/colors';
 
+import { ASTArrayProvider } from './ASTArrayContext';
 import { EditorLanguageProvider } from './EditorLanguageContext';
+import { IsDraggingBlockProvider } from './IsDraggingBlockContext';
 import { LanguageIdProvider } from './LanguageIdContext';
 
 export const PresentialPlayground: FC = () => {
   const [t] = useTranslation(['playground']);
-  const [isDraggingBlockState, setIsDraggingBlockState] = useState(false);
-  useEffect(() => {
-    window.addEventListener('dragover', () => {
-      setIsDraggingBlockState(true);
-    });
-    window.addEventListener('dragend', () => {
-      setIsDraggingBlockState(false);
-    });
-  }, []);
 
   return (
     <>
@@ -63,7 +55,7 @@ export const PresentialPlayground: FC = () => {
                   height: 100%;
                 `}
               >
-                <PlaygroundEditor isDraggingBlock={isDraggingBlockState} />
+                <PlaygroundEditor />
               </div>
             </Panel>
             <PanelResizeHandle
@@ -102,7 +94,11 @@ export const Playground: FC = () => {
   return (
     <LanguageIdProvider defaultLanguageId="html">
       <EditorLanguageProvider>
-        <PresentialPlayground />
+        <ASTArrayProvider>
+          <IsDraggingBlockProvider>
+            <PresentialPlayground />
+          </IsDraggingBlockProvider>
+        </ASTArrayProvider>
       </EditorLanguageProvider>
     </LanguageIdProvider>
   );

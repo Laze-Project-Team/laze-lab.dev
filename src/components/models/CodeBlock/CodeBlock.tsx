@@ -1,17 +1,13 @@
 import { css } from '@emotion/react';
 import type { FC } from 'react';
 import { useEffect } from 'react';
-import { useDrag } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
-import { uuid } from 'uuidv4';
 
-import { useEditorLanguage } from '@/components/pages/Playground/EditorLanguageContext';
 import type { block } from '@/components/pages/Playground/editorLanguageType';
-import { useLanguageId } from '@/components/pages/Playground/LanguageIdContext';
 import { gray } from '@/styles/colors';
 
-import type { DragBlockItem } from './ASTToBlock';
 import { ASTToBlock } from './ASTToBlock';
+import { useBlockDrag } from './useBlockDrag';
 
 type presentialCodeBlockProps = {
   block: block;
@@ -42,12 +38,7 @@ export const PresentialCodeBlock: FC<presentialCodeBlockProps> = ({
         }
       `}
     >
-      <ASTToBlock
-        ast={block.ast}
-        astPath={[]}
-        draggable={false}
-        updateAstArray={() => null}
-      />
+      <ASTToBlock ast={block.ast} astPath={[]} draggable={false} />
     </div>
   );
 };
@@ -57,41 +48,11 @@ type codeBlockProps = {
 };
 
 export const CodeBlock: FC<codeBlockProps> = ({ block }) => {
-  const { astToBlock, wordTypes } = useEditorLanguage();
-  const { languageId } = useLanguageId();
-  const [{ isDragging }, drag, preview] = useDrag<
-    DragBlockItem,
-    unknown,
-    { isDragging: boolean }
-  >(
-    () => ({
-      type: 'block',
-      item:
-        !Array.isArray(block.ast) && block.ast['$astId']
-          ? {
-              astToBlockProps: {
-                ast: block.ast,
-                astPath: [],
-                astToBlock,
-                draggable: false,
-                languageId,
-                updateAstArray: () => null,
-                wordTypes,
-              },
-              astId:
-                typeof block.ast['$astId'] === 'string'
-                  ? block.ast['$astId']
-                  : '',
-              id: uuid(),
-              keyName: '',
-              source: 'sidebar',
-            }
-          : undefined,
-      collect: (monitor) => ({
-        isDragging: !!monitor.isDragging(),
-      }),
-    }),
-    [block],
+  const { isDragging, drag, preview } = useBlockDrag(
+    block.ast,
+    [],
+    false,
+    'sidebar',
   );
   useEffect(() => {
     preview(getEmptyImage(), { captureDraggingState: true });
