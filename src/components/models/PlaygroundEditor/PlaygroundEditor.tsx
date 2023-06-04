@@ -84,16 +84,7 @@ export const PresentialPlaygroundEditor: FC<presentialPlaygroundEditor> = ({
           />
           {astArray.map((ast, index) => (
             <>
-              <div
-                css={css`
-                  display: flex;
-                  width: min-content;
-                  align-items: center;
-                  line-height: 28px;
-                `}
-              >
-                <ASTToBlock ast={ast} astPath={[index]} draggable={true} />
-              </div>
+              <ASTToBlock ast={ast} astPath={[index]} draggable={true} />
               <div
                 css={css`
                   z-index: ${isDraggingBlock ? '100' : '-100'};

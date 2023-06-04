@@ -1,5 +1,7 @@
-import type { ConnectDragPreview, ConnectDragSource } from 'react-dnd';
+import { useEffect } from 'react';
+import type { ConnectDragSource } from 'react-dnd';
 import { useDrag } from 'react-dnd';
+import { getEmptyImage } from 'react-dnd-html5-backend';
 import { v4 } from 'uuid';
 
 import type { ast } from '@/components/pages/Playground/editorLanguageType';
@@ -22,7 +24,6 @@ export const useBlockDrag = (
 ): {
   isDragging: boolean;
   drag: ConnectDragSource;
-  preview: ConnectDragPreview;
 } => {
   const [{ isDragging }, drag, preview] = useDrag<
     DragBlockItem,
@@ -46,10 +47,13 @@ export const useBlockDrag = (
             }
           : undefined,
       collect: (monitor) => ({
-        isDragging: !!monitor.isDragging(),
+        isDragging: monitor.isDragging(),
       }),
     }),
     [ast, astPath],
   );
-  return { isDragging, drag, preview };
+  useEffect(() => {
+    preview(getEmptyImage(), { captureDraggingState: true });
+  }, [preview]);
+  return { isDragging, drag };
 };

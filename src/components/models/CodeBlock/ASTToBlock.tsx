@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 import type { FC } from 'react';
-import { useEffect, useState } from 'react';
-import { getEmptyImage } from 'react-dnd-html5-backend';
+import { useState } from 'react';
 
 import { useEditorLanguage } from '@/components/pages/Playground/EditorLanguageContext';
 import type {
@@ -227,15 +226,7 @@ export const ASTToBlock: FC<ASTToBlockProps> = ({
 }) => {
   const { astToBlock, wordTypes } = useEditorLanguage();
   const [hoverState, setHoverState] = useState(false);
-  const { isDragging, drag, preview } = useBlockDrag(
-    ast,
-    astPath,
-    draggable,
-    'editor',
-  );
-  useEffect(() => {
-    preview(getEmptyImage(), { captureDraggingState: true });
-  }, [preview]);
+  const { isDragging, drag } = useBlockDrag(ast, astPath, draggable, 'editor');
   const isDraggingBlock = useIsDraggingBlock();
 
   if (Array.isArray(ast)) {
@@ -298,9 +289,10 @@ export const ASTToBlock: FC<ASTToBlockProps> = ({
   return (
     <div
       css={css`
-        display: ${isDragging ? 'none' : 'flex'};
+        display: flex;
+        width: min-content;
         align-items: center;
-        opacity: ${isDragging ? '0' : '1'};
+        line-height: 28px;
         white-space: pre;
 
         ${!isDraggingBlock && hoverState
@@ -330,6 +322,7 @@ export const ASTToBlock: FC<ASTToBlockProps> = ({
           : undefined
       }
       ref={draggable ? drag : undefined}
+      style={{ height: isDragging ? 0 : '', opacity: isDragging ? 0 : '' }}
     >
       {grammars.map((grammar, index) => (
         <PresentialASTToBlock
