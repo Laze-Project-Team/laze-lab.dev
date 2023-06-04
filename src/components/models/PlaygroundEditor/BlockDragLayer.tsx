@@ -4,8 +4,8 @@ import { useDragLayer } from 'react-dnd';
 
 import { gray } from '@/styles/colors';
 
-import type { DragBlockItem } from '../CodeBlock/ASTToBlock';
 import { ASTToBlock } from '../CodeBlock/ASTToBlock';
+import type { DragBlockItem } from '../CodeBlock/useBlockDrag';
 
 const getItemStyles = (
   initialOffset: { x: number; y: number },
@@ -53,24 +53,31 @@ export const BlockDragLayer: FC = () => {
       <div style={getItemStyles(initialOffset, currentOffset)}>
         <div
           css={css`
-            display: flex;
-            width: min-content;
-            align-items: center;
             padding: 8px;
-            padding-top: 0;
-            padding-bottom: 0;
-            border: 2px solid ${gray[2]};
-            border-radius: 4px;
-            background-color: white;
-            opacity: 1;
-            white-space: pre;
-
-            &:hover {
-              cursor: pointer;
-            }
           `}
         >
-          <ASTToBlock {...item.astToBlockProps} />
+          <div
+            css={css`
+              display: flex;
+              width: min-content;
+              align-items: center;
+              padding: 8px;
+              padding-top: 0;
+              padding-bottom: 0;
+              border: 2px solid ${gray[2]};
+              border-radius: 4px;
+              background-color: white;
+              box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.06);
+              opacity: 0.5;
+              white-space: pre;
+
+              &:hover {
+                cursor: pointer;
+              }
+            `}
+          >
+            <ASTToBlock {...item.astToBlockProps} />
+          </div>
         </div>
       </div>
     </div>

@@ -11,12 +11,10 @@ import { useBlockDrag } from './useBlockDrag';
 
 type presentialCodeBlockProps = {
   block: block;
-  isDragging: boolean;
 };
 
 export const PresentialCodeBlock: FC<presentialCodeBlockProps> = ({
   block,
-  isDragging,
 }) => {
   return (
     <div
@@ -29,11 +27,12 @@ export const PresentialCodeBlock: FC<presentialCodeBlockProps> = ({
         padding-bottom: 0;
         border: 2px solid ${gray[2]};
         border-radius: 4px;
-        box-shadow: ${isDragging ? '0 0 8px 0.5px rgba(0, 0, 0, 0.06)' : '0'};
         opacity: 1;
+        transition: 0.2s;
         white-space: pre;
 
         &:hover {
+          box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.06);
           cursor: pointer;
         }
       `}
@@ -48,12 +47,7 @@ type codeBlockProps = {
 };
 
 export const CodeBlock: FC<codeBlockProps> = ({ block }) => {
-  const { isDragging, drag, preview } = useBlockDrag(
-    block.ast,
-    [],
-    false,
-    'sidebar',
-  );
+  const { drag, preview } = useBlockDrag(block.ast, [], false, 'sidebar');
   useEffect(() => {
     preview(getEmptyImage(), { captureDraggingState: true });
   }, [preview]);
@@ -64,7 +58,7 @@ export const CodeBlock: FC<codeBlockProps> = ({ block }) => {
       `}
       ref={drag}
     >
-      <PresentialCodeBlock block={block} isDragging={isDragging} />
+      <PresentialCodeBlock block={block} />
     </div>
   );
 };

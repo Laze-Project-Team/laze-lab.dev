@@ -5,7 +5,7 @@ import type { ConnectDropTarget } from 'react-dnd';
 import { useDrop } from 'react-dnd';
 
 import { useAstArray } from '@/components/pages/Playground/ASTArrayContext';
-import { gray } from '@/styles/colors';
+import { blue } from '@/styles/colors';
 
 import type { ASTToBlockProps } from '../CodeBlock/ASTToBlock';
 import { ASTToBlock } from '../CodeBlock/ASTToBlock';
@@ -52,29 +52,20 @@ export const DroppableSpace: FC<droppableSpaceProps> = ({
       return;
     },
     drop: (item) => {
-      updateAstArray(astPath, type, keyName, item.astToBlockProps.ast);
+      const newAst = structuredClone(item.astToBlockProps.ast);
+      updateAstArray(astPath, type, keyName, newAst);
       if (item.source !== 'editor') {
         return;
       }
       if (!(typeof keyName === 'number' && typeof item.keyName === 'number')) {
-        updateAstArray(
-          astPath,
-          'delete',
-          item.keyName,
-          item.astToBlockProps.ast,
-        );
+        updateAstArray(astPath, 'delete', item.keyName, newAst);
         return;
       }
       if (keyName < item.keyName) {
-        updateAstArray(
-          astPath,
-          'delete',
-          item.keyName + 1,
-          item.astToBlockProps.ast,
-        );
+        updateAstArray(astPath, 'delete', item.keyName + 1, newAst);
         return;
       }
-      updateAstArray(astPath, 'delete', item.keyName, item.astToBlockProps.ast);
+      updateAstArray(astPath, 'delete', item.keyName, newAst);
       return;
     },
     canDrop: (item) => {
@@ -98,26 +89,18 @@ export const DroppableSpace: FC<droppableSpaceProps> = ({
       {hoverState && hoverItemState && (
         <div
           css={css`
-            opacity: 0.5;
+            opacity: 0.8;
           `}
         >
           <div
             css={css`
-              display: flex;
               width: min-content;
-              align-items: center;
-              padding: 8px;
-              padding-top: 0;
-              padding-bottom: 0;
-              border: 2px solid ${gray[2]};
+              padding-right: 4px;
+              padding-left: 4px;
+              border: 2px solid ${blue[4]};
               border-radius: 4px;
-              background-color: white;
-              opacity: 1;
-              white-space: pre;
-
-              &:hover {
-                cursor: pointer;
-              }
+              margin-left: -4px;
+              background-color: ${blue[1]};
             `}
           >
             {hoverItemState && <ASTToBlock {...hoverItemState} />}

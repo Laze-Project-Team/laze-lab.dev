@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import type { FC } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { getEmptyImage } from 'react-dnd-html5-backend';
 
 import { useEditorLanguage } from '@/components/pages/Playground/EditorLanguageContext';
 import type {
@@ -50,6 +51,10 @@ export const PresentialFixedASTToBlock: FC<presentialFixedASTToBlockProps> = ({
 type presentialASTToBlockProps = {
   ast: ast;
   astPath: (string | number)[];
+  keyDict?: {
+    $key: string;
+    $value: string;
+  };
   draggable: boolean;
   grammar: grammar;
   wordTypes: Record<string, wordType>;
@@ -60,6 +65,7 @@ export const PresentialASTToBlock: FC<presentialASTToBlockProps> = ({
   astPath,
   draggable,
   grammar,
+  keyDict,
   wordTypes,
 }) => {
   if (Array.isArray(ast)) {
@@ -83,11 +89,51 @@ export const PresentialASTToBlock: FC<presentialASTToBlockProps> = ({
       if (typeof varString !== 'string') {
         return <div />;
       }
-      return <CodeBlockTextInput astPath={astPath} defaultValue={varString} />;
+      if (!(grammar.data.var === '$key' || grammar.data.var === '$value')) {
+        return (
+          <CodeBlockTextInput
+            astPath={astPath}
+            defaultValue={varString}
+            draggable={draggable}
+            keyName={grammar.data.var}
+          />
+        );
+      }
+      if (!ast['$key']) {
+        return (
+          <CodeBlockTextInput
+            astPath={astPath}
+            defaultValue={varString}
+            draggable={draggable}
+            keyName={grammar.data.var}
+          />
+        );
+      }
+      if (typeof ast['$key'] !== 'string') {
+        return (
+          <CodeBlockTextInput
+            astPath={astPath}
+            defaultValue={varString}
+            draggable={draggable}
+            keyName={grammar.data.var}
+          />
+        );
+      }
+      return (
+        <CodeBlockTextInput
+          astPath={astPath}
+          defaultValue={varString}
+          draggable={draggable}
+          keyDict={{ $key: ast['$key'], $value: ast['$key'] }}
+          keyName={grammar.data.var}
+          record={true}
+        />
+      );
     }
   }
   if (grammar.type === 'varAst' && checkVarAstGrammarType(grammar.data)) {
-    const childAst = ast[grammar.data.var];
+    const keyName = grammar.data.var;
+    const childAst = ast[keyName];
     if (!childAst) {
       return <div />;
     }
@@ -95,7 +141,7 @@ export const PresentialASTToBlock: FC<presentialASTToBlockProps> = ({
       return <div />;
     }
     if (grammar.data.type && grammar.data.type === 'stringRecord') {
-      const keyArray = Object.keys(childAst);
+      const keyArray = Object.keys(childAst).filter((key) => key !== '$astId');
       const newChildAst = keyArray
         .filter((key) => key !== '$astId')
         .reduce<{ $astId: string; $key: string; $value: string }[]>(
@@ -131,6 +177,7 @@ export const PresentialASTToBlock: FC<presentialASTToBlockProps> = ({
           ast={newChildAst}
           astPath={[...astPath, grammar.data.var]}
           draggable={draggable}
+          keyDict={keyDict}
         />
       );
     }
@@ -139,6 +186,7 @@ export const PresentialASTToBlock: FC<presentialASTToBlockProps> = ({
         ast={childAst}
         astPath={[...astPath, grammar.data.var]}
         draggable={draggable}
+        keyDict={keyDict}
       />
     );
   }
@@ -164,17 +212,30 @@ export const PresentialASTToBlock: FC<presentialASTToBlockProps> = ({
 export type ASTToBlockProps = {
   ast: ast;
   astPath: (string | number)[];
+  keyDict?: {
+    $key: string;
+    $value: string;
+  };
   draggable: boolean;
 };
 
 export const ASTToBlock: FC<ASTToBlockProps> = ({
   ast,
   astPath,
+  keyDict,
   draggable,
 }) => {
   const { astToBlock, wordTypes } = useEditorLanguage();
   const [hoverState, setHoverState] = useState(false);
-  const { isDragging, drag } = useBlockDrag(ast, astPath, draggable, 'editor');
+  const { isDragging, drag, preview } = useBlockDrag(
+    ast,
+    astPath,
+    draggable,
+    'editor',
+  );
+  useEffect(() => {
+    preview(getEmptyImage(), { captureDraggingState: true });
+  }, [preview]);
   const isDraggingBlock = useIsDraggingBlock();
 
   if (Array.isArray(ast)) {
@@ -204,6 +265,7 @@ export const ASTToBlock: FC<ASTToBlockProps> = ({
                 ast={astElement}
                 astPath={[...astPath, index]}
                 draggable={draggable}
+                keyDict={keyDict}
               />
               {separatorGrammars &&
                 index !== ast.length - 1 &&
@@ -214,6 +276,7 @@ export const ASTToBlock: FC<ASTToBlockProps> = ({
                     draggable={draggable}
                     grammar={separatorGrammar}
                     key={index}
+                    keyDict={keyDict}
                     wordTypes={wordTypes}
                   />
                 ))}
@@ -275,6 +338,7 @@ export const ASTToBlock: FC<ASTToBlockProps> = ({
           draggable={draggable}
           grammar={grammar}
           key={index}
+          keyDict={keyDict}
           wordTypes={wordTypes}
         />
       ))}

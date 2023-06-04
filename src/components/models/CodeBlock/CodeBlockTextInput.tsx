@@ -1,6 +1,8 @@
 import { TextInput } from '@mantine/core';
 import type { ChangeEventHandler, FC } from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+
+import { useAstArray } from '@/components/pages/Playground/ASTArrayContext';
 
 type presentialCodeBlockTextInputProps = {
   value: string;
@@ -42,23 +44,56 @@ export const PresentialCodeBlockTextInput: FC<
 type codeBlockTextInputProps = {
   astPath: (string | number)[];
   defaultValue: string;
+  draggable: boolean;
+  keyDict?: {
+    $key: string;
+    $value: string;
+  };
+  keyName: string;
+  record?: boolean;
 };
 
 export const CodeBlockTextInput: FC<codeBlockTextInputProps> = ({
   astPath,
   defaultValue,
+  draggable,
+  keyDict,
+  keyName,
+  record,
 }) => {
   const [valueState, setValueState] = useState(defaultValue);
-  useEffect(() => {
-    setValueState(defaultValue);
-  }, [astPath, defaultValue]);
+  const { updateAstArray } = useAstArray();
+
+  const changeHandler: ChangeEventHandler<HTMLInputElement> = record
+    ? (e): void => {
+        setValueState(e.currentTarget.value);
+        const newAstPath = [...astPath];
+        newAstPath.pop();
+        updateAstArray(
+          newAstPath,
+          'edit',
+          keyName,
+          e.currentTarget.value,
+          keyDict,
+        );
+      }
+    : (e): void => {
+        setValueState(e.currentTarget.value);
+        updateAstArray(
+          astPath,
+          'edit',
+          keyName,
+          e.currentTarget.value,
+          keyDict,
+        );
+      };
 
   return (
     <PresentialCodeBlockTextInput
       value={valueState}
-      onChange={(e): void => {
-        setValueState(e.currentTarget.value);
-      }}
+      onChange={draggable ? changeHandler : () => null}
     />
   );
 };
+
+CodeBlockTextInput.defaultProps = { record: false };

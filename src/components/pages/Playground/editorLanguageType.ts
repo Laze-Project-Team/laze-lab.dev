@@ -75,13 +75,15 @@ export const checkVarStringGrammarType = (
 };
 
 export const grammarSchema = z.object({
-  type: z.enum(['fixed', 'input', 'varAst', 'varString']),
-  data: z.union([
-    fixedGrammarSchema,
-    inputGrammarSchema,
-    varStringGrammarSchema,
-    varAstGrammarSchema,
-  ]),
+  type: z.enum(['fixed', 'input', 'varAst', 'varString', 'newline']),
+  data: z.optional(
+    z.union([
+      fixedGrammarSchema,
+      inputGrammarSchema,
+      varStringGrammarSchema,
+      varAstGrammarSchema,
+    ]),
+  ),
 });
 export type grammar = z.infer<typeof grammarSchema>;
 

@@ -58,11 +58,15 @@ export const PresentialPlaygroundEditor: FC<presentialPlaygroundEditor> = ({
           </div>
         ))}
       </div>
-      <div>
+      <div
+        css={css`
+          flex: 1;
+        `}
+      >
         <div
           css={css`
             width: 100%;
-            margin-left: 8px;
+            padding-left: 8px;
           `}
           id="playground-editor"
         >

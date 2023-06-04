@@ -1,6 +1,6 @@
 import type { ConnectDragPreview, ConnectDragSource } from 'react-dnd';
 import { useDrag } from 'react-dnd';
-import { uuid } from 'uuidv4';
+import { v4 } from 'uuid';
 
 import type { ast } from '@/components/pages/Playground/editorLanguageType';
 
@@ -40,7 +40,7 @@ export const useBlockDrag = (
                 draggable,
               },
               astId: typeof ast['$astId'] === 'string' ? ast['$astId'] : '',
-              id: uuid(),
+              id: v4(),
               keyName: astPath.length ? astPath.slice(-1)[0] : 0,
               source,
             }

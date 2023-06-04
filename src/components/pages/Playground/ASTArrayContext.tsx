@@ -9,6 +9,10 @@ export type astArrayContextType = {
     type: 'edit' | 'insert' | 'delete',
     keyName: string | number,
     value: ast | string,
+    keyDict?: {
+      $key: string;
+      $value: string;
+    },
   ) => void;
   astArray: ast[];
 };
@@ -30,28 +34,17 @@ type astArrayProviderProps = {
 };
 
 export const ASTArrayProvider: FC<astArrayProviderProps> = ({ children }) => {
-  const [astArray, setAstArray] = useState<ast[]>([
-    {
-      $astId: '#?single',
-      tagName: 'img',
-      attr: { $astId: '#/attr', src: 'a.png', alt: '' },
-      children: [],
-      text: '',
-    },
-    {
-      $astId: '#?single',
-      tagName: 'div',
-      attr: { $astId: '#/attr', src: 'a.png' },
-      children: [],
-      text: '',
-    },
-  ]);
+  const [astArray, setAstArray] = useState<ast[]>([]);
   const updateAstArray = useCallback(
     (
       astPath: (string | number)[],
       type: 'edit' | 'insert' | 'delete',
       keyName: string | number,
       value: ast | string,
+      keyDict?: {
+        $key: string;
+        $value: string;
+      },
     ) => {
       setAstArray((astArray) => {
         const editObject = astPath.reduce<ast>((accAst, currKey) => {
@@ -81,6 +74,20 @@ export const ASTArrayProvider: FC<astArrayProviderProps> = ({ children }) => {
             editObject[keyName] = value;
           }
           if (!Array.isArray(editObject) && typeof keyName === 'string') {
+            if (keyName === '$value' && keyDict && keyDict['$value']) {
+              editObject[keyDict['$value']] = value;
+              return astArray;
+            }
+            if (
+              keyName === '$key' &&
+              keyDict &&
+              keyDict['$key'] &&
+              typeof value === 'string'
+            ) {
+              editObject[keyDict['$key']] = editObject[value];
+              delete editObject[value];
+              return astArray;
+            }
             editObject[keyName] = value;
           }
         }

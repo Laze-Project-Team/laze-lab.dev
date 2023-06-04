@@ -48,7 +48,9 @@
           "data": { "var": "attr", "type": "stringRecord" }
         },
         { "type": "fixed", "data": { "word": ">", "wordType": "operator" } },
+        { "type": "newline" },
         { "type": "varAst", "data": { "var": "children" } },
+        { "type": "newline" },
         {
           "type": "fixed",
           "data": { "word": "</", "wordType": "operator" }
