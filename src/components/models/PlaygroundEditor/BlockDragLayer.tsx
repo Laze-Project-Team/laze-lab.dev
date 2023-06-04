@@ -68,7 +68,7 @@ export const BlockDragLayer: FC = () => {
               border-radius: 4px;
               background-color: white;
               box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.06);
-              opacity: 0.5;
+              opacity: 1;
               white-space: pre;
 
               &:hover {

@@ -1,5 +1,7 @@
 import { css } from '@emotion/react';
 import type { FC } from 'react';
+import { useEffect } from 'react';
+import { getEmptyImage } from 'react-dnd-html5-backend';
 
 import type { block } from '@/components/pages/Playground/editorLanguageType';
 import { gray } from '@/styles/colors';
@@ -45,7 +47,11 @@ type codeBlockProps = {
 };
 
 export const CodeBlock: FC<codeBlockProps> = ({ block }) => {
-  const { drag } = useBlockDrag(block.ast, [], false, 'sidebar');
+  const { drag, preview } = useBlockDrag(block.ast, [], false, 'sidebar');
+  useEffect(() => {
+    preview(getEmptyImage(), { captureDraggingState: true });
+  }, [preview]);
+
   return (
     <div
       css={css`

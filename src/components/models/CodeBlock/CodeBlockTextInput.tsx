@@ -1,6 +1,6 @@
 import { TextInput } from '@mantine/core';
 import type { ChangeEventHandler, FC } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useAstArray } from '@/components/pages/Playground/ASTArrayContext';
 
@@ -63,6 +63,10 @@ export const CodeBlockTextInput: FC<codeBlockTextInputProps> = ({
 }) => {
   const [valueState, setValueState] = useState(defaultValue);
   const { updateAstArray } = useAstArray();
+
+  useEffect(() => {
+    setValueState(defaultValue);
+  }, [defaultValue]);
 
   const changeHandler: ChangeEventHandler<HTMLInputElement> = record
     ? (e): void => {
