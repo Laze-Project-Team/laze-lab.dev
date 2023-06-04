@@ -1,12 +1,10 @@
 import { css } from '@emotion/react';
-import { Loader } from '@mantine/core';
 import type { FC } from 'react';
 import { useEffect, useState } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { useTranslation } from 'react-i18next';
 import { Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels';
-import useSWR from 'swr';
 
 import { Descriptions } from '@/components/functional/Descriptions';
 import { PlaygroundLayout } from '@/components/layouts/PlaygroundLayout';
@@ -14,17 +12,10 @@ import { PlaygroundEditor } from '@/components/models/PlaygroundEditor';
 import { PlaygroundSider } from '@/components/models/PlaygroundSider';
 import { gray } from '@/styles/colors';
 
-import type { editorLanguage } from './editorLanguageType';
+import { EditorLanguageProvider } from './EditorLanguageContext';
+import { LanguageIdProvider } from './LanguageIdContext';
 
-type playgroundProps = {
-  editorLanguage: editorLanguage;
-  languageId: string;
-};
-
-export const PresentialPlayground: FC<playgroundProps> = ({
-  editorLanguage,
-  languageId,
-}) => {
+export const PresentialPlayground: FC = () => {
   const [t] = useTranslation(['playground']);
   const [isDraggingBlockState, setIsDraggingBlockState] = useState(false);
   useEffect(() => {
@@ -44,10 +35,7 @@ export const PresentialPlayground: FC<playgroundProps> = ({
         <DndProvider backend={HTML5Backend}>
           <PanelGroup direction="horizontal">
             <Panel defaultSize={20} minSize={20}>
-              <PlaygroundSider
-                editorLanguage={editorLanguage}
-                languageId={languageId}
-              />
+              <PlaygroundSider />
             </Panel>
             <PanelResizeHandle
               css={css`
@@ -75,11 +63,7 @@ export const PresentialPlayground: FC<playgroundProps> = ({
                   height: 100%;
                 `}
               >
-                <PlaygroundEditor
-                  editorLanguage={editorLanguage}
-                  isDraggingBlock={isDraggingBlockState}
-                  languageId={languageId}
-                />
+                <PlaygroundEditor isDraggingBlock={isDraggingBlockState} />
               </div>
             </Panel>
             <PanelResizeHandle
@@ -114,45 +98,12 @@ export const PresentialPlayground: FC<playgroundProps> = ({
   );
 };
 
-const fetcher = (url: string) => fetch(url).then((r) => r.json());
-
 export const Playground: FC = () => {
-  const [languageState] = useState('html');
-  const { data: editorLanguage, isLoading } = useSWR<editorLanguage>(
-    `/api/editor_languages/${languageState}`,
-    fetcher,
-  );
-
-  if (isLoading || !editorLanguage) {
-    return (
-      <div
-        css={css`
-          display: flex;
-          width: 100vw;
-          height: 100vh;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-        `}
-      >
-        <div
-          css={css`
-            margin-bottom: 16px;
-            color: ${gray[5]};
-            font-size: 1.7rem;
-            font-weight: 600;
-          `}
-        >
-          エディターをロード中...
-        </div>
-        <Loader size={'xl'} />
-      </div>
-    );
-  }
   return (
-    <PresentialPlayground
-      languageId={languageState}
-      editorLanguage={editorLanguage}
-    />
+    <LanguageIdProvider defaultLanguageId="html">
+      <EditorLanguageProvider>
+        <PresentialPlayground />
+      </EditorLanguageProvider>
+    </LanguageIdProvider>
   );
 };

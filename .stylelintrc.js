@@ -17,5 +17,6 @@ module.exports = {
     'alpha-value-notation': 'number',
     // styling for MUI components
     'selector-class-pattern': null,
+    'value-keyword-case': null,
   },
 };

@@ -3,6 +3,7 @@ import { Navbar } from '@mantine/core';
 import type { FC } from 'react';
 import { useState } from 'react';
 
+import { useEditorLanguage } from '@/components/pages/Playground/EditorLanguageContext';
 import type { editorLanguage } from '@/components/pages/Playground/editorLanguageType';
 import { gray } from '@/styles/colors';
 
@@ -11,14 +12,12 @@ import { SiderSideButton } from './SiderSideButton';
 
 type presentialPlaygroundSiderProps = {
   editorLanguage: editorLanguage;
-  languageId: string;
   sidebarState: number;
   changeSidebarState: (index: number) => () => void;
 };
 
 export const PresentialPlaygroundSider: FC<presentialPlaygroundSiderProps> = ({
   editorLanguage,
-  languageId,
   sidebarState,
   changeSidebarState,
 }) => {
@@ -61,11 +60,8 @@ export const PresentialPlaygroundSider: FC<presentialPlaygroundSiderProps> = ({
             `}
           >
             <SiderMain
-              astToBlock={editorLanguage.astToBlock}
               blocks={editorLanguage.blocks}
               category={editorLanguage.categories.at(sidebarState)}
-              languageId={languageId}
-              wordTypes={editorLanguage.wordTypes}
             />
           </div>
         </div>
@@ -73,22 +69,13 @@ export const PresentialPlaygroundSider: FC<presentialPlaygroundSiderProps> = ({
     </>
   );
 };
-
-type playgroundSiderProps = {
-  editorLanguage: editorLanguage;
-  languageId: string;
-};
-
-export const PlaygroundSider: FC<playgroundSiderProps> = ({
-  editorLanguage,
-  languageId,
-}) => {
+export const PlaygroundSider: FC = () => {
   const [sidebarState, setSidebarState] = useState(0);
+  const editorLanguage = useEditorLanguage();
 
   return (
     <PresentialPlaygroundSider
       editorLanguage={editorLanguage}
-      languageId={languageId}
       sidebarState={sidebarState}
       changeSidebarState={(index: number) => () => {
         setSidebarState(index);

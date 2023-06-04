@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import type { FC } from 'react';
 import { useCallback, useEffect, useState } from 'react';
 
+import { useEditorLanguage } from '@/components/pages/Playground/EditorLanguageContext';
 import type {
   ast,
   editorLanguage,
@@ -16,7 +17,6 @@ type presentialPlaygroundEditor = {
   astArray: ast[];
   editorLanguage: editorLanguage;
   isDraggingBlock: boolean;
-  languageId: string;
   totalLineCount: number;
   updateAstArray: (
     astPath: (string | number)[],
@@ -30,7 +30,6 @@ export const PresentialPlaygroundEditor: FC<presentialPlaygroundEditor> = ({
   astArray,
   editorLanguage,
   isDraggingBlock,
-  languageId,
   totalLineCount,
   updateAstArray,
 }) => {
@@ -94,16 +93,12 @@ export const PresentialPlaygroundEditor: FC<presentialPlaygroundEditor> = ({
                   align-items: center;
                   line-height: 28px;
                 `}
-                key={index}
               >
                 <ASTToBlock
                   ast={ast}
                   astPath={[index]}
-                  astToBlock={editorLanguage.astToBlock}
                   draggable={true}
-                  languageId={languageId}
                   updateAstArray={updateAstArray}
-                  wordTypes={editorLanguage.wordTypes}
                 />
               </div>
               <div
@@ -136,15 +131,10 @@ export const PresentialPlaygroundEditor: FC<presentialPlaygroundEditor> = ({
 
 type playgroundEditor = {
   isDraggingBlock: boolean;
-  editorLanguage: editorLanguage;
-  languageId: string;
 };
 
-export const PlaygroundEditor: FC<playgroundEditor> = ({
-  isDraggingBlock,
-  editorLanguage,
-  languageId,
-}) => {
+export const PlaygroundEditor: FC<playgroundEditor> = ({ isDraggingBlock }) => {
+  const editorLanguage = useEditorLanguage();
   const [astArray, setAstArray] = useState<ast[]>([
     {
       $astId: '#?single',
@@ -229,7 +219,6 @@ export const PlaygroundEditor: FC<playgroundEditor> = ({
     },
     [setAstArray],
   );
-  console.log(astArray);
   const [lineHeight] = useState(28);
   const [totalLineCountState, setTotalLineCountState] = useState(1);
   useEffect(() => {
@@ -274,7 +263,6 @@ export const PlaygroundEditor: FC<playgroundEditor> = ({
         astArray={astArray}
         editorLanguage={editorLanguage}
         isDraggingBlock={isDraggingBlock}
-        languageId={languageId}
         totalLineCount={totalLineCountState}
         updateAstArray={updateAstArray}
       />

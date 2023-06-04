@@ -5,29 +5,21 @@ import { useDrag } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import { uuid } from 'uuidv4';
 
-import type {
-  astToBlock,
-  block,
-  wordType,
-} from '@/components/pages/Playground/editorLanguageType';
+import { useEditorLanguage } from '@/components/pages/Playground/EditorLanguageContext';
+import type { block } from '@/components/pages/Playground/editorLanguageType';
+import { useLanguageId } from '@/components/pages/Playground/LanguageIdContext';
 import { gray } from '@/styles/colors';
 
 import type { DragBlockItem } from './ASTToBlock';
 import { ASTToBlock } from './ASTToBlock';
 
 type presentialCodeBlockProps = {
-  astToBlock: Record<string, astToBlock>;
   block: block;
-  languageId: string;
-  wordTypes: Record<string, wordType>;
   isDragging: boolean;
 };
 
 export const PresentialCodeBlock: FC<presentialCodeBlockProps> = ({
-  astToBlock,
   block,
-  languageId,
-  wordTypes,
   isDragging,
 }) => {
   return (
@@ -51,12 +43,9 @@ export const PresentialCodeBlock: FC<presentialCodeBlockProps> = ({
       `}
     >
       <ASTToBlock
-        astToBlock={astToBlock}
         ast={block.ast}
         astPath={[]}
         draggable={false}
-        languageId={languageId}
-        wordTypes={wordTypes}
         updateAstArray={() => null}
       />
     </div>
@@ -64,18 +53,12 @@ export const PresentialCodeBlock: FC<presentialCodeBlockProps> = ({
 };
 
 type codeBlockProps = {
-  astToBlock: Record<string, astToBlock>;
   block: block;
-  languageId: string;
-  wordTypes: Record<string, wordType>;
 };
 
-export const CodeBlock: FC<codeBlockProps> = ({
-  astToBlock,
-  block,
-  languageId,
-  wordTypes,
-}) => {
+export const CodeBlock: FC<codeBlockProps> = ({ block }) => {
+  const { astToBlock, wordTypes } = useEditorLanguage();
+  const { languageId } = useLanguageId();
   const [{ isDragging }, drag, preview] = useDrag<
     DragBlockItem,
     unknown,
@@ -116,18 +99,11 @@ export const CodeBlock: FC<codeBlockProps> = ({
   return (
     <div
       css={css`
-        /* width: min-content; */
         margin-left: 8px;
       `}
       ref={drag}
     >
-      <PresentialCodeBlock
-        astToBlock={astToBlock}
-        block={block}
-        isDragging={isDragging}
-        languageId={languageId}
-        wordTypes={wordTypes}
-      />
+      <PresentialCodeBlock block={block} isDragging={isDragging} />
     </div>
   );
 };

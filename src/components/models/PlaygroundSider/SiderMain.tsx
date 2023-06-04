@@ -2,29 +2,21 @@ import { css } from '@emotion/react';
 import type { FC } from 'react';
 
 import type {
-  astToBlock,
   block,
   category,
-  wordType,
 } from '@/components/pages/Playground/editorLanguageType';
 import { gray } from '@/styles/colors';
 
 import { CodeBlock } from '../CodeBlock/CodeBlock';
 
 type presentialSiderMainProps = {
-  astToBlock: Record<string, astToBlock>;
   blocks: Record<string, block>;
   category: category;
-  languageId: string;
-  wordTypes: Record<string, wordType>;
 };
 
 export const PresentialSiderMain: FC<presentialSiderMainProps> = ({
-  astToBlock,
   blocks,
   category,
-  languageId,
-  wordTypes,
 }) => {
   return (
     <div
@@ -79,12 +71,7 @@ export const PresentialSiderMain: FC<presentialSiderMainProps> = ({
                 >
                   {block.description}
                 </div>
-                <CodeBlock
-                  astToBlock={astToBlock}
-                  block={block}
-                  languageId={languageId}
-                  wordTypes={wordTypes}
-                />
+                <CodeBlock block={block} />
               </div>
             );
           } else {
@@ -97,20 +84,11 @@ export const PresentialSiderMain: FC<presentialSiderMainProps> = ({
 };
 
 type siderMainProps = {
-  astToBlock: Record<string, astToBlock>;
   blocks: Record<string, block>;
   category?: category;
-  languageId: string;
-  wordTypes: Record<string, wordType>;
 };
 
-export const SiderMain: FC<siderMainProps> = ({
-  astToBlock,
-  blocks,
-  category,
-  languageId,
-  wordTypes,
-}) => {
+export const SiderMain: FC<siderMainProps> = ({ blocks, category }) => {
   if (!category) {
     return (
       <div
@@ -122,13 +100,5 @@ export const SiderMain: FC<siderMainProps> = ({
       </div>
     );
   }
-  return (
-    <PresentialSiderMain
-      astToBlock={astToBlock}
-      blocks={blocks}
-      category={category}
-      languageId={languageId}
-      wordTypes={wordTypes}
-    />
-  );
+  return <PresentialSiderMain blocks={blocks} category={category} />;
 };

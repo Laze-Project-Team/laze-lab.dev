@@ -49,7 +49,11 @@ export const DroppableSpace: FC<droppableSpaceProps> = ({
   const [, drop] = useDrop<DragBlockItem>(() => ({
     accept: 'block',
     hover(item) {
-      setHoverItemState(item.astToBlockProps);
+      if (acceptedAstId.includes(item.astId)) {
+        setHoverItemState(item.astToBlockProps);
+      } else {
+        setHoverState(false);
+      }
       return;
     },
     drop: (item) => {
@@ -121,7 +125,7 @@ export const DroppableSpace: FC<droppableSpaceProps> = ({
               }
             `}
           >
-            <ASTToBlock {...hoverItemState} />
+            {hoverItemState && <ASTToBlock {...hoverItemState} />}
           </div>
         </div>
       )}
