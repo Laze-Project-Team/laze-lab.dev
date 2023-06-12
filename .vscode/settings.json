@@ -10,5 +10,7 @@
   "files.insertFinalNewline": true,
   "stylelint.validate": ["css", "scss", "typescript", "typescriptreact"],
   "vitest.commandLine": "yarn test",
-  "testing.automaticallyOpenPeekView": "never"
+  "testing.automaticallyOpenPeekView": "never",
+  "stylelint.configFile": ".stylelintrc.js",
+  "stylelint.packageManager": "yarn"
 }

@@ -32,6 +32,9 @@ export const pagesPath = {
   "signup": {
     $url: (url?: { hash?: string }) => ({ pathname: '/signup' as const, hash: url?.hash })
   },
+  "tutorial": {
+    $url: (url?: { hash?: string }) => ({ pathname: '/tutorial' as const, hash: url?.hash })
+  },
   $url: (url?: { hash?: string }) => ({ pathname: '/' as const, hash: url?.hash })
 }
 
@@ -50,6 +53,10 @@ export const staticPath = {
     mstile_150x150_png: '/favicons/mstile-150x150.png',
     safari_pinned_tab_svg: '/favicons/safari-pinned-tab.svg',
     site_webmanifest: '/favicons/site.webmanifest'
+  },
+  icons: {
+    hakase_png: '/icons/hakase.png',
+    josyu_png: '/icons/josyu.png'
   },
   img: {
     logo: {

@@ -4,7 +4,7 @@ import type {
   RenderOptions,
   RenderResult,
 } from '@testing-library/react';
-import { render as defaultRender } from '@testing-library/react';
+import { render as originalRender } from '@testing-library/react';
 import type { FC, ReactNode } from 'react';
 
 import { UserInfoProvider } from '/__mocks__/UserInfoProvider';
@@ -25,7 +25,7 @@ type wrapperProps = {
 
 type globalWrapperHOCType = (
   wrapper?: React.JSXElementConstructor<{ children: React.ReactElement }>,
-) => FC<wrapperProps>;
+) => React.JSXElementConstructor<{ children: React.ReactElement }>;
 
 const globalWrapperHOC: globalWrapperHOCType = (Wrapper) => {
   const globalWrapper: FC<wrapperProps> = ({ children }) => (
@@ -46,7 +46,7 @@ const globalWrapperHOC: globalWrapperHOCType = (Wrapper) => {
 };
 
 export const render: renderType = (ui, options) =>
-  defaultRender(ui, {
+  originalRender(ui, {
     ...options,
     wrapper: globalWrapperHOC(options?.wrapper),
   });

@@ -17,5 +17,14 @@ module.exports = {
     'alpha-value-notation': 'number',
     // styling for MUI components
     'selector-class-pattern': null,
+    'declaration-block-no-duplicate-properties': [
+      true,
+      {
+        ignore: [
+          'consecutive-duplicates',
+          'consecutive-duplicates-with-different-values',
+        ],
+      },
+    ],
   },
 };
