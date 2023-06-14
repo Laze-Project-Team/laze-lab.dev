@@ -4,12 +4,12 @@ import { IconSend } from '@tabler/icons-react';
 import type { FC } from 'react';
 import { useRef, useState } from 'react';
 
-import { useChatMessages } from '@/client/tutorial/Content/useChatMessages';
+import { useChatScenario } from '@/client/tutorial/Content/useChatScenario';
 
 export const MessageInput: FC = () => {
   const submitButtonRef = useRef<HTMLButtonElement>(null);
   const [inputMessage, setInputMessage] = useState('');
-  const { postMessage } = useChatMessages();
+  const { inputHandler, chatAction } = useChatScenario();
 
   return (
     <div>
@@ -17,11 +17,13 @@ export const MessageInput: FC = () => {
         onSubmit={(e) => {
           e.preventDefault();
           if (inputMessage === '') return;
+          if (!chatAction.inputAvailable) return;
 
-          postMessage({ author: 'josyu', type: 'text', text: inputMessage });
+          inputHandler(inputMessage);
         }}
       >
         <Textarea
+          disabled={!chatAction.inputAvailable}
           variant="unstyled"
           placeholder="ここにメッセージを入力"
           css={css`
@@ -46,6 +48,7 @@ export const MessageInput: FC = () => {
           maxRows={4}
           rightSection={
             <ActionIcon
+              disabled={!chatAction.inputAvailable}
               size="md"
               variant="subtle"
               type="submit"

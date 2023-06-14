@@ -114,6 +114,11 @@ export const scenario: TutorialScenario = {
   },
   '18': {
     type: 'reply',
+    replyType: 'text',
+    nextStepId: '19',
+  },
+  '19': {
+    type: 'reply',
     replyType: 'select',
     options: [
       {
