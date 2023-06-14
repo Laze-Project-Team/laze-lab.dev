@@ -7,18 +7,18 @@ import { useEffect, useRef, useState } from 'react';
 
 import HakaseIcon from '/public/icons/hakase.png';
 import JosyuIcon from '/public/icons/josyu.png';
-import type { ChatMessage } from '@/client/tutorial/Content/useChatMessages';
+import type { Story } from '@/client/tutorial/Content/storySchema';
 
 type MessageProps = {
-  message: ChatMessage;
+  story: Story;
 };
 
-export const Message: FC<MessageProps> = ({ message }) => {
+export const Message: FC<MessageProps> = ({ story }) => {
   const messageContainerRef = useRef<HTMLDivElement>(null);
   const [animated, setAnimated] = useState(false);
   const theme = useMantineTheme();
 
-  const isHakase = message.author === 'hakase';
+  const isAssistant = story.from === 'assistant';
 
   useEffect(() => {
     if (messageContainerRef.current === null) return;
@@ -33,7 +33,7 @@ export const Message: FC<MessageProps> = ({ message }) => {
     });
   }, [animated, messageContainerRef]);
 
-  if (message.type !== 'text') {
+  if (story.type !== 'text') {
     return <>unknown message</>;
   }
 
@@ -44,19 +44,19 @@ export const Message: FC<MessageProps> = ({ message }) => {
         css={css`
           display: flex;
           flex-direction: column;
-          align-self: ${isHakase ? 'flex-start' : 'flex-end'};
-          margin-right: ${isHakase ? '120px' : 0};
-          margin-left: ${isHakase ? 0 : '120px'};
+          align-self: ${isAssistant ? 'flex-start' : 'flex-end'};
+          margin-right: ${isAssistant ? '120px' : 0};
+          margin-left: ${isAssistant ? 0 : '120px'};
           opacity: 0;
 
           @media screen and (width <= 1200px) {
-            margin-right: ${isHakase ? '56px' : 0};
-            margin-left: ${isHakase ? 0 : '56px'};
+            margin-right: ${isAssistant ? '56px' : 0};
+            margin-left: ${isAssistant ? 0 : '56px'};
           }
 
           @media screen and (width <= 420px) {
-            margin-right: ${isHakase ? '40px' : 0};
-            margin-left: ${isHakase ? 0 : '40px'};
+            margin-right: ${isAssistant ? '40px' : 0};
+            margin-left: ${isAssistant ? 0 : '40px'};
           }
         `}
       >
@@ -66,18 +66,18 @@ export const Message: FC<MessageProps> = ({ message }) => {
             height: fit-content;
             padding: 0.5rem 1rem;
             border-radius: ${theme.radius.md};
-            margin-right: ${isHakase ? 0 : '56px'};
-            margin-left: ${isHakase ? '56px' : 0};
-            background-color: ${isHakase
+            margin-right: ${isAssistant ? 0 : '56px'};
+            margin-left: ${isAssistant ? '56px' : 0};
+            background-color: ${isAssistant
               ? theme.colors.gray[2]
               : theme.colors.blue[5]};
-            border-bottom-left-radius: ${isHakase ? 0 : theme.radius.md};
-            border-bottom-right-radius: ${isHakase ? theme.radius.md : 0};
-            color: ${isHakase ? '#000' : '#fff'};
+            border-bottom-left-radius: ${isAssistant ? 0 : theme.radius.md};
+            border-bottom-right-radius: ${isAssistant ? theme.radius.md : 0};
+            color: ${isAssistant ? '#000' : '#fff'};
 
             @media screen and (width <= 420px) {
-              margin-right: ${isHakase ? 0 : '40px'};
-              margin-left: ${isHakase ? '40px' : 0};
+              margin-right: ${isAssistant ? 0 : '40px'};
+              margin-left: ${isAssistant ? '40px' : 0};
             }
           `}
         >
@@ -89,17 +89,17 @@ export const Message: FC<MessageProps> = ({ message }) => {
               }
             `}
           >
-            {message.text}
+            {story.content}
           </Text>
         </div>
         <div
           css={css`
-            align-self: ${isHakase ? 'flex-start' : 'flex-end'};
+            align-self: ${isAssistant ? 'flex-start' : 'flex-end'};
             margin-top: -1rem;
           `}
         >
           <Image
-            src={isHakase ? HakaseIcon : JosyuIcon}
+            src={isAssistant ? HakaseIcon : JosyuIcon}
             alt=""
             width={48}
             height={48}

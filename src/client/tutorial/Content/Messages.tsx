@@ -3,37 +3,33 @@ import type { FC } from 'react';
 import { useEffect, useRef } from 'react';
 
 import { Message } from '@/client/tutorial/Content/Message';
-import { PostNextMessageButton } from '@/client/tutorial/Content/PostNextMessageButton';
-import { useChatMessages } from '@/client/tutorial/Content/useChatMessages';
+import { useChatScenario } from '@/client/tutorial/Content/useChatScenario';
 
-export const Messages: FC = () => {
+export const Messages: FC = (props) => {
   const messagesContainerRef = useRef<HTMLDivElement>(null);
-  const { chatMessages } = useChatMessages();
+  const { chatStories } = useChatScenario();
 
   useEffect(() => {
     window.scrollTo({
       top: document.body.scrollHeight,
       behavior: 'smooth',
     });
-  }, [chatMessages]);
+  }, [chatStories]);
 
   return (
     <div
       ref={messagesContainerRef}
       css={css`
         display: flex;
-        min-height: 0;
-        flex: 1;
         flex-direction: column;
         padding: 1rem;
-        padding-bottom: 6rem;
         gap: 3rem;
       `}
+      {...props}
     >
-      {chatMessages.map((message, index) => (
-        <Message key={index} message={message} />
+      {chatStories.map((story, index) => (
+        <Message key={index} story={story} />
       ))}
-      <PostNextMessageButton />
     </div>
   );
 };

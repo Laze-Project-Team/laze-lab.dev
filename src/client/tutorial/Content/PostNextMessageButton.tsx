@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import { Button } from '@mantine/core';
 import type { FC } from 'react';
 import { useCallback } from 'react';
@@ -18,7 +19,14 @@ export const PostNextMessageButton: FC = () => {
 
   return (
     <>
-      <Button variant="light" onClick={postNextMessage}>
+      <Button
+        variant="light"
+        onClick={postNextMessage}
+        css={css`
+          height: 32px;
+          flex-shrink: 0;
+        `}
+      >
         ▼
       </Button>
     </>
