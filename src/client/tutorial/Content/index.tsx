@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { css, Global } from '@emotion/react';
 import { useMantineTheme } from '@mantine/core';
 import { type FC, useEffect, useRef } from 'react';
 
@@ -38,14 +38,32 @@ export const Content: FC = () => {
     <div
       css={css`
         display: flex;
-        width: 100%;
+        width: calc(100vw - var(--mantine-navbar-width, 0px));
         height: 100%;
         flex: 1;
         flex-direction: column;
-        padding: 1rem 0 1rem 1rem;
+        padding: 1rem;
         margin: -1rem;
+
+        @media screen and (max-width: ${theme.breakpoints.sm}) {
+          width: 100vw;
+        }
+
+        @media screen and (max-width: ${theme.breakpoints.xs}) {
+          padding-right: 0;
+          padding-left: 0;
+        }
       `}
     >
+      <Global
+        styles={css`
+          body {
+            @media screen and (max-width: ${theme.breakpoints.xs}) {
+              overflow-x: hidden;
+            }
+          }
+        `}
+      />
       <div
         css={css`
           min-height: 0;
