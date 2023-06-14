@@ -110,7 +110,21 @@ export const scenario: TutorialScenario = {
     type: 'message',
     messageType: 'text',
     text: 'いいね！これから私と一緒に頑張っていこう！',
-    nextStepId: 'end',
+    nextStepId: '18',
+  },
+  '18': {
+    type: 'reply',
+    replyType: 'select',
+    options: [
+      {
+        text: '(終わり)',
+        nextStepId: 'end',
+      },
+      {
+        text: '(もう一度)',
+        nextStepId: 'start',
+      },
+    ],
   },
 };
 

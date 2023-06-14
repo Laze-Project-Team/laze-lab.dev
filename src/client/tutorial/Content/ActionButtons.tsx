@@ -19,6 +19,7 @@ export const PresentialActionButtons: FC<PresentialActionButtonsProps> = ({
       p="md"
       gap="sm"
       w="100%"
+      wrap="wrap"
       css={css`
         .mantine-Button-root {
           height: auto;
