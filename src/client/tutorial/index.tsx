@@ -47,7 +47,6 @@ export const Tutorial: FC = () => {
                 mr="xl"
               />
             </MediaQuery>
-            <div>here is header</div>
           </Flex>
         </Header>
       }
