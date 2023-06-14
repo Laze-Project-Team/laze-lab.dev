@@ -12,5 +12,6 @@
   "vitest.commandLine": "yarn test",
   "testing.automaticallyOpenPeekView": "never",
   "stylelint.configFile": ".stylelintrc.js",
-  "stylelint.packageManager": "yarn"
+  "stylelint.packageManager": "yarn",
+  "prettier.prettierPath": "./node_modules/prettier"
 }
