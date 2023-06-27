@@ -1,4 +1,4 @@
-import { css, Global } from '@emotion/react';
+import { css } from '@emotion/react';
 import { useMantineTheme } from '@mantine/core';
 import { type FC, useEffect, useRef } from 'react';
 
@@ -55,15 +55,6 @@ export const Content: FC = () => {
         }
       `}
     >
-      <Global
-        styles={css`
-          body {
-            @media screen and (max-width: ${theme.breakpoints.xs}) {
-              overflow-x: hidden;
-            }
-          }
-        `}
-      />
       <div
         css={css`
           min-height: 0;

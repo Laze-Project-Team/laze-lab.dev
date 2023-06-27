@@ -1,3 +1,4 @@
+import { css, Global } from '@emotion/react';
 import {
   AppShell,
   Burger,
@@ -34,40 +35,53 @@ export const Tutorial: FC = () => {
   }, [theme.breakpoints.sm]);
 
   return (
-    <AppShell
-      header={
-        <Header height={32}>
-          <Flex>
+    <>
+      <Global
+        styles={css`
+          body {
+            overflow-x: hidden;
+          }
+        `}
+      />
+      <AppShell
+        header={
+          <Header height={32}>
+            <Flex>
+              <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+                <Burger
+                  opened={opened}
+                  onClick={() => setOpened((o) => !o)}
+                  size="sm"
+                  color={theme.colors.gray[6]}
+                  mr="xl"
+                />
+              </MediaQuery>
+            </Flex>
+          </Header>
+        }
+        navbarOffsetBreakpoint="sm"
+        navbar={
+          <>
             <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
-              <Burger
+              <Drawer
                 opened={opened}
-                onClick={() => setOpened((o) => !o)}
-                size="sm"
-                color={theme.colors.gray[6]}
-                mr="xl"
-              />
+                onClose={() => setOpened(false)}
+                size={300}
+              >
+                <Navigation />
+              </Drawer>
             </MediaQuery>
-          </Flex>
-        </Header>
-      }
-      navbarOffsetBreakpoint="sm"
-      navbar={
-        <>
-          <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
-            <Drawer opened={opened} onClose={() => setOpened(false)} size={300}>
-              <Navigation />
-            </Drawer>
-          </MediaQuery>
 
-          <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
-            <Navbar width={{ base: 300 }} hiddenBreakpoint="sm">
-              <Navigation />
-            </Navbar>
-          </MediaQuery>
-        </>
-      }
-    >
-      <Content />
-    </AppShell>
+            <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
+              <Navbar width={{ base: 300 }} hiddenBreakpoint="sm">
+                <Navigation />
+              </Navbar>
+            </MediaQuery>
+          </>
+        }
+      >
+        <Content />
+      </AppShell>
+    </>
   );
 };
