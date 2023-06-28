@@ -3,6 +3,7 @@ import { useMantineTheme } from '@mantine/core';
 import { type FC, useEffect, useRef } from 'react';
 
 import { ActionButtons } from '@/client/tutorial/Content/ActionButtons';
+import { MessagePopover } from '@/client/tutorial/Content/MessagePopover';
 import { Messages } from '@/client/tutorial/Content/Messages';
 import { useChatScenarioMessageHandler } from '@/client/tutorial/Content/useChatScenario';
 
@@ -80,7 +81,9 @@ export const Content: FC = () => {
         `}
       >
         <ActionButtons />
-        <MessageInput />
+        <MessagePopover>
+          <MessageInput />
+        </MessagePopover>
       </div>
     </div>
   );

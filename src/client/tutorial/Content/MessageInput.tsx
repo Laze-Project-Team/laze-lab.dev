@@ -1,14 +1,17 @@
 import { css } from '@emotion/react';
 import { ActionIcon, Textarea } from '@mantine/core';
 import { IconSend } from '@tabler/icons-react';
+import { useAtom } from 'jotai';
 import type { FC } from 'react';
 import { useRef, useState } from 'react';
 
+import { isMessageInputFocusedAtom } from '@/client/tutorial/Content/MessagePopover';
 import { useChatScenario } from '@/client/tutorial/Content/useChatScenario';
 
 export const MessageInput: FC = () => {
   const submitButtonRef = useRef<HTMLButtonElement>(null);
   const [inputMessage, setInputMessage] = useState('');
+  const [, setIsMessageInputFocused] = useAtom(isMessageInputFocusedAtom);
   const { inputHandler, chatAction } = useChatScenario();
 
   return (
@@ -46,6 +49,8 @@ export const MessageInput: FC = () => {
           }}
           minRows={1}
           maxRows={4}
+          onFocus={() => setIsMessageInputFocused(true)}
+          onBlur={() => setIsMessageInputFocused(false)}
           rightSection={
             <ActionIcon
               disabled={!chatAction.inputAvailable}
