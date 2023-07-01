@@ -24,11 +24,19 @@ export const PresentialActionButtons: FC<PresentialActionButtonsProps> = ({
         .mantine-Button-root {
           height: auto;
           padding: 0.5rem 1rem;
+
+          @media screen and (width <= 420px) {
+            padding: 0.5rem;
+          }
         }
 
         & .mantine-Button-label {
           line-height: 1.25;
           white-space: normal;
+
+          @media screen and (width <= 420px) {
+            font-size: 0.75rem;
+          }
         }
       `}
     >

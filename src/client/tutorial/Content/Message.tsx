@@ -6,7 +6,6 @@ import type { FC } from 'react';
 import { useEffect, useRef, useState } from 'react';
 
 import HakaseIcon from '/public/icons/hakase.png';
-import JosyuIcon from '/public/icons/josyu.png';
 import type { Story } from '@/client/tutorial/Content/storySchema';
 
 type MessageProps = {
@@ -66,7 +65,7 @@ export const Message: FC<MessageProps> = ({ story }) => {
             height: fit-content;
             padding: 0.5rem 1rem;
             border-radius: ${theme.radius.md};
-            margin-right: ${isAssistant ? 0 : '56px'};
+            margin-right: 0;
             margin-left: ${isAssistant ? '56px' : 0};
             background-color: ${isAssistant
               ? theme.colors.gray[2]
@@ -76,8 +75,9 @@ export const Message: FC<MessageProps> = ({ story }) => {
             color: ${isAssistant ? '#000' : '#fff'};
 
             @media screen and (width <= 420px) {
-              margin-right: ${isAssistant ? 0 : '40px'};
-              margin-left: ${isAssistant ? '40px' : 0};
+              padding: 0.5rem 0.75rem;
+              margin-right: 0;
+              margin-left: ${isAssistant ? '24px' : 0};
             }
           `}
         >
@@ -92,28 +92,34 @@ export const Message: FC<MessageProps> = ({ story }) => {
             {story.content}
           </Text>
         </div>
-        <div
-          css={css`
-            align-self: ${isAssistant ? 'flex-start' : 'flex-end'};
-            margin-top: -1rem;
-          `}
-        >
-          <Image
-            src={isAssistant ? HakaseIcon : JosyuIcon}
-            alt=""
-            width={48}
-            height={48}
+        {isAssistant && (
+          <div
             css={css`
-              border-radius: 50%;
-              clip-path: circle(50%);
+              align-self: flex-start;
+              margin-top: -1rem;
 
               @media screen and (width <= 420px) {
-                width: 32px;
-                height: 32px;
+                margin-top: 0.5rem;
               }
             `}
-          />
-        </div>
+          >
+            <Image
+              src={HakaseIcon}
+              alt=""
+              width={48}
+              height={48}
+              css={css`
+                border-radius: 50%;
+                clip-path: circle(50%);
+
+                @media screen and (width <= 420px) {
+                  width: 32px;
+                  height: 32px;
+                }
+              `}
+            />
+          </div>
+        )}
       </div>
     </>
   );
