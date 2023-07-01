@@ -6,7 +6,7 @@ import type { FC } from 'react';
 import { useEffect, useRef, useState } from 'react';
 
 import HakaseIcon from '/public/icons/hakase.png';
-import type { Story } from '@/client/tutorial/Content/storySchema';
+import type { Story } from '@/client/tutorial/Chat/Content/storySchema';
 
 type MessageProps = {
   story: Story;

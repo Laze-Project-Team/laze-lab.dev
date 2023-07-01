@@ -3,7 +3,7 @@ import type {
   TutorialScenarioMessage,
   TutorialScenarioReply,
   TutorialScenarioStep,
-} from '@/client/tutorial/Content/tutorialScenarioScheme';
+} from '@/client/tutorial/Chat/Content/tutorialScenarioScheme';
 
 export type Story = TextStory | ImageStory;
 

@@ -1,8 +1,11 @@
 import { atom, useAtom } from 'jotai';
 import { useEffect } from 'react';
 
-import { stepToStory, type Story } from '@/client/tutorial/Content/storySchema';
-import { scenario } from '@/client/tutorial/Content/testMessages';
+import {
+  stepToStory,
+  type Story,
+} from '@/client/tutorial/Chat/Content/storySchema';
+import { scenario } from '@/client/tutorial/Chat/Content/testMessages';
 
 export type ScenarioAction = {
   inputAvailable?: boolean;

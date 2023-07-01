@@ -1,3 +1,3 @@
-import { Tutorial } from '@/client/tutorial';
+import { Tutorial } from '@/client/tutorial/Chat';
 
 export default Tutorial;

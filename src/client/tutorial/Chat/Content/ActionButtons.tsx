@@ -5,7 +5,7 @@ import type { FC } from 'react';
 import {
   type ScenarioUserAction,
   useChatScenario,
-} from '@/client/tutorial/Content/useChatScenario';
+} from '@/client/tutorial/Chat/Content/useChatScenario';
 
 export type PresentialActionButtonsProps = {
   actions: ScenarioUserAction[];

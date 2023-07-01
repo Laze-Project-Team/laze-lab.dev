@@ -12,7 +12,7 @@ import {
 import type { FC } from 'react';
 import { useEffect, useState } from 'react';
 
-import { Content } from '@/client/tutorial/Content';
+import { Content } from '@/client/tutorial/Chat/Content';
 
 import { Navigation } from './Navigation';
 

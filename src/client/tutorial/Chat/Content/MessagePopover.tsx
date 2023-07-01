@@ -3,7 +3,7 @@ import { Popover, Text } from '@mantine/core';
 import { atom, useAtom } from 'jotai';
 import type { FC, ReactNode } from 'react';
 
-import { useChatScenario } from '@/client/tutorial/Content/useChatScenario';
+import { useChatScenario } from '@/client/tutorial/Chat/Content/useChatScenario';
 
 export const isMessageInputFocusedAtom = atom(false);
 

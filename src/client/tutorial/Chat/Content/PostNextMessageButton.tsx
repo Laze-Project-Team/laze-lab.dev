@@ -3,8 +3,8 @@ import { Button } from '@mantine/core';
 import type { FC } from 'react';
 import { useCallback } from 'react';
 
-import { messages } from '@/client/tutorial/Content/testMessages';
-import { useChatMessages } from '@/client/tutorial/Content/useChatMessages';
+import { messages } from '@/client/tutorial/Chat/Content/testMessages';
+import { useChatMessages } from '@/client/tutorial/Chat/Content/useChatMessages';
 
 export const PostNextMessageButton: FC = () => {
   const { postMessage } = useChatMessages();

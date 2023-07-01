@@ -1,5 +1,5 @@
-import type { TutorialScenario } from '@/client/tutorial/Content/tutorialScenarioScheme';
-import type { ChatMessage } from '@/client/tutorial/Content/useChatMessages';
+import type { TutorialScenario } from '@/client/tutorial/Chat/Content/tutorialScenarioScheme';
+import type { ChatMessage } from '@/client/tutorial/Chat/Content/useChatMessages';
 
 export const scenario: TutorialScenario = {
   start: {

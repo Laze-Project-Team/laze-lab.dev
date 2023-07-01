@@ -2,8 +2,8 @@ import { css } from '@emotion/react';
 import type { FC } from 'react';
 import { useEffect, useRef } from 'react';
 
-import { Message } from '@/client/tutorial/Content/Message';
-import { useChatScenario } from '@/client/tutorial/Content/useChatScenario';
+import { Message } from '@/client/tutorial/Chat/Content/Message';
+import { useChatScenario } from '@/client/tutorial/Chat/Content/useChatScenario';
 
 export const Messages: FC = (props) => {
   const messagesContainerRef = useRef<HTMLDivElement>(null);

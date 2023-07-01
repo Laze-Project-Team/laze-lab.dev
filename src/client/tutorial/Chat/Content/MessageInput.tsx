@@ -5,8 +5,8 @@ import { useAtom } from 'jotai';
 import type { FC } from 'react';
 import { useRef, useState } from 'react';
 
-import { isMessageInputFocusedAtom } from '@/client/tutorial/Content/MessagePopover';
-import { useChatScenario } from '@/client/tutorial/Content/useChatScenario';
+import { isMessageInputFocusedAtom } from '@/client/tutorial/Chat/Content/MessagePopover';
+import { useChatScenario } from '@/client/tutorial/Chat/Content/useChatScenario';
 
 export const MessageInput: FC = () => {
   const submitButtonRef = useRef<HTMLButtonElement>(null);

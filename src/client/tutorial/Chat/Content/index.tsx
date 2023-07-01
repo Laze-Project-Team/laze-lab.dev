@@ -2,10 +2,10 @@ import { css } from '@emotion/react';
 import { useMantineTheme } from '@mantine/core';
 import { type FC, useEffect, useRef } from 'react';
 
-import { ActionButtons } from '@/client/tutorial/Content/ActionButtons';
-import { MessagePopover } from '@/client/tutorial/Content/MessagePopover';
-import { Messages } from '@/client/tutorial/Content/Messages';
-import { useChatScenarioMessageHandler } from '@/client/tutorial/Content/useChatScenario';
+import { ActionButtons } from '@/client/tutorial/Chat/Content/ActionButtons';
+import { MessagePopover } from '@/client/tutorial/Chat/Content/MessagePopover';
+import { Messages } from '@/client/tutorial/Chat/Content/Messages';
+import { useChatScenarioMessageHandler } from '@/client/tutorial/Chat/Content/useChatScenario';
 
 import { MessageInput } from './MessageInput';
 
